@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP — Page d'accueil V2 (Wireframe "Croquis")</title>
+  <style>
+    :root {
+      --agri: #7c9b48;
+      --pro: #193f60;
+      --home: #ea611a;
+      --corp-red: #e41e28;
+      --corp-gray: #1b2230;
+      --offwhite: #f7f4ef;
+      --bg-stroke: #2e2e2e;
+      --font-title: "Trade Gothic Next LT Pro", "Helvetica Neue", Arial, sans-serif;
+      --font-body: "Avenir", "Inter", system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--offwhite);
+      color: var(--corp-gray);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 244, 239, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(27, 34, 48, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.25rem;
+      font-family: var(--font-title);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      color: var(--corp-red);
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      padding: 0;
+      margin: 0 auto 0 0;
+      align-items: center;
+    }
+
+    .nav ul li {
+      position: relative;
+    }
+
+    .nav a {
+      color: var(--corp-gray);
+      text-decoration: none;
+      padding: 0.35rem 0.45rem;
+      border-radius: 6px;
+      transition: background 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: rgba(27, 34, 48, 0.08);
+    }
+
+    .cta-client {
+      border: 1px solid var(--corp-red);
+      color: var(--corp-red);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .layout {
+      padding: 1.5rem 1.25rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-title);
+      margin: 0 0 0.35em;
+      line-height: 1.15;
+      color: var(--corp-gray);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(27, 34, 48, 0.06);
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: var(--font-title);
+    }
+
+    /* Hero Accordéon */
+    .hero-accordion {
+      display: flex;
+      flex-direction: column;
+      border: 1.5px solid rgba(27, 34, 48, 0.15);
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(247,244,239,0.9));
+      box-shadow: 0 24px 70px rgba(0,0,0,0.08);
+      overflow: hidden;
+      border-radius: 22px;
+      min-height: 520px;
+    }
+
+    .hero-strips {
+      display: flex;
+      min-height: 320px;
+      gap: 1px;
+      background: rgba(27, 34, 48, 0.06);
+    }
+
+    .strip {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: stretch;
+      transition: flex 0.45s ease, filter 0.45s ease;
+      color: var(--corp-gray);
+      overflow: hidden;
+      background: var(--offwhite);
+    }
+
+    .strip.is-active {
+      flex: 7;
+      filter: saturate(1.05);
+    }
+
+    .strip::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(180deg, rgba(27,34,48,0.08), rgba(27,34,48,0.02));
+      pointer-events: none;
+    }
+
+    .strip .sketch {
+      flex: 1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+      filter: grayscale(1);
+    }
+
+    .strip.home .sketch { background-image: url('images/ImageIDHome.jpg'); border-left: 4px solid var(--home); }
+    .strip.pro .sketch { background-image: url('images/ImageIDPro.jpg'); border-left: 4px solid var(--pro); }
+    .strip.agri .sketch { background-image: url('images/ImageIDAgri.jpg'); border-left: 4px solid var(--agri); }
+
+    .strip .label-vertical {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-family: var(--font-title);
+      letter-spacing: 0.1em;
+      font-size: 1.1rem;
+      color: rgba(27, 34, 48, 0.65);
+      padding: 1rem 0.75rem;
+      align-self: flex-end;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px 0 0 0;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .strip.is-active .label-vertical { display: none; }
+
+    .strip .content {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 1.75rem;
+      display: grid;
+      gap: 0.75rem;
+      background: linear-gradient(180deg, rgba(247,244,239,0.55), rgba(247,244,239,0.9));
+      transform: translateY(100%);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .strip.is-active .content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .content h1 { font-size: clamp(1.8rem, 3vw, 2.8rem); }
+    .content p { margin: 0; }
+
+    .cta-enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.15rem;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-family: var(--font-title);
+    }
+
+    .cta-enter span { letter-spacing: 0.02em; }
+
+    .cta-home { background: var(--home); }
+    .cta-pro { background: var(--pro); }
+    .cta-agri { background: var(--agri); }
+
+    /* Funnel grid */
+    .needs-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .need-card {
+      background: #fff;
+      border: 1px solid rgba(27, 34, 48, 0.08);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.06);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-family: var(--font-title);
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+
+    .pill.home { background: var(--home); }
+    .pill.pro { background: var(--pro); }
+    .pill.agri { background: var(--agri); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero-accordion { flex-direction: row; min-height: 560px; }
+      .hero-strips { flex: 2; min-height: 560px; }
+      .layout { padding: 2rem 1.75rem 4rem; gap: 2.5rem; }
+      .two-col { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .nav { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="logo" href="#top" aria-label="ID GROUP">
+        <img src="logos/ID GROUP.png" alt="ID GROUP" style="height:26px;"> ID GROUP
+      </a>
+      <ul>
+        <li><a href="#groupe">Le Groupe</a></li>
+        <li><a href="#solutions">Nos Solutions</a></li>
+        <li><a href="#engagements">Nos Engagements</a></li>
+      </ul>
+      <a class="cta-client" href="#espace-client">Espace client</a>
+    </nav>
+  </header>
+
+  <main class="layout" id="top">
+    <section id="vision">
+      <div class="tag">Direction Artistique — Concept "Croquis"</div>
+      <h1>Spécifications V2 — Page d'accueil & Navigation ID GROUP</h1>
+      <p>Un site miroir qui reflète l'excellence opérationnelle du groupe et la proximité avec chaque métier. Les croquis architecturaux (trait anthracite, aquarelles colorées) remplacent les photos figées pour que chaque client projette sa propre réalité.</p>
+    </section>
+
+    <section id="charte" class="two-col">
+      <div>
+        <h2>Palette & Typographie</h2>
+        <ul>
+          <li><strong>ID AGRI</strong> : <span style="color:var(--agri)">#7c9b48</span> — nature et soin du vivant.</li>
+          <li><strong>ID PRO</strong> : <span style="color:var(--pro)">#193f60</span> — confiance et précision technique.</li>
+          <li><strong>ID HOME</strong> : <span style="color:var(--home)">#ea611a</span> — chaleur, design, hospitalité.</li>
+          <li><strong>Corporate</strong> : Rouge <span style="color:var(--corp-red)">#e41e28</span>, Gris <span style="color:var(--corp-gray)">#1b2230</span>.</li>
+          <li><strong>Fond</strong> : blanc crème/off-white pour laisser respirer les croquis.</li>
+          <li><strong>Typo</strong> : Titres en Trade Gothic Next LT Pro (Bold/Heavy), corps en Avenir (Book/Medium).</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Principes UX (mobile-first)</h2>
+        <ul>
+          <li>Header sticky agissant comme hub corporate (logo gauche, nav centrale, CTA "Espace client" à droite).</li>
+          <li>Hero en accordéon horizontal : 3 panneaux HOME / PRO / AGRI qui se dilatent au survol ou au tap.</li>
+          <li>Logique d'entonnoir : après le hero, une grille de besoins (solutions, pas produits), puis des blocs de réassurance humains et RSE.</li>
+          <li>Navigation courte avec ancres "Nos Solutions" et "Nos Engagements" pour une lecture rapide dès mobile.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="hero" aria-label="Wireframe Hero accordéon">
+      <h2>Hero "Slides Superposées" (Accordéon horizontal)</h2>
+      <p>État par défaut : vue panoramique croquis reliant maison, usine et ferme. Au survol/tap, le panneau actif occupe 70% de l'écran, les autres restent visibles en bandes colorées avec leur nom vertical.</p>
+      <div class="hero-accordion">
+        <div class="hero-strips" role="tablist" aria-label="Univers ID GROUP">
+          <div class="strip home is-active" data-theme="home" role="tab" aria-selected="true" tabindex="0">
+            <div class="sketch" aria-hidden="true"></div>
+            <div class="label-vertical">Home</div>
+            <div class="content">
+              <p class="tag" style="background: rgba(234,97,26,0.16); color: var(--home);">ID HOME</p>
+              <h1>Design & confort durable</h1>
+              <p>Des solutions d'aménagement qui valorisent l'esthétique et la performance thermique, du hall d'entrée aux espaces de vie.</p>
+              <a class="cta-enter cta-home" href="#solutions"><span>Entrer</span> →</a>
+            </div>
+          </div>
+
+          <div class="strip pro" data-theme="pro" role="tab" aria-selected="false" tabindex="0">
+            <div class="sketch" aria-hidden="true"></div>
+            <div class="label-vertical">Industrie</div>
+            <div class="content">
+              <p class="tag" style="background: rgba(25,63,96,0.16); color: var(--pro);">ID PRO</p>
+              <h1>Performance & fiabilité</h1>
+              <p>Solutions techniques pour sécuriser vos flux, limiter les arrêts machines et améliorer le confort des équipes.</p>
+              <a class="cta-enter cta-pro" href="#solutions"><span>Entrer</span> →</a>
+            </div>
+          </div>
+
+          <div class="strip agri" data-theme="agri" role="tab" aria-selected="false" tabindex="0">
+            <div class="sketch" aria-hidden="true"></div>
+            <div class="label-vertical">Agri</div>
+            <div class="content">
+              <p class="tag" style="background: rgba(124,155,72,0.18); color: var(--agri);">ID AGRI</p>
+              <h1>Hygiène & bien-être animal</h1>
+              <p>Equipements et accompagnement pour protéger vos élevages, réduire les maladies et gagner du temps au quotidien.</p>
+              <a class="cta-enter cta-agri" href="#solutions"><span>Entrer</span> →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:0.75rem; font-size:0.95rem; color:rgba(27,34,48,0.8);">Interaction : au hover ou focus, la classe <code>is-active</code> se déplace et déclenche l'animation d'expansion, tandis que le texte vertical disparaît pour laisser place au contenu complet.</p>
+    </section>
+
+    <section id="code-hero">
+      <h3>Exemple de code (structure + transition CSS + pseudo-code GSAP Flip)</h3>
+      <pre style="background:#fff;border:1px solid rgba(27,34,48,0.08);padding:1rem;border-radius:14px;overflow:auto;">
+&lt;div class="hero-strips"&gt;
+  &lt;article class="strip home" data-theme="home"&gt;...&lt;/article&gt;
+  &lt;article class="strip pro" data-theme="pro"&gt;...&lt;/article&gt;
+  &lt;article class="strip agri" data-theme="agri"&gt;...&lt;/article&gt;
+&lt;/div&gt;
+
+// JS : déplacer .is-active
+const strips = document.querySelectorAll('.strip');
+strips.forEach(strip =&gt; {
+  ['mouseenter','focus'].forEach(evt =&gt; strip.addEventListener(evt, () =&gt; activate(strip)));
+});
+
+function activate(target) {
+  strips.forEach(s =&gt; s.classList.toggle('is-active', s === target));
+}
+
+/* Variante GSAP Flip pseudo-code */
+const state = Flip.getState('.strip');
+activate(target);
+Flip.from(state, {
+  duration: 0.55,
+  ease: 'expo.out',
+  absolute: true,
+  nested: true
+});
+      </pre>
+    </section>
+
+    <section id="solutions">
+      <div class="tag">Entonnoir Solutions</div>
+      <h2>Votre besoin</h2>
+      <p>Grille de cartes orientées bénéfices, reliées aux DAS pour guider le choix dès mobile.</p>
+      <div class="needs-grid">
+        <article class="need-card">
+          <span class="pill pro">PRO</span>
+          <h3>Sécuriser mes flux industriels</h3>
+          <p>Portes et protections qui fluidifient la logistique, réduisent les collisions et sécurisent les équipes.</p>
+        </article>
+        <article class="need-card">
+          <span class="pill agri">AGRI</span>
+          <h3>Améliorer le confort de mon élevage</h3>
+          <p>Tapis, ventilation et hygiène pour limiter les blessures, booster la production laitière et gagner du temps.</p>
+        </article>
+        <article class="need-card">
+          <span class="pill home">HOME</span>
+          <h3>Décorer mon entrée</h3>
+          <p>Panneaux et habillages sur-mesure, résistants et chaleureux, pour créer un accueil premium.</p>
+        </article>
+        <article class="need-card">
+          <span class="pill agri">AGRI</span>
+          <h3>Limiter les maladies du troupeau</h3>
+          <p>Solutions d'hygiène et plans d'accompagnement vétérinaire pour stabiliser les performances.</p>
+        </article>
+        <article class="need-card">
+          <span class="pill pro">PRO</span>
+          <h3>Réduire les arrêts machine</h3>
+          <p>Portes rapides intelligentes, maintenance prédictive et assistance 24/7 pour maximiser le TRS.</p>
+        </article>
+        <article class="need-card">
+          <span class="pill home">HOME</span>
+          <h3>Apporter de la lumière naturelle</h3>
+          <p>Solutions translucides et brise-soleil pour un confort thermique et visuel durable.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="engagements" class="two-col">
+      <div>
+        <div class="tag">Humanisation & Réassurance</div>
+        <h2>Made in France (Wormhout)</h2>
+        <p>Des ateliers qui maîtrisent toute la chaîne : conception, prototypage, production. Visite possible en vidéo 360° ou sur site pour rassurer les acheteurs B2B.</p>
+      </div>
+      <div>
+        <h3>Rencontrer nos experts</h3>
+        <p>Avatars croquis + fun facts pour créer le lien : "Pauline, ingénieure process — fan de trail, répond en 24h aux audits sécurité".</p>
+        <h3>RSE Positiv'ID</h3>
+        <p>Certifications Ecovadis, engagements bas carbone, politique "Soin du vivant" commune aux 3 univers.</p>
+      </div>
+    </section>
+
+    <section id="copywriting">
+      <div class="tag">Tonalité "Expert & Soin du vivant"</div>
+      <h2>Maquette textuelle (H1 / sous-titres par univers)</h2>
+      <ul>
+        <li><strong>ID AGRI</strong> — H1 : « Hygiène & bien-être animal ». Sous-titre : « Des équipements qui protègent vos élevages, réduisent les risques sanitaires et libèrent du temps au quotidien ».</li>
+        <li><strong>ID PRO</strong> — H1 : « Performance & fiabilité industrielle ». Sous-titre : « Solutions techniques pour sécuriser vos bâtiments, fluidifier les flux et améliorer la sécurité des équipes ».</li>
+        <li><strong>ID HOME</strong> — H1 : « Design & confort durable ». Sous-titre : « Aménagements esthétiques et thermiques qui valorisent l'accueil et prolongent la durée de vie de vos espaces ».</li>
+      </ul>
+    </section>
+
+    <section id="seo">
+      <div class="tag">SEO & migration</div>
+      <h2>Analyse des risques SEO et préservation des mots-clés métiers</h2>
+      <ul>
+        <li>Redirections 301 : cartographier toutes les anciennes URLs produit (ex. /tapis-logette) vers les nouvelles pages solutions AGRI pour conserver l'autorité et les backlinks.</li>
+        <li>Clusters sémantiques : maintenir des pages de contenu longue traîne par univers (glossaire, guides) intégrant les termes métier comme « tapis logette », « rideau souple », « porte rapide ».</li>
+        <li>Données structurées : balisage schema.org Product/Service pour les solutions phares et FAQ pour capter les requêtes "comment" ou "quel coût".</li>
+        <li>Performance : images de croquis compressées (SVG/PNG optimisé) et lazy-loading pour préserver le LCP malgré l'accordéon visuel.</li>
+        <li>Suivi : plan de tags Search Console avec rapports par DAS pour mesurer la récupération du trafic post-migration.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    const strips = document.querySelectorAll('.strip');
+    function activate(strip) {
+      strips.forEach(s => {
+        const active = s === strip;
+        s.classList.toggle('is-active', active);
+        s.setAttribute('aria-selected', active);
+      });
+    }
+    strips.forEach(strip => {
+      ['mouseenter', 'focus'].forEach(evt => {
+        strip.addEventListener(evt, () => activate(strip));
+      });
+      strip.addEventListener('click', () => activate(strip));
+    });
+  </script>
+</body>
+</html>
