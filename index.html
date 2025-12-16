@@ -34,49 +34,58 @@
   <style>
     body { font-family: 'Avenir', 'Nunito', sans-serif; }
     .heading-font { font-family: 'Trade Gothic Next LT Pro', Impact, 'Arial Black', sans-serif; }
-    .slider-panel { transition: flex 0.5s ease, filter 0.5s ease, opacity 0.4s ease; }
-    .slider-panel.expanded { flex: 2; filter: saturate(1.05); }
-    .slider-panel.compressed { flex: 0.8; filter: grayscale(0.25); opacity: 0.8; }
-    .slider-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)); }
+    .slider-panel { transition: flex 0.6s ease, filter 0.5s ease, opacity 0.4s ease, transform 0.4s ease; }
+    .slider-panel.expanded { flex: 2.3; filter: saturate(1.05); transform: translateY(-6px); }
+    .slider-panel.compressed { flex: 0.7; filter: grayscale(0.35); opacity: 0.85; }
+    .slider-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.65)); }
     .hotspot::after { content: ""; position: absolute; inset: -10px; border-radius: 9999px; background: radial-gradient(circle, rgba(255,255,255,0.25), transparent); opacity: 0; transition: opacity 0.3s ease; }
     .hotspot:hover::after { opacity: 1; }
+    .panel-label { writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: 0.18em; left: 12px; top: 18px; opacity: 0.22; font-weight: 900; }
+    .slider-panel.expanded .panel-label { opacity: 0; transform: translateY(-10px); }
+    .nav-link-modern { position: relative; padding-bottom: 6px; }
+    .nav-link-modern::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #e41e28, #193f60); transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease; }
+    .nav-link-modern:hover::after { transform: scaleX(1); }
+    .glass-menu { box-shadow: 0 14px 40px rgba(0,0,0,0.06); }
   </style>
 </head>
 <body class="bg-idbg text-idgraydark">
-  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-idmid">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+  <header class="sticky top-0 z-30 bg-white/80 backdrop-blur-xl border-b border-white/60 glass-menu">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <img src="logos/ID GROUP.png" alt="Logo ID GROUP" class="h-10 w-auto" loading="lazy">
-        <div class="text-sm uppercase tracking-[0.08em] text-idgraydark">ID GROUP • Espaces de Vie</div>
+        <div class="text-sm uppercase tracking-[0.08em] text-idgraydark flex items-center space-x-2">
+          <span class="px-2 py-1 rounded-full bg-idbg/80 border border-idmid/50 text-[11px]">GROUPE</span>
+          <span>Espaces de Vie</span>
+        </div>
       </div>
-      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold uppercase tracking-[0.04em]">
         <div class="group relative">
-          <button class="inline-flex items-center space-x-1 hover:text-idgroup transition">LE GROUPE
-            <span aria-hidden="true">▾</span>
+          <button class="inline-flex items-center space-x-2 hover:text-idgroup transition nav-link-modern">Le Groupe
+            <span aria-hidden="true" class="text-xs">▾</span>
           </button>
-          <div class="absolute left-0 mt-2 w-48 rounded-lg bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-idbg">
+          <div class="absolute left-0 mt-2 w-48 rounded-xl bg-white shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-idbg/30">
             <a href="#mission" class="block px-4 py-2 hover:bg-idbg/40">Mission</a>
             <a href="#histoire" class="block px-4 py-2 hover:bg-idbg/40">Histoire</a>
             <a href="#savoir" class="block px-4 py-2 hover:bg-idbg/40">Savoir-Faire</a>
             <a href="#equipe" class="block px-4 py-2 hover:bg-idbg/40">L'Équipe</a>
           </div>
         </div>
-        <a href="#engagements" class="hover:text-idgroup transition">NOS ENGAGEMENTS</a>
+        <a href="#engagements" class="hover:text-idgroup transition nav-link-modern">Nos engagements</a>
         <div class="group relative">
-          <button class="inline-flex items-center space-x-1 hover:text-idgroup transition">NOS SOLUTIONS
-            <span aria-hidden="true">▾</span>
+          <button class="inline-flex items-center space-x-2 hover:text-idgroup transition nav-link-modern">Nos solutions
+            <span aria-hidden="true" class="text-xs">▾</span>
           </button>
-          <div class="absolute left-0 mt-2 w-52 rounded-lg bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-idbg">
+          <div class="absolute left-0 mt-2 w-52 rounded-xl bg-white shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-idbg/30">
             <a href="#home" class="block px-4 py-2 hover:bg-idbg/40 text-idhome">ID HOME</a>
             <a href="#pro" class="block px-4 py-2 hover:bg-idbg/40 text-idpro">ID PRO</a>
             <a href="#agri" class="block px-4 py-2 hover:bg-idbg/40 text-idagri">ID AGRI</a>
           </div>
         </div>
-        <a href="#actus" class="hover:text-idgroup transition">ACTUALITÉS</a>
-        <a href="#contact" class="hover:text-idgroup transition">CONTACT</a>
+        <a href="#actus" class="hover:text-idgroup transition nav-link-modern">Actualités</a>
+        <a href="#contact" class="hover:text-idgroup transition nav-link-modern">Contact</a>
       </nav>
       <div class="flex items-center space-x-4">
-        <button class="hidden lg:inline-flex items-center px-4 py-2 rounded-full bg-idcta text-white font-bold shadow-md hover:-translate-y-0.5 transition">ESPACE CLIENT</button>
+        <button class="hidden lg:inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-idgroup to-idpro text-white font-bold shadow-lg shadow-idgroup/20 hover:-translate-y-0.5 transition">Espace client</button>
         <button class="lg:hidden p-2 rounded-md border border-idmid" aria-label="Ouvrir le menu mobile" id="mobile-menu-toggle">☰</button>
       </div>
     </div>
@@ -110,34 +119,40 @@
   <main>
     <section aria-label="Entrée dans les univers ID GROUP" class="hidden md:flex h-[85vh] overflow-hidden" id="hero">
       <div class="flex w-full" id="vertical-slider">
-        <article class="slider-panel relative flex-1 flex items-end justify-start text-white" data-color="idhome" data-title="ID HOME" style="flex:1;">
+        <article class="slider-panel relative flex-1 flex items-end justify-start text-white rounded-r-3xl overflow-hidden" data-color="idhome" data-title="ID HOME">
+          <span class="panel-label absolute text-3xl text-white">HOME</span>
           <img src="images/ImageIDHome.jpg" alt="Univers habitat et décoration" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 bg-idhome/40 mix-blend-multiply"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-idhome/60 via-black/20 to-black/70 mix-blend-multiply"></div>
           <div class="slider-overlay relative w-full p-10 space-y-3">
-            <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto" loading="lazy">
-            <h2 class="heading-font text-3xl">Habitat & Décoration</h2>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 border border-white/30 text-xs uppercase tracking-[0.2em]">ID HOME</div>
+            <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto drop-shadow" loading="lazy">
+            <h2 class="heading-font text-4xl">Habitat & Décoration</h2>
             <p class="max-w-md text-sm">Des espaces qui réconcilient design, confort et durabilité.</p>
-            <button class="mt-2 inline-flex items-center px-4 py-2 rounded-full bg-white/90 text-idhome font-bold shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
+            <button class="mt-3 inline-flex items-center px-5 py-2 rounded-full bg-white/90 text-idhome font-bold shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
           </div>
         </article>
-        <article class="slider-panel relative flex-1 flex items-end justify-start text-white" data-color="idpro" data-title="ID PRO" style="flex:1;">
+        <article class="slider-panel relative flex-1 flex items-end justify-start text-white" data-color="idpro" data-title="ID PRO">
+          <span class="panel-label absolute text-3xl text-white">PRO</span>
           <img src="images/ImageIDPro.jpg" alt="Industrie et bâtiment" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 bg-idpro/40 mix-blend-multiply"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-idpro/60 via-black/20 to-black/70 mix-blend-multiply"></div>
           <div class="slider-overlay relative w-full p-10 space-y-3">
-            <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto" loading="lazy">
-            <h2 class="heading-font text-3xl">Industrie & Bâtiment</h2>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 border border-white/30 text-xs uppercase tracking-[0.2em]">ID PRO</div>
+            <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto drop-shadow" loading="lazy">
+            <h2 class="heading-font text-4xl">Industrie & Bâtiment</h2>
             <p class="max-w-md text-sm">Solutions robustes pour les environnements les plus exigeants.</p>
-            <button class="mt-2 inline-flex items-center px-4 py-2 rounded-full bg-white/90 text-idpro font-bold shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
+            <button class="mt-3 inline-flex items-center px-5 py-2 rounded-full bg-white/90 text-idpro font-bold shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
           </div>
         </article>
-        <article class="slider-panel relative flex-1 flex items-end justify-start text-white" data-color="idagri" data-title="ID AGRI" style="flex:1;">
+        <article class="slider-panel relative flex-1 flex items-end justify-start text-white rounded-l-3xl overflow-hidden" data-color="idagri" data-title="ID AGRI">
+          <span class="panel-label absolute text-3xl text-white">AGRI</span>
           <img src="images/ImageIDAgri.jpg" alt="Agriculture et élevage" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 bg-idagri/40 mix-blend-multiply"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-idagri/60 via-black/20 to-black/70 mix-blend-multiply"></div>
           <div class="slider-overlay relative w-full p-10 space-y-3">
-            <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto" loading="lazy">
-            <h2 class="heading-font text-3xl">Agriculture & Élevage</h2>
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white/15 border border-white/30 text-xs uppercase tracking-[0.2em]">ID AGRI</div>
+            <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto drop-shadow" loading="lazy">
+            <h2 class="heading-font text-4xl">Agriculture & Élevage</h2>
             <p class="max-w-md text-sm">Protéger le vivant et les ressources avec des solutions responsables.</p>
-            <button class="mt-2 inline-flex items-center px-4 py-2 rounded-full bg-white/90 text-idagri font-bold shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
+            <button class="mt-3 inline-flex items-center px-5 py-2 rounded-full bg-white/90 text-idagri font-bold shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
           </div>
         </article>
       </div>
@@ -281,16 +296,31 @@
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    slider?.addEventListener('mouseleave', () => {
-      panels.forEach(panel => panel.classList.remove('expanded', 'compressed'));
-    });
+    let activePanel = panels[0];
+
+    const setActivePanel = (target) => {
+      if (!target) return;
+      activePanel = target;
+      panels.forEach(panel => {
+        if (panel === target) {
+          panel.classList.add('expanded');
+          panel.classList.remove('compressed');
+        } else {
+          panel.classList.add('compressed');
+          panel.classList.remove('expanded');
+        }
+      });
+    };
+
+    if (activePanel) {
+      panels.forEach(panel => panel.setAttribute('tabindex', '0'));
+      setActivePanel(activePanel);
+    }
+
+    slider?.addEventListener('mouseleave', () => setActivePanel(activePanel));
 
     panels.forEach(panel => {
-      panel.addEventListener('mouseenter', () => {
-        panels.forEach(p => p.classList.add('compressed'));
-        panel.classList.remove('compressed');
-        panel.classList.add('expanded');
-      });
+      ['mouseenter', 'focus', 'click'].forEach(evt => panel.addEventListener(evt, () => setActivePanel(panel)));
     });
 
     mobileMenuToggle?.addEventListener('click', () => {
