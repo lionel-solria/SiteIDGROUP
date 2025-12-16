@@ -43,36 +43,36 @@
     }
     .nav-link {
       position: relative;
-      padding: 0.85rem 0.85rem;
-      border-radius: 999px;
-      color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      padding: 0.8rem 0.65rem;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+      transition: color 0.35s ease, transform 0.2s ease;
     }
     .nav-link::after {
       content: "";
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 6px;
-      height: 3px;
+      left: 0;
+      right: 0;
+      bottom: 4px;
+      height: 2px;
       border-radius: 999px;
       background: linear-gradient(90deg, #e41e28, #de0c1a);
       opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform: scaleX(0.35);
+      transform-origin: center;
+      transition: opacity 0.28s ease, transform 0.32s ease;
     }
     .nav-link:hover {
       color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
       transform: translateY(-1px);
     }
-    .nav-link:hover::after {
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
       opacity: 1;
-      transform: translateY(0);
+      transform: scaleX(1);
     }
     .nav-link:focus-visible {
-      outline: 2px solid rgba(228, 30, 40, 0.45);
-      outline-offset: 6px;
+      outline: none;
     }
     .logo-link img {
       transition: transform 0.25s ease;
@@ -94,6 +94,7 @@
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
       height: 100%;
       min-height: 640px;
+      background: #0f172a;
     }
     .vertical-slider-desktop .panel:not(.active) {
       filter: grayscale(0.35) brightness(0.9);
@@ -117,7 +118,7 @@
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: clamp(3rem, 4vw, 4.25rem);
+      font-size: clamp(4.25rem, 7vw, 5.75rem);
       pointer-events: none;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
@@ -129,6 +130,7 @@
       transform: translateY(25px);
       transition: opacity 0.4s ease, transform 0.4s ease;
       pointer-events: none;
+      z-index: 3;
     }
     .vertical-slider-desktop .panel.active .panel-content {
       opacity: 1;
@@ -137,6 +139,30 @@
     }
     .panel-overlay {
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+    }
+    .panel-tint {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .panel:hover .panel-tint,
+    .panel:focus-within .panel-tint,
+    .panel.active .panel-tint {
+      opacity: 0.5;
+    }
+    .panel[data-theme="home"] .panel-tint {
+      background: linear-gradient(135deg, rgba(234, 97, 26, 0.55), rgba(234, 97, 26, 0.18));
+    }
+    .panel[data-theme="pro"] .panel-tint {
+      background: linear-gradient(135deg, rgba(25, 63, 96, 0.55), rgba(25, 63, 96, 0.2));
+    }
+    .panel[data-theme="agri"] .panel-tint {
+      background: linear-gradient(135deg, rgba(124, 155, 72, 0.5), rgba(124, 155, 72, 0.2));
     }
     .panel-trigger {
       transition: color 0.3s ease, transform 0.3s ease;
@@ -255,29 +281,54 @@
       0%, 100% { transform: translateY(-3px); opacity: 0.9; }
       50% { transform: translateY(3px); opacity: 0.6; }
     }
+    .debug-tooltip {
+      position: fixed;
+      z-index: 60;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      color: #f8fafc;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      pointer-events: none;
+      transform: translate(-50%, -140%);
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .debug-tooltip.visible {
+      opacity: 1;
+      transform: translate(-50%, -160%);
+    }
+    .debug-highlight {
+      outline: 2px dashed rgba(234, 97, 26, 0.8);
+      outline-offset: 4px;
+      position: relative;
+    }
   </style>
 </head>
 <body class="antialiased">
   <div class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+    <header class="sticky top-0 z-50 bg-white/55 backdrop-blur-2xl border border-white/40 shadow-[0_14px_40px_rgba(0,0,0,0.08)]" data-debug-label="En-tête principal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none">
+        <div class="flex items-center gap-3" data-debug-label="Bloc identité">
+          <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none" data-debug-label="Logo IDGROUP (bascule debug)">
             <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
             <span class="sr-only">Retour à l'accueil ID GROUP</span>
           </a>
-          <div class="hidden sm:flex flex-col">
+          <div class="hidden sm:flex flex-col" data-debug-label="Signature de marque">
             <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
           </div>
         </div>
-        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
-          <a href="groupe.html" class="nav-link">LE GROUPE</a>
-          <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
-          <a href="home.html" class="nav-link">ID HOME</a>
-          <a href="pro.html" class="nav-link">ID PRO</a>
-          <a href="agri.html" class="nav-link">ID AGRI</a>
-          <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
-          <a href="contact.html" class="nav-link">CONTACT</a>
+        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold" data-debug-label="Menu de navigation principal">
+          <a href="groupe.html" class="nav-link" data-debug-label="Lien - Le Groupe">LE GROUPE</a>
+          <a href="engagements.html" class="nav-link" data-debug-label="Lien - Engagements">NOS ENGAGEMENTS</a>
+          <a href="home.html" class="nav-link" data-debug-label="Lien - ID HOME">ID HOME</a>
+          <a href="pro.html" class="nav-link" data-debug-label="Lien - ID PRO">ID PRO</a>
+          <a href="agri.html" class="nav-link" data-debug-label="Lien - ID AGRI">ID AGRI</a>
+          <a href="actualites.html" class="nav-link" data-debug-label="Lien - Actualités">ACTUALITÉS</a>
+          <a href="contact.html" class="nav-link" data-debug-label="Lien - Contact">CONTACT</a>
         </nav>
         <div class="flex items-center gap-3">
           <button class="h-11 w-11 inline-flex items-center justify-center rounded-full border border-gray-200 text-gray-800 bg-white shadow-sm hover:-translate-y-[2px] hover:shadow-lg transition duration-200" aria-label="Espace client">
@@ -299,10 +350,10 @@
       </div>
     </header>
 
-    <main class="flex-1">
-      <section class="relative" aria-label="Héros vertical">
-        <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl">
+    <main class="flex-1" data-debug-label="Contenu principal">
+      <section class="relative" aria-label="Héros vertical" data-debug-label="Section héros vertical">
+        <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none" data-debug-label="En-tête héro">
+          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl" data-debug-label="Accroche principale">
             <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
             <h1 class="text-4xl lg:text-5xl font-medium text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
             <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
@@ -313,52 +364,55 @@
           </div>
         </div>
         <!-- Desktop Accordion -->
-        <div class="vertical-slider-desktop hidden md:flex">
-          <article class="panel" data-theme="home">
+        <div class="vertical-slider-desktop hidden md:flex" data-debug-label="Slider vertical desktop">
+          <article class="panel" data-theme="home" data-debug-label="Panneau ID HOME">
             <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(234,97,26,0.25), rgba(0,0,0,0.55));"></div>
+            <div class="panel-tint" aria-hidden="true"></div>
             <div class="collapsed-label" aria-hidden="true">HOME</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
-                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
+                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-14 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Habitat & Décoration</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID HOME</h2>
+              <h2 class="text-5xl lg:text-6xl font-medium tracking-tight">ID HOME</h2>
               <p class="max-w-lg text-base text-white/85">Designer des intérieurs chaleureux, modulaires et responsables pour chaque espace de vie.</p>
               <div class="flex items-center gap-3">
                 <a href="#home" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
               </div>
             </div>
           </article>
-          <article class="panel" data-theme="pro">
+          <article class="panel" data-theme="pro" data-debug-label="Panneau ID PRO">
             <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(25,63,96,0.35), rgba(0,0,0,0.6));"></div>
+            <div class="panel-tint" aria-hidden="true"></div>
             <div class="collapsed-label" aria-hidden="true">PRO</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
-                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
+                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-14 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Industrie & Bâtiment</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID PRO</h2>
+              <h2 class="text-5xl lg:text-6xl font-medium tracking-tight">ID PRO</h2>
               <p class="max-w-lg text-base text-white/85">Optimiser les environnements industriels et tertiaires avec sécurité, efficacité et ergonomie.</p>
               <div class="flex items-center gap-3">
                 <a href="#pro" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
               </div>
             </div>
           </article>
-          <article class="panel" data-theme="agri">
+          <article class="panel" data-theme="agri" data-debug-label="Panneau ID AGRI">
             <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
+            <div class="panel-tint" aria-hidden="true"></div>
             <div class="collapsed-label" aria-hidden="true">AGRI</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
-                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
+                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-14 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
               </div>
               <div class="agri-horizontal-label">
                 IDAGRI <span>Durabilité & DAS agricole</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID AGRI</h2>
+              <h2 class="text-5xl lg:text-6xl font-medium tracking-tight">ID AGRI</h2>
               <p class="max-w-lg text-base text-white/85">Protéger le vivant et la performance agricole avec des solutions durables et intuitives.</p>
               <div class="flex items-center gap-3">
                 <a href="#agri" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
@@ -368,56 +422,59 @@
         </div>
 
         <!-- Mobile Stack -->
-        <div class="md:hidden space-y-4 p-4 bg-white">
+        <div class="md:hidden space-y-4 p-4 bg-white" data-debug-label="Sélecteur mobile des univers">
           <div class="flex items-center justify-between mb-2">
-            <h2 class="text-lg font-black text-[var(--id-gray-dark)]">Choisissez un univers</h2>
+            <h2 class="text-lg font-semibold text-[var(--id-gray-dark)]">Choisissez un univers</h2>
             <div class="flex gap-2" aria-label="Sélection des univers">
               <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-[var(--id-home)] text-white font-bold" data-target="home">HOME</button>
               <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="pro">PRO</button>
               <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="agri">AGRI</button>
             </div>
           </div>
-          <div class="overflow-hidden rounded-2xl shadow-lg" id="mobile-slider">
-            <article class="mobile-panel" data-id="home">
+          <div class="overflow-hidden rounded-2xl shadow-lg" id="mobile-slider" data-debug-label="Slider mobile vertical">
+            <article class="mobile-panel" data-id="home" data-debug-label="Carte mobile ID HOME">
               <div class="relative h-72">
                 <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(234,97,26,0.35), rgba(0,0,0,0.65));"></div>
+                <div class="panel-tint" aria-hidden="true"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Habitat & Décoration</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID HOME</h3>
+                  <h3 class="text-4xl font-medium tracking-tight">ID HOME</h3>
                   <p class="text-sm text-white/85">Designer des intérieurs chaleureux, modulaires et responsables.</p>
                   <a href="#home" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
               </div>
             </article>
-            <article class="mobile-panel hidden" data-id="pro">
+            <article class="mobile-panel hidden" data-id="pro" data-debug-label="Carte mobile ID PRO">
               <div class="relative h-72">
                 <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(25,63,96,0.4), rgba(0,0,0,0.65));"></div>
+                <div class="panel-tint" aria-hidden="true"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Industrie & Bâtiment</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID PRO</h3>
+                  <h3 class="text-4xl font-medium tracking-tight">ID PRO</h3>
                   <p class="text-sm text-white/85">Optimiser les environnements industriels et tertiaires.</p>
                   <a href="#pro" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
               </div>
             </article>
-            <article class="mobile-panel hidden" data-id="agri">
+            <article class="mobile-panel hidden" data-id="agri" data-debug-label="Carte mobile ID AGRI">
               <div class="relative h-72">
                 <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(124,155,72,0.35), rgba(0,0,0,0.65));"></div>
+                <div class="panel-tint" aria-hidden="true"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Agriculture & Élevage</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID AGRI</h3>
+                  <h3 class="text-4xl font-medium tracking-tight">ID AGRI</h3>
                   <p class="text-sm text-white/85">Protéger le vivant et la performance agricole.</p>
                   <a href="#agri" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
@@ -433,17 +490,17 @@
         </div>
       </section>
 
-      <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70">
+      <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70" data-debug-label="Section équipe">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-3">
-            <div>
+            <div data-debug-label="Bloc équipe - titre">
               <p class="text-xs font-bold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre équipe</p>
-              <h2 class="text-3xl font-bold text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
+              <h2 class="text-3xl font-semibold text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
             </div>
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
           <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
-            <div class="team-marquee" aria-label="Carrousel de l'équipe">
+            <div class="team-marquee" aria-label="Carrousel de l'équipe" data-debug-label="Défilement équipe">
               <div class="flex gap-4 px-6 py-5">
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
@@ -539,11 +596,11 @@
 
       <section id="croquis" class="bg-white py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col lg:flex-row gap-8 items-start">
+          <div class="flex flex-col lg:flex-row gap-8 items-start" data-debug-label="Section croquis">
             <div class="lg:w-1/2 space-y-4">
               <span class="text-xs font-bold tracking-[0.25em] text-[var(--id-red)] uppercase">Croquis architecturaux</span>
-              <h2 class="text-3xl sm:text-4xl font-bold text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
-              <p class="text-base text-gray-700 leading-relaxed font-medium">Chaque verticale dispose d'un plan interactif pour contextualiser nos solutions. Les hotspots révèlent les équipements et services associés à chaque zone clé.</p>
+              <h2 class="text-3xl sm:text-4xl font-semibold text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
+              <p class="text-base text-gray-700 leading-relaxed font-normal">Chaque verticale dispose d'un plan interactif pour contextualiser nos solutions. Les hotspots révèlent les équipements et services associés à chaque zone clé.</p>
               <div class="flex gap-3">
                 <button class="px-4 py-2 rounded-full bg-[var(--id-pro)] text-white font-medium shadow">ID PRO</button>
                 <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID HOME</button>
@@ -600,6 +657,8 @@
       </div>
     </footer>
   </div>
+
+  <div id="debug-tooltip" class="debug-tooltip" role="status" aria-live="polite"></div>
 
   <script>
     const desktopPanels = document.querySelectorAll('.vertical-slider-desktop .panel');
@@ -658,6 +717,73 @@
         tooltip.textContent = spot.dataset.tooltip;
         tooltip.classList.remove('hidden');
       });
+    });
+
+    const debugTooltipEl = document.getElementById('debug-tooltip');
+    const debugToggle = document.querySelector('.logo-link');
+    let debugMode = false;
+    let highlightedElement = null;
+
+    const updateTooltipPosition = (event) => {
+      if (!debugTooltipEl) return;
+      debugTooltipEl.style.left = `${event.clientX}px`;
+      debugTooltipEl.style.top = `${event.clientY}px`;
+    };
+
+    const clearHighlight = () => {
+      if (highlightedElement) {
+        highlightedElement.classList.remove('debug-highlight');
+      }
+      highlightedElement = null;
+      debugTooltipEl?.classList.remove('visible');
+    };
+
+    const showDebugFor = (element, event) => {
+      if (!debugTooltipEl || !element?.dataset?.debugLabel) return;
+      if (highlightedElement && highlightedElement !== element) {
+        highlightedElement.classList.remove('debug-highlight');
+      }
+      highlightedElement = element;
+      highlightedElement.classList.add('debug-highlight');
+      debugTooltipEl.textContent = element.dataset.debugLabel;
+      debugTooltipEl.classList.add('visible');
+      updateTooltipPosition(event);
+    };
+
+    document.addEventListener('mousemove', (event) => {
+      if (!debugMode || !debugTooltipEl.classList.contains('visible')) return;
+      updateTooltipPosition(event);
+    });
+
+    document.addEventListener('mouseover', (event) => {
+      if (!debugMode) return;
+      const target = event.target.closest('[data-debug-label]');
+      if (!target) {
+        clearHighlight();
+        return;
+      }
+      showDebugFor(target, event);
+    }, true);
+
+    document.addEventListener('mouseout', (event) => {
+      if (!debugMode) return;
+      const nextTarget = event.relatedTarget?.closest?.('[data-debug-label]');
+      if (!nextTarget) {
+        clearHighlight();
+      }
+    }, true);
+
+    debugToggle?.addEventListener('dblclick', (event) => {
+      event.preventDefault();
+      debugMode = !debugMode;
+      if (!debugMode) {
+        clearHighlight();
+      } else {
+        debugTooltipEl.textContent = 'Mode debug activé';
+        debugTooltipEl.classList.add('visible');
+        debugTooltipEl.style.left = `${event.clientX || 20}px`;
+        debugTooltipEl.style.top = `${event.clientY || 20}px`;
+      }
     });
   </script>
 </body>
