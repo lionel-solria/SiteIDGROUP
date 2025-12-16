@@ -8,23 +8,111 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --id-red: #e41e28;
+      --id-red-cta: #de0c1a;
+      --id-gray-dark: #1b2230;
+      --id-gray-neutral: #ededed;
+    }
+    body {
+      font-family: "Avenir", "Nunito", "Sans-serif";
+      background-color: var(--id-gray-neutral);
+      color: var(--id-gray-dark);
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Trade Gothic Next LT Pro", Impact, "Arial Black", sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .nav-link {
+      position: relative;
+      padding: 0.85rem 0.85rem;
+      border-radius: 999px;
+      color: #1b2230;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 6px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e41e28, #de0c1a);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .nav-link:hover {
+      color: #e41e28;
+      background: rgba(228, 30, 40, 0.08);
+      transform: translateY(-1px);
+    }
+    .nav-link:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-link:focus-visible {
+      outline: 2px solid rgba(228, 30, 40, 0.45);
+      outline-offset: 6px;
+    }
+    .logo-link img {
+      transition: transform 0.25s ease;
+    }
+    .logo-link:hover img,
+    .logo-link:focus-visible img {
+      transform: scale(1.06);
+    }
+    .interactive {
+      position: relative;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+    .interactive:hover,
+    .interactive:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.14);
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gray-50 text-gray-900" style="font-family: 'Avenir', 'Nunito', sans-serif;">
-  <header class="border-b bg-white/90 backdrop-blur sticky top-0">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-gray-800">
-        <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" />
-        <span class="uppercase tracking-[0.25em]">Retour accueil</span>
-      </a>
-      <nav class="hidden sm:flex items-center gap-4 text-sm font-semibold text-gray-700">
-        <a href="groupe.html" class="hover:text-red-600">Le groupe</a>
-        <a href="engagements.html" class="hover:text-red-600">Nos engagements</a>
-        <a href="home.html" class="hover:text-red-600">ID Home</a>
-        <a href="pro.html" class="hover:text-red-600">ID Pro</a>
-        <a href="agri.html" class="hover:text-red-600">ID Agri</a>
-        <a href="actualites.html" class="hover:text-red-600">Actualités</a>
-        <a href="contact.html" class="hover:text-red-600">Contact</a>
+<body class="antialiased">
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none">
+          <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
+          <span class="sr-only">Retour à l'accueil ID GROUP</span>
+        </a>
+        <div class="hidden sm:flex flex-col">
+          <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
+        <a href="groupe.html" class="nav-link">LE GROUPE</a>
+        <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
+        <a href="home.html" class="nav-link">ID HOME</a>
+        <a href="pro.html" class="nav-link">ID PRO</a>
+        <a href="agri.html" class="nav-link">ID AGRI</a>
+        <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
+        <a href="contact.html" class="nav-link">CONTACT</a>
       </nav>
+      <div class="flex items-center gap-3">
+        <button class="interactive h-11 w-11 inline-flex items-center justify-center rounded-full border border-gray-200 text-gray-800 bg-white shadow-sm hover:-translate-y-[2px] hover:shadow-lg" aria-label="Espace client">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0ZM4.5 19.75A7.25 7.25 0 0 1 12 12.5a7.25 7.25 0 0 1 7.5 7.25v.25H4.5v-.25Z" />
+          </svg>
+        </button>
+        <button class="interactive hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-800 text-sm font-semibold shadow-inner hover:bg-gray-200" aria-label="Changer de langue">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0 0c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 18c-4.97 0-9-4.03-9-9s4.03-9 9-9m0 0c0 4.97 4.03 9 9 9m-9-9c0 4.97-4.03 9-9 9" />
+          </svg>
+          FR
+        </button>
+        <button class="interactive lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
+          <span class="sr-only">Ouvrir le menu</span>
+          ☰
+        </button>
+      </div>
     </div>
   </header>
   <main class="max-w-4xl mx-auto px-4 py-16 space-y-4">
