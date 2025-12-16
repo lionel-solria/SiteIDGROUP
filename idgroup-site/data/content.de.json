@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "ID GROUP - Hygiene, Komfort und Performance",
+    "description": "ID GROUP Lösungen für Zuhause, Profis und Landwirtschaft."
+  },
+  "common": {
+    "nav": {
+      "group": "Die Gruppe",
+      "rse": "Engagement",
+      "solutions": "Lösungen",
+      "news": "Aktuelles",
+      "contact": "Kontakt"
+    },
+    "ctaClient": "Kundenbereich",
+    "footer": {
+      "title": "ID GROUP",
+      "legal": "Rechtliches",
+      "privacy": "Datenschutz",
+      "sitemap": "Sitemap",
+      "follow": "Folgen"
+    }
+  },
+  "home": {
+    "heroTitle": "ID GROUP, der Skizzen-Partner für Ihre Umgebungen",
+    "heroSubtitle": "Hygiene, Sicherheit, Tierkomfort und Leistung für Zuhause, Arbeitsplätze und Höfe.",
+    "slider": {
+      "home": {"title": "ID Home", "tag": "Komfort & Hygiene", "desc": "Einfache Rituale, die Familien schützen.", "cta": "ID Home entdecken"},
+      "pro": {"title": "ID Pro", "tag": "Performance & Sicherheit", "desc": "Beruhigende, konforme und gastbereite Räume.", "cta": "ID Pro erkunden"},
+      "agri": {"title": "ID Agri", "tag": "Tierwohl", "desc": "Ernährung, Biosicherheit und Komfort mit messbarem Effekt.", "cta": "ID Agri ansehen"}
+    },
+    "why": {"title": "Warum ID GROUP", "bullets": ["Französische Fertigung", "Schnelle Logistik und Support", "Personalisierte Protokolle", "Positiv'ID Engagement", "Begleitung vor Ort"]},
+    "story": {"title": "Wormhout, unser industrielles Know-how", "text": "Integriertes Werk, F&E mit Nutzern und Testkultur für sichere Lösungen.", "figures": ["40+ Jahre Expertise", "3 Produktionsstandorte", "12 Partnerlabore"]},
+    "rseTeaser": {"title": "Positiv'ID Engagement", "text": "Weniger Plastik, verantwortungsvolle Beschaffung, engagierte Teams.", "cta": "Unsere Vorgehensweise"},
+    "team": {"title": "Ein Team nah am Feld", "members": [{"name": "Lea", "role": "Nachhaltigkeit", "fact": "Spart 2 Tonnen Plastik pro Jahr"}, {"name": "Mamadou", "role": "Pro Produkt", "fact": "100 Kundenbesuche/Jahr"}, {"name": "Zoe", "role": "Industriedesign", "fact": "Handskizzen für jedes Prototype"}], "fun": ["2 Labradore testen Zubehör", "Gemeinschaftsgarten", "Skizzenfreitag"]},
+    "newsTitle": "Neuigkeiten"
+  },
+  "solutions": {
+    "title": "Wählen Sie Ihr Universum",
+    "intro": "Wählen Sie den passenden Kontext und entdecken Sie Vorteile.",
+    "cards": [
+      {"name": "ID Home", "desc": "Zugängliche Hygiene ohne Kompromisse.", "link": "id-home.html"},
+      {"name": "ID Pro", "desc": "Sicherheit, Effizienz und Markenbild.", "link": "id-pro.html"},
+      {"name": "ID Agri", "desc": "Tierwohl, Leistung und Biosicherheit.", "link": "id-agri.html"}
+    ],
+    "chooser": {"title": "Wählen nach Kontext", "items": ["Wohnungen und Häuser", "Handel, Büros, Hospitality", "Höfe und Kulturen"]}
+  },
+  "universe": {
+    "common": {"hero": "Skizzenmentalität für die wichtigen Gesten.", "hotspot": "Lösungen nach Zone", "cta": "Mit Expert sprechen", "stories": "Erfolgsgeschichten"},
+    "home": {"title": "ID Home", "zones": [{"id": "entree", "label": "Eingang", "content": "Anti-Mikroben-Rituale, Matten, Schuhfluss."}, {"id": "cuisine", "label": "Küche", "content": "Flächenhygiene, Wasser sparen, Kinder sensibilisieren."}, {"id": "salle", "label": "Bad", "content": "Sanfte Pflege, Sturzsicherheit, täglicher Komfort."}], "stories": ["Familie Dupont: +30% Zufriedenheit", "Co-Living: -25% Verbrauch"]},
+    "pro": {"title": "ID Pro", "zones": [{"id": "accueil", "label": "Empfang", "content": "Beruhigende Protokolle, sichtbare Sauberkeit."}, {"id": "production", "label": "Technik", "content": "Sicherheit, PSA, Kontrolle von Kreuzkontamination."}, {"id": "sanitaires", "label": "Sanitär", "content": "Premium Nutzererlebnis, Wasserersparnis."}], "stories": ["Hotel Indigo Sauberkeit 4,8/5", "Industriewerkstatt: 0 Unfälle in 12 Monaten"]},
+    "agri": {"title": "ID Agri", "zones": [{"id": "bergerie", "label": "Stall", "content": "Thermischer Komfort, trockene Einstreu, Parasitenkontrolle."}, {"id": "stockage", "label": "Lager", "content": "Saubere Kreisläufe, einfache Desinfektion, Lebensmittelsicherheit."}, {"id": "plein-air", "label": "Außen", "content": "Wegemanagement, verantwortliches Tränken, Biosicherheit."}], "stories": ["Hof Dewaele: +12% Tierwohl", "Lernhof: sichere Besuche"]}
+  },
+  "group": {"title": "Die Gruppe", "mission": "Gesten sichtbar machen, die schützen und verbessern.", "values": ["Skizzenspirit", "Messbarer Impact", "Feld zuerst"], "sites": ["Wormhout (HQ)", "Lille", "Antwerpen"], "brands": ["ID Home", "ID Pro", "ID Agri"]},
+  "rse": {"title": "Unsere Positiv'ID Zusagen", "pillars": [{"title": "Verantwortliche Materialien", "text": "Leichtere, recycelte und recycelbare Verpackungen."}, {"title": "Kontrollierter Footprint", "text": "Optimierte Transporte, erneuerbare Energien am Standort."}, {"title": "Sozialer Impact", "text": "Schulung vor Ort, Inklusion und solidarische Beschaffung."}], "metrics": ["-18% CO2 in 3 Jahren", "84% europäische Lieferanten", "1% Umsatz für Impact"]},
+  "contact": {"title": "Kontakt", "subtitle": "Beschreiben Sie Profil und Bedarf, Antwort in 24h.", "success": "Danke! Anfrage erhalten."},
+  "news": {
+    "filters": [{"id": "all", "label": "Alle"}, {"id": "rse", "label": "Engagement"}, {"id": "produit", "label": "Lösungen"}, {"id": "terrain", "label": "Feld"}],
+    "articles": [
+      {"id": "positivid", "title": "Positiv'ID: leichtere Materialien", "category": "Engagement", "date": "12.03.2024", "excerpt": "Tests in Realgröße zu leichteren Verpackungen.", "body": "<p>Wir reduzieren Plastik und testen konzentrierte Nachfüllungen.</p>", "cta": "Lesen"},
+      {"id": "hotspot", "title": "Neuer Skizzen-Parcours für Hotels", "category": "Lösungen", "date": "01.02.2024", "excerpt": "Pädagogische Hotspots für Teams.", "body": "<p>Unsere Feldteams setzen visuelle Anker für jeden kritischen Handgriff.</p>", "cta": "Lesen"},
+      {"id": "ferme", "title": "Tierwohl: Hof Dewaele berichtet", "category": "Feld", "date": "15.01.2024", "excerpt": "Integrierter Ansatz für Biosicherheit und Komfort.", "body": "<p>Hygieneprotokolle und ergonomische Ausstattung verbessern die Kennzahlen.</p>", "cta": "Lesen"}
+    ]
+  }
+}

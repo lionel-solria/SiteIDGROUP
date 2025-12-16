@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Groupe</title>
+  <meta name="description" content="Présentation du groupe ID GROUP">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand"><div class="logo-placeholder" aria-hidden="true"></div><span>ID GROUP</span></div>
+      <nav aria-label="Navigation principale">
+        <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+        <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+        <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+        <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+        <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+        <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+      </nav>
+      <div class="lang-switch" aria-label="Changer de langue"><button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button></div>
+      <button class="burger" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" aria-label="Navigation mobile">
+      <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+      <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+      <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+      <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+      <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+      <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h1 data-i18n="group.title">Le Groupe</h1>
+      <p data-i18n="group.mission"></p>
+      <div class="badges" id="group-values"></div>
+    </section>
+    <section class="section grid-two">
+      <div>
+        <h2>Sites</h2>
+        <ul id="group-sites"></ul>
+      </div>
+      <div>
+        <h2>Marques</h2>
+        <ul id="group-brands"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="cols">
+      <div><h3 data-i18n="common.footer.title">ID GROUP</h3></div>
+      <div class="site-map">
+        <strong data-i18n="common.footer.sitemap">Plan du site</strong>
+        <a data-keep-lang href="solutions.html" data-i18n="common.nav.solutions"></a>
+        <a data-keep-lang href="actus.html" data-i18n="common.nav.news"></a>
+        <a data-keep-lang href="contact.html" data-i18n="common.nav.contact"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('idgroup-lang') || 'fr';
+      fetch(`data/content.${lang}.json`).then(r=>r.json()).then(data => {
+        const values = document.getElementById('group-values');
+        data.group.values.forEach(v => {
+          const badge = document.createElement('span');
+          badge.className = 'badge';
+          badge.textContent = v;
+          values.appendChild(badge);
+        });
+        const sites = document.getElementById('group-sites');
+        data.group.sites.forEach(s => {
+          const li = document.createElement('li');
+          li.textContent = s;
+          sites.appendChild(li);
+        });
+        const brands = document.getElementById('group-brands');
+        data.group.brands.forEach(s => {
+          const li = document.createElement('li');
+          li.textContent = s;
+          brands.appendChild(li);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

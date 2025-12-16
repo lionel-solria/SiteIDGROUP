@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title">ID GROUP - Solutions</title>
+  <meta name="description" content="Hub solutions ID GROUP">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo-placeholder" aria-hidden="true"></div><span>ID GROUP</span>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+        <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+        <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+        <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+        <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+        <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+      </nav>
+      <div class="lang-switch" aria-label="Changer de langue">
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <button class="burger" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" aria-label="Navigation mobile">
+      <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+      <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+      <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+      <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+      <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+      <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h1 data-i18n="solutions.title">Choisissez votre univers</h1>
+      <p data-i18n="solutions.intro">Intro</p>
+      <div class="cards" id="solution-cards"></div>
+    </section>
+    <section class="section">
+      <h2 data-i18n="solutions.chooser.title"></h2>
+      <div class="fun-facts" id="solution-chooser"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="cols">
+      <div><h3 data-i18n="common.footer.title">ID GROUP</h3></div>
+      <div class="site-map">
+        <strong data-i18n="common.footer.sitemap">Plan du site</strong>
+        <a data-keep-lang href="le-groupe.html" data-i18n="common.nav.group"></a>
+        <a data-keep-lang href="rse.html" data-i18n="common.nav.rse"></a>
+        <a data-keep-lang href="solutions.html" data-i18n="common.nav.solutions"></a>
+        <a data-keep-lang href="actus.html" data-i18n="common.nav.news"></a>
+        <a data-keep-lang href="contact.html" data-i18n="common.nav.contact"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch(`data/content.${new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('idgroup-lang') || 'fr'}.json`)
+        .then(r => r.json())
+        .then(data => {
+          const cards = document.getElementById('solution-cards');
+          data.solutions.cards.forEach(card => {
+            const el = document.createElement('article');
+            el.className = 'card';
+            el.innerHTML = `<div class="illus"></div><h3>${card.name}</h3><p>${card.desc}</p><a class="cta" data-keep-lang href="${card.link}">→</a>`;
+            cards.appendChild(el);
+          });
+          const chooser = document.getElementById('solution-chooser');
+          data.solutions.chooser.items.forEach(it => {
+            const span = document.createElement('span');
+            span.className = 'fact';
+            span.textContent = it;
+            chooser.appendChild(span);
+          });
+        });
+    });
+  </script>
+</body>
+</html>

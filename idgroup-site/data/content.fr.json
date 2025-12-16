@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "ID GROUP - Hygiène, confort et performance",
+    "description": "Solutions ID GROUP pour la maison, les professionnels et l'agriculture."
+  },
+  "common": {
+    "nav": {
+      "group": "Le Groupe",
+      "rse": "Nos engagements",
+      "solutions": "Nos solutions",
+      "news": "Actualités",
+      "contact": "Contact"
+    },
+    "ctaClient": "Espace Client",
+    "footer": {
+      "title": "ID GROUP",
+      "legal": "Mentions légales",
+      "privacy": "Confidentialité",
+      "sitemap": "Plan du site",
+      "follow": "Nous suivre"
+    }
+  },
+  "home": {
+    "heroTitle": "ID GROUP, le partenaire croquis de vos environnements",
+    "heroSubtitle": "Hygiène, sécurité, confort animal et performance. Des solutions pensées pour les habitats, les lieux professionnels et les exploitations agricoles.",
+    "slider": {
+      "home": {
+        "title": "ID Home",
+        "tag": "Confort & hygiène",
+        "desc": "Des gestes simples qui protègent les familles et allègent la routine quotidienne.",
+        "cta": "Découvrir ID Home"
+      },
+      "pro": {
+        "title": "ID Pro",
+        "tag": "Performance & sécurité",
+        "desc": "Des environnements de travail rassurants, conformes et prêts pour vos clients.",
+        "cta": "Explorer ID Pro"
+      },
+      "agri": {
+        "title": "ID Agri",
+        "tag": "Bien-être animal",
+        "desc": "Nutrition, biosécurité et confort des élevages avec un impact mesurable.",
+        "cta": "Voir ID Agri"
+      }
+    },
+    "why": {
+      "title": "Pourquoi ID GROUP",
+      "bullets": [
+        "Fabrication française et circuits courts",
+        "Réactivité logistique et service client humain",
+        "Personnalisation des protocoles",
+        "Engagement RSE Positiv'ID",
+        "Accompagnement sur le terrain"
+      ]
+    },
+    "story": {
+      "title": "Wormhout, notre savoir-faire industriel",
+      "text": "Une usine intégrée, des équipes R&D qui prototypent avec les utilisateurs et une culture du test permanent pour fiabiliser chaque solution.",
+      "figures": ["40+ ans d'expertise", "3 sites de production", "12 laboratoires partenaires"]
+    },
+    "rseTeaser": {
+      "title": "Positiv'ID : nos engagements RSE",
+      "text": "Réduction des plastiques, approvisionnement responsable, équipes engagées et transparence.",
+      "cta": "Découvrir notre démarche"
+    },
+    "team": {
+      "title": "Une équipe proche du terrain",
+      "members": [
+        {"name": "Léa", "role": "Responsable RSE", "fact": "Optimise 2 tonnes de plastique par an"},
+        {"name": "Mamadou", "role": "Chef de produit Pro", "fact": "100 visites clients/an"},
+        {"name": "Zoé", "role": "Design industriel", "fact": "Croquis à la main pour chaque prototype"}
+      ],
+      "fun": ["2 labradors testeurs d'accessoires", "Un potager partagé sur site", "Ateliers croquis chaque vendredi"]
+    },
+    "newsTitle": "Actualités ID GROUP"
+  },
+  "solutions": {
+    "title": "Choisissez votre univers",
+    "intro": "Sélectionnez l'environnement qui vous ressemble et découvrez nos bénéfices clés.",
+    "cards": [
+      {"name": "ID Home", "desc": "Hygiène accessible, sans compromis sur la santé des familles.", "link": "id-home.html"},
+      {"name": "ID Pro", "desc": "Sécurité, efficacité opérationnelle et image maîtrisée.", "link": "id-pro.html"},
+      {"name": "ID Agri", "desc": "Bien-être animal, performance des élevages et biosécurité.", "link": "id-agri.html"}
+    ],
+    "chooser": {
+      "title": "Choisir votre univers selon votre contexte",
+      "items": [
+        "Logements individuels et collectifs",
+        "Commerces, bureaux, hospitality",
+        "Élevages, cultures et circuits fermés"
+      ]
+    }
+  },
+  "universe": {
+    "common": {
+      "hero": "Une approche croquis pour matérialiser les gestes qui comptent.",
+      "hotspot": "Solutions par zone",
+      "cta": "Parler à un expert",
+      "stories": "Cas clients"
+    },
+    "home": {
+      "title": "ID Home",
+      "zones": [
+        {"id": "entree", "label": "Entrée", "content": "Rituels anti-microbes, tapis absorbants, gestion des flux de chaussures."},
+        {"id": "cuisine", "label": "Cuisine", "content": "Hygiène des surfaces, optimisation de l'eau et gestes pédagogiques enfants."},
+        {"id": "salle", "label": "Salle de bain", "content": "Solutions douces pour la peau, sécurité anti-chute, confort quotidien."}
+      ],
+      "stories": ["Famille Dupont : +30% de satisfaction sur la routine ménage", "Résidences partagées : -25% de consommables"]
+    },
+    "pro": {
+      "title": "ID Pro",
+      "zones": [
+        {"id": "accueil", "label": "Accueil", "content": "Protocoles rassurants dès la porte, signalétique et propreté visible."},
+        {"id": "production", "label": "Zone technique", "content": "Sécurité, EPI, maîtrise des contaminations croisées."},
+        {"id": "sanitaires", "label": "Sanitaires", "content": "Expérience usager premium, économie d'eau et facilité de maintenance."}
+      ],
+      "stories": ["Hôtel Indigo : note propreté 4,8/5", "Atelier industriel : zéro accident en 12 mois"]
+    },
+    "agri": {
+      "title": "ID Agri",
+      "zones": [
+        {"id": "bergerie", "label": "Bergerie", "content": "Confort thermique, litière sèche et contrôle des parasites."},
+        {"id": "stockage", "label": "Stockage", "content": "Circuits propres, désinfection simplifiée, sécurité alimentaire."},
+        {"id": "plein-air", "label": "Plein air", "content": "Gestion des parcours, abreuvement responsable, biosécurité."}
+      ],
+      "stories": ["Élevage Dewaele : +12% de bien-être animal", "Ferme pédagogique : visites sécurisées"]
+    }
+  },
+  "group": {
+    "title": "Le Groupe",
+    "mission": "Rendre visibles les gestes qui protègent et améliorent le quotidien.",
+    "values": ["Esprit croquis", "Impact mesurable", "Terrain first"],
+    "sites": ["Wormhout (HQ)", "Lille", "Anvers"],
+    "brands": ["ID Home", "ID Pro", "ID Agri"]
+  },
+  "rse": {
+    "title": "Nos engagements Positiv'ID",
+    "pillars": [
+      {"title": "Matériaux responsables", "text": "Packagings allégés, recyclés et recyclables."},
+      {"title": "Empreinte maîtrisée", "text": "Optimisation transport, énergies renouvelables sur site."},
+      {"title": "Impact social", "text": "Formation terrain, inclusion et achats solidaires."}
+    ],
+    "metrics": ["-18% d'empreinte carbone en 3 ans", "84% de fournisseurs européens", "1% du CA dédié à l'impact"]
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Précisez votre profil et votre besoin, nous répondons sous 24h.",
+    "success": "Merci ! Votre demande est enregistrée."
+  },
+  "news": {
+    "filters": [
+      {"id": "all", "label": "Tout"},
+      {"id": "rse", "label": "RSE"},
+      {"id": "produit", "label": "Solutions"},
+      {"id": "terrain", "label": "Terrain"}
+    ],
+    "articles": [
+      {
+        "id": "positivid",
+        "title": "Positiv'ID : cap sur des matériaux plus sobres",
+        "category": "RSE",
+        "date": "12/03/2024",
+        "excerpt": "Des tests grandeur nature sur les packagings allégés.",
+        "body": "<p>Nous réduisons les plastiques et testons des recharges concentrées avec nos clients pilotes.</p>",
+        "cta": "Lire"
+      },
+      {
+        "id": "hotspot",
+        "title": "Nouveau parcours croquis pour les hôtels",
+        "category": "Solutions",
+        "date": "01/02/2024",
+        "excerpt": "Des hotspots pédagogiques pour embarquer les équipes.",
+        "body": "<p>Nos équipes terrain ont déployé des points d'ancrage visuels qui guident chaque geste critique.</p>",
+        "cta": "Lire"
+      },
+      {
+        "id": "ferme",
+        "title": "Bien-être animal : la ferme Dewaele témoigne",
+        "category": "Terrain",
+        "date": "15/01/2024",
+        "excerpt": "Une approche biosécurité et confort intégrée.",
+        "body": "<p>Des protocoles d'hygiène et des équipements ergonomiques ont amélioré les indicateurs.</p>",
+        "cta": "Lire"
+      }
+    ]
+  }
+}

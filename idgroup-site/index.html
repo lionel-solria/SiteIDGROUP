@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta.title">ID GROUP</title>
+  <meta name="description" content="ID GROUP corporate site">
+  <meta property="og:title" content="ID GROUP">
+  <meta property="og:description" content="Hygiène, confort et performance">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo-placeholder" aria-hidden="true"></div>
+        <span>ID GROUP</span>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+        <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+        <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+        <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+        <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+        <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+      </nav>
+      <div class="lang-switch" aria-label="Changer de langue">
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <button class="burger" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" aria-label="Navigation mobile">
+      <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+      <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+      <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+      <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+      <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+      <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div>
+        <p class="badge" data-i18n="home.slider.home.tag">Confort & hygiène</p>
+        <h1 data-i18n="home.heroTitle">ID GROUP</h1>
+        <p data-i18n="home.heroSubtitle">Hygiène, sécurité...</p>
+        <div class="badges">
+          <span class="badge">Home</span>
+          <span class="badge">Pro</span>
+          <span class="badge">Agri</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true"></div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="home.newsTitle">Actualités</h2>
+      <div class="slider-volets">
+        <article class="volet home" data-i18n-scope="home.slider.home">
+          <span class="tag" data-i18n="home.slider.home.tag">Confort & hygiène</span>
+          <h3 data-i18n="home.slider.home.title">ID Home</h3>
+          <p data-i18n="home.slider.home.desc">Description</p>
+          <a class="cta" data-keep-lang href="id-home.html" data-i18n="home.slider.home.cta">Découvrir ID Home</a>
+        </article>
+        <article class="volet pro" data-i18n-scope="home.slider.pro">
+          <span class="tag" data-i18n="home.slider.pro.tag">Performance</span>
+          <h3 data-i18n="home.slider.pro.title">ID Pro</h3>
+          <p data-i18n="home.slider.pro.desc">Description</p>
+          <a class="cta" data-keep-lang href="id-pro.html" data-i18n="home.slider.pro.cta">Explorer ID Pro</a>
+        </article>
+        <article class="volet agri" data-i18n-scope="home.slider.agri">
+          <span class="tag" data-i18n="home.slider.agri.tag">Bien-être</span>
+          <h3 data-i18n="home.slider.agri.title">ID Agri</h3>
+          <p data-i18n="home.slider.agri.desc">Description</p>
+          <a class="cta" data-keep-lang href="id-agri.html" data-i18n="home.slider.agri.cta">Voir ID Agri</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="home.why.title">Pourquoi ID GROUP</h2>
+      <ul id="why-list"></ul>
+    </section>
+
+    <section class="section grid-two">
+      <div>
+        <h2 data-i18n="home.story.title">Wormhout</h2>
+        <p data-i18n="home.story.text"></p>
+        <div class="fun-facts" id="story-figures"></div>
+      </div>
+      <div class="story">
+        <h3 data-i18n="home.rseTeaser.title"></h3>
+        <p data-i18n="home.rseTeaser.text"></p>
+        <a class="cta" data-keep-lang href="rse.html" data-i18n="home.rseTeaser.cta"></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="home.team.title">Équipe</h2>
+      <div class="team" id="team-list"></div>
+      <div class="fun-facts" id="fun-facts"></div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="home.newsTitle">Actualités</h2>
+      <div class="cards" id="news-list"></div>
+      <script type="application/json" data-news></script>
+    </section>
+  </main>
+
+  <footer>
+    <div class="cols">
+      <div>
+        <h3 data-i18n="common.footer.title">ID GROUP</h3>
+        <p>Wormhout · Lille · Anvers</p>
+      </div>
+      <div class="site-map">
+        <strong data-i18n="common.footer.sitemap">Plan du site</strong>
+        <a data-keep-lang href="le-groupe.html" data-i18n="common.nav.group"></a>
+        <a data-keep-lang href="rse.html" data-i18n="common.nav.rse"></a>
+        <a data-keep-lang href="solutions.html" data-i18n="common.nav.solutions"></a>
+        <a data-keep-lang href="actus.html" data-i18n="common.nav.news"></a>
+        <a data-keep-lang href="contact.html" data-i18n="common.nav.contact"></a>
+      </div>
+      <div class="site-map">
+        <strong data-i18n="common.footer.follow">Nous suivre</strong>
+        <a href="#">LinkedIn</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch(`data/content.${new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('idgroup-lang') || 'fr'}.json`)
+        .then(r => r.json())
+        .then(data => {
+          const whyList = document.getElementById('why-list');
+          data.home.why.bullets.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            whyList.appendChild(li);
+          });
+          const figures = document.getElementById('story-figures');
+          data.home.story.figures.forEach(f => {
+            const tag = document.createElement('span');
+            tag.className = 'badge';
+            tag.textContent = f;
+            figures.appendChild(tag);
+          });
+          const team = document.getElementById('team-list');
+          data.home.team.members.forEach(m => {
+            const card = document.createElement('div');
+            card.className = 'member';
+            card.innerHTML = `<div class="avatar" aria-hidden="true"></div><strong>${m.name}</strong><span>${m.role}</span><small>${m.fact}</small>`;
+            team.appendChild(card);
+          });
+          const fun = document.getElementById('fun-facts');
+          data.home.team.fun.forEach(f => {
+            const tag = document.createElement('span');
+            tag.className = 'fact';
+            tag.textContent = f;
+            fun.appendChild(tag);
+          });
+          document.querySelector('script[data-news]').textContent = JSON.stringify(data.news.articles);
+        });
+    });
+  </script>
+</body>
+</html>

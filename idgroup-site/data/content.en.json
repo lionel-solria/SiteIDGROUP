@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "ID GROUP - Hygiene, comfort and performance",
+    "description": "ID GROUP solutions for homes, professionals and agriculture."
+  },
+  "common": {
+    "nav": {
+      "group": "The Group",
+      "rse": "Impact",
+      "solutions": "Solutions",
+      "news": "News",
+      "contact": "Contact"
+    },
+    "ctaClient": "Client space",
+    "footer": {
+      "title": "ID GROUP",
+      "legal": "Legal",
+      "privacy": "Privacy",
+      "sitemap": "Sitemap",
+      "follow": "Follow us"
+    }
+  },
+  "home": {
+    "heroTitle": "ID GROUP, the sketch partner for your environments",
+    "heroSubtitle": "Hygiene, safety, animal comfort and performance for homes, workplaces and farms.",
+    "slider": {
+      "home": {"title": "ID Home", "tag": "Comfort & hygiene", "desc": "Simple rituals that protect families and ease routines.", "cta": "Discover ID Home"},
+      "pro": {"title": "ID Pro", "tag": "Performance & safety", "desc": "Reassuring, compliant and guest-ready professional spaces.", "cta": "Explore ID Pro"},
+      "agri": {"title": "ID Agri", "tag": "Animal well-being", "desc": "Nutrition, biosecurity and comfort with measurable impact.", "cta": "See ID Agri"}
+    },
+    "why": {"title": "Why ID GROUP", "bullets": ["French manufacturing", "Fast logistics, human support", "Customized protocols", "Positiv'ID commitment", "On-site coaching"]},
+    "story": {"title": "Wormhout, our industrial know-how", "text": "An integrated plant, R&D with users and a test-and-learn culture to secure every solution.", "figures": ["40+ years expertise", "3 production sites", "12 partner labs"]},
+    "rseTeaser": {"title": "Positiv'ID impact", "text": "Less plastic, responsible sourcing, engaged teams and transparency.", "cta": "See our approach"},
+    "team": {"title": "A team close to the field", "members": [{"name": "Lea", "role": "Impact lead", "fact": "Cuts 2 tons of plastic a year"}, {"name": "Mamadou", "role": "Pro product owner", "fact": "100 client visits/year"}, {"name": "Zoe", "role": "Industrial design", "fact": "Hand-drawn sketches for each prototype"}], "fun": ["2 labradors testing accessories", "Shared vegetable garden", "Sketch sessions every Friday"]},
+    "newsTitle": "Latest news"
+  },
+  "solutions": {
+    "title": "Pick your universe",
+    "intro": "Choose the context that fits you and explore benefits.",
+    "cards": [
+      {"name": "ID Home", "desc": "Accessible hygiene without compromising health.", "link": "id-home.html"},
+      {"name": "ID Pro", "desc": "Safety, operational efficiency and brand image.", "link": "id-pro.html"},
+      {"name": "ID Agri", "desc": "Animal well-being, farm performance and biosecurity.", "link": "id-agri.html"}
+    ],
+    "chooser": {"title": "Choose your universe", "items": ["Homes and residences", "Retail, offices, hospitality", "Farms and crops"]}
+  },
+  "universe": {
+    "common": {"hero": "A sketch mindset to highlight critical gestures.", "hotspot": "Solutions by zone", "cta": "Talk to an expert", "stories": "Success stories"},
+    "home": {"title": "ID Home", "zones": [{"id": "entree", "label": "Entrance", "content": "Anti-microbe rituals, mats, shoe flow."}, {"id": "cuisine", "label": "Kitchen", "content": "Surface hygiene, water saving, kids education."}, {"id": "salle", "label": "Bathroom", "content": "Soft care, anti-fall safety, daily comfort."}], "stories": ["Dupont family: +30% satisfaction", "Co-living: -25% consumables"]},
+    "pro": {"title": "ID Pro", "zones": [{"id": "accueil", "label": "Lobby", "content": "Reassuring protocols and visible cleanliness."}, {"id": "production", "label": "Technical area", "content": "Safety, PPE and cross-contamination control."}, {"id": "sanitaires", "label": "Restrooms", "content": "Premium user experience, water savings."}], "stories": ["Indigo hotel cleanliness score 4.8/5", "Industrial workshop: zero accidents in 12 months"]},
+    "agri": {"title": "ID Agri", "zones": [{"id": "bergerie", "label": "Barn", "content": "Thermal comfort, dry bedding, parasite control."}, {"id": "stockage", "label": "Storage", "content": "Clean circuits, easy disinfection, food safety."}, {"id": "plein-air", "label": "Outdoor", "content": "Path management, responsible watering, biosecurity."}], "stories": ["Dewaele farm: +12% animal welfare", "Educational farm: safe visits"]}
+  },
+  "group": {"title": "The Group", "mission": "Make protective gestures visible and meaningful.", "values": ["Sketch spirit", "Measurable impact", "Field first"], "sites": ["Wormhout (HQ)", "Lille", "Antwerp"], "brands": ["ID Home", "ID Pro", "ID Agri"]},
+  "rse": {"title": "Our Positiv'ID commitments", "pillars": [{"title": "Responsible materials", "text": "Lighter, recycled and recyclable packs."}, {"title": "Controlled footprint", "text": "Optimized transport, renewable energy on site."}, {"title": "Social impact", "text": "Field training, inclusion and solidarity sourcing."}], "metrics": ["-18% carbon footprint in 3 years", "84% European suppliers", "1% of revenue for impact"]},
+  "contact": {"title": "Contact us", "subtitle": "Tell us your profile and need, we reply within 24h.", "success": "Thanks! Your request has been received."},
+  "news": {
+    "filters": [{"id": "all", "label": "All"}, {"id": "rse", "label": "Impact"}, {"id": "produit", "label": "Solutions"}, {"id": "terrain", "label": "Field"}],
+    "articles": [
+      {"id": "positivid", "title": "Positiv'ID: lighter materials", "category": "Impact", "date": "2024-03-12", "excerpt": "Full-scale tests on lighter packs.", "body": "<p>We cut plastics and test concentrated refills with pilot clients.</p>", "cta": "Read"},
+      {"id": "hotspot", "title": "New sketch pathway for hotels", "category": "Solutions", "date": "2024-02-01", "excerpt": "Educational hotspots to onboard teams.", "body": "<p>Our field teams deployed visual anchors guiding each critical gesture.</p>", "cta": "Read"},
+      {"id": "ferme", "title": "Animal well-being: Dewaele farm talks", "category": "Field", "date": "2024-01-15", "excerpt": "An integrated biosecurity and comfort approach.", "body": "<p>Hygiene protocols and ergonomic equipment improved indicators.</p>", "cta": "Read"}
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Home</title>
+  <meta name="description" content="ID Home by ID GROUP">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand"><div class="logo-placeholder" aria-hidden="true"></div><span>ID GROUP</span></div>
+      <nav aria-label="Navigation principale">
+        <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+        <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+        <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+        <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+        <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+        <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+      </nav>
+      <div class="lang-switch" aria-label="Changer de langue">
+        <button type="button" data-lang="fr">FR</button><button type="button" data-lang="en">EN</button><button type="button" data-lang="de">DE</button>
+      </div>
+      <button class="burger" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="mobile-nav" aria-label="Navigation mobile">
+      <a data-i18n="common.nav.group" data-keep-lang href="le-groupe.html">Le Groupe</a>
+      <a data-i18n="common.nav.rse" data-keep-lang href="rse.html">RSE</a>
+      <a data-i18n="common.nav.solutions" data-keep-lang href="solutions.html">Solutions</a>
+      <a data-i18n="common.nav.news" data-keep-lang href="actus.html">Actualités</a>
+      <a data-i18n="common.nav.contact" data-keep-lang href="contact.html">Contact</a>
+      <a class="cta-client" data-i18n="common.ctaClient" data-keep-lang href="espace-client.html">Espace Client</a>
+    </div>
+  </header>
+  <main>
+    <section class="section hero">
+      <div>
+        <p class="badge">ID Home</p>
+        <h1 data-i18n="universe.home.title">ID Home</h1>
+        <p data-i18n="universe.common.hero"></p>
+        <a class="cta" data-keep-lang href="contact.html" data-i18n="universe.common.cta"></a>
+      </div>
+      <div class="hero-visual" aria-hidden="true"></div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="universe.common.hotspot"></h2>
+      <div class="hotspot-area">
+        <div class="plan">
+          <button class="hotspot" style="top:30%;left:24%;" data-hotspot="entree" aria-label="Entrée"></button>
+          <button class="hotspot" style="top:48%;left:62%;" data-hotspot="cuisine" aria-label="Cuisine"></button>
+          <button class="hotspot" style="top:70%;left:40%;" data-hotspot="salle" aria-label="Salle de bain"></button>
+        </div>
+      </div>
+      <div hidden>
+        <div data-hotspot-content="entree"></div>
+        <div data-hotspot-content="cuisine"></div>
+        <div data-hotspot-content="salle"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="universe.common.stories"></h2>
+      <div class="cards" id="stories"></div>
+    </section>
+  </main>
+
+  <div class="modal" aria-hidden="true" role="dialog" aria-label="Détail zone">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fermer">×</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="cols">
+      <div><h3 data-i18n="common.footer.title">ID GROUP</h3></div>
+      <div class="site-map">
+        <strong data-i18n="common.footer.sitemap">Plan du site</strong>
+        <a data-keep-lang href="solutions.html" data-i18n="common.nav.solutions"></a>
+        <a data-keep-lang href="actus.html" data-i18n="common.nav.news"></a>
+        <a data-keep-lang href="contact.html" data-i18n="common.nav.contact"></a>
+      </div>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('idgroup-lang') || 'fr';
+      fetch(`data/content.${lang}.json`).then(r=>r.json()).then(data => {
+        const zones = data.universe.home.zones;
+        zones.forEach(zone => {
+          const target = document.querySelector(`[data-hotspot-content="${zone.id}"]`);
+          if (target) target.innerHTML = `<h3>${zone.label}</h3><p>${zone.content}</p><a class="cta" data-keep-lang href="contact.html" data-i18n="universe.common.cta">${data.universe.common.cta}</a>`;
+        });
+        const stories = document.getElementById('stories');
+        data.universe.home.stories.forEach(st => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `<div class="illus"></div><p>${st}</p>`;
+          stories.appendChild(card);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

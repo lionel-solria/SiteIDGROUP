@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" fill="none">
+  <rect x="10" y="10" width="380" height="180" rx="16" stroke="#94a3b8" stroke-width="4" stroke-dasharray="10 8" fill="#f8fafc"/>
+  <path d="M60 150 C120 120 180 160 240 130 C300 100 340 140 360 110" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <text x="20" y="40" fill="#475569" font-family="Segoe UI, sans-serif" font-size="18">Illustration croquis</text>
+</svg>
