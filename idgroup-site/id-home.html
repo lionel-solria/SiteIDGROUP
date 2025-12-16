@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Home - ID GROUP</title>
+  <meta name="description" content="Univers ID Home : hygiène et confort du foyer.">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main>
+    <section class="hero container">
+      <p class="badge">ID Home</p>
+      <h1 data-i18n="univers.home.hero">ID Home : le confort sketché</h1>
+      <p class="muted">Solutions orientées bénéfices pour chaque pièce de vie.</p>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="hotspot-area">
+          <img src="./assets/univers-plan.svg" alt="Plan maison" class="hotspot-image">
+          <button class="hotspot home" style="top:30%;left:25%;" data-universe="home" data-zone="living" aria-label="Séjour" tabindex="0"></button>
+          <button class="hotspot home" style="top:55%;left:45%;" data-universe="home" data-zone="bath" aria-label="Salle de bain" tabindex="0"></button>
+          <button class="hotspot home" style="top:20%;left:70%;" data-universe="home" data-zone="roof" aria-label="Combles" tabindex="0"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Success stories</h2>
+        <ul class="sitemap">
+          <li data-i18n="univers.home.stories.0">Famille Leroy : rénovation express d'un duplex</li>
+          <li data-i18n="univers.home.stories.1">Colocation Lille : optimisation acoustique</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fermer">×</button>
+      <h3 class="modal-title">Solution</h3>
+      <p class="modal-body">Détails de la zone.</p>
+      <a class="cta-btn" href="./contact.html">Parler à un expert</a>
+    </div>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+  <script src="./js/app.js"></script>
+  <script src="./js/i18n.js"></script>
+</body>
+</html>

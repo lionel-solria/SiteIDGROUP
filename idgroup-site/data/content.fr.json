@@ -1,0 +1,185 @@
+{
+  "lang": "fr",
+  "meta": {
+    "title": "ID GROUP - Solutions hygiène, sécurité, confort et performance",
+    "description": "Industriel français multi-univers : hygiène, sécurité, confort animal, performance et propreté."
+  },
+  "nav": {
+    "brand": "ID GROUP",
+    "group": "Le Groupe",
+    "rse": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact",
+    "client": "Espace Client"
+  },
+  "footer": {
+    "baseline": "Le partenaire du confort, de la propreté et de la performance.",
+    "links": "Liens utiles",
+    "legal": "Légal & Réseaux",
+    "legalNotice": "Mentions légales (bientôt)",
+    "socials": "Suivez-nous (placeholders)",
+    "lang": "Langue"
+  },
+  "home": {
+    "heroTitle": "Le confort sketché, la performance prouvée",
+    "heroIntro": "ID GROUP accompagne les particuliers, professionnels et acteurs agricoles avec des solutions dessinées pour l'hygiène, la sécurité, le bien-être animal et la performance au quotidien.",
+    "panels": {
+      "home": {
+        "title": "ID Home",
+        "text": "Des intérieurs sains, sûrs et accueillants, du sol aux combles.",
+        "cta": "Découvrir ID Home"
+      },
+      "pro": {
+        "title": "ID Pro",
+        "text": "Des environnements de travail sécurisés, efficaces et conformes.",
+        "cta": "Explorer ID Pro"
+      },
+      "agri": {
+        "title": "ID Agri",
+        "text": "Respect du vivant et productivité des élevages en harmonie.",
+        "cta": "Visiter ID Agri"
+      }
+    },
+    "why": {
+      "title": "Pourquoi ID GROUP",
+      "items": [
+        { "title": "Fabrication maîtrisée", "text": "Sites industriels intégrés et agiles." },
+        { "title": "Réactivité terrain", "text": "Livraisons rapides, support humain." },
+        { "title": "Personnalisation", "text": "Solutions modulables selon vos contextes." },
+        { "title": "RSE concrète", "text": "Réemploi, circuits courts, énergie optimisée." },
+        { "title": "Accompagnement", "text": "Conseil usage, kits prêts à déployer." }
+      ]
+    },
+    "wormhout": {
+      "title": "Wormhout, notre savoir-faire industriel",
+      "text": "Un site historique ancré dans les Flandres, où croquis, prototypage et production se côtoient pour livrer des solutions robustes.",
+      "figures": ["120 personnes mobilisées", "2 lignes de production dédiées", "98% des références expédiées sous 48h"]
+    },
+    "rseTeaser": {
+      "title": "Positiv'ID : notre démarche RSE",
+      "text": "Économie circulaire, sobriété énergétique et inclusion. Découvrez nos engagements et nos preuves." ,
+      "cta": "Voir nos engagements"
+    },
+    "news": {
+      "title": "Actualités",
+      "cta": "Toutes les actualités"
+    },
+    "team": {
+      "title": "Une équipe engagée",
+      "facts": ["52% de managers issus du terrain", "Parité atteinte sur les fonctions support", "4 nationalités représentées", "Programme d'intégration dessiné"]
+    }
+  },
+  "solutions": {
+    "title": "Nos univers, une promesse commune",
+    "intro": "Choisissez l'univers qui correspond à votre contexte et découvrez les bénéfices clés.",
+    "cards": {
+      "home": {
+        "title": "ID Home",
+        "text": "Hygiène et confort du foyer, matériaux durables et simples à poser."
+      },
+      "pro": {
+        "title": "ID Pro",
+        "text": "Sécurité, conformité, performance des espaces professionnels." 
+      },
+      "agri": {
+        "title": "ID Agri",
+        "text": "Bien-être animal, biosécurité et propreté des exploitations." 
+      }
+    },
+    "chooser": {
+      "title": "Choisir votre univers",
+      "text": "Besoins domestiques, exigences métiers ou enjeux d'élevage : nous avons une réponse dédiée." 
+    }
+  },
+  "univers": {
+    "home": {
+      "hero": "ID Home : le confort sketché",
+      "modal": {
+        "living": {"title": "Confort du séjour", "desc": "Habillages chaleureux, sécurité enfants, entretien facile."},
+        "bath": {"title": "Hygiène salle de bain", "desc": "Sol antidérapant, ventilation, anti-moisissures."},
+        "roof": {"title": "Combles protégés", "desc": "Isolation saine, traitement humidité, accès sécurisé."}
+      },
+      "stories": ["Famille Leroy : rénovation express d'un duplex", "Colocation Lille : optimisation acoustique"]
+    },
+    "pro": {
+      "hero": "ID Pro : fiabilité opérationnelle",
+      "modal": {
+        "warehouse": {"title": "Flux logistique", "desc": "Signalétique, zones sûres, sols résistants."},
+        "office": {"title": "Bureaux", "desc": "Confort acoustique, qualité d'air, mobilier modulable."},
+        "atelier": {"title": "Atelier", "desc": "Protection machines, EPI visibles, hygiène renforcée."}
+      },
+      "stories": ["Réseau retail : 120 magasins harmonisés", "Site industriel : incidents divisés par 2"]
+    },
+    "agri": {
+      "hero": "ID Agri : respect du vivant",
+      "modal": {
+        "stabulation": {"title": "Confort des animaux", "desc": "Litières absorbantes, ventilation douce, eau maîtrisée."},
+        "sanitaire": {"title": "Biosécurité", "desc": "Parcours propres, sas, équipements lavables."},
+        "stockage": {"title": "Stockage", "desc": "Isolation des aliments, circulation fluide, sécurité incendie."}
+      },
+      "stories": ["Ferme du Nord : mortalité néonat divisée", "Coopérative : audits biosécurité réussis"]
+    }
+  },
+  "group": {
+    "title": "Le Groupe",
+    "mission": "Faciliter la vie quotidienne avec des solutions utiles, dessinées avec et pour nos clients.",
+    "history": "Né dans les Flandres, ID GROUP a grandi autour d'une conviction : la performance passe par la simplicité et la fiabilité.",
+    "sites": ["Wormhout (59) : production et logistique", "Lille : bureau design & marketing", "Réseau de partenaires en Europe"],
+    "brands": ["ID Home", "ID Pro", "ID Agri"],
+    "values": ["Utilité", "Proximité", "Pragmatisme", "Impact positif"]
+  },
+  "rse": {
+    "title": "Nos engagements Positiv'ID",
+    "intro": "Notre démarche RSE repose sur des preuves concrètes et mesurables.",
+    "pillars": [
+      {"title": "Matériaux responsables", "text": "Priorité aux matières recyclées et recyclables."},
+      {"title": "Énergie maîtrisée", "text": "Optimisation énergétique des lignes et éclairage LED."},
+      {"title": "Économie circulaire", "text": "Réemploi des chutes, filières locales."},
+      {"title": "Inclusion", "text": "Formation interne, parcours jeunes et reconversions."}
+    ],
+    "metrics": ["-18% d'énergie par produit", "+35% de matières revalorisées", "75% d'approvisionnements en circuit court", "0 accident grave en 24 mois"],
+    "downloads": ["Rapport RSE (bientôt)", "Fiches preuves", "Code de conduite fournisseurs"]
+  },
+  "contact": {
+    "title": "Parlons de votre contexte",
+    "intro": "Dites-nous qui vous êtes et ce que vous cherchez, nous reviendrons vers vous rapidement.",
+    "success": "Merci ! Votre demande est enregistrée, notre équipe vous répond sous 24h.",
+    "fields": {
+      "name": "Nom et prénom",
+      "email": "Email professionnel",
+      "profile": "Votre profil",
+      "universe": "Univers recherché",
+      "need": "Votre besoin",
+      "message": "Précisions utiles"
+    },
+    "submit": "Envoyer"
+  },
+  "newsReadMore": "Lire l'article",
+  "news": [
+    {
+      "id": "pilotage-rse",
+      "title": "Pilotage RSE : nos preuves 2024",
+      "category": "RSE",
+      "date": "01/10/2024",
+      "excerpt": "Des indicateurs consolidés pour suivre nos impacts.",
+      "content": "<p>Nous publions un tableau de bord synthétique pour suivre l'énergie, la matière et la sécurité.</p><p>Disponible sur simple demande.</p>"
+    },
+    {
+      "id": "nouvelle-gamme",
+      "title": "Nouvelle gamme confort",
+      "category": "Produit",
+      "date": "15/09/2024",
+      "excerpt": "Une ligne pensée pour la pose rapide et durable.",
+      "content": "<p>Les équipes ID Home dévoilent des revêtements croquis prêts à poser.</p>"
+    },
+    {
+      "id": "audit-biosecurite",
+      "title": "Audits biosécurité réussis",
+      "category": "Agri",
+      "date": "02/09/2024",
+      "excerpt": "Deux coopératives valident nos protocoles ID Agri.",
+      "content": "<p>Les exploitations accompagnées réduisent les risques sanitaires et améliorent le bien-être animal.</p>"
+    }
+  ]
+}

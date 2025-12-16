@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID Agri - ID GROUP</title>
+  <meta name="description" content="Univers ID Agri : bien-être animal et biosécurité.">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <header id="site-header"></header>
+  <main>
+    <section class="hero container">
+      <p class="badge">ID Agri</p>
+      <h1 data-i18n="univers.agri.hero">ID Agri : respect du vivant</h1>
+      <p class="muted">Des installations qui conjuguent propreté, biosécurité et performance.</p>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="hotspot-area">
+          <img src="./assets/univers-plan.svg" alt="Plan exploitation" class="hotspot-image">
+          <button class="hotspot agri" style="top:25%;left:30%;" data-universe="agri" data-zone="stabulation" aria-label="Confort" tabindex="0"></button>
+          <button class="hotspot agri" style="top:50%;left:55%;" data-universe="agri" data-zone="sanitaire" aria-label="Biosécurité" tabindex="0"></button>
+          <button class="hotspot agri" style="top:70%;left:75%;" data-universe="agri" data-zone="stockage" aria-label="Stockage" tabindex="0"></button>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2>Cas clients</h2>
+        <ul class="sitemap">
+          <li data-i18n="univers.agri.stories.0">Ferme du Nord : mortalité néonat divisée</li>
+          <li data-i18n="univers.agri.stories.1">Coopérative : audits biosécurité réussis</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fermer">×</button>
+      <h3 class="modal-title">Solution</h3>
+      <p class="modal-body">Détails de la zone.</p>
+      <a class="cta-btn" href="./contact.html">Parler à un expert</a>
+    </div>
+  </div>
+  <footer class="footer" id="site-footer"></footer>
+  <script src="./js/app.js"></script>
+  <script src="./js/i18n.js"></script>
+</body>
+</html>

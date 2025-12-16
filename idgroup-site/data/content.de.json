@@ -1,0 +1,126 @@
+{
+  "lang": "de",
+  "meta": {
+    "title": "ID GROUP - Hygiene, Sicherheit, Komfort und Leistung",
+    "description": "Französischer Industriekonzern mit Lösungen für Hygiene, Sicherheit, Tierwohl und Leistung."
+  },
+  "nav": {
+    "brand": "ID GROUP",
+    "group": "Die Gruppe",
+    "rse": "Nachhaltigkeit",
+    "solutions": "Lösungen",
+    "news": "Aktuelles",
+    "contact": "Kontakt",
+    "client": "Kundenbereich"
+  },
+  "footer": {
+    "baseline": "Partner für Komfort, Sauberkeit und Performance.",
+    "links": "Nützliche Links",
+    "legal": "Rechtliches & Social",
+    "legalNotice": "Impressum (bald)",
+    "socials": "Folgen Sie uns (Platzhalter)",
+    "lang": "Sprache"
+  },
+  "home": {
+    "heroTitle": "Komfort gezeichnet, Leistung bewiesen",
+    "heroIntro": "ID GROUP begleitet Privatkunden, Profis und Landwirte mit skizzenhaften Lösungen rund um Hygiene, Sicherheit, Tierwohl und Effizienz.",
+    "panels": {
+      "home": {"title": "ID Home", "text": "Gesunde, sichere und einladende Innenräume.", "cta": "ID Home entdecken"},
+      "pro": {"title": "ID Pro", "text": "Sichere, effiziente und konforme Arbeitsumgebungen.", "cta": "ID Pro erkunden"},
+      "agri": {"title": "ID Agri", "text": "Tierwohl und Produktivität im Einklang.", "cta": "ID Agri besuchen"}
+    },
+    "why": {
+      "title": "Warum ID GROUP",
+      "items": [
+        {"title": "Beherrschte Fertigung", "text": "Integrierte, agile Produktionslinien."},
+        {"title": "Reaktionsfähigkeit", "text": "Schnelle Lieferungen, persönlicher Support."},
+        {"title": "Personalisierung", "text": "Modulare Kits für jeden Kontext."},
+        {"title": "CSR-Nachweise", "text": "Wiederverwendung, kurze Wege, optimierte Energie."},
+        {"title": "Begleitung", "text": "Nutzungscoaching und einsatzbereite Kits."}
+      ]
+    },
+    "wormhout": {"title": "Wormhout, unser Know-how", "text": "Hier treffen Skizzen, Prototyping und Produktion aufeinander.", "figures": ["120 Mitarbeitende", "2 Fertigungslinien", "98% der Referenzen in 48h versendet"]},
+    "rseTeaser": {"title": "Positiv'ID: unsere CSR", "text": "Kreislaufwirtschaft, Energiesparen und Inklusion.", "cta": "Engagements ansehen"},
+    "news": {"title": "Aktuelles", "cta": "Alle News"},
+    "team": {"title": "Ein engagiertes Team", "facts": ["52% Führungskräfte aus dem Feld", "Parität in den Supports", "4 Nationalitäten", "Onboarding als Skizze"]}
+  },
+  "solutions": {
+    "title": "Drei Universen, ein Versprechen",
+    "intro": "Wählen Sie das Universum für Ihren Kontext und fokussieren Sie die Vorteile.",
+    "cards": {
+      "home": {"title": "ID Home", "text": "Hygiene und Komfort im Zuhause mit langlebigen Materialien."},
+      "pro": {"title": "ID Pro", "text": "Sicherheit, Konformität und Performance in Arbeitsbereichen."},
+      "agri": {"title": "ID Agri", "text": "Tierwohl, Biosicherheit und Sauberkeit auf Höfen."}
+    },
+    "chooser": {"title": "Ihr Universum wählen", "text": "Haushalt, Beruf oder Landwirtschaft: wir haben eine passende Antwort."}
+  },
+  "univers": {
+    "home": {
+      "hero": "ID Home: gezeichneter Komfort",
+      "modal": {
+        "living": {"title": "Wohnzimmer", "desc": "Warme Oberflächen, Kindersicherheit, einfache Pflege."},
+        "bath": {"title": "Bad-Hygiene", "desc": "Rutschfester Boden, Belüftung, Anti-Schimmel."},
+        "roof": {"title": "Geschützter Dachboden", "desc": "Gesunde Dämmung, Feuchtekontrolle, sicherer Zugang."}
+      },
+      "stories": ["Familie Leroy: Duplex renoviert", "WG Lille: bessere Akustik"]
+    },
+    "pro": {
+      "hero": "ID Pro: zuverlässiger Betrieb",
+      "modal": {
+        "warehouse": {"title": "Logistikfluss", "desc": "Beschilderung, sichere Zonen, widerstandsfähige Böden."},
+        "office": {"title": "Büros", "desc": "Akustikkomfort, Luftqualität, modulare Möbel."},
+        "atelier": {"title": "Werkstatt", "desc": "Maschinenschutz, sichtbare PSA, verstärkte Hygiene."}
+      },
+      "stories": ["Retail-Netzwerk: 120 Geschäfte vereinheitlicht", "Industrieanlage: weniger Zwischenfälle"]
+    },
+    "agri": {
+      "hero": "ID Agri: Respekt vor dem Leben",
+      "modal": {
+        "stabulation": {"title": "Tierkomfort", "desc": "Saugfähige Einstreu, sanfte Belüftung, Wassersteuerung."},
+        "sanitaire": {"title": "Biosicherheit", "desc": "Saubere Wege, Schleusen, abwaschbare Ausrüstung."},
+        "stockage": {"title": "Lagerung", "desc": "Geschützte Futtervorräte, flüssige Wege, Brandschutz."}
+      },
+      "stories": ["Hof im Norden: weniger Neonatalverluste", "Genossenschaft: bestandene Biosicherheitsaudits"]
+    }
+  },
+  "group": {
+    "title": "Die Gruppe",
+    "mission": "Den Alltag erleichtern mit nützlichen, gemeinsam gestalteten Lösungen.",
+    "history": "In Flandern geboren mit der Überzeugung: Leistung kommt aus Einfachheit und Zuverlässigkeit.",
+    "sites": ["Wormhout: Produktion & Logistik", "Lille: Design- und Marketingbüro", "Partnernetzwerk in Europa"],
+    "brands": ["ID Home", "ID Pro", "ID Agri"],
+    "values": ["Nützlichkeit", "Nähe", "Pragmatismus", "Positiver Impact"]
+  },
+  "rse": {
+    "title": "Positiv'ID Engagements",
+    "intro": "Unsere CSR stützt sich auf messbare Beweise.",
+    "pillars": [
+      {"title": "Verantwortliche Materialien", "text": "Vorrang für recycelte und recycelbare Inputs."},
+      {"title": "Energie im Griff", "text": "Optimierte Energie auf Linien und Beleuchtung."},
+      {"title": "Kreislaufwirtschaft", "text": "Wiederverwertung von Resten, lokale Kreisläufe."},
+      {"title": "Inklusion", "text": "Weiterbildung, junge Talente, Quereinsteiger."}
+    ],
+    "metrics": ["-18% Energie pro Produkt", "+35% wiederverwertete Materialien", "75% lokale Beschaffung", "0 schwere Unfälle in 24 Monaten"],
+    "downloads": ["CSR-Bericht (bald)", "Proof Sheets", "Lieferantenkodex"]
+  },
+  "contact": {
+    "title": "Erzählen Sie uns Ihren Kontext",
+    "intro": "Wer sind Sie und was brauchen Sie? Wir melden uns schnell.",
+    "success": "Danke! Wir antworten innerhalb von 24h.",
+    "fields": {
+      "name": "Vor- und Nachname",
+      "email": "Business-E-Mail",
+      "profile": "Ihr Profil",
+      "universe": "Ziel-Universum",
+      "need": "Ihr Bedarf",
+      "message": "Nützliche Details"
+    },
+    "submit": "Senden"
+  },
+  "newsReadMore": "Artikel lesen",
+  "news": [
+    {"id": "pilotage-rse", "title": "CSR-Dashboard 2024", "category": "CSR", "date": "01.10.2024", "excerpt": "KPI zur Steuerung unserer Wirkungen.", "content": "<p>Ein kompaktes Dashboard zeigt Energie-, Material- und Sicherheitsmetriken.</p>"},
+    {"id": "nouvelle-gamme", "title": "Neue Komfortlinie", "category": "Produkt", "date": "15.09.2024", "excerpt": "Für schnelle und dauerhafte Montage entwickelt.", "content": "<p>ID Home Teams präsentieren skizzenhafte, montagefertige Beläge.</p>"},
+    {"id": "audit-biosecurite", "title": "Bestandene Biosicherheitsaudits", "category": "Agri", "date": "02.09.2024", "excerpt": "Zwei Genossenschaften bestätigen unsere Protokolle.", "content": "<p>Begleitete Betriebe senken Risiken und erhöhen das Tierwohl.</p>"}
+  ]
+}
