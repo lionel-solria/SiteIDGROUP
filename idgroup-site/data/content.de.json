@@ -1,0 +1,110 @@
+{
+  "global": {
+    "title": "ID GROUP - Nachhaltige Lösungen",
+    "description": "ID GROUP: ID HOME, ID PRO, ID AGRI. Nachhaltige Lösungen für Wohnen, Industrie und Landwirtschaft.",
+    "nav": {
+      "group": "Die Gruppe",
+      "commitments": "CSR",
+      "solutions": "Unsere Lösungen",
+      "news": "Aktuelles",
+      "contact": "Kontakt",
+      "client_space": "Kundenbereich"
+    },
+    "footer": {
+      "legal": "Impressum",
+      "contact": "Kontaktieren Sie uns",
+      "sitemap": "Seitenübersicht",
+      "follow_us": "Folgen Sie uns"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Nachhaltige Lösungen für eine Welt im Wandel",
+      "subtitle": "Wohnen, Industrie, Landwirtschaft"
+    },
+    "blades": {
+      "home": {
+        "title": "ID HOME",
+        "desc": "Lösungen für Wohnen und Lebensraum.",
+        "cta": "ID HOME entdecken"
+      },
+      "pro": {
+        "title": "ID PRO",
+        "desc": "Leistungslösungen für die Industrie.",
+        "cta": "ID PRO entdecken"
+      },
+      "agri": {
+        "title": "ID AGRI",
+        "desc": "Lösungen für nachhaltige Landwirtschaft.",
+        "cta": "ID AGRI entdecken"
+      }
+    },
+    "why_us": {
+      "title": "Warum ID GROUP?",
+      "items": [
+        "Französische Herstellung",
+        "Reaktivität & Service",
+        "Anpassung",
+        "CSR-Engagement",
+        "Expertenunterstützung"
+      ]
+    },
+    "wormhout": {
+      "title": "Industrielles Know-how",
+      "text": "Mit Sitz in Wormhout beherrschen wir unsere Produktionskette, um Qualität und Nachhaltigkeit zu garantieren."
+    },
+    "rse": {
+      "title": "Positiv'ID",
+      "text": "Unser CSR-Ansatz im Herzen unserer Strategie.",
+      "cta": "Mehr erfahren"
+    },
+    "news": {
+      "title": "Letzte Neuigkeiten"
+    },
+    "team": {
+      "title": "Das Team",
+      "text": "Leidenschaftliche Experten zu Ihren Diensten."
+    }
+},
+"articles": {
+  "1": {
+    "title": "Neue Fabrik in Wormhout",
+    "date": "01.10.2023",
+    "content": "Wir sind stolz, die Erweiterung unseres Produktionsstandorts bekannt zu geben."
+  },
+  "2": {
+    "title": "Landwirtschaftsmesse",
+    "date": "15.09.2023",
+    "content": "Treffen Sie unsere ID AGRI Teams auf der nächsten Messe."
+  },
+  "3": {
+    "title": "CO2-Bilanz",
+    "date": "20.08.2023",
+    "content": "Unsere CO2-Bilanz 2023 zeigt eine deutliche Reduzierung."
+  }
+  },
+  "solutions": {
+    "title": "Unsere Welten",
+    "choose": "Wählen Sie Ihre Welt",
+    "home_card": "Für Privatpersonen und Wohnen",
+    "pro_card": "Für Industrie und Profis",
+    "agri_card": "Für Landwirte und Züchter"
+  },
+  "univers": {
+    "hotspots_title": "Entdecken Sie unsere interaktiven Lösungen",
+    "modal_cta": "Kontaktieren Sie uns"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Senden",
+    "success": "Danke! Ihre Nachricht wurde gesendet."
+  },
+  "client_space": {
+    "title": "Kundenbereich",
+    "text": "Greifen Sie auf Ihren sicheren Bereich zu, um Bestellungen und Rechnungen zu verwalten.",
+    "login": "Anmelden"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "global": {
+    "title": "ID GROUP - Sustainable Solutions",
+    "description": "ID GROUP: ID HOME, ID PRO, ID AGRI. Sustainable solutions for habitat, industry and agriculture.",
+    "nav": {
+      "group": "The Group",
+      "commitments": "CSR",
+      "solutions": "Our Solutions",
+      "news": "News",
+      "contact": "Contact",
+      "client_space": "Client Area"
+    },
+    "footer": {
+      "legal": "Legal Notice",
+      "contact": "Contact Us",
+      "sitemap": "Sitemap",
+      "follow_us": "Follow us"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Sustainable solutions for a changing world",
+      "subtitle": "Habitat, Industry, Agriculture"
+    },
+    "blades": {
+      "home": {
+        "title": "ID HOME",
+        "desc": "Solutions for habitat and living environment.",
+        "cta": "Discover ID HOME"
+      },
+      "pro": {
+        "title": "ID PRO",
+        "desc": "Performance solutions for industry.",
+        "cta": "Discover ID PRO"
+      },
+      "agri": {
+        "title": "ID AGRI",
+        "desc": "Solutions for sustainable agriculture.",
+        "cta": "Discover ID AGRI"
+      }
+    },
+    "why_us": {
+      "title": "Why ID GROUP?",
+      "items": [
+        "French Manufacturing",
+        "Reactivity & Service",
+        "Customization",
+        "CSR Commitment",
+        "Expert Support"
+      ]
+    },
+    "wormhout": {
+      "title": "Industrial Know-how",
+      "text": "Based in Wormhout, we master our production chain to guarantee quality and sustainability."
+    },
+    "rse": {
+      "title": "Positiv'ID",
+      "text": "Our CSR approach at the heart of our strategy.",
+      "cta": "Learn more"
+    },
+    "news": {
+      "title": "Latest News"
+    },
+    "team": {
+      "title": "The Team",
+      "text": "Passionate experts at your service."
+    }
+},
+"articles": {
+  "1": {
+    "title": "New Factory in Wormhout",
+    "date": "2023-10-01",
+    "content": "We are proud to announce the expansion of our production site. This investment will allow us to double our production capacity."
+  },
+  "2": {
+    "title": "Agriculture Fair",
+    "date": "2023-09-15",
+    "content": "Meet our ID AGRI teams at the next fair. We will present our latest innovations."
+  },
+  "3": {
+    "title": "Carbon Footprint",
+    "date": "2023-08-20",
+    "content": "Our 2023 carbon footprint shows a significant reduction in our emissions."
+  }
+  },
+  "solutions": {
+    "title": "Our Universes",
+    "choose": "Choose your universe",
+    "home_card": "For individuals and habitat",
+    "pro_card": "For industrials and professionals",
+    "agri_card": "For farmers and breeders"
+  },
+  "univers": {
+    "hotspots_title": "Discover our interactive solutions",
+    "modal_cta": "Contact us"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "success": "Thank you! Your message has been sent."
+  },
+  "client_space": {
+    "title": "Client Area",
+    "text": "Access your secure area to manage orders and invoices.",
+    "login": "Log in"
+  }
+}

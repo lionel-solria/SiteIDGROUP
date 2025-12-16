@@ -1,0 +1,110 @@
+{
+  "global": {
+    "title": "ID GROUP - Solutions durables",
+    "description": "ID GROUP : ID HOME, ID PRO, ID AGRI. Solutions durables pour l'habitat, l'industrie et l'agriculture.",
+    "nav": {
+      "group": "Le Groupe",
+      "commitments": "Nos engagements",
+      "solutions": "Nos solutions",
+      "news": "Actualités",
+      "contact": "Contact",
+      "client_space": "Espace Client"
+    },
+    "footer": {
+      "legal": "Mentions légales",
+      "contact": "Contactez-nous",
+      "sitemap": "Plan du site",
+      "follow_us": "Suivez-nous"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Solutions durables pour un monde en mouvement",
+      "subtitle": "Habitat, Industrie, Agriculture"
+    },
+    "blades": {
+      "home": {
+        "title": "ID HOME",
+        "desc": "Solutions pour l'habitat et le cadre de vie.",
+        "cta": "Découvrir ID HOME"
+      },
+      "pro": {
+        "title": "ID PRO",
+        "desc": "Solutions de performance pour l'industrie.",
+        "cta": "Découvrir ID PRO"
+      },
+      "agri": {
+        "title": "ID AGRI",
+        "desc": "Solutions pour l'agriculture durable.",
+        "cta": "Découvrir ID AGRI"
+      }
+    },
+    "why_us": {
+      "title": "Pourquoi ID GROUP ?",
+      "items": [
+        "Fabrication française",
+        "Réactivité & Service",
+        "Personnalisation",
+        "Engagement RSE",
+        "Accompagnement expert"
+      ]
+    },
+    "wormhout": {
+      "title": "Savoir-faire industriel",
+      "text": "Basés à Wormhout, nous maîtrisons notre chaîne de production pour garantir qualité et durabilité."
+    },
+    "rse": {
+      "title": "Positiv'ID",
+      "text": "Notre démarche RSE au cœur de notre stratégie.",
+      "cta": "En savoir plus"
+    },
+    "news": {
+      "title": "Dernières actualités"
+    },
+    "team": {
+      "title": "L'équipe",
+      "text": "Des experts passionnés à votre service."
+    }
+},
+"articles": {
+  "1": {
+    "title": "Nouvelle usine à Wormhout",
+    "date": "01/10/2023",
+    "content": "Nous sommes fiers d'annoncer l'agrandissement de notre site de production. Cet investissement nous permettra de doubler notre capacité de production pour répondre à la demande croissante."
+  },
+  "2": {
+    "title": "Salon de l'Agriculture",
+    "date": "15/09/2023",
+    "content": "Retrouvez nos équipes ID AGRI au prochain salon. Nous présenterons nos dernières innovations en matière de confort animal."
+  },
+  "3": {
+    "title": "Bilan Carbone",
+    "date": "20/08/2023",
+    "content": "Notre bilan carbone 2023 montre une réduction significative de nos émissions grâce à l'optimisation de nos transports."
+  }
+  },
+  "solutions": {
+    "title": "Nos Univers",
+    "choose": "Choisissez votre univers",
+    "home_card": "Pour les particuliers et l'habitat",
+    "pro_card": "Pour les industriels et professionnels",
+    "agri_card": "Pour les agriculteurs et éleveurs"
+  },
+  "univers": {
+    "hotspots_title": "Découvrez nos solutions interactives",
+    "modal_cta": "Nous contacter"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Merci ! Votre message a bien été pris en compte."
+  },
+  "client_space": {
+    "title": "Espace Client",
+    "text": "Accédez à votre espace sécurisé pour gérer vos commandes et factures.",
+    "login": "Se connecter"
+  }
+}
