@@ -44,34 +44,33 @@
     .nav-link {
       position: relative;
       padding: 0.85rem 0.85rem;
-      border-radius: 999px;
       color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
     .nav-link::after {
       content: "";
       position: absolute;
-      left: 14px;
-      right: 14px;
+      left: 10px;
+      right: 10px;
       bottom: 6px;
-      height: 3px;
+      height: 2px;
       border-radius: 999px;
       background: linear-gradient(90deg, #e41e28, #de0c1a);
       opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      transform: scaleX(0.4) translateY(3px);
+      transform-origin: center;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
     .nav-link:hover {
       color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
       transform: translateY(-1px);
     }
     .nav-link:hover::after {
       opacity: 1;
-      transform: translateY(0);
+      transform: scaleX(1) translateY(0);
     }
     .nav-link:focus-visible {
-      outline: 2px solid rgba(228, 30, 40, 0.45);
+      outline: 2px solid rgba(228, 30, 40, 0.35);
       outline-offset: 6px;
     }
     .logo-link img {
@@ -84,6 +83,29 @@
     .vertical-slider-desktop {
       min-height: calc(100vh - 110px);
       height: calc(100vh - 90px);
+    }
+    .vertical-slider-desktop .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      mix-blend-mode: overlay;
+      transition: opacity 0.45s ease;
+      pointer-events: none;
+    }
+    .vertical-slider-desktop .panel[data-theme="home"]::after {
+      background: linear-gradient(160deg, rgba(234, 97, 26, 0.28), rgba(255, 255, 255, 0));
+    }
+    .vertical-slider-desktop .panel[data-theme="pro"]::after {
+      background: linear-gradient(160deg, rgba(25, 63, 96, 0.32), rgba(255, 255, 255, 0));
+    }
+    .vertical-slider-desktop .panel[data-theme="agri"]::after {
+      background: linear-gradient(160deg, rgba(124, 155, 72, 0.32), rgba(255, 255, 255, 0));
+    }
+    .vertical-slider-desktop .panel:hover::after,
+    .vertical-slider-desktop .panel:focus-within::after,
+    .vertical-slider-desktop .panel.active::after {
+      opacity: 1;
     }
     .vertical-slider-desktop .panel {
       flex: 0.9 1 0%;
@@ -113,11 +135,11 @@
       writing-mode: vertical-rl;
       text-transform: uppercase;
       letter-spacing: 0.3em;
-      font-weight: 800;
+      font-weight: 700;
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: clamp(3rem, 4vw, 4.25rem);
+      font-size: clamp(4rem, 5vw, 6rem);
       pointer-events: none;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
@@ -144,6 +166,23 @@
     .panel:hover .panel-trigger {
       transform: translateY(-4px);
     }
+    .mobile-panel {
+      position: relative;
+    }
+    .mobile-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      mix-blend-mode: overlay;
+    }
+    .mobile-panel[data-id="home"]::after { background: linear-gradient(180deg, rgba(234,97,26,0.2), rgba(0,0,0,0.15)); }
+    .mobile-panel[data-id="pro"]::after { background: linear-gradient(180deg, rgba(25,63,96,0.2), rgba(0,0,0,0.15)); }
+    .mobile-panel[data-id="agri"]::after { background: linear-gradient(180deg, rgba(124,155,72,0.2), rgba(0,0,0,0.15)); }
+    .mobile-panel:hover::after,
+    .mobile-panel:focus-within::after { opacity: 1; }
     .hotspot {
       width: 14px;
       height: 14px;
@@ -255,22 +294,62 @@
       0%, 100% { transform: translateY(-3px); opacity: 0.9; }
       50% { transform: translateY(3px); opacity: 0.6; }
     }
+
+    .header-glass {
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.55));
+      backdrop-filter: blur(18px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+    }
+    .titre-univers {
+      font-weight: 300;
+      letter-spacing: -0.015em;
+    }
+    .debug-bulle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      padding: 0.55rem 0.9rem;
+      border-radius: 0.9rem;
+      background: rgba(27, 34, 48, 0.92);
+      color: #fff;
+      font-size: 0.9rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 70;
+    }
+    body.debug-actif .debug-bulle.actif {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    body.debug-actif [data-balise] {
+      position: relative;
+    }
+    body.debug-actif [data-balise].surbrillance-debug {
+      outline: 2px dashed rgba(228, 30, 40, 0.8);
+      outline-offset: 4px;
+      box-shadow: 0 8px 26px rgba(228, 30, 40, 0.2);
+    }
   </style>
 </head>
 <body class="antialiased">
-  <div class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+  <div class="debug-bulle" id="bulle-debug" aria-live="polite"></div>
+  <div class="min-h-screen flex flex-col" data-balise="page-idgroup">
+    <header class="sticky top-0 z-50 header-glass border-b border-white/60" data-balise="entete-principal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none">
-            <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
+        <div class="flex items-center gap-3" data-balise="bloc-logo">
+          <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none" data-balise="logo-idgroup">
+            <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-11 w-auto drop-shadow" loading="lazy" />
             <span class="sr-only">Retour à l'accueil ID GROUP</span>
           </a>
           <div class="hidden sm:flex flex-col">
             <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
           </div>
         </div>
-        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
+        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold" data-balise="navigation-principale">
           <a href="groupe.html" class="nav-link">LE GROUPE</a>
           <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
           <a href="home.html" class="nav-link">ID HOME</a>
@@ -299,10 +378,10 @@
       </div>
     </header>
 
-    <main class="flex-1">
-      <section class="relative" aria-label="Héros vertical">
+    <main class="flex-1" data-balise="contenu-principal">
+      <section class="relative" aria-label="Héros vertical" data-balise="section-hero-vertical">
         <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl">
+          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl" data-balise="bloc-introduction">
             <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
             <h1 class="text-4xl lg:text-5xl font-medium text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
             <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
@@ -313,52 +392,52 @@
           </div>
         </div>
         <!-- Desktop Accordion -->
-        <div class="vertical-slider-desktop hidden md:flex">
-          <article class="panel" data-theme="home">
+        <div class="vertical-slider-desktop hidden md:flex" data-balise="slider-vertical">
+          <article class="panel" data-theme="home" data-balise="panneau-home">
             <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(234,97,26,0.25), rgba(0,0,0,0.55));"></div>
             <div class="collapsed-label" aria-hidden="true">HOME</div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
+            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content" data-balise="contenu-home">
+              <div class="flex items-center gap-3" data-balise="en-tete-home">
+                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-14 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Habitat & Décoration</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID HOME</h2>
+              <h2 class="text-5xl lg:text-6xl titre-univers">ID HOME</h2>
               <p class="max-w-lg text-base text-white/85">Designer des intérieurs chaleureux, modulaires et responsables pour chaque espace de vie.</p>
               <div class="flex items-center gap-3">
                 <a href="#home" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
               </div>
             </div>
           </article>
-          <article class="panel" data-theme="pro">
+          <article class="panel" data-theme="pro" data-balise="panneau-pro">
             <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(25,63,96,0.35), rgba(0,0,0,0.6));"></div>
             <div class="collapsed-label" aria-hidden="true">PRO</div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
+            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content" data-balise="contenu-pro">
+              <div class="flex items-center gap-3" data-balise="en-tete-pro">
+                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-14 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Industrie & Bâtiment</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID PRO</h2>
+              <h2 class="text-5xl lg:text-6xl titre-univers">ID PRO</h2>
               <p class="max-w-lg text-base text-white/85">Optimiser les environnements industriels et tertiaires avec sécurité, efficacité et ergonomie.</p>
               <div class="flex items-center gap-3">
                 <a href="#pro" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
               </div>
             </div>
           </article>
-          <article class="panel" data-theme="agri">
+          <article class="panel" data-theme="agri" data-balise="panneau-agri">
             <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
             <div class="collapsed-label" aria-hidden="true">AGRI</div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
+            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content" data-balise="contenu-agri">
+              <div class="flex items-center gap-3" data-balise="en-tete-agri">
+                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-14 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
               </div>
               <div class="agri-horizontal-label">
                 IDAGRI <span>Durabilité & DAS agricole</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID AGRI</h2>
+              <h2 class="text-5xl lg:text-6xl titre-univers">ID AGRI</h2>
               <p class="max-w-lg text-base text-white/85">Protéger le vivant et la performance agricole avec des solutions durables et intuitives.</p>
               <div class="flex items-center gap-3">
                 <a href="#agri" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
@@ -368,9 +447,9 @@
         </div>
 
         <!-- Mobile Stack -->
-        <div class="md:hidden space-y-4 p-4 bg-white">
+        <div class="md:hidden space-y-4 p-4 bg-white" data-balise="slider-mobile">
           <div class="flex items-center justify-between mb-2">
-            <h2 class="text-lg font-black text-[var(--id-gray-dark)]">Choisissez un univers</h2>
+            <h2 class="text-lg font-semibold text-[var(--id-gray-dark)]">Choisissez un univers</h2>
             <div class="flex gap-2" aria-label="Sélection des univers">
               <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-[var(--id-home)] text-white font-bold" data-target="home">HOME</button>
               <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="pro">PRO</button>
@@ -384,10 +463,10 @@
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(234,97,26,0.35), rgba(0,0,0,0.65));"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Habitat & Décoration</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID HOME</h3>
+                  <h3 class="text-4xl titre-univers">ID HOME</h3>
                   <p class="text-sm text-white/85">Designer des intérieurs chaleureux, modulaires et responsables.</p>
                   <a href="#home" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
@@ -399,10 +478,10 @@
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(25,63,96,0.4), rgba(0,0,0,0.65));"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Industrie & Bâtiment</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID PRO</h3>
+                  <h3 class="text-4xl titre-univers">ID PRO</h3>
                   <p class="text-sm text-white/85">Optimiser les environnements industriels et tertiaires.</p>
                   <a href="#pro" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
@@ -414,10 +493,10 @@
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(124,155,72,0.35), rgba(0,0,0,0.65));"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Agriculture & Élevage</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID AGRI</h3>
+                  <h3 class="text-4xl titre-univers">ID AGRI</h3>
                   <p class="text-sm text-white/85">Protéger le vivant et la performance agricole.</p>
                   <a href="#agri" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
@@ -433,12 +512,12 @@
         </div>
       </section>
 
-      <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70">
+      <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70" data-balise="section-equipe">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-3">
             <div>
               <p class="text-xs font-bold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre équipe</p>
-              <h2 class="text-3xl font-bold text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
+              <h2 class="text-3xl font-semibold text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
             </div>
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
@@ -537,12 +616,12 @@
         </div>
       </section>
 
-      <section id="croquis" class="bg-white py-16">
+      <section id="croquis" class="bg-white py-16" data-balise="section-croquis">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col lg:flex-row gap-8 items-start">
             <div class="lg:w-1/2 space-y-4">
               <span class="text-xs font-bold tracking-[0.25em] text-[var(--id-red)] uppercase">Croquis architecturaux</span>
-              <h2 class="text-3xl sm:text-4xl font-bold text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
+              <h2 class="text-3xl sm:text-4xl font-semibold text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
               <p class="text-base text-gray-700 leading-relaxed font-medium">Chaque verticale dispose d'un plan interactif pour contextualiser nos solutions. Les hotspots révèlent les équipements et services associés à chaque zone clé.</p>
               <div class="flex gap-3">
                 <button class="px-4 py-2 rounded-full bg-[var(--id-pro)] text-white font-medium shadow">ID PRO</button>
@@ -570,7 +649,7 @@
       </section>
     </main>
 
-    <footer class="bg-[var(--id-gray-dark)] text-white py-10">
+    <footer class="bg-[var(--id-gray-dark)] text-white py-10" data-balise="pied-de-page">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="space-y-3">
           <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" loading="lazy" />
@@ -658,6 +737,54 @@
         tooltip.textContent = spot.dataset.tooltip;
         tooltip.classList.remove('hidden');
       });
+    });
+
+    const bulleDebug = document.getElementById('bulle-debug');
+    const logoPrincipal = document.querySelector('[data-balise="logo-idgroup"]');
+    let debugActif = false;
+    let cibleActuelle = null;
+
+    const basculerDebug = () => {
+      debugActif = !debugActif;
+      document.body.classList.toggle('debug-actif', debugActif);
+      if (debugActif) {
+        bulleDebug.textContent = 'Mode debug activé';
+        bulleDebug.classList.add('actif');
+      } else {
+        bulleDebug.classList.remove('actif');
+        if (cibleActuelle) cibleActuelle.classList.remove('surbrillance-debug');
+      }
+    };
+
+    logoPrincipal?.addEventListener('dblclick', (event) => {
+      event.preventDefault();
+      basculerDebug();
+    });
+
+    document.addEventListener('mouseover', (event) => {
+      if (!debugActif) return;
+      const baliseCible = event.target.closest('[data-balise]');
+      if (cibleActuelle && cibleActuelle !== baliseCible) {
+        cibleActuelle.classList.remove('surbrillance-debug');
+      }
+      if (baliseCible) {
+        cibleActuelle = baliseCible;
+        baliseCible.classList.add('surbrillance-debug');
+        bulleDebug.textContent = `Balise : ${baliseCible.dataset.balise}`;
+        bulleDebug.classList.add('actif');
+      } else {
+        bulleDebug.classList.remove('actif');
+      }
+    });
+
+    document.addEventListener('mouseout', (event) => {
+      if (!debugActif) return;
+      if (!event.relatedTarget) return;
+      const nouvelleCible = event.relatedTarget.closest('[data-balise]');
+      if (!nouvelleCible && cibleActuelle) {
+        cibleActuelle.classList.remove('surbrillance-debug');
+        bulleDebug.classList.remove('actif');
+      }
     });
   </script>
 </body>
