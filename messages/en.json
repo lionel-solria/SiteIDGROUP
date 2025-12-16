@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "title": "ID GROUP | Comfort, hygiene and performance solutions",
+    "description": "Human-centered industrial group delivering durable solutions for homes, professionals and agriculture."
+  },
+  "nav": {
+    "home": "Home",
+    "group": "The Group",
+    "commitments": "Commitments",
+    "solutions": "Solutions",
+    "news": "News",
+    "contact": "Contact",
+    "clientSpace": "Client space"
+  },
+  "hero": {
+    "headline": "Humanist industrial expert caring for living environments",
+    "subhead": "ID GROUP secures living, working and farming spaces with durable solutions designed and built in Wormhout.",
+    "ctaTalk": "Talk to an expert",
+    "ctaClient": "Client space"
+  },
+  "slider": {
+    "home": "ID Home",
+    "pro": "ID Pro",
+    "agri": "ID Agri",
+    "homeCopy": "Comfort and hygiene for collective and residential housing.",
+    "proCopy": "Performance and safety for demanding professional environments.",
+    "agriCopy": "Animal well-being and reliability for farms.",
+    "cta": "Explore the universe"
+  },
+  "proof": {
+    "title": "Why choose ID GROUP?",
+    "items": [
+      "Integrated design and production on our Wormhout site",
+      "Field reactivity: experts guiding your projects",
+      "Customized, co-designed solutions",
+      "Positiv'ID approach: measured CSR, proofs and certifications",
+      "Digital experience ready for your client portal"
+    ]
+  },
+  "wormhout": {
+    "title": "Wormhout, our industrial know-how",
+    "story": "From the first cubicle mat to today's composite solutions, we manufacture in France with full traceability and responsible processes.",
+    "milestones": [
+      "40 years of industrial innovation",
+      "2 sites: Wormhout and Alpespace to stay close to clients",
+      "R&D team dedicated to constrained environments"
+    ]
+  },
+  "rse": {
+    "title": "CSR / Positiv'ID",
+    "teaser": "Measured footprint, optimized materials, circularity and reinforced safety for users.",
+    "cta": "See our commitments"
+  },
+  "news": {
+    "title": "News",
+    "cta": "All news"
+  },
+  "team": {
+    "title": "The ID GROUP team",
+    "subtitle": "An approachable, curious crew focused on solutions.",
+    "funFact": "Fun fact"
+  },
+  "universes": {
+    "home": {
+      "title": "ID Home",
+      "description": "Comfort and hygiene solutions for collective housing, student or senior residences." 
+    },
+    "pro": {
+      "title": "ID Pro",
+      "description": "Professional environments: ergonomics, safety and hygiene for teams and visitors." 
+    },
+    "agri": {
+      "title": "ID Agri",
+      "description": "Farming: protect animals, secure flows and reduce strain." 
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Tell us what you need, we'll connect you to the right expert.",
+    "cta": "Send"
+  },
+  "cta": {
+    "talkExpert": "Talk to an expert",
+    "clientSpace": "Access client space"
+  },
+  "rsePage": {
+    "heroTitle": "Our CSR commitments",
+    "heroDesc": "Positiv'ID guides our actions to cut footprint, secure usage and share value.",
+    "pillarsTitle": "3 tangible pillars",
+    "downloads": "Certifications and assets",
+    "gauges": "Our indicators on the rise",
+    "actions": "Key actions"
+  },
+  "newsPage": {
+    "title": "ID GROUP news",
+    "subtitle": "Trade shows, client projects, care tips and CSR progress.",
+    "readMore": "Read article"
+  },
+  "clientSpace": {
+    "title": "Secure client portal",
+    "description": "Find your documents, tracking and support requests in a dedicated portal (phase 2).",
+    "cta": "Sign in",
+    "support": "Need help? Contact us to prepare your access."
+  }
+}

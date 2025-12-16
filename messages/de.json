@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "title": "ID GROUP | Lösungen für Komfort, Hygiene und Leistung",
+    "description": "Menschenorientierter Industriekonzern mit nachhaltigen Lösungen für Wohnen, Profis und Landwirtschaft."
+  },
+  "nav": {
+    "home": "Startseite",
+    "group": "Die Gruppe",
+    "commitments": "Engagements",
+    "solutions": "Lösungen",
+    "news": "Aktuelles",
+    "contact": "Kontakt",
+    "clientSpace": "Kundenportal"
+  },
+  "hero": {
+    "headline": "Humanistischer Industriepartner für lebenswerte Umgebungen",
+    "subhead": "ID GROUP sichert Wohn-, Arbeits- und Landwirtschaftsbereiche mit langlebigen Lösungen aus Wormhout.",
+    "ctaTalk": "Mit einem Experten sprechen",
+    "ctaClient": "Kundenportal"
+  },
+  "slider": {
+    "home": "ID Home",
+    "pro": "ID Pro",
+    "agri": "ID Agri",
+    "homeCopy": "Komfort und Hygiene für Wohnanlagen und Residenzen.",
+    "proCopy": "Leistung und Sicherheit für anspruchsvolle Arbeitsumgebungen.",
+    "agriCopy": "Tierwohl und Zuverlässigkeit für landwirtschaftliche Betriebe.",
+    "cta": "Universum entdecken"
+  },
+  "proof": {
+    "title": "Warum ID GROUP?",
+    "items": [
+      "Integrierte Entwicklung und Produktion auf unserem Standort Wormhout",
+      "Reaktionsschnell vor Ort: Experten begleiten Ihre Projekte",
+      "Individuelle, co-designte Lösungen",
+      "Positiv'ID Ansatz: gemessene CSR, Nachweise und Zertifizierungen",
+      "Digitale Erfahrung, bereit für Ihr Kundenportal"
+    ]
+  },
+  "wormhout": {
+    "title": "Wormhout, unser industrielles Know-how",
+    "story": "Von der ersten Liegeboxmatte bis zu heutigen Verbundlösungen fertigen wir in Frankreich mit voller Rückverfolgbarkeit und verantwortungsvollen Prozessen.",
+    "milestones": [
+      "40 Jahre industrielle Innovation",
+      "2 Standorte: Wormhout und Alpespace, nah bei den Kunden",
+      "F&E-Team für anspruchsvolle Umgebungen"
+    ]
+  },
+  "rse": {
+    "title": "CSR / Positiv'ID",
+    "teaser": "Gemessener Fußabdruck, optimierte Materialien, Kreislaufwirtschaft und erhöhte Sicherheit.",
+    "cta": "Unsere Zusagen sehen"
+  },
+  "news": {
+    "title": "Aktuelles",
+    "cta": "Alle News"
+  },
+  "team": {
+    "title": "Das ID GROUP Team",
+    "subtitle": "Ein zugängliches, neugieriges Team mit Lösungsfokus.",
+    "funFact": "Fun fact"
+  },
+  "universes": {
+    "home": {
+      "title": "ID Home",
+      "description": "Komfort- und Hygienelösungen für Wohnanlagen, Studenten- oder Seniorenresidenzen." 
+    },
+    "pro": {
+      "title": "ID Pro",
+      "description": "Arbeitswelten: Ergonomie, Sicherheit und Hygiene für Teams und Besucher." 
+    },
+    "agri": {
+      "title": "ID Agri",
+      "description": "Landwirtschaft: Tiere schützen, Flüsse sichern und Belastungen senken." 
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Beschreiben Sie Ihren Bedarf, wir verbinden Sie mit dem richtigen Experten.",
+    "cta": "Senden"
+  },
+  "cta": {
+    "talkExpert": "Mit einem Experten sprechen",
+    "clientSpace": "Zum Kundenportal"
+  },
+  "rsePage": {
+    "heroTitle": "Unsere CSR-Verpflichtungen",
+    "heroDesc": "Positiv'ID leitet unsere Maßnahmen zur Reduzierung des Fußabdrucks, sicheren Nutzung und Wertteilung.",
+    "pillarsTitle": "3 greifbare Säulen",
+    "downloads": "Zertifikate und Assets",
+    "gauges": "Unsere Kennzahlen im Aufwärtstrend",
+    "actions": "Zentrale Aktionen"
+  },
+  "newsPage": {
+    "title": "ID GROUP News",
+    "subtitle": "Messen, Kundenprojekte, Pflege-Tipps und CSR-Fortschritte.",
+    "readMore": "Artikel lesen"
+  },
+  "clientSpace": {
+    "title": "Gesichertes Kundenportal",
+    "description": "Dokumente, Tracking und Supportanfragen in einem eigenen Portal (Phase 2).",
+    "cta": "Anmelden",
+    "support": "Brauchen Sie Hilfe? Kontaktieren Sie uns für die Einrichtung."
+  }
+}

@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: theme('fontFamily.sans');
+  background-color: theme('colors.brand.sand');
+  color: theme('colors.brand.charcoal');
+}
+
+a {
+  @apply text-brand-blue hover:text-brand-orange transition-colors duration-200;
+}
+
+.section {
+  @apply py-12 md:py-16;
+}
+
+.card {
+  @apply bg-white rounded-2xl shadow-soft border border-slate-100;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide;
+}

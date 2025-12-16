@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "title": "ID GROUP | Solutions confort, hygiène et performance",
+    "description": "Groupe industriel humaniste dédié au confort, à la performance et au soin du vivant pour l'habitat, les pros et l'agri."
+  },
+  "nav": {
+    "home": "Accueil",
+    "group": "Le Groupe",
+    "commitments": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact",
+    "clientSpace": "Espace client"
+  },
+  "hero": {
+    "headline": "Expert industriel humaniste, au service du soin du vivant",
+    "subhead": "ID GROUP sécurise les environnements d'habitation, de travail et d'élevage avec des solutions durables, conçues et fabriquées à Wormhout.",
+    "ctaTalk": "Parler à un expert",
+    "ctaClient": "Espace client"
+  },
+  "slider": {
+    "home": "ID Home",
+    "pro": "ID Pro",
+    "agri": "ID Agri",
+    "homeCopy": "Confort et hygiène dans l'habitat collectif et résidentiel.",
+    "proCopy": "Performance et sécurité pour les environnements professionnels exigeants.",
+    "agriCopy": "Bien-être animal et fiabilité pour les exploitations agricoles.",
+    "cta": "Découvrir l'univers"
+  },
+  "proof": {
+    "title": "Pourquoi choisir ID GROUP ?",
+    "items": [
+      "Conception et production intégrées sur notre site de Wormhout",
+      "Réactivité terrain : équipes expertes qui accompagnent vos projets",
+      "Personnalisation et co-design des solutions",
+      "Démarche Positiv'ID : RSE mesurée, preuves et certifications",
+      "Expérience digitale prête pour votre portail client"
+    ]
+  },
+  "wormhout": {
+    "title": "Wormhout, notre savoir-faire industriel",
+    "story": "De la première logette à nos solutions composites actuelles, nous fabriquons en France avec une traçabilité complète et des procédés responsables.",
+    "milestones": [
+      "40 ans d'innovation industrielle",
+      "2 sites : Wormhout et Alpespace pour rapprocher la production des clients",
+      "Equipe R&D dédiée aux environnements contraints"
+    ]
+  },
+  "rse": {
+    "title": "RSE / Positiv'ID",
+    "teaser": "Empreinte mesurée, matériaux optimisés, circularité et sécurité renforcée pour les utilisateurs.",
+    "cta": "Voir nos engagements"
+  },
+  "news": {
+    "title": "Actualités",
+    "cta": "Toutes les actus"
+  },
+  "team": {
+    "title": "L'équipe ID GROUP",
+    "subtitle": "Une équipe accessible, curieuse et tournée solution.",
+    "funFact": "Fun fact"
+  },
+  "universes": {
+    "home": {
+      "title": "ID Home",
+      "description": "Solutions de confort et d'hygiène pour l'habitat collectif, les résidences étudiantes ou seniors." 
+    },
+    "pro": {
+      "title": "ID Pro",
+      "description": "Milieux professionnels : ergonomie, sécurité, hygiène pour vos équipes et vos visiteurs." 
+    },
+    "agri": {
+      "title": "ID Agri",
+      "description": "Exploitation agricole : protéger les animaux, sécuriser les flux et réduire la pénibilité." 
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Expliquez votre besoin, nous vous mettons en relation avec le bon expert.",
+    "cta": "Envoyer"
+  },
+  "cta": {
+    "talkExpert": "Parler à un expert",
+    "clientSpace": "Accéder à l'espace client"
+  },
+  "rsePage": {
+    "heroTitle": "Nos engagements RSE",
+    "heroDesc": "Positiv'ID structure nos actions pour réduire l'empreinte, sécuriser les usages et partager la valeur.",
+    "pillarsTitle": "3 piliers concrets",
+    "downloads": "Certifications et ressources",
+    "gauges": "Nos indicateurs en progression",
+    "actions": "Actions clés"
+  },
+  "newsPage": {
+    "title": "Actualités ID GROUP",
+    "subtitle": "Salons, projets clients, conseils d'entretien et avancées RSE.",
+    "readMore": "Lire l'article"
+  },
+  "clientSpace": {
+    "title": "Espace client sécurisé",
+    "description": "Retrouvez vos documents, suivis et demandes de SAV dans un portail dédié (disponible en phase 2).",
+    "cta": "Se connecter",
+    "support": "Besoin d'aide ? Contactez-nous pour préparer vos accès."
+  }
+}
