@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:description" content="" />
+  <title>Le Groupe - ID GROUP</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="group">
+  <header>
+    <div class="navbar container">
+      <div class="logo">ID GROUP</div>
+      <nav>
+        <ul>
+          <li><a href="le-groupe.html" data-i18n="nav.group"></a></li>
+          <li><a href="rse.html" data-i18n="nav.rse"></a></li>
+          <li><a href="solutions.html" data-i18n="nav.solutions"></a></li>
+          <li><a href="actus.html" data-i18n="nav.news"></a></li>
+          <li><a href="contact.html" data-i18n="nav.contact"></a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <select id="lang-select" class="language-select" aria-label="Langue">
+          <option value="fr">FR</option><option value="en">EN</option><option value="de">DE</option>
+        </select>
+        <a class="button primary" href="espace-client.html" data-i18n="nav.clientArea"></a>
+        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h1 data-i18n="group.missionTitle"></h1>
+      <p data-i18n="group.missionText"></p>
+    </section>
+    <section class="section highlight">
+      <h2 data-i18n="group.historyTitle"></h2>
+      <p data-i18n="group.historyText"></p>
+      <div class="cards">
+        <div class="card">1994 — Création</div>
+        <div class="card">2020 — Positiv'ID</div>
+        <div class="card">2024 — Nouvelle usine</div>
+      </div>
+    </section>
+    <section class="section">
+      <h2 data-i18n="group.sitesTitle"></h2>
+      <p data-i18n="group.sitesText"></p>
+      <ul class="list-inline">
+        <li class="tag">Wormhout</li>
+        <li class="tag">ID Home</li>
+        <li class="tag">ID Pro</li>
+        <li class="tag">ID Agri</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;">
+      <div>© ID GROUP</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#" data-i18n="footer.legal"></a>
+        <a href="#" data-i18n="footer.privacy"></a>
+        <a href="#" data-i18n="footer.social"></a>
+        <a href="sitemap.xml" data-i18n="footer.sitemap"></a>
+      </div>
+      <select id="lang-select-footer" class="language-select" aria-label="Langue">
+        <option value="fr">FR</option><option value="en">EN</option><option value="de">DE</option>
+      </select>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script>
+    const footerSelect = document.querySelector('#lang-select-footer');
+    const headerSelect = document.querySelector('#lang-select');
+    if (footerSelect && headerSelect) {
+      footerSelect.addEventListener('change', (e) => { headerSelect.value = e.target.value; headerSelect.dispatchEvent(new Event('change')); footerSelect.value = headerSelect.value; });
+      headerSelect.addEventListener('change', () => { footerSelect.value = headerSelect.value; });
+    }
+  </script>
+</body>
+</html>

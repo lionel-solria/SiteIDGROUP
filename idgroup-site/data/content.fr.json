@@ -1,0 +1,139 @@
+{
+  "lang": "fr",
+  "meta": {
+    "defaultTitle": "ID GROUP - Solutions hygiène et bien-être",
+    "defaultDescription": "ID GROUP accompagne les environnements Home, Pro et Agri avec des solutions d'hygiène, de confort et de performance.",
+    "pages": {
+      "home": {"title": "ID GROUP - Univers Home, Pro, Agri", "description": "Découvrez les univers ID Home, ID Pro et ID Agri et choisissez la solution qui vous correspond."},
+      "group": {"title": "Le Groupe ID", "description": "Mission, histoire et savoir-faire industriel d'ID GROUP."},
+      "rse": {"title": "Nos engagements RSE", "description": "Les engagements Positiv'ID en faveur d'une industrie responsable."},
+      "solutions": {"title": "Nos solutions", "description": "Choisissez l'univers qui correspond à votre contexte : Home, Pro ou Agri."},
+      "idhome": {"title": "ID Home", "description": "Solutions pour le confort et la sécurité à la maison."},
+      "idpro": {"title": "ID Pro", "description": "Solutions pour les professionnels et collectivités."},
+      "idagri": {"title": "ID Agri", "description": "Solutions pour le bien-être animal et la performance des élevages."},
+      "news": {"title": "Actualités ID GROUP", "description": "Suivez les actualités et initiatives d'ID GROUP."},
+      "article": {"title": "Article - ID GROUP", "description": "Consultez un article ID GROUP."},
+      "contact": {"title": "Contact ID GROUP", "description": "Parlez-nous de votre besoin : Home, Pro ou Agri."},
+      "client": {"title": "Espace Client", "description": "Accédez à l'espace client sécurisé d'ID GROUP."}
+    }
+  },
+  "nav": {
+    "group": "Le Groupe",
+    "rse": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact",
+    "clientArea": "Espace Client",
+    "langLabel": "Langue"
+  },
+  "home": {
+    "heroTitle": "ID GROUP, les solutions utiles pour chaque univers",
+    "heroSubtitle": "Hygiène, sécurité, confort animal et performance au service de vos environnements Home, Pro et Agri.",
+    "slider": {
+      "homeTitle": "ID Home",
+      "homeText": "Pour les familles qui recherchent confort, hygiène et simplicité au quotidien.",
+      "proTitle": "ID Pro",
+      "proText": "Pour les professionnels qui veulent sécuriser leurs sites et rassurer leurs équipes.",
+      "agriTitle": "ID Agri",
+      "agriText": "Pour les éleveurs qui visent le bien-être animal et la performance durable.",
+      "cta": "Découvrir"
+    },
+    "whyTitle": "Pourquoi ID GROUP ?",
+    "proofs": [
+      "Fabrication française maîtrisée",
+      "Réactivité logistique",
+      "Solutions personnalisables",
+      "Démarche RSE engagée",
+      "Accompagnement terrain"
+    ],
+    "industrialTitle": "Wormhout, notre savoir-faire industriel",
+    "industrialText": "Un site de production agile, des équipes expertes et des capacités de tests pour co-construire vos solutions.",
+    "rseTeaserTitle": "Positiv'ID, notre démarche RSE",
+    "rseTeaserText": "Réduire l'empreinte, valoriser les circuits courts et soutenir les territoires.",
+    "newsTitle": "Actualités",
+    "teamTitle": "L'équipe",
+    "teamFun": "Fun facts"
+  },
+  "solutions": {
+    "title": "Choisissez votre univers",
+    "intro": "Des solutions pensées pour l'usage, pas un catalogue produit.",
+    "cards": {
+      "home": {"title": "ID Home", "text": "Hygiène et confort pour la maison."},
+      "pro": {"title": "ID Pro", "text": "Sécurité et propreté pour vos équipes."},
+      "agri": {"title": "ID Agri", "text": "Bien-être animal et performance."}
+    },
+    "contextTitle": "Choisir selon votre contexte",
+    "contextText": "Home pour la sphère domestique, Pro pour les sites professionnels, Agri pour les élevages et exploitations.",
+    "cta": "Voir la page"
+  },
+  "universe": {
+    "hotspotTitle": "Solutions pour cette zone",
+    "cta": "Parler à un expert",
+    "storiesTitle": "Cas clients",
+    "home": {
+      "hero": "ID Home",
+      "zones": ["Entrée sécurisée", "Cuisine pratique", "Salle de bain confortable"],
+      "stories": ["Une famille a sécurisé son intérieur en un week-end", "Un couple a réduit ses déchets grâce aux kits rechargeables"]
+    },
+    "pro": {
+      "hero": "ID Pro",
+      "zones": ["Accueil rassurant", "Zone technique", "Espaces collaboratifs"],
+      "stories": ["Un site logistique a gagné 20% de satisfaction", "Une école a simplifié son protocole hygiène"]
+    },
+    "agri": {
+      "hero": "ID Agri",
+      "zones": ["Nurserie", "Circulation", "Zone alimentation"],
+      "stories": ["Un élevage a amélioré le confort animal", "Un agriculteur a réduit les pertes de chaleur"]
+    }
+  },
+  "group": {
+    "missionTitle": "Mission et valeurs",
+    "missionText": "Mettre l'humain et l'usage au centre pour concevoir des solutions utiles.",
+    "historyTitle": "Histoire",
+    "historyText": "Depuis 30 ans, ID GROUP innove depuis les Hauts-de-France.",
+    "sitesTitle": "Sites et marques",
+    "sitesText": "Wormhout comme base industrielle, des marques qui parlent usage : ID Home, ID Pro, ID Agri."
+  },
+  "rse": {
+    "title": "Positiv'ID",
+    "intro": "Une démarche RSE pragmatique et mesurée.",
+    "pillars": [
+      "Eco-conception et matières recyclées",
+      "Production locale et circuits courts",
+      "Bien-être et sécurité des équipes"
+    ],
+    "downloads": "Ressources et fiches engagements disponibles sur demande."
+  },
+  "news": {
+    "filterAll": "Toutes",
+    "filterRse": "RSE",
+    "filterProd": "Solutions",
+    "filterCorp": "Entreprise"
+  },
+  "articles": [
+    {"id": "1", "title": "ID GROUP accélère sa démarche Positiv'ID", "category": "RSE", "date": "2024-06-01", "excerpt": "Une feuille de route concrète pour réduire l'impact.", "content": "Nous structurons nos actions : énergie, matières recyclées et accompagnement des équipes."},
+    {"id": "2", "title": "Nouvelles solutions ID Home", "category": "Solutions", "date": "2024-05-10", "excerpt": "Plus de confort et de sécurité dans la maison.", "content": "Des kits prêts à poser et des services de suivi pour sécuriser les habitats."},
+    {"id": "3", "title": "ID Pro accompagne les collectivités", "category": "Entreprise", "date": "2024-04-15", "excerpt": "Un programme dédié aux sites à forte fréquentation.", "content": "Support terrain, protocoles simplifiés et formations pour vos équipes."}
+  ],
+  "contact": {
+    "title": "Parlez-nous de votre besoin",
+    "profile": "Profil",
+    "profileOptions": ["Particulier", "Professionnel", "Agriculteur"],
+    "universe": "Univers",
+    "need": "Votre besoin",
+    "submit": "Envoyer",
+    "success": "Merci ! Votre demande a été prise en compte.",
+    "error": "Merci de remplir tous les champs."
+  },
+  "client": {
+    "title": "Espace Client",
+    "text": "Accédez à votre espace sécurisé pour suivre vos commandes et services.",
+    "button": "Se connecter"
+  },
+  "footer": {
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "social": "Réseaux sociaux",
+    "sitemap": "Plan du site"
+  }
+}

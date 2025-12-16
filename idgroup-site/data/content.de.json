@@ -1,0 +1,136 @@
+{
+  "lang": "de",
+  "meta": {
+    "defaultTitle": "ID GROUP - Nützliche Lösungen",
+    "defaultDescription": "ID GROUP begleitet Home, Pro und Agri mit Lösungen für Hygiene, Komfort und Leistung.",
+    "pages": {
+      "home": {"title": "ID GROUP - Home, Pro, Agri", "description": "Entdecken Sie ID Home, ID Pro und ID Agri."},
+      "group": {"title": "Die Gruppe", "description": "Mission, Geschichte und industrielles Know-how."},
+      "rse": {"title": "Nachhaltigkeit", "description": "Positiv'ID Engagements für eine verantwortliche Industrie."},
+      "solutions": {"title": "Unsere Lösungen", "description": "Wählen Sie das passende Universum."},
+      "idhome": {"title": "ID Home", "description": "Lösungen für Komfort und Sicherheit zu Hause."},
+      "idpro": {"title": "ID Pro", "description": "Lösungen für Profis und Einrichtungen."},
+      "idagri": {"title": "ID Agri", "description": "Lösungen für Tierwohl und Leistung."},
+      "news": {"title": "Aktuelles", "description": "Verfolgen Sie die Neuigkeiten von ID GROUP."},
+      "article": {"title": "Artikel - ID GROUP", "description": "Lesen Sie einen Artikel."},
+      "contact": {"title": "Kontakt", "description": "Sagen Sie uns Ihren Bedarf: Home, Pro oder Agri."},
+      "client": {"title": "Kundenbereich", "description": "Zugang zum sicheren Kundenbereich."}
+    }
+  },
+  "nav": {
+    "group": "Die Gruppe",
+    "rse": "Engagements",
+    "solutions": "Lösungen",
+    "news": "Aktuelles",
+    "contact": "Kontakt",
+    "clientArea": "Kundenbereich",
+    "langLabel": "Sprache"
+  },
+  "home": {
+    "heroTitle": "ID GROUP, nützliche Lösungen für jedes Universum",
+    "heroSubtitle": "Hygiene, Sicherheit, Tierkomfort und Leistung für Home, Pro und Agri.",
+    "slider": {
+      "homeTitle": "ID Home",
+      "homeText": "Für Familien, die Komfort und Hygiene suchen.",
+      "proTitle": "ID Pro",
+      "proText": "Für Profis, die ihre Standorte absichern und Teams beruhigen.",
+      "agriTitle": "ID Agri",
+      "agriText": "Für Landwirte mit Fokus auf Tierwohl und nachhaltige Leistung.",
+      "cta": "Entdecken"
+    },
+    "whyTitle": "Warum ID GROUP?",
+    "proofs": [
+      "Französische Fertigung",
+      "Schnelle Logistik",
+      "Anpassbare Lösungen",
+      "Engagierte CSR-Strategie",
+      "Support vor Ort"
+    ],
+    "industrialTitle": "Wormhout, unser Industrie-Know-how",
+    "industrialText": "Ein agiles Werk, Expertenteams und Testkapazitäten zur Co-Kreation.",
+    "rseTeaserTitle": "Positiv'ID, unser CSR-Ansatz",
+    "rseTeaserText": "Fußabdruck senken, lokale Beschaffung, Regionen unterstützen.",
+    "newsTitle": "Aktuelles",
+    "teamTitle": "Team",
+    "teamFun": "Fun Facts"
+  },
+  "solutions": {
+    "title": "Wählen Sie Ihr Universum",
+    "intro": "Nutzenorientierte Lösungen statt Produktkatalog.",
+    "cards": {
+      "home": {"title": "ID Home", "text": "Hygiene und Komfort zu Hause."},
+      "pro": {"title": "ID Pro", "text": "Sicherheit und Sauberkeit für Teams."},
+      "agri": {"title": "ID Agri", "text": "Tierwohl und Leistung."}
+    },
+    "contextTitle": "Wahl nach Kontext",
+    "contextText": "Home für das Zuhause, Pro für professionelle Standorte, Agri für Betriebe und Tierhaltung.",
+    "cta": "Zur Seite"
+  },
+  "universe": {
+    "hotspotTitle": "Lösungen für diesen Bereich",
+    "cta": "Mit Expert sprechen",
+    "storiesTitle": "Kundenerfolge",
+    "home": {
+      "hero": "ID Home",
+      "zones": ["Gesicherter Eingang", "Praktische Küche", "Bequemes Bad"],
+      "stories": ["Eine Familie sicherte ihr Zuhause an einem Wochenende", "Ein Paar reduzierte Abfall mit Nachfüllkits"]
+    },
+    "pro": {
+      "hero": "ID Pro",
+      "zones": ["Willkommener Empfang", "Technischer Bereich", "Gemeinschaftsflächen"],
+      "stories": ["Ein Logistikstandort gewann 20% Zufriedenheit", "Eine Schule vereinfachte ihr Hygieneprotokoll"]
+    },
+    "agri": {
+      "hero": "ID Agri",
+      "zones": ["Kinderstube", "Wege", "Fütterungsbereich"],
+      "stories": ["Ein Hof verbesserte das Tierwohl", "Ein Landwirt senkte Wärmeverluste"]
+    }
+  },
+  "group": {
+    "missionTitle": "Mission und Werte",
+    "missionText": "Den Menschen und die Nutzung ins Zentrum stellen, um nützliche Lösungen zu bauen.",
+    "historyTitle": "Geschichte",
+    "historyText": "Seit 30 Jahren innoviert ID GROUP aus Nordfrankreich.",
+    "sitesTitle": "Standorte und Marken",
+    "sitesText": "Wormhout als industrielle Basis, Marken rund um die Nutzung: ID Home, ID Pro, ID Agri."
+  },
+  "rse": {
+    "title": "Positiv'ID",
+    "intro": "Ein pragmatischer CSR-Weg.",
+    "pillars": [
+      "Ökodesign und Recyclingmaterialien",
+      "Lokale Produktion und kurze Wege",
+      "Wohlbefinden und Sicherheit der Teams"
+    ],
+    "downloads": "Ressourcen auf Anfrage verfügbar."
+  },
+  "news": {
+    "filterAll": "Alle",
+    "filterRse": "CSR",
+    "filterProd": "Lösungen",
+    "filterCorp": "Unternehmen"
+  },
+  "articles": [
+    {"id": "1", "title": "ID GROUP beschleunigt Positiv'ID", "category": "CSR", "date": "2024-06-01", "excerpt": "Eine konkrete Roadmap zur Reduktion.", "content": "Wir strukturieren unsere Aktionen: Energie, Recyclingmaterialien und Team-Begleitung."},
+    {"id": "2", "title": "Neue ID Home Lösungen", "category": "Lösungen", "date": "2024-05-10", "excerpt": "Mehr Komfort und Sicherheit zu Hause.", "content": "Montagefertige Kits und Services zur Sicherung des Zuhauses."},
+    {"id": "3", "title": "ID Pro unterstützt Gemeinden", "category": "Unternehmen", "date": "2024-04-15", "excerpt": "Ein Programm für stark frequentierte Orte.", "content": "Vor-Ort-Support, vereinfachte Protokolle und Trainings."}
+  ],
+  "contact": {
+    "title": "Erzählen Sie uns Ihren Bedarf",
+    "profile": "Profil",
+    "profileOptions": ["Privatperson", "Profi", "Landwirt"],
+    "universe": "Universum",
+    "need": "Ihr Bedarf",
+    "submit": "Senden",
+    "success": "Danke! Wir haben Ihre Anfrage erhalten.",
+    "error": "Bitte alle Felder ausfüllen."
+  },
+  "client": {
+    "title": "Kundenbereich",
+    "text": "Zugang zu Ihrem sicheren Bereich für Bestellungen und Services.",
+    "button": "Anmelden"
+  },
+  "footer": {
+    "legal": "Rechtliches", "privacy": "Datenschutz", "social": "Soziale Netze", "sitemap": "Sitemap"
+  }
+}

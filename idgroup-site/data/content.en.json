@@ -1,0 +1,136 @@
+{
+  "lang": "en",
+  "meta": {
+    "defaultTitle": "ID GROUP - Useful solutions",
+    "defaultDescription": "ID GROUP supports Home, Pro and Agri environments with hygiene, comfort and performance solutions.",
+    "pages": {
+      "home": {"title": "ID GROUP - Home, Pro, Agri", "description": "Discover ID Home, ID Pro and ID Agri and pick the right universe."},
+      "group": {"title": "About ID GROUP", "description": "Mission, history and industrial know-how."},
+      "rse": {"title": "Sustainability", "description": "Positiv'ID commitments for a responsible industry."},
+      "solutions": {"title": "Our solutions", "description": "Choose the universe that fits your context."},
+      "idhome": {"title": "ID Home", "description": "Solutions for comfort and safety at home."},
+      "idpro": {"title": "ID Pro", "description": "Solutions for professionals and facilities."},
+      "idagri": {"title": "ID Agri", "description": "Solutions for animal welfare and farm performance."},
+      "news": {"title": "News", "description": "Follow ID GROUP initiatives."},
+      "article": {"title": "Article - ID GROUP", "description": "Read an ID GROUP article."},
+      "contact": {"title": "Contact", "description": "Tell us about your need: Home, Pro or Agri."},
+      "client": {"title": "Client area", "description": "Access the secure client gateway."}
+    }
+  },
+  "nav": {
+    "group": "The Group",
+    "rse": "Commitments",
+    "solutions": "Solutions",
+    "news": "News",
+    "contact": "Contact",
+    "clientArea": "Client Area",
+    "langLabel": "Language"
+  },
+  "home": {
+    "heroTitle": "ID GROUP, useful solutions for every universe",
+    "heroSubtitle": "Hygiene, safety, animal comfort and performance for Home, Pro and Agri.",
+    "slider": {
+      "homeTitle": "ID Home",
+      "homeText": "For families seeking everyday comfort and hygiene.",
+      "proTitle": "ID Pro",
+      "proText": "For professionals securing their sites and reassuring teams.",
+      "agriTitle": "ID Agri",
+      "agriText": "For farmers targeting animal welfare and sustainable performance.",
+      "cta": "Discover"
+    },
+    "whyTitle": "Why choose ID GROUP?",
+    "proofs": [
+      "French manufacturing",
+      "Fast logistics",
+      "Customisable solutions",
+      "Committed CSR approach",
+      "Field support"
+    ],
+    "industrialTitle": "Wormhout, our industrial know-how",
+    "industrialText": "An agile production site, expert teams and testing capabilities to co-build solutions.",
+    "rseTeaserTitle": "Positiv'ID, our CSR approach",
+    "rseTeaserText": "Lower footprint, local sourcing, support territories.",
+    "newsTitle": "News",
+    "teamTitle": "Team",
+    "teamFun": "Fun facts"
+  },
+  "solutions": {
+    "title": "Pick your universe",
+    "intro": "Benefit-led solutions instead of a product catalogue.",
+    "cards": {
+      "home": {"title": "ID Home", "text": "Hygiene and comfort at home."},
+      "pro": {"title": "ID Pro", "text": "Safety and cleanliness for your teams."},
+      "agri": {"title": "ID Agri", "text": "Animal welfare and performance."}
+    },
+    "contextTitle": "Choose based on your context",
+    "contextText": "Home for domestic life, Pro for professional sites, Agri for farms and livestock.",
+    "cta": "View page"
+  },
+  "universe": {
+    "hotspotTitle": "Solutions for this area",
+    "cta": "Talk to an expert",
+    "storiesTitle": "Customer stories",
+    "home": {
+      "hero": "ID Home",
+      "zones": ["Secured entrance", "Practical kitchen", "Comfortable bathroom"],
+      "stories": ["A family secured their home in one weekend", "A couple reduced waste with refillable kits"]
+    },
+    "pro": {
+      "hero": "ID Pro",
+      "zones": ["Welcoming reception", "Technical area", "Collaborative spaces"],
+      "stories": ["A logistics site gained 20% satisfaction", "A school simplified its hygiene protocol"]
+    },
+    "agri": {
+      "hero": "ID Agri",
+      "zones": ["Nursery", "Circulation", "Feeding area"],
+      "stories": ["A farm improved animal comfort", "A farmer reduced heat loss"]
+    }
+  },
+  "group": {
+    "missionTitle": "Mission and values",
+    "missionText": "Put people and use at the centre to design useful solutions.",
+    "historyTitle": "History",
+    "historyText": "For 30 years, ID GROUP has been innovating from Northern France.",
+    "sitesTitle": "Sites and brands",
+    "sitesText": "Wormhout as industrial base, brands built around usage: ID Home, ID Pro, ID Agri."
+  },
+  "rse": {
+    "title": "Positiv'ID",
+    "intro": "A pragmatic CSR journey.",
+    "pillars": [
+      "Eco-design and recycled materials",
+      "Local production and short supply chains",
+      "Wellbeing and safety for teams"
+    ],
+    "downloads": "Resources available on request."
+  },
+  "news": {
+    "filterAll": "All",
+    "filterRse": "CSR",
+    "filterProd": "Solutions",
+    "filterCorp": "Company"
+  },
+  "articles": [
+    {"id": "1", "title": "ID GROUP speeds up Positiv'ID", "category": "CSR", "date": "2024-06-01", "excerpt": "A concrete roadmap to cut impact.", "content": "We structure our actions: energy, recycled materials and team support."},
+    {"id": "2", "title": "New ID Home solutions", "category": "Solutions", "date": "2024-05-10", "excerpt": "More comfort and safety at home.", "content": "Ready-to-install kits and follow-up services to secure homes."},
+    {"id": "3", "title": "ID Pro supports communities", "category": "Company", "date": "2024-04-15", "excerpt": "A dedicated program for busy sites.", "content": "On-site support, simplified protocols and training for teams."}
+  ],
+  "contact": {
+    "title": "Tell us about your need",
+    "profile": "Profile",
+    "profileOptions": ["Individual", "Professional", "Farmer"],
+    "universe": "Universe",
+    "need": "Your need",
+    "submit": "Send",
+    "success": "Thank you! Your request has been received.",
+    "error": "Please fill in all fields."
+  },
+  "client": {
+    "title": "Client area",
+    "text": "Access your secure space to track orders and services.",
+    "button": "Log in"
+  },
+  "footer": {
+    "legal": "Legal", "privacy": "Privacy", "social": "Social", "sitemap": "Sitemap"
+  }
+}
