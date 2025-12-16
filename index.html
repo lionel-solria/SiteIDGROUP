@@ -27,22 +27,88 @@
       font-family: "Trade Gothic Next LT Pro", Impact, "Arial Black", sans-serif;
       letter-spacing: -0.02em;
     }
+    .nav-link {
+      position: relative;
+      padding: 0.85rem 0.85rem;
+      border-radius: 999px;
+      color: #1b2230;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 6px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #e41e28, #de0c1a);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .nav-link:hover {
+      color: #e41e28;
+      background: rgba(228, 30, 40, 0.08);
+      transform: translateY(-1px);
+    }
+    .nav-link:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .vertical-slider-desktop {
+      min-height: calc(100vh - 110px);
+    }
     .vertical-slider-desktop .panel {
-      flex: 1 1 0%;
-      transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease;
+      flex: 0.9 1 0%;
+      transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
       filter: grayscale(0.1) saturate(1.05);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     }
-    .vertical-slider-desktop:hover .panel:not(:hover) {
-      flex: 0.8 1 0%;
-      filter: grayscale(0.4) brightness(0.9);
+    .vertical-slider-desktop .panel:not(.active) {
+      filter: grayscale(0.35) brightness(0.9);
     }
-    .vertical-slider-desktop .panel:hover {
-      flex: 2.2 1 0%;
+    .vertical-slider-desktop .panel.active {
+      flex: 2.8 1 0%;
       filter: grayscale(0) brightness(1.05);
       transform: translateZ(0);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+    .collapsed-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.38);
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      font-size: 1.8rem;
+      pointer-events: none;
+    }
+    .vertical-slider-desktop .panel.active .collapsed-label {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    .panel-content {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+    .vertical-slider-desktop .panel.active .panel-content {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
     .panel-overlay {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 100%);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
     }
     .panel-trigger {
       transition: color 0.3s ease, transform 0.3s ease;
@@ -68,46 +134,27 @@
 </head>
 <body class="antialiased">
   <div class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 bg-white/85 backdrop-blur border-b border-gray-200">
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
         <div class="flex items-center gap-3">
-          <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" loading="lazy" />
+          <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
           <div class="hidden sm:flex flex-col">
-            <span class="text-xs uppercase tracking-widest text-gray-500">ID GROUP</span>
-            <span class="text-sm font-semibold text-gray-800">Espaces de Vie 360°</span>
+            <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
+            <span class="text-sm font-semibold text-gray-900">Espaces de Vie 360°</span>
           </div>
         </div>
-        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-6 text-sm font-semibold">
-          <div class="group relative">
-            <button class="flex items-center gap-1 hover:text-[var(--id-red)] transition-colors">LE GROUPE
-              <span class="text-[10px]">▼</span></button>
-            <div class="absolute left-0 mt-3 bg-white shadow-xl rounded-lg p-4 min-w-[220px] hidden group-hover:block">
-              <ul class="space-y-2 text-gray-700">
-                <li><a href="#mission" class="hover:text-[var(--id-red)]">Mission</a></li>
-                <li><a href="#histoire" class="hover:text-[var(--id-red)]">Histoire</a></li>
-                <li><a href="#savoir-faire" class="hover:text-[var(--id-red)]">Savoir-Faire</a></li>
-                <li><a href="#equipe" class="hover:text-[var(--id-red)]">L'Équipe</a></li>
-              </ul>
-            </div>
-          </div>
-          <a href="#engagements" class="hover:text-[var(--id-red)]">NOS ENGAGEMENTS</a>
-          <div class="group relative">
-            <button class="flex items-center gap-1 hover:text-[var(--id-red)] transition-colors">NOS SOLUTIONS
-              <span class="text-[10px]">▼</span></button>
-            <div class="absolute left-0 mt-3 bg-white shadow-xl rounded-lg p-4 min-w-[240px] hidden group-hover:block">
-              <ul class="space-y-2 text-gray-700">
-                <li><a href="#home" class="hover:text-[var(--id-home)] font-semibold">ID HOME</a></li>
-                <li><a href="#pro" class="hover:text-[var(--id-pro)] font-semibold">ID PRO</a></li>
-                <li><a href="#agri" class="hover:text-[var(--id-agri)] font-semibold">ID AGRI</a></li>
-              </ul>
-            </div>
-          </div>
-          <a href="#actualites" class="hover:text-[var(--id-red)]">ACTUALITÉS</a>
-          <a href="#contact" class="hover:text-[var(--id-red)]">CONTACT</a>
+        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
+          <a href="#mission" class="nav-link">LE GROUPE</a>
+          <a href="#engagements" class="nav-link">NOS ENGAGEMENTS</a>
+          <a href="#home" class="nav-link">ID HOME</a>
+          <a href="#pro" class="nav-link">ID PRO</a>
+          <a href="#agri" class="nav-link">ID AGRI</a>
+          <a href="#actualites" class="nav-link">ACTUALITÉS</a>
+          <a href="#contact" class="nav-link">CONTACT</a>
         </nav>
         <div class="flex items-center gap-3">
-          <button class="px-5 py-2.5 text-sm font-bold text-white rounded-full shadow-lg bg-[var(--id-red-cta)] hover:bg-[var(--id-red)] transition-colors">ESPACE CLIENT</button>
-          <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800" aria-label="Ouvrir le menu mobile">
+          <button class="px-5 py-2.5 text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-[var(--id-red-cta)] to-[var(--id-red)] hover:shadow-[0_15px_35px_rgba(228,30,40,0.35)] transition-all duration-300">ESPACE CLIENT</button>
+          <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
             <span class="sr-only">Ouvrir le menu</span>
             ☰
           </button>
@@ -117,12 +164,28 @@
 
     <main class="flex-1">
       <section class="relative" aria-label="Héros vertical">
+        <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
+          <div class="pointer-events-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-6 py-5 max-w-3xl border border-white/70">
+            <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
+            <h1 class="text-4xl lg:text-5xl font-black text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
+            <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
+              <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition">Découvrir nos univers</a>
+            </div>
+          </div>
+          <div class="pointer-events-none hidden xl:flex flex-col items-center text-white/80 text-xs uppercase tracking-[0.35em]">
+            <span class="h-16 w-px bg-white/50 mb-2"></span>
+            <span>Scroll</span>
+          </div>
+        </div>
         <!-- Desktop Accordion -->
-        <div class="vertical-slider-desktop hidden md:flex h-[85vh]">
-          <article class="panel relative overflow-hidden" data-theme="home">
+        <div class="vertical-slider-desktop hidden md:flex">
+          <article class="panel" data-theme="home">
             <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(234,97,26,0.25), rgba(0,0,0,0.55));"></div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4">
+            <div class="collapsed-label" aria-hidden="true">HOME</div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
                 <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Habitat & Décoration</span>
@@ -134,10 +197,11 @@
               </div>
             </div>
           </article>
-          <article class="panel relative overflow-hidden" data-theme="pro">
+          <article class="panel" data-theme="pro">
             <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(25,63,96,0.35), rgba(0,0,0,0.6));"></div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4">
+            <div class="collapsed-label" aria-hidden="true">PRO</div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
                 <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Industrie & Bâtiment</span>
@@ -149,10 +213,11 @@
               </div>
             </div>
           </article>
-          <article class="panel relative overflow-hidden" data-theme="agri">
+          <article class="panel" data-theme="agri">
             <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4">
+            <div class="collapsed-label" aria-hidden="true">AGRI</div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
                 <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
                 <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
@@ -291,6 +356,20 @@
   </div>
 
   <script>
+    const desktopPanels = document.querySelectorAll('.vertical-slider-desktop .panel');
+    if (desktopPanels.length) {
+      const setActivePanel = (panel) => {
+        desktopPanels.forEach((item) => item.classList.remove('active'));
+        panel.classList.add('active');
+      };
+      setActivePanel(desktopPanels[1] || desktopPanels[0]);
+      desktopPanels.forEach((panel) => {
+        panel.addEventListener('mouseenter', () => setActivePanel(panel));
+        panel.addEventListener('focus', () => setActivePanel(panel));
+        panel.addEventListener('click', () => setActivePanel(panel));
+      });
+    }
+
     const tabs = document.querySelectorAll('.mobile-tab');
     const panels = document.querySelectorAll('.mobile-panel');
 
