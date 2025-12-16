@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ID GROUP V2 | Espaces de Vie</title>
+  <meta name="description" content="ID GROUP - Solutions intégrées pour l'habitat, l'industrie et l'agriculture." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --id-group-red: #e41e28;
+      --id-group-dark: #1b2230;
+      --id-home: #ea611a;
+      --id-pro: #193f60;
+      --id-agri: #7c9b48;
+      --neutral-light: #ededed;
+    }
+    body { font-family: 'Avenir', 'Nunito', sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Trade Gothic Next LT Pro', Impact, 'Arial Black', sans-serif; }
+    .handwritten { font-family: 'Pacifico', 'Comic Sans MS', cursive; }
+    .nav-backdrop { backdrop-filter: blur(10px); }
+    /* Slider */
+    .vertical-slider { height: 80vh; }
+    .slider-panel { transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease; flex: 1 1 33.333%; }
+    .slider-panel.active { flex: 1 1 62%; }
+    .slider-panel.inactive { flex: 1 1 19%; filter: grayscale(0.25) brightness(0.85); }
+    .slider-overlay { background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 100%); }
+    .hotspot::after { content: ''; width: 12px; height: 12px; background: white; border-radius: 9999px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 8px rgba(228,30,40,0.2); }
+    @media (max-width: 1023px) {
+      .vertical-slider { height: auto; }
+      .slider-panel { flex: 0 0 100%; min-height: 320px; }
+      .slider-panel.active, .slider-panel.inactive { flex: 0 0 100%; filter: none; }
+    }
+  </style>
+</head>
+<body class="bg-neutral-100 text-slate-800">
+  <header class="sticky top-0 z-40 bg-white/80 nav-backdrop shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <div class="flex items-center space-x-3">
+          <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" loading="lazy" />
+          <div class="text-xs uppercase tracking-[0.2em] text-slate-700">Espaces de Vie Unifiés</div>
+        </div>
+        <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold">
+          <div class="relative group">
+            <button class="py-2 text-slate-800 group-hover:text-[var(--id-group-red)] transition">LE GROUPE</button>
+            <div class="absolute left-0 mt-2 w-56 bg-white shadow-lg rounded-lg p-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition">
+              <a href="#mission" class="block px-3 py-2 rounded hover:bg-neutral-100">Mission</a>
+              <a href="#histoire" class="block px-3 py-2 rounded hover:bg-neutral-100">Histoire</a>
+              <a href="#savoir-faire" class="block px-3 py-2 rounded hover:bg-neutral-100">Savoir-Faire</a>
+              <a href="#equipe" class="block px-3 py-2 rounded hover:bg-neutral-100">L'Équipe</a>
+            </div>
+          </div>
+          <a href="#engagements" class="py-2 hover:text-[var(--id-group-red)]">NOS ENGAGEMENTS</a>
+          <div class="relative group">
+            <button class="py-2 hover:text-[var(--id-group-red)]">NOS SOLUTIONS</button>
+            <div class="absolute left-0 mt-2 w-56 bg-white shadow-lg rounded-lg p-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition">
+              <a href="#id-home" class="block px-3 py-2 rounded hover:bg-neutral-100">ID HOME</a>
+              <a href="#id-pro" class="block px-3 py-2 rounded hover:bg-neutral-100">ID PRO</a>
+              <a href="#id-agri" class="block px-3 py-2 rounded hover:bg-neutral-100">ID AGRI</a>
+            </div>
+          </div>
+          <a href="#actualites" class="py-2 hover:text-[var(--id-group-red)]">ACTUALITÉS</a>
+          <a href="#contact" class="py-2 hover:text-[var(--id-group-red)]">CONTACT</a>
+        </nav>
+        <div class="flex items-center space-x-3">
+          <a href="#client" class="hidden sm:inline-flex px-4 py-2 bg-[var(--id-group-red)] text-white rounded-full text-sm font-bold shadow hover:shadow-md transition">ESPACE CLIENT</a>
+          <button id="menu-toggle" class="lg:hidden flex flex-col space-y-1">
+            <span class="block w-6 h-0.5 bg-slate-800"></span>
+            <span class="block w-6 h-0.5 bg-slate-800"></span>
+            <span class="block w-6 h-0.5 bg-slate-800"></span>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="lg:hidden hidden pb-4 space-y-2 text-sm font-semibold">
+        <a href="#mission" class="block px-3 py-2 rounded hover:bg-neutral-100">Mission</a>
+        <a href="#histoire" class="block px-3 py-2 rounded hover:bg-neutral-100">Histoire</a>
+        <a href="#savoir-faire" class="block px-3 py-2 rounded hover:bg-neutral-100">Savoir-Faire</a>
+        <a href="#equipe" class="block px-3 py-2 rounded hover:bg-neutral-100">L'Équipe</a>
+        <a href="#engagements" class="block px-3 py-2 rounded hover:bg-neutral-100">Nos engagements</a>
+        <a href="#id-home" class="block px-3 py-2 rounded hover:bg-neutral-100">ID HOME</a>
+        <a href="#id-pro" class="block px-3 py-2 rounded hover:bg-neutral-100">ID PRO</a>
+        <a href="#id-agri" class="block px-3 py-2 rounded hover:bg-neutral-100">ID AGRI</a>
+        <a href="#actualites" class="block px-3 py-2 rounded hover:bg-neutral-100">Actualités</a>
+        <a href="#contact" class="block px-3 py-2 rounded hover:bg-neutral-100">Contact</a>
+        <a href="#client" class="inline-flex px-4 py-2 bg-[var(--id-group-red)] text-white rounded-full">Espace Client</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="vertical-slider flex flex-col lg:flex-row" aria-label="Portails ID GROUP">
+      <article class="slider-panel relative overflow-hidden group" data-theme="home" id="id-home">
+        <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 slider-overlay group-hover:opacity-90 transition" style="background-color: rgba(234,97,26,0.25);"></div>
+        <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white space-y-4">
+          <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto" loading="lazy" />
+          <h2 class="text-3xl lg:text-4xl font-bold">Habitat & Décoration</h2>
+          <p class="max-w-xl text-sm lg:text-base">Designs chaleureux, matériaux responsables et solutions modulaires pour l'art de vivre contemporain.</p>
+          <button class="hidden lg:inline-flex px-5 py-3 bg-white text-[var(--id-home)] font-bold rounded-full shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
+        </div>
+      </article>
+      <article class="slider-panel relative overflow-hidden group" data-theme="pro" id="id-pro">
+        <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 slider-overlay group-hover:opacity-90 transition" style="background-color: rgba(25,63,96,0.25);"></div>
+        <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white space-y-4">
+          <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto" loading="lazy" />
+          <h2 class="text-3xl lg:text-4xl font-bold">Industrie & Bâtiment</h2>
+          <p class="max-w-xl text-sm lg:text-base">Solutions techniques robustes pour sécuriser, optimiser et moderniser vos infrastructures.</p>
+          <button class="hidden lg:inline-flex px-5 py-3 bg-white text-[var(--id-pro)] font-bold rounded-full shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
+        </div>
+      </article>
+      <article class="slider-panel relative overflow-hidden group" data-theme="agri" id="id-agri">
+        <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div class="absolute inset-0 slider-overlay group-hover:opacity-90 transition" style="background-color: rgba(124,155,72,0.25);"></div>
+        <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white space-y-4">
+          <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto" loading="lazy" />
+          <h2 class="text-3xl lg:text-4xl font-bold">Agriculture & Élevage</h2>
+          <p class="max-w-xl text-sm lg:text-base">Equipements responsables pour protéger les élevages et préserver les ressources naturelles.</p>
+          <button class="hidden lg:inline-flex px-5 py-3 bg-white text-[var(--id-agri)] font-bold rounded-full shadow hover:-translate-y-0.5 transition">Explorer l'univers</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10" id="mission">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="handwritten text-[var(--id-group-red)] text-xl mb-2">Soin du vivant</p>
+          <h2 class="text-3xl font-bold text-[var(--id-group-dark)]">Une marque groupe qui fédère trois expertises complémentaires</h2>
+          <p class="mt-4 text-base text-slate-700">ID GROUP rassemble ID HOME, ID PRO et ID AGRI sous une vision commune : créer des espaces de vie qui prennent soin des personnes, des infrastructures et du vivant. Chaque verticale conserve son identité tout en bénéficiant d'un socle d'innovation partagé.</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow p-6 border border-neutral-200">
+          <div class="flex items-start space-x-3 mb-4">
+            <div class="w-2 h-12 bg-[var(--id-group-red)] rounded-full"></div>
+            <div>
+              <h3 class="text-xl font-bold text-[var(--id-group-dark)]">Mission</h3>
+              <p class="text-sm text-slate-700">Offrir des solutions durables pour des lieux de vie inspirants, sûrs et responsables.</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm font-semibold">
+            <div class="p-4 bg-neutral-50 rounded-lg border">Habitat & Décoration</div>
+            <div class="p-4 bg-neutral-50 rounded-lg border">Industrie & Bâtiment</div>
+            <div class="p-4 bg-neutral-50 rounded-lg border">Agriculture & Élevage</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white" id="engagements">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--id-group-red)]">Nos engagements</p>
+            <h2 class="text-3xl font-bold text-[var(--id-group-dark)]">RSE & Positiv'ID</h2>
+          </div>
+          <a href="#positivid" class="inline-flex px-4 py-2 rounded-full border border-[var(--id-group-red)] text-[var(--id-group-red)] font-bold hover:bg-[var(--id-group-red)] hover:text-white transition">Découvrir Positiv'ID</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-700">
+          <article class="p-6 rounded-2xl border bg-neutral-50">
+            <h3 class="text-lg font-bold text-[var(--id-group-dark)]">Empreinte carbone réduite</h3>
+            <p class="mt-2">Matériaux recyclés, circuits courts et logistique optimisée pour limiter notre impact.</p>
+          </article>
+          <article class="p-6 rounded-2xl border bg-neutral-50">
+            <h3 class="text-lg font-bold text-[var(--id-group-dark)]">Bien-être et sécurité</h3>
+            <p class="mt-2">Solutions de confort, sécurité sur site et ergonomie pour chaque environnement.</p>
+          </article>
+          <article class="p-6 rounded-2xl border bg-neutral-50">
+            <h3 class="text-lg font-bold text-[var(--id-group-dark)]">Innovation collaborative</h3>
+            <p class="mt-2">Laboratoires partagés entre nos verticales pour accélérer les innovations responsables.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-neutral-50" id="croquis">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-[var(--id-group-red)]">Navigation croquis</p>
+            <h2 class="text-3xl font-bold text-[var(--id-group-dark)]">Plans interactifs des verticales</h2>
+          </div>
+          <div class="flex space-x-2">
+            <button class="px-4 py-2 rounded-full border font-bold text-sm bg-white" data-hotspot-switch="pro">ID PRO</button>
+            <button class="px-4 py-2 rounded-full border font-bold text-sm bg-white" data-hotspot-switch="home">ID HOME</button>
+            <button class="px-4 py-2 rounded-full border font-bold text-sm bg-white" data-hotspot-switch="agri">ID AGRI</button>
+          </div>
+        </div>
+        <div class="relative bg-gradient-to-br from-neutral-200 to-neutral-100 rounded-3xl shadow-inner border overflow-hidden">
+          <img src="images/ImageIDPro.jpg" alt="Plan isométrique" class="w-full h-[420px] object-cover opacity-90" loading="lazy" />
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(228,30,40,0.08),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(27,34,48,0.12),transparent_35%)]"></div>
+          <div class="absolute inset-0">
+            <button class="hotspot absolute left-[30%] top-[45%] w-6 h-6 bg-[var(--id-pro)] rounded-full" data-tooltip="Ligne de montage | Tapis anti-fatigue"></button>
+            <button class="hotspot absolute left-[55%] top-[30%] w-6 h-6 bg-[var(--id-group-red)] rounded-full" data-tooltip="Poste de contrôle | Signalétique lumineuse"></button>
+            <button class="hotspot absolute left-[70%] top-[65%] w-6 h-6 bg-[var(--id-home)] rounded-full" data-tooltip="Espace accueil | Habillage acoustique"></button>
+          </div>
+          <div id="tooltip" class="absolute bg-white text-slate-800 text-xs font-semibold px-3 py-2 rounded-full shadow-lg border hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="actualites">
+      <h2 class="text-3xl font-bold text-[var(--id-group-dark)] mb-6">Actualités du groupe</h2>
+      <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-700">
+        <article class="bg-white rounded-2xl shadow p-4 border">
+          <p class="text-xs font-bold text-[var(--id-group-red)]">Communiqué</p>
+          <h3 class="text-lg font-bold mt-2 text-[var(--id-group-dark)]">Ouverture du Lab Positiv'ID</h3>
+          <p class="mt-2">Un espace commun pour prototyper les solutions croisées entre HOME, PRO et AGRI.</p>
+        </article>
+        <article class="bg-white rounded-2xl shadow p-4 border">
+          <p class="text-xs font-bold text-[var(--id-group-red)]">Innovation</p>
+          <h3 class="text-lg font-bold mt-2 text-[var(--id-group-dark)]">Matériaux circulaires</h3>
+          <p class="mt-2">Nouveaux matériaux biosourcés co-développés avec nos partenaires industriels.</p>
+        </article>
+        <article class="bg-white rounded-2xl shadow p-4 border">
+          <p class="text-xs font-bold text-[var(--id-group-red)]">Événement</p>
+          <h3 class="text-lg font-bold mt-2 text-[var(--id-group-dark)]">Forum Soin du Vivant</h3>
+          <p class="mt-2">Rencontres métiers pour partager nos engagements sociaux et environnementaux.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[var(--id-group-dark)] text-white" id="contact">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid md:grid-cols-4 gap-8 text-sm">
+      <div class="space-y-2">
+        <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" loading="lazy" />
+        <p class="text-neutral-200">Créer des espaces de vie responsables et inspirants.</p>
+      </div>
+      <div>
+        <h3 class="font-bold mb-3">Contact</h3>
+        <p>+33 1 23 45 67 89</p>
+        <p>contact@idgroup.com</p>
+        <p>12 rue des Architectes, 75000 Paris</p>
+      </div>
+      <div>
+        <h3 class="font-bold mb-3">Liens utiles</h3>
+        <ul class="space-y-2">
+          <li><a href="#mission" class="hover:text-[var(--id-group-red)]">Mission</a></li>
+          <li><a href="#engagements" class="hover:text-[var(--id-group-red)]">Nos engagements</a></li>
+          <li><a href="#croquis" class="hover:text-[var(--id-group-red)]">Navigation croquis</a></li>
+          <li><a href="#actualites" class="hover:text-[var(--id-group-red)]">Actualités</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-3">Mentions</h3>
+        <p>Mentions légales</p>
+        <p>Politique de confidentialité</p>
+        <p>Hreflang FR / EN / DE (bientôt)</p>
+      </div>
+    </div>
+    <div class="border-t border-white/20 text-center py-4 text-xs text-neutral-300">© 2025 ID GROUP - Soin du Vivant</div>
+  </footer>
+
+  <script>
+    const sliderPanels = document.querySelectorAll('.slider-panel');
+    const mobileMenuButton = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    const setActivePanel = (panel) => {
+      sliderPanels.forEach((item) => {
+        item.classList.remove('active', 'inactive');
+      });
+      if (panel) {
+        panel.classList.add('active');
+        sliderPanels.forEach((item) => {
+          if (item !== panel) item.classList.add('inactive');
+        });
+      }
+    };
+
+    if (window.innerWidth >= 1024) {
+      setActivePanel(sliderPanels[1]);
+      sliderPanels.forEach((panel) => {
+        panel.addEventListener('mouseenter', () => setActivePanel(panel));
+        panel.addEventListener('mouseleave', () => setActivePanel(sliderPanels[1]));
+      });
+    } else {
+      sliderPanels.forEach((panel) => panel.classList.add('active'));
+    }
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const tooltip = document.getElementById('tooltip');
+    const hotspots = document.querySelectorAll('.hotspot');
+
+    hotspots.forEach((spot) => {
+      spot.addEventListener('mouseenter', (e) => {
+        const { tooltip: label } = e.target.dataset;
+        tooltip.textContent = label;
+        const rect = e.target.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + rect.width / 2}px`;
+        tooltip.style.top = `${rect.top - 12 + window.scrollY}px`;
+        tooltip.classList.remove('hidden');
+      });
+      spot.addEventListener('mouseleave', () => {
+        tooltip.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
