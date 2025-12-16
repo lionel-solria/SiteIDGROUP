@@ -1,0 +1,248 @@
+/* --- Variables & Reset --- */
+:root {
+    /* Brand Colors */
+    --color-agri: #7c9b48;
+    --color-pro: #193f60;
+    --color-home: #ea611a;
+    --color-corp-red: #e41e28;
+    --color-corp-text: #1b2230;
+    --color-bg-offwhite: #f9f8f4; /* Blanc Crème */
+
+    /* Typography */
+    --font-heading: 'Trade Gothic Next LT Pro', 'Impact', 'Arial Narrow', sans-serif;
+    --font-body: 'Avenir', 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+
+    /* Layout */
+    --header-height: 80px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg-offwhite);
+    color: var(--color-corp-text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+/* --- Header --- */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    height: var(--header-height);
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-corp-red);
+    letter-spacing: 1px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-corp-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--color-corp-red);
+}
+
+.btn-client {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid var(--color-corp-text);
+    color: var(--color-corp-text);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.btn-client:hover {
+    background-color: var(--color-corp-text);
+    color: #fff;
+}
+
+/* --- Hero Accordion --- */
+.hero-accordion {
+    height: calc(100vh - var(--header-height));
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Mobile: Stack vertically by default */
+@media (max-width: 768px) {
+    .hero-accordion {
+        flex-direction: column;
+    }
+
+    .panel {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .panel:last-child {
+        border-bottom: none;
+    }
+
+    /* Adjust vertical text for mobile stacking if needed,
+       or keep horizontal labels for vertical stacks.
+       Simplifying for mobile: panels stack, clicking expands height. */
+    .panel-label {
+        writing-mode: horizontal-tb;
+        transform: translateX(-50%);
+        bottom: 1rem;
+        left: 50%;
+        font-size: 1.5rem;
+    }
+}
+
+.panel {
+    position: relative;
+    flex: 1; /* Default: all equal */
+    transition: flex 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.panel:last-child {
+    border-right: none;
+}
+
+/* Expanded State */
+.panel.active {
+    flex: 5; /* Occupies approx 70% if others are flex:1 */
+    cursor: default;
+}
+
+/* Backgrounds & Colors */
+.panel-agri { background-color: var(--color-agri); }
+.panel-pro { background-color: var(--color-pro); }
+.panel-home { background-color: var(--color-home); }
+
+/* In sketch style, we might use background images or pseudo-elements.
+   Here we simulate the "Sketch" feeling with a multiplied texture or overlay
+   if we had images. For code, we keep the flat colors as base. */
+
+/* Content Container */
+.panel-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.2s; /* Delayed fade in */
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    display: none; /* Hidden by default to save layout calc */
+}
+
+.panel.active .panel-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.panel-content h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.panel-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.cta-enter {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    color: var(--color-corp-text); /* Fallback text color */
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.panel-agri .cta-enter { color: var(--color-agri); }
+.panel-pro .cta-enter { color: var(--color-pro); }
+.panel-home .cta-enter { color: var(--color-home); }
+
+/* Vertical Label (Inactive State) */
+.panel-label {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s;
+    z-index: 2;
+    /* Vertical Text */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: translateX(-50%) rotate(180deg); /* Adjust based on browser support */
+
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.panel.active .panel-label {
+    opacity: 0;
+}
+
+/* Placeholder Section */
+.container-placeholder {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--color-bg-offwhite);
+}

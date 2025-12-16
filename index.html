@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID GROUP - Miroir Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Preloading fonts would go here. Using system stack fallback for demo. -->
+</head>
+<body>
+
+    <!-- A. Sticky Header (Le Hub Corporate) -->
+    <header class="sticky-header">
+        <div class="header-container">
+            <div class="logo">
+                <!-- Text logo for demo, normally an SVG -->
+                <span class="logo-text">ID GROUP</span>
+            </div>
+
+            <nav class="main-nav">
+                <ul>
+                    <li class="has-dropdown">
+                        <a href="#">Le Groupe</a>
+                    </li>
+                    <li><a href="#solutions">Nos Solutions</a></li>
+                    <li><a href="#engagements">Nos Engagements</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-cta">
+                <a href="#" class="btn-client">Espace Client</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- B. Section Hero : Animation "Slides Superposées" -->
+        <section class="hero-accordion">
+
+            <!-- Panel 1: ID AGRI -->
+            <article class="panel panel-agri active" data-id="agri">
+                <div class="panel-content">
+                    <div class="content-inner">
+                        <h1>Performance & Bien-être Animal</h1>
+                        <p>Vos bâtiments d'élevage méritent des solutions qui protègent votre cheptel.</p>
+                        <a href="#" class="cta-enter">Entrer dans ID AGRI</a>
+                    </div>
+                </div>
+                <div class="panel-label">
+                    <span>AGRICULTURE</span>
+                </div>
+                <div class="panel-bg"></div> <!-- Background image container -->
+            </article>
+
+            <!-- Panel 2: ID PRO -->
+            <article class="panel panel-pro" data-id="pro">
+                <div class="panel-content">
+                    <div class="content-inner">
+                        <h1>Fiabilité Industrielle</h1>
+                        <p>Des infrastructures pensées pour l'excellence opérationnelle et la sécurité.</p>
+                        <a href="#" class="cta-enter">Entrer dans ID PRO</a>
+                    </div>
+                </div>
+                <div class="panel-label">
+                    <span>INDUSTRIE</span>
+                </div>
+                <div class="panel-bg"></div>
+            </article>
+
+            <!-- Panel 3: ID HOME -->
+            <article class="panel panel-home" data-id="home">
+                <div class="panel-content">
+                    <div class="content-inner">
+                        <h1>Design Durable</h1>
+                        <p>Réinventez vos extérieurs avec des matériaux alliant esthétique et résistance.</p>
+                        <a href="#" class="cta-enter">Entrer dans ID HOME</a>
+                    </div>
+                </div>
+                <div class="panel-label">
+                    <span>HABITAT</span>
+                </div>
+                <div class="panel-bg"></div>
+            </article>
+
+        </section>
+
+        <!-- Placeholder for rest of page -->
+        <section id="solutions" class="container-placeholder">
+            <h2>Vos Besoins (Section Entonnoir)</h2>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
