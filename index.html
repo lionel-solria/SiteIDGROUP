@@ -43,36 +43,35 @@
     }
     .nav-link {
       position: relative;
-      padding: 0.85rem 0.85rem;
-      border-radius: 999px;
-      color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      padding: 0.75rem 0.85rem;
+      color: rgba(27, 34, 48, 0.8);
+      transition: color 0.3s ease, transform 0.2s ease;
+      font-weight: 600;
     }
     .nav-link::after {
       content: "";
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 6px;
-      height: 3px;
-      border-radius: 999px;
+      left: 18px;
+      right: 18px;
+      bottom: 10px;
+      height: 2px;
       background: linear-gradient(90deg, #e41e28, #de0c1a);
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+      opacity: 0.75;
     }
     .nav-link:hover {
       color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
       transform: translateY(-1px);
     }
     .nav-link:hover::after {
-      opacity: 1;
-      transform: translateY(0);
+      transform: scaleX(1);
     }
     .nav-link:focus-visible {
-      outline: 2px solid rgba(228, 30, 40, 0.45);
-      outline-offset: 6px;
+      outline: 2px solid rgba(228, 30, 40, 0.35);
+      outline-offset: 8px;
     }
     .logo-link img {
       transition: transform 0.25s ease;
@@ -87,13 +86,14 @@
     }
     .vertical-slider-desktop .panel {
       flex: 0.9 1 0%;
-      transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease, opacity 0.35s ease;
       filter: grayscale(0.1) saturate(1.05);
       position: relative;
       overflow: hidden;
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
       height: 100%;
       min-height: 640px;
+      isolation: isolate;
     }
     .vertical-slider-desktop .panel:not(.active) {
       filter: grayscale(0.35) brightness(0.9);
@@ -117,7 +117,7 @@
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: clamp(3rem, 4vw, 4.25rem);
+      font-size: clamp(4.25rem, 6vw, 6rem);
       pointer-events: none;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
@@ -135,9 +135,26 @@
       transform: translateY(0);
       pointer-events: auto;
     }
+    .panel [data-element] { color: inherit; }
     .panel-overlay {
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
     }
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+    .panel:hover::after,
+    .panel:focus-within::after {
+      opacity: 0.35;
+    }
+    .panel[data-theme="home"]::after { background: rgba(234, 97, 26, 0.85); }
+    .panel[data-theme="pro"]::after { background: rgba(25, 63, 96, 0.85); }
+    .panel[data-theme="agri"]::after { background: rgba(124, 155, 72, 0.85); }
     .panel-trigger {
       transition: color 0.3s ease, transform 0.3s ease;
     }
@@ -255,43 +272,71 @@
       0%, 100% { transform: translateY(-3px); opacity: 0.9; }
       50% { transform: translateY(3px); opacity: 0.6; }
     }
+    .debug-tooltip {
+      position: fixed;
+      padding: 0.35rem 0.65rem;
+      background: rgba(27, 34, 48, 0.9);
+      color: #fff;
+      border-radius: 0.75rem;
+      font-size: 0.8rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(10px, 10px);
+      opacity: 0.95;
+      backdrop-filter: blur(6px);
+    }
+    .debug-tooltip.hidden {
+      display: none;
+    }
+    .debug-highlight {
+      outline: 2px dashed rgba(228, 30, 40, 0.7);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 6px rgba(228, 30, 40, 0.08);
+      border-radius: 6px;
+      position: relative;
+      z-index: 10;
+    }
+    .debug-active [data-element] {
+      cursor: help;
+    }
   </style>
 </head>
 <body class="antialiased">
-  <div class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+  <div class="min-h-screen flex flex-col" data-element="page-racine">
+    <header class="sticky top-0 z-50 bg-white/60 backdrop-blur-2xl border-b border-white/50 shadow-[0_16px_40px_rgba(0,0,0,0.06)]" data-element="entete-principale">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
-          <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none">
-            <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
+        <div class="flex items-center gap-3" data-element="bloc-identite">
+          <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none" data-element="logo-idgroup">
+            <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-12 w-auto drop-shadow" loading="lazy" />
             <span class="sr-only">Retour à l'accueil ID GROUP</span>
           </a>
           <div class="hidden sm:flex flex-col">
             <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
           </div>
         </div>
-        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
-          <a href="groupe.html" class="nav-link">LE GROUPE</a>
-          <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
-          <a href="home.html" class="nav-link">ID HOME</a>
-          <a href="pro.html" class="nav-link">ID PRO</a>
-          <a href="agri.html" class="nav-link">ID AGRI</a>
-          <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
-          <a href="contact.html" class="nav-link">CONTACT</a>
+        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold" data-element="navigation-principale">
+          <a href="groupe.html" class="nav-link" data-element="lien-le-groupe">LE GROUPE</a>
+          <a href="engagements.html" class="nav-link" data-element="lien-engagements">NOS ENGAGEMENTS</a>
+          <a href="home.html" class="nav-link" data-element="lien-id-home">ID HOME</a>
+          <a href="pro.html" class="nav-link" data-element="lien-id-pro">ID PRO</a>
+          <a href="agri.html" class="nav-link" data-element="lien-id-agri">ID AGRI</a>
+          <a href="actualites.html" class="nav-link" data-element="lien-actualites">ACTUALITÉS</a>
+          <a href="contact.html" class="nav-link" data-element="lien-contact">CONTACT</a>
         </nav>
         <div class="flex items-center gap-3">
-          <button class="h-11 w-11 inline-flex items-center justify-center rounded-full border border-gray-200 text-gray-800 bg-white shadow-sm hover:-translate-y-[2px] hover:shadow-lg transition duration-200" aria-label="Espace client">
+          <button class="h-11 w-11 inline-flex items-center justify-center rounded-full border border-gray-200 text-gray-800 bg-white shadow-sm hover:-translate-y-[2px] hover:shadow-lg transition duration-200" aria-label="Espace client" data-element="bouton-espace-client">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0ZM4.5 19.75A7.25 7.25 0 0 1 12 12.5a7.25 7.25 0 0 1 7.5 7.25v.25H4.5v-.25Z" />
             </svg>
           </button>
-          <button class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-800 text-sm font-semibold shadow-inner hover:bg-gray-200 transition" aria-label="Changer de langue">
+          <button class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-800 text-sm font-semibold shadow-inner hover:bg-gray-200 transition" aria-label="Changer de langue" data-element="bouton-langue">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0 0c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 18c-4.97 0-9-4.03-9-9s4.03-9 9-9m0 0c0 4.97 4.03 9 9 9m-9-9c0 4.97-4.03 9-9 9" />
             </svg>
             FR
           </button>
-          <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
+          <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile" data-element="bouton-menu-mobile">
             <span class="sr-only">Ouvrir le menu</span>
             ☰
           </button>
@@ -299,125 +344,125 @@
       </div>
     </header>
 
-    <main class="flex-1">
-      <section class="relative" aria-label="Héros vertical">
-        <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl">
+    <main class="flex-1" data-element="contenu-principal">
+      <section class="relative" aria-label="Héros vertical" data-element="section-hero-vertical">
+        <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none" data-element="encart-hero">
+          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl" data-element="intro-editoriale">
             <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
             <h1 class="text-4xl lg:text-5xl font-medium text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
             <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
             <div class="mt-4 flex flex-wrap gap-3">
-              <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
-              <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/90 text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition">Découvrir nos univers</a>
+              <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition" data-element="bouton-nous-rencontrer">Nous rencontrer</a>
+              <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/90 text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition" data-element="bouton-decouvrir-univers">Découvrir nos univers</a>
             </div>
           </div>
         </div>
         <!-- Desktop Accordion -->
-        <div class="vertical-slider-desktop hidden md:flex">
-          <article class="panel" data-theme="home">
+        <div class="vertical-slider-desktop hidden md:flex" data-element="slider-vertical">
+          <article class="panel" data-theme="home" data-element="panneau-home">
             <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(234,97,26,0.25), rgba(0,0,0,0.55));"></div>
             <div class="collapsed-label" aria-hidden="true">HOME</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
-                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Habitat & Décoration</span>
+                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-14 w-auto" loading="lazy" />
+                <span class="uppercase tracking-[0.3em] text-xs text-white/80" data-element="ruban-home">Habitat & Décoration</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID HOME</h2>
-              <p class="max-w-lg text-base text-white/85">Designer des intérieurs chaleureux, modulaires et responsables pour chaque espace de vie.</p>
+              <h2 class="text-5xl lg:text-6xl font-light tracking-tight">ID HOME</h2>
+              <p class="max-w-lg text-base text-white/85" data-element="texte-home">Designer des intérieurs chaleureux, modulaires et responsables pour chaque espace de vie.</p>
               <div class="flex items-center gap-3">
-                <a href="#home" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
+                <a href="#home" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100" data-element="cta-panel-home">Explorer l'univers</a>
               </div>
             </div>
           </article>
-          <article class="panel" data-theme="pro">
+          <article class="panel" data-theme="pro" data-element="panneau-pro">
             <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(25,63,96,0.35), rgba(0,0,0,0.6));"></div>
             <div class="collapsed-label" aria-hidden="true">PRO</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
-                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Industrie & Bâtiment</span>
+                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-14 w-auto" loading="lazy" />
+                <span class="uppercase tracking-[0.3em] text-xs text-white/80" data-element="ruban-pro">Industrie & Bâtiment</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID PRO</h2>
-              <p class="max-w-lg text-base text-white/85">Optimiser les environnements industriels et tertiaires avec sécurité, efficacité et ergonomie.</p>
+              <h2 class="text-5xl lg:text-6xl font-light tracking-tight">ID PRO</h2>
+              <p class="max-w-lg text-base text-white/85" data-element="texte-pro">Optimiser les environnements industriels et tertiaires avec sécurité, efficacité et ergonomie.</p>
               <div class="flex items-center gap-3">
-                <a href="#pro" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
+                <a href="#pro" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100" data-element="cta-panel-pro">Explorer l'univers</a>
               </div>
             </div>
           </article>
-          <article class="panel" data-theme="agri">
+          <article class="panel" data-theme="agri" data-element="panneau-agri">
             <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
             <div class="collapsed-label" aria-hidden="true">AGRI</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
-                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
+                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-14 w-auto" loading="lazy" />
+                <span class="uppercase tracking-[0.3em] text-xs text-white/80" data-element="ruban-agri">Agriculture & Élevage</span>
               </div>
               <div class="agri-horizontal-label">
                 IDAGRI <span>Durabilité & DAS agricole</span>
               </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID AGRI</h2>
-              <p class="max-w-lg text-base text-white/85">Protéger le vivant et la performance agricole avec des solutions durables et intuitives.</p>
+              <h2 class="text-5xl lg:text-6xl font-light tracking-tight">ID AGRI</h2>
+              <p class="max-w-lg text-base text-white/85" data-element="texte-agri">Protéger le vivant et la performance agricole avec des solutions durables et intuitives.</p>
               <div class="flex items-center gap-3">
-                <a href="#agri" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
+                <a href="#agri" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100" data-element="cta-panel-agri">Explorer l'univers</a>
               </div>
             </div>
           </article>
         </div>
 
         <!-- Mobile Stack -->
-        <div class="md:hidden space-y-4 p-4 bg-white">
+        <div class="md:hidden space-y-4 p-4 bg-white" data-element="bloc-mobile-univers">
           <div class="flex items-center justify-between mb-2">
-            <h2 class="text-lg font-black text-[var(--id-gray-dark)]">Choisissez un univers</h2>
+            <h2 class="text-lg font-semibold text-[var(--id-gray-dark)]" data-element="titre-mobile-univers">Choisissez un univers</h2>
             <div class="flex gap-2" aria-label="Sélection des univers">
-              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-[var(--id-home)] text-white font-bold" data-target="home">HOME</button>
-              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="pro">PRO</button>
-              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="agri">AGRI</button>
+              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-[var(--id-home)] text-white font-semibold" data-target="home" data-element="onglet-home">HOME</button>
+              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-semibold" data-target="pro" data-element="onglet-pro">PRO</button>
+              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-semibold" data-target="agri" data-element="onglet-agri">AGRI</button>
             </div>
           </div>
-          <div class="overflow-hidden rounded-2xl shadow-lg" id="mobile-slider">
-            <article class="mobile-panel" data-id="home">
+          <div class="overflow-hidden rounded-2xl shadow-lg" id="mobile-slider" data-element="slider-mobile">
+            <article class="mobile-panel" data-id="home" data-element="carte-mobile-home">
               <div class="relative h-72">
                 <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(234,97,26,0.35), rgba(0,0,0,0.65));"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Habitat & Décoration</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID HOME</h3>
+                  <h3 class="text-3xl font-semibold tracking-tight">ID HOME</h3>
                   <p class="text-sm text-white/85">Designer des intérieurs chaleureux, modulaires et responsables.</p>
                   <a href="#home" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
               </div>
             </article>
-            <article class="mobile-panel hidden" data-id="pro">
+            <article class="mobile-panel hidden" data-id="pro" data-element="carte-mobile-pro">
               <div class="relative h-72">
                 <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(25,63,96,0.4), rgba(0,0,0,0.65));"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Industrie & Bâtiment</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID PRO</h3>
+                  <h3 class="text-3xl font-semibold tracking-tight">ID PRO</h3>
                   <p class="text-sm text-white/85">Optimiser les environnements industriels et tertiaires.</p>
                   <a href="#pro" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
               </div>
             </article>
-            <article class="mobile-panel hidden" data-id="agri">
+            <article class="mobile-panel hidden" data-id="agri" data-element="carte-mobile-agri">
               <div class="relative h-72">
                 <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
                 <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(124,155,72,0.35), rgba(0,0,0,0.65));"></div>
                 <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto" loading="lazy" />
+                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
                     <span class="text-xs uppercase tracking-[0.3em]">Agriculture & Élevage</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID AGRI</h3>
+                  <h3 class="text-3xl font-semibold tracking-tight">ID AGRI</h3>
                   <p class="text-sm text-white/85">Protéger le vivant et la performance agricole.</p>
                   <a href="#agri" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
                 </div>
@@ -426,61 +471,61 @@
           </div>
         </div>
 
-        <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-indicator" aria-hidden="true" data-element="indicateur-defilement">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6" />
           </svg>
         </div>
       </section>
 
-      <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70">
+      <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70" data-element="section-equipe">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-3">
             <div>
               <p class="text-xs font-bold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre équipe</p>
-              <h2 class="text-3xl font-bold text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
+              <h2 class="text-3xl font-semibold text-[var(--id-gray-dark)]" data-element="titre-equipe">Un collectif qui fait avancer chaque projet</h2>
             </div>
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
           <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
             <div class="team-marquee" aria-label="Carrousel de l'équipe">
               <div class="flex gap-4 px-6 py-5">
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Lina Dupont</p>
                     <p class="text-sm text-white/80 font-medium">Directrice artistique</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-80" alt="Portrait de Karim" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Karim Bensaïd</p>
                     <p class="text-sm text-white/80 font-medium">Chef de projet industriel</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-40" alt="Portrait de Mei" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Mei Laurent</p>
                     <p class="text-sm text-white/80 font-medium">Ingénieure matériaux</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Portrait d'Amélie" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Amélie Roche</p>
                     <p class="text-sm text-white/80 font-medium">Responsable RSE</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait de Julian" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Julian Ferretti</p>
                     <p class="text-sm text-white/80 font-medium">Designer produit</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=700&q=80" alt="Portrait de Sofia" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Sofia Meunier</p>
@@ -489,42 +534,42 @@
                 </div>
               </div>
               <div class="flex gap-4 px-6 py-5" aria-hidden="true">
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Lina Dupont</p>
                     <p class="text-sm text-white/80 font-medium">Directrice artistique</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-80" alt="Portrait de Karim" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Karim Bensaïd</p>
                     <p class="text-sm text-white/80 font-medium">Chef de projet industriel</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-40" alt="Portrait de Mei" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Mei Laurent</p>
                     <p class="text-sm text-white/80 font-medium">Ingénieure matériaux</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Portrait d'Amélie" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Amélie Roche</p>
                     <p class="text-sm text-white/80 font-medium">Responsable RSE</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait de Julian" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Julian Ferretti</p>
                     <p class="text-sm text-white/80 font-medium">Designer produit</p>
                   </div>
                 </div>
-                <div class="team-card group">
+                <div class="team-card group" data-element="carte-equipe">
                   <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=700&q=80" alt="Portrait de Sofia" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
                     <p class="text-lg font-semibold">Sofia Meunier</p>
@@ -537,20 +582,20 @@
         </div>
       </section>
 
-      <section id="croquis" class="bg-white py-16">
+      <section id="croquis" class="bg-white py-16" data-element="section-croquis">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <div class="lg:w-1/2 space-y-4">
+            <div class="lg:w-1/2 space-y-4" data-element="bloc-texte-croquis">
               <span class="text-xs font-bold tracking-[0.25em] text-[var(--id-red)] uppercase">Croquis architecturaux</span>
-              <h2 class="text-3xl sm:text-4xl font-bold text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
+              <h2 class="text-3xl sm:text-4xl font-semibold text-[var(--id-gray-dark)]" data-element="titre-croquis">Cartographier nos solutions par métier</h2>
               <p class="text-base text-gray-700 leading-relaxed font-medium">Chaque verticale dispose d'un plan interactif pour contextualiser nos solutions. Les hotspots révèlent les équipements et services associés à chaque zone clé.</p>
               <div class="flex gap-3">
-                <button class="px-4 py-2 rounded-full bg-[var(--id-pro)] text-white font-medium shadow">ID PRO</button>
-                <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID HOME</button>
-                <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID AGRI</button>
+                <button class="px-4 py-2 rounded-full bg-[var(--id-pro)] text-white font-medium shadow" data-element="badge-id-pro">ID PRO</button>
+                <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium" data-element="badge-id-home">ID HOME</button>
+                <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium" data-element="badge-id-agri">ID AGRI</button>
               </div>
             </div>
-            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden">
+            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden" data-element="plan-croquis">
               <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
               <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-10 w-auto" loading="lazy" />
               <div class="relative h-96">
@@ -570,13 +615,13 @@
       </section>
     </main>
 
-    <footer class="bg-[var(--id-gray-dark)] text-white py-10">
+    <footer class="bg-[var(--id-gray-dark)] text-white py-10" data-element="pied-de-page">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="space-y-3">
+        <div class="space-y-3" data-element="bloc-pied-identite">
           <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" loading="lazy" />
           <p class="text-sm text-white/80">ID GROUP fédère ID HOME, ID PRO et ID AGRI pour concevoir des espaces de vie responsables, performants et durables.</p>
         </div>
-        <div class="space-y-3">
+        <div class="space-y-3" data-element="bloc-liens-legaux">
           <h3 class="text-sm font-black">Liens légaux</h3>
           <ul class="space-y-2 text-sm text-white/80">
             <li><a href="#" class="hover:text-white">Mentions légales</a></li>
@@ -584,7 +629,7 @@
             <li><a href="#" class="hover:text-white">Politique RSE</a></li>
           </ul>
         </div>
-        <div class="space-y-3">
+        <div class="space-y-3" data-element="bloc-coordonnees">
           <h3 class="text-sm font-black">Coordonnées</h3>
           <ul class="space-y-2 text-sm text-white/80">
             <li>+33 (0)1 23 45 67 89</li>
@@ -592,7 +637,7 @@
             <li>Parc d'activités du Vivant, 75000 Paris</li>
           </ul>
         </div>
-        <div class="space-y-3">
+        <div class="space-y-3" data-element="bloc-manifeste">
           <h3 class="text-sm font-black">Manifeste "Soin du Vivant"</h3>
           <p class="text-sm text-white/80">Nous plaçons l'humain, le vivant et la planète au cœur de nos innovations, avec une approche circulaire et durable.</p>
           <button class="px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Découvrir</button>
@@ -659,6 +704,63 @@
         tooltip.classList.remove('hidden');
       });
     });
+
+    const debugTooltip = document.createElement('div');
+    debugTooltip.className = 'debug-tooltip hidden';
+    debugTooltip.setAttribute('aria-live', 'polite');
+    document.body.appendChild(debugTooltip);
+
+    const labeledElements = Array.from(document.querySelectorAll('[data-element]'));
+    let debugModeEnabled = false;
+
+    const clearDebugHighlights = () => {
+      labeledElements.forEach((el) => el.classList.remove('debug-highlight'));
+    };
+
+    const positionDebugTooltip = (event) => {
+      const offset = 14;
+      debugTooltip.style.left = `${event.pageX + offset}px`;
+      debugTooltip.style.top = `${event.pageY + offset}px`;
+    };
+
+    const showDebugTooltip = (event) => {
+      if (!debugModeEnabled) return;
+      const target = event.currentTarget;
+      clearDebugHighlights();
+      target.classList.add('debug-highlight');
+      debugTooltip.textContent = target.dataset.element || target.tagName.toLowerCase();
+      positionDebugTooltip(event);
+      debugTooltip.classList.remove('hidden');
+    };
+
+    const hideDebugTooltip = (event) => {
+      if (!debugModeEnabled) return;
+      if (event?.currentTarget) {
+        event.currentTarget.classList.remove('debug-highlight');
+      }
+      debugTooltip.classList.add('hidden');
+    };
+
+    labeledElements.forEach((el) => {
+      el.addEventListener('mouseenter', showDebugTooltip);
+      el.addEventListener('mousemove', (event) => {
+        if (!debugModeEnabled) return;
+        positionDebugTooltip(event);
+      });
+      el.addEventListener('mouseleave', hideDebugTooltip);
+    });
+
+    const logoDebug = document.querySelector('[data-element="logo-idgroup"]');
+    if (logoDebug) {
+      logoDebug.addEventListener('dblclick', () => {
+        debugModeEnabled = !debugModeEnabled;
+        document.body.classList.toggle('debug-active', debugModeEnabled);
+        if (!debugModeEnabled) {
+          clearDebugHighlights();
+          debugTooltip.classList.add('hidden');
+        }
+      });
+    }
   </script>
 </body>
 </html>
