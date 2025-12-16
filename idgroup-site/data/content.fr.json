@@ -1,0 +1,189 @@
+{
+  "lang": "fr",
+  "meta": {
+    "index": { "title": "ID GROUP | Industriel du quotidien", "description": "Fabricant européen de solutions hygiène, propreté et confort animal." },
+    "solutions": { "title": "Nos solutions | ID GROUP", "description": "Découvrez les univers ID Home, ID Pro et ID Agri et choisissez les bénéfices adaptés." },
+    "id-home": { "title": "ID Home | Confort & hygiène", "description": "Solutions familiales pour un habitat sain et serein." },
+    "id-pro": { "title": "ID Pro | Performance & sécurité", "description": "Solutions professionnelles pour sites exigeants." },
+    "id-agri": { "title": "ID Agri | Bien-être animal", "description": "Solutions agricoles pour la performance durable." },
+    "le-groupe": { "title": "Le Groupe ID", "description": "Mission, histoire et sites industriels ID GROUP." },
+    "rse": { "title": "Nos engagements RSE", "description": "Programme Positiv'ID et engagements responsables." },
+    "actus": { "title": "Actualités ID GROUP", "description": "Les dernières actualités corporate, RSE et innovation." },
+    "article": { "title": "Article | ID GROUP", "description": "Lire nos actualités détaillées." },
+    "contact": { "title": "Contact ID GROUP", "description": "Échangez avec nos équipes commerciales et support." },
+    "espace-client": { "title": "Espace Client | ID GROUP", "description": "Passerelle sécurisée vers l'espace client ID GROUP." }
+  },
+  "nav": {
+    "group": "Le Groupe",
+    "rse": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact",
+    "client": "Espace Client"
+  },
+  "footer": {
+    "title": "Accès rapides",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "map": "Plan du site",
+    "follow": "Nous suivre"
+  },
+  "home": {
+    "heroTitle": "ID GROUP. Industriel du quotidien.",
+    "heroSubtitle": "Des solutions utiles qui rendent les lieux de vie, de travail et d'élevage plus sûrs, plus propres et plus confortables.",
+    "heroCTA": "Découvrir nos solutions",
+    "panels": [
+      { "label": "ID Home", "tagline": "Hygiène et confort pour la maison.", "cta": "Explorer ID Home", "color": "home" },
+      { "label": "ID Pro", "tagline": "Performance et sécurité pour les pros.", "cta": "Explorer ID Pro", "color": "pro" },
+      { "label": "ID Agri", "tagline": "Bien-être animal et productivité.", "cta": "Explorer ID Agri", "color": "agri" }
+    ],
+    "whyTitle": "Pourquoi ID GROUP ?",
+    "why": [
+      { "title": "Fabrication européenne", "text": "Sites industriels maîtrisés, supply chain courte et réactive." },
+      { "title": "Personnalisation", "text": "Des marques et solutions adaptées à vos contextes et usages." },
+      { "title": "Exigence qualité", "text": "Tests terrain, certifications et traçabilité complète." },
+      { "title": "Culture service", "text": "Accompagnement des équipes, formation et support quotidien." },
+      { "title": "RSE concrète", "text": "Programme Positiv'ID, éco-conception et réduction d'impact." }
+    ],
+    "industrialTitle": "Wormhout : savoir-faire industriel",
+    "industrialText": "Un site historique, des lignes agiles et une équipe engagée pour livrer vite et bien.",
+    "industrialStats": [
+      { "label": "Lignes flexibles", "value": "7" },
+      { "label": "Capacité quotidienne", "value": "250k" },
+      { "label": "Livraison France", "value": "48h" }
+    ],
+    "rseTeaserTitle": "Positiv'ID : nos engagements",
+    "rseTeaserText": "Réemploi, baisse des consommations, inclusion locale : découvrez nos actions concrètes.",
+    "newsTitle": "Actualités", 
+    "teamTitle": "Équipe ID GROUP",
+    "teamIntro": "Une équipe pluridisciplinaire qui mixe industrie, design et accompagnement terrain.",
+    "funFactsTitle": "Fun facts",
+    "funFacts": ["Taux de café moulu en interne : 12 kg/mois", "Kilomètres parcourus par l'équipe commerce en 2023 : 210 000", "Nombre de croquis produits pour imaginer ID Home : 148"]
+  },
+  "solutionsHub": {
+    "title": "Nos univers de solutions",
+    "intro": "Choisissez votre univers selon votre contexte : maison, site pro ou élevage. Chaque bénéfice est pensé pour l'usage réel, pas pour gonfler un catalogue.",
+    "cards": [
+      { "id": "home", "title": "ID Home", "text": "Des produits malins pour l'hygiène familiale : absorbants, sécurité, confort.", "cta": "Voir ID Home" },
+      { "id": "pro", "title": "ID Pro", "text": "Des solutions robustes pour sites industriels, tertiaires et collectivités.", "cta": "Voir ID Pro" },
+      { "id": "agri", "title": "ID Agri", "text": "Des dispositifs pensés pour le bien-être animal et la performance des élevages.", "cta": "Voir ID Agri" }
+    ],
+    "pickerTitle": "Choisir votre univers",
+    "picker": [
+      "Vous rénovez un logement ? Optez pour ID Home.",
+      "Vous sécurisez un site sensible ? Optez pour ID Pro.",
+      "Vous accompagnez un élevage ? Optez pour ID Agri."
+    ]
+  },
+  "univers": {
+    "home": {
+      "heroTitle": "ID Home : confort & hygiène du quotidien",
+      "heroText": "Des solutions qui rassurent les familles : surfaces plus propres, gestes plus sûrs, atmosphère plus saine.",
+      "hotspots": [
+        { "id": "living", "label": "Salon", "text": "Absorbants rapides, élimination des odeurs et surfaces nettes sans compromis santé." },
+        { "id": "kitchen", "label": "Cuisine", "text": "Gestes hygiène simplifiés : plans sûrs, stockage malin, déchets contenus." },
+        { "id": "garage", "label": "Garage", "text": "Sécurisation des produits sensibles, rangement, protections et anti-fuite." }
+      ],
+      "cases": [
+        { "title": "Promo habitat nord", "text": "Une coopérative a équipé 120 logements avec nos kits hygiène prêts à poser." },
+        { "title": "Maison passive", "text": "Nos solutions absorbantes limitent les interventions SAV sur des chantiers propres." }
+      ]
+    },
+    "pro": {
+      "heroTitle": "ID Pro : performance & sécurité",
+      "heroText": "Pour les équipes opérationnelles qui doivent sécuriser, nettoyer et maintenir des sites critiques.",
+      "hotspots": [
+        { "id": "dock", "label": "Quai logistique", "text": "Antidérapants et kits absorbants pour limiter les arrêts et incidents." },
+        { "id": "lab", "label": "Zone technique", "text": "Consommables sûrs, traçables et compatibles avec vos protocoles HSE." },
+        { "id": "office", "label": "Espaces partagés", "text": "Solutions discrètes pour préserver confort, propreté et image de marque." }
+      ],
+      "cases": [
+        { "title": "Site pharmaceutique", "text": "Déploiement de stations anti-fuite pour réduire de 30% les arrêts non planifiés." },
+        { "title": "Collectivité", "text": "Mise à niveau des protocoles propreté avec des kits prêts à l'emploi." }
+      ]
+    },
+    "agri": {
+      "heroTitle": "ID Agri : bien-être animal & performance",
+      "heroText": "Des dispositifs fiables pour protéger les élevages, améliorer le confort animal et faciliter la maintenance.",
+      "hotspots": [
+        { "id": "nursery", "label": "Nourrissage", "text": "Supports absorbants pour limiter l'humidité et sécuriser l'hygiène des jeunes animaux." },
+        { "id": "storage", "label": "Stockage", "text": "Protections contre les fuites, rangement clair et accès sécurisé aux consommables." },
+        { "id": "path", "label": "Cheminements", "text": "Zones anti-glisse et signalétique pour des trajets sereins au quotidien." }
+      ],
+      "cases": [
+        { "title": "Élevage laitier", "text": "Moins de glissades grâce à nos tapis techniques posés en 48h." },
+        { "title": "Centre équestre", "text": "Des kits confort box qui améliorent l'expérience cavaliers et chevaux." }
+      ]
+    }
+  },
+  "group": {
+    "heroTitle": "ID GROUP, industriel à taille humaine",
+    "mission": "Imaginer et produire des solutions utiles qui rendent les lieux de vie, de travail et d'élevage plus sûrs et plus simples.",
+    "values": ["Pragmatisme terrain", "Fiabilité industrielle", "Audace créative"],
+    "history": "Depuis Wormhout, nous avons industrialisé des solutions plébiscitées par les utilisateurs et co-construit avec nos partenaires.",
+    "sites": ["Wormhout (59)", "Ateliers partenaires en Europe", "Centre créatif Lille"]
+  },
+  "rse": {
+    "heroTitle": "Positiv'ID : nos engagements", "heroText": "Une démarche responsable qui privilégie l'usage, la sobriété matière et la circularité.",
+    "pillars": [
+      { "title": "Éco-conception", "text": "Réduction matière, matériaux recyclés, produits réparables." },
+      { "title": "Sobriété énergétique", "text": "Optimisation des lignes, énergies renouvelables locales." },
+      { "title": "Impact positif", "text": "Achats responsables, inclusion locale, transparence." }
+    ],
+    "proofs": [
+      { "label": "Taux de matière recyclée", "value": "42%" },
+      { "label": "Réduction consommation eau", "value": "-18%" },
+      { "label": "Fournisseurs région", "value": "68%" }
+    ],
+    "downloads": ["Charte Positiv'ID (PDF)", "Fiches éco-conception", "Indicateurs 2024"]
+  },
+  "contact": {
+    "title": "Parlons de votre besoin",
+    "intro": "Dites-nous qui vous êtes et ce que vous cherchez, nous vous orientons vers l'équipe la plus utile.",
+    "profile": ["Particulier", "Professionnel", "Distributeur"],
+    "universe": ["ID Home", "ID Pro", "ID Agri"],
+    "success": "Merci ! Votre demande est enregistrée. Nous revenons vers vous rapidement.",
+    "submit": "Envoyer"
+  },
+  "news": {
+    "filters": ["Toutes les catégories", "Corporate", "Innovation", "RSE"],
+    "cta": "Lire",
+    "articles": [
+      {
+        "id": "innovation-hygiene",
+        "title": "Un nouveau kit hygiène prêt à l'emploi",
+        "category": "Innovation",
+        "excerpt": "Une solution compacte inspirée de nos clients terrain pour sécuriser les gestes quotidiens.",
+        "date": "2024-03-12",
+        "content": [
+          "Pensé avec des équipes de maintenance et des familles, ce kit combine absorbants, gants et signalétique minimaliste.",
+          "L'objectif : rendre les interventions plus rapides et plus sûres, sans multiplier les références."],
+        "highlight": "Disponible dès maintenant pour les trois univers."
+      },
+      {
+        "id": "rse-empreinte",
+        "title": "Positiv'ID baisse encore son empreinte",
+        "category": "RSE",
+        "excerpt": "Nous partageons nos premiers résultats 2024 : moins d'eau, plus de recyclé et plus d'impact local.",
+        "date": "2024-02-02",
+        "content": ["Grâce à l'optimisation des bains de nettoyage et à l'achat local, nous consolidons notre trajectoire bas carbone.", "Les équipes sont formées pour suivre des indicateurs simples, mis à jour chaque mois."],
+        "highlight": "Nos indicateurs sont publiés en open data interne."
+      },
+      {
+        "id": "partenariat-savoir-faire",
+        "title": "Un partenariat pour renforcer Wormhout",
+        "category": "Corporate",
+        "excerpt": "Investissements dans de nouvelles lignes flexibles et dans la formation des opérateurs.",
+        "date": "2024-01-15",
+        "content": ["Un plan pluriannuel permet d'accélérer la réactivité et d'augmenter la capacité de 15%.", "Les clients bénéficient de délais plus courts et d'une traçabilité renforcée."],
+        "highlight": "Des visites du site seront ouvertes chaque trimestre."
+      }
+    ],
+    "back": "Retour aux actualités"
+  },
+  "espace": {
+    "title": "Espace Client sécurisé",
+    "text": "Accédez à votre portail dédié pour suivre vos commandes, documents et demandes SAV.",
+    "cta": "Se connecter"
+  }
+}

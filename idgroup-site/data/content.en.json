@@ -1,0 +1,187 @@
+{
+  "lang": "en",
+  "meta": {
+    "index": { "title": "ID GROUP | Everyday industry", "description": "European maker of hygiene, cleanliness and animal comfort solutions." },
+    "solutions": { "title": "Solutions | ID GROUP", "description": "Discover ID Home, ID Pro and ID Agri benefits." },
+    "id-home": { "title": "ID Home | Comfort & hygiene", "description": "Family solutions for a healthy home." },
+    "id-pro": { "title": "ID Pro | Performance & safety", "description": "Professional solutions for demanding sites." },
+    "id-agri": { "title": "ID Agri | Animal care", "description": "Agricultural solutions for sustainable performance." },
+    "le-groupe": { "title": "About ID GROUP", "description": "Mission, story and industrial footprint." },
+    "rse": { "title": "CSR commitments", "description": "Positiv'ID roadmap and proofs." },
+    "actus": { "title": "News", "description": "Latest corporate, CSR and innovation stories." },
+    "article": { "title": "Article | ID GROUP", "description": "Read the full story." },
+    "contact": { "title": "Contact ID GROUP", "description": "Talk with our commercial and support teams." },
+    "espace-client": { "title": "Client space", "description": "Secure bridge to the client portal." }
+  },
+  "nav": {
+    "group": "The Group",
+    "rse": "CSR",
+    "solutions": "Solutions",
+    "news": "News",
+    "contact": "Contact",
+    "client": "Client space"
+  },
+  "footer": {
+    "title": "Quick links",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "map": "Site map",
+    "follow": "Follow us"
+  },
+  "home": {
+    "heroTitle": "ID GROUP. Industry that serves daily life.",
+    "heroSubtitle": "Useful solutions that make homes, workplaces and farms safer, cleaner and more comfortable.",
+    "heroCTA": "Explore our solutions",
+    "panels": [
+      { "label": "ID Home", "tagline": "Hygiene and comfort for households.", "cta": "Discover ID Home", "color": "home" },
+      { "label": "ID Pro", "tagline": "Performance and safety for professionals.", "cta": "Discover ID Pro", "color": "pro" },
+      { "label": "ID Agri", "tagline": "Animal comfort and productivity.", "cta": "Discover ID Agri", "color": "agri" }
+    ],
+    "whyTitle": "Why ID GROUP?",
+    "why": [
+      { "title": "European manufacturing", "text": "Owned production lines, short and agile supply chain." },
+      { "title": "Customization", "text": "Brands and solutions adapted to your context and uses." },
+      { "title": "Quality first", "text": "Field tests, certifications and full traceability." },
+      { "title": "Service culture", "text": "Teams coached, trained and supported every day." },
+      { "title": "Concrete CSR", "text": "Positiv'ID program, eco-design and impact reduction." }
+    ],
+    "industrialTitle": "Wormhout industrial craft",
+    "industrialText": "A historic site with agile lines and an engaged team for fast deliveries.",
+    "industrialStats": [
+      { "label": "Flexible lines", "value": "7" },
+      { "label": "Daily capacity", "value": "250k" },
+      { "label": "France delivery", "value": "48h" }
+    ],
+    "rseTeaserTitle": "Positiv'ID commitments",
+    "rseTeaserText": "Reuse, lower consumption, local inclusion: see our concrete moves.",
+    "newsTitle": "News",
+    "teamTitle": "Meet the team",
+    "teamIntro": "A multidisciplinary crew mixing industry, design and field care.",
+    "funFactsTitle": "Fun facts",
+    "funFacts": ["Coffee beans ground each month: 12 kg", "Kilometers driven by sales in 2023: 210,000", "Sketches drawn for ID Home: 148"]
+  },
+  "solutionsHub": {
+    "title": "Solution universes",
+    "intro": "Pick the universe that matches your context. Benefits first, never a product catalogue.",
+    "cards": [
+      { "id": "home", "title": "ID Home", "text": "Smart products for family hygiene: absorbents, safety, comfort.", "cta": "View ID Home" },
+      { "id": "pro", "title": "ID Pro", "text": "Robust solutions for industrial, tertiary and public sites.", "cta": "View ID Pro" },
+      { "id": "agri", "title": "ID Agri", "text": "Devices shaped for animal welfare and farm performance.", "cta": "View ID Agri" }
+    ],
+    "pickerTitle": "Choose your universe",
+    "picker": [
+      "Renovating a home? Choose ID Home.",
+      "Securing a sensitive site? Choose ID Pro.",
+      "Supporting a farm? Choose ID Agri."
+    ]
+  },
+  "univers": {
+    "home": {
+      "heroTitle": "ID Home: daily comfort & hygiene",
+      "heroText": "Solutions that reassure families: cleaner surfaces, safer gestures, healthier air.",
+      "hotspots": [
+        { "id": "living", "label": "Living room", "text": "Fast absorbents, odor control and clean surfaces without health compromises." },
+        { "id": "kitchen", "label": "Kitchen", "text": "Simplified hygiene: safe countertops, smart storage, contained waste." },
+        { "id": "garage", "label": "Garage", "text": "Secured sensitive products, storage, protections and leak control." }
+      ],
+      "cases": [
+        { "title": "Northern housing program", "text": "A cooperative equipped 120 homes with our ready-to-use hygiene kits." },
+        { "title": "Passive house site", "text": "Our absorbent solutions limit after-sales interventions on clean sites." }
+      ]
+    },
+    "pro": {
+      "heroTitle": "ID Pro: performance & safety",
+      "heroText": "For operational teams who secure, clean and maintain critical sites.",
+      "hotspots": [
+        { "id": "dock", "label": "Logistics dock", "text": "Anti-slip and absorbent kits to reduce stops and incidents." },
+        { "id": "lab", "label": "Technical zone", "text": "Safe consumables, traceable and compliant with HSE protocols." },
+        { "id": "office", "label": "Shared spaces", "text": "Discreet solutions to preserve comfort, cleanliness and brand image." }
+      ],
+      "cases": [
+        { "title": "Pharma site", "text": "Deployment of anti-leak stations cutting unplanned stops by 30%." },
+        { "title": "Local authority", "text": "Upgrade of cleanliness protocols with ready-to-use kits." }
+      ]
+    },
+    "agri": {
+      "heroTitle": "ID Agri: animal welfare & performance",
+      "heroText": "Reliable devices to protect farms, improve animal comfort and ease maintenance.",
+      "hotspots": [
+        { "id": "nursery", "label": "Feeding", "text": "Absorbent supports to limit humidity and secure young animals hygiene." },
+        { "id": "storage", "label": "Storage", "text": "Leak protection, clear organization and safe access to consumables." },
+        { "id": "path", "label": "Paths", "text": "Anti-slip areas and signage for serene daily routes." }
+      ],
+      "cases": [
+        { "title": "Dairy farm", "text": "Fewer slips thanks to technical mats installed within 48h." },
+        { "title": "Equestrian center", "text": "Comfort box kits that elevate rider and horse experience." }
+      ]
+    }
+  },
+  "group": {
+    "heroTitle": "ID GROUP, human-sized industry",
+    "mission": "Design and make useful solutions that make living, working and farming places safer and simpler.",
+    "values": ["Field pragmatism", "Industrial reliability", "Creative boldness"],
+    "history": "From Wormhout we industrialized solutions co-built with partners and loved by users.",
+    "sites": ["Wormhout (FR)", "Partner workshops in Europe", "Creative hub Lille"]
+  },
+  "rse": {
+    "heroTitle": "Positiv'ID commitments", "heroText": "A responsible roadmap focused on use, material sobriety and circularity.",
+    "pillars": [
+      { "title": "Eco-design", "text": "Less material, recycled inputs, repairable products." },
+      { "title": "Energy frugality", "text": "Optimized lines, local renewable energy." },
+      { "title": "Positive impact", "text": "Responsible purchasing, local inclusion, transparency." }
+    ],
+    "proofs": [
+      { "label": "Recycled material rate", "value": "42%" },
+      { "label": "Water reduction", "value": "-18%" },
+      { "label": "Regional suppliers", "value": "68%" }
+    ],
+    "downloads": ["Positiv'ID charter (PDF)", "Eco-design sheets", "2024 indicators"]
+  },
+  "contact": {
+    "title": "Tell us about your need",
+    "intro": "Share who you are and what you need, we connect you with the right team.",
+    "profile": ["Individual", "Professional", "Distributor"],
+    "universe": ["ID Home", "ID Pro", "ID Agri"],
+    "success": "Thank you! Your request is saved. We'll reach out shortly.",
+    "submit": "Send"
+  },
+  "news": {
+    "filters": ["All categories", "Corporate", "Innovation", "CSR"],
+    "cta": "Read",
+    "articles": [
+      {
+        "id": "innovation-hygiene",
+        "title": "A new ready-to-use hygiene kit",
+        "category": "Innovation",
+        "excerpt": "A compact solution inspired by field clients to secure daily gestures.",
+        "date": "2024-03-12",
+        "content": ["Built with maintenance teams and families, the kit combines absorbents, gloves and lean signage.", "Goal: faster and safer interventions without multiplying references."],
+        "highlight": "Available now across the three universes."
+      },
+      {
+        "id": "rse-empreinte",
+        "title": "Positiv'ID further lowers its footprint",
+        "category": "CSR",
+        "excerpt": "We share early 2024 results: less water, more recycled inputs and more local impact.",
+        "date": "2024-02-02",
+        "content": ["Thanks to optimized cleaning baths and local sourcing we reinforce our low carbon path.", "Teams are trained to follow simple indicators updated monthly."],
+        "highlight": "Indicators are published in internal open data."
+      },
+      {
+        "id": "partenariat-savoir-faire",
+        "title": "Partnership to strengthen Wormhout",
+        "category": "Corporate",
+        "excerpt": "Investments in new flexible lines and operator training.",
+        "date": "2024-01-15",
+        "content": ["A multi-year plan accelerates responsiveness and lifts capacity by 15%.", "Clients benefit from shorter lead times and reinforced traceability."],
+        "highlight": "Site visits will open every quarter."
+      }
+    ],
+    "back": "Back to news"
+  },
+  "espace": {
+    "title": "Secure client space",
+    "text": "Access your dedicated portal to follow orders, documents and service requests.",
+    "cta": "Log in"
+  }
+}

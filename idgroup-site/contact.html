@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact ID GROUP">
+  <meta property="og:title" content="Contact" />
+  <meta property="og:description" content="Échangez avec ID GROUP" />
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Contact</title>
+</head>
+<body data-page="contact">
+  <header id="site-header"></header>
+  <main class="container">
+    <section class="hero">
+      <p class="badge">Contact</p>
+      <h1 data-i18n="contact.title"></h1>
+      <p data-i18n="contact.intro"></p>
+    </section>
+
+    <section class="section">
+      <form id="contact-form" class="form" novalidate>
+        <label>Nom complet
+          <input class="input" type="text" name="fullname" required>
+        </label>
+        <label>Email
+          <input class="input" type="email" name="email" required>
+        </label>
+        <label>Profil
+          <select id="profile" name="profile" class="select" required></select>
+        </label>
+        <label>Univers
+          <select id="universe" name="universe" class="select" required></select>
+        </label>
+        <label>Votre besoin
+          <textarea class="input" name="message" rows="4" required></textarea>
+        </label>
+        <div id="form-success" class="alert" style="display:none;"></div>
+        <button class="button" type="submit" data-i18n="contact.submit"></button>
+      </form>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

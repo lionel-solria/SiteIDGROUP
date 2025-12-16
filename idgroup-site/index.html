@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ID GROUP, industriel du quotidien.">
+  <meta property="og:title" content="ID GROUP" />
+  <meta property="og:description" content="ID GROUP, industriel du quotidien." />
+  <link rel="stylesheet" href="css/styles.css">
+  <title>ID GROUP</title>
+</head>
+<body data-page="index">
+  <header id="site-header"></header>
+  <main>
+    <section class="hero container">
+      <p class="badge">Sketch mood</p>
+      <h1 data-i18n="home.heroTitle">ID GROUP. Industriel du quotidien.</h1>
+      <p data-i18n="home.heroSubtitle">Des solutions utiles qui rendent les lieux plus sûrs, plus propres et plus confortables.</p>
+      <div class="hero-cta">
+        <a class="button" href="solutions.html" data-i18n="home.heroCTA">Découvrir nos solutions</a>
+        <a class="button secondary" href="espace-client.html" data-i18n="nav.client"></a>
+      </div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section-title" data-i18n="nav.solutions">Nos solutions</h2>
+      <div id="panel-list" class="slider-panels"></div>
+    </section>
+
+    <section class="container section">
+      <h2 data-i18n="home.whyTitle">Pourquoi ID GROUP ?</h2>
+      <div id="why-list" class="grid two"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <div>
+          <h2 data-i18n="home.industrialTitle">Wormhout : savoir-faire industriel</h2>
+          <p data-i18n="home.industrialText"></p>
+        </div>
+        <img src="assets/sketch-placeholder.svg" alt="Croquis industriel" style="max-width:280px;">
+      </div>
+      <div id="industrial-stats" class="stats"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <div>
+          <h2 data-i18n="home.rseTeaserTitle"></h2>
+          <p data-i18n="home.rseTeaserText"></p>
+        </div>
+        <a class="button secondary" href="rse.html">RSE</a>
+      </div>
+      <img src="assets/sketch-placeholder.svg" alt="Croquis RSE" style="border-radius:16px; border:1px solid var(--color-border);">
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <h2 data-i18n="home.newsTitle"></h2>
+        <a class="button secondary" href="actus.html">Voir tout</a>
+      </div>
+      <div id="news-preview" class="news-grid"></div>
+    </section>
+
+    <section class="container section">
+      <div class="section-title">
+        <div>
+          <h2 data-i18n="home.teamTitle"></h2>
+          <p data-i18n="home.teamIntro"></p>
+        </div>
+      </div>
+      <div id="team-cards" class="grid two"></div>
+      <h3 data-i18n="home.funFactsTitle"></h3>
+      <div id="fun-facts" class="grid two"></div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

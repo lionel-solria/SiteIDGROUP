@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ID Pro">
+  <meta property="og:title" content="ID Pro" />
+  <meta property="og:description" content="Solutions professionnelles" />
+  <link rel="stylesheet" href="css/styles.css">
+  <title>ID Pro</title>
+</head>
+<body data-page="id-pro">
+  <header id="site-header"></header>
+  <main class="container">
+    <section class="hero">
+      <p class="badge">Univers</p>
+      <h1 data-hero-title>ID Pro</h1>
+      <p data-hero-text></p>
+      <div class="hero-cta">
+        <a class="button" href="contact.html" data-i18n="nav.contact"></a>
+        <a class="button secondary" href="solutions.html" data-i18n="nav.solutions"></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Par environnement</h2>
+      <div class="hotspot-area">
+        <img src="assets/map-sketch.svg" alt="Plan pro">
+        <button class="hotspot" style="top:52%; left:28%;" data-id="dock">+</button>
+        <button class="hotspot" style="top:40%; left:60%;" data-id="lab">+</button>
+        <button class="hotspot" style="top:62%; left:72%;" data-id="office">+</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Cas clients</h2>
+      <div id="case-studies" class="grid two"></div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop">
+    <div class="modal" role="dialog" aria-modal="true" id="hotspot-modal">
+      <h3 id="modal-title">Zone</h3>
+      <p id="modal-body"></p>
+      <div class="actions">
+        <button class="button secondary" data-close-modal>Fermer</button>
+        <a class="button" href="contact.html" data-i18n="nav.contact"></a>
+      </div>
+    </div>
+  </div>
+  <footer id="site-footer"></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
