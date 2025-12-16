@@ -6,7 +6,7 @@
   <title>ID GROUP V2 | Espaces de Vie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -32,7 +32,7 @@
       padding: 0.85rem 0.85rem;
       border-radius: 999px;
       color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
     .nav-link::after {
       content: "";
@@ -50,7 +50,8 @@
     .nav-link:hover {
       color: #e41e28;
       background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(228, 30, 40, 0.08);
     }
     .nav-link:hover::after {
       opacity: 1;
@@ -89,7 +90,7 @@
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: 1.8rem;
+      font-size: 2.4rem;
       pointer-events: none;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
@@ -116,6 +117,101 @@
     .panel:hover .panel-trigger {
       transform: translateY(-4px);
     }
+    .logo-hover {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .logo-hover:hover,
+    .logo-hover:focus {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+    .hero-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.75));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      animation: float 10s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .hero-headline {
+      font-weight: 700;
+    }
+    .hero-subcopy {
+      font-weight: 400;
+    }
+    .idagri-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 1.15rem;
+    }
+    .team-ticker {
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 1.25rem;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .team-ticker:hover .ticker-track {
+      animation-play-state: paused;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-card {
+      position: relative;
+      width: 220px;
+      height: 140px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .ticker-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    }
+    .ticker-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05);
+    }
+    .ticker-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.1));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .ticker-card:hover .ticker-overlay,
+    .ticker-card:focus .ticker-overlay {
+      opacity: 1;
+    }
+    .ticker-info {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
     .hotspot {
       width: 14px;
       height: 14px;
@@ -137,23 +233,38 @@
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
         <div class="flex items-center gap-3">
-          <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
-          <div class="hidden sm:flex flex-col">
-            <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
-            <span class="text-sm font-semibold text-gray-900">Espaces de Vie 360°</span>
-          </div>
+          <a href="index.html" class="inline-flex items-center gap-3 focus:outline-none focus:ring-2 focus:ring-[var(--id-red)] focus:ring-offset-2 focus:ring-offset-white rounded-lg">
+            <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow logo-hover" loading="lazy" />
+            <div class="hidden sm:flex flex-col">
+              <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
+              <span class="text-sm font-semibold text-gray-900">Slogan en cours</span>
+            </div>
+          </a>
         </div>
         <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
-          <a href="#mission" class="nav-link">LE GROUPE</a>
-          <a href="#engagements" class="nav-link">NOS ENGAGEMENTS</a>
-          <a href="#home" class="nav-link">ID HOME</a>
-          <a href="#pro" class="nav-link">ID PRO</a>
-          <a href="#agri" class="nav-link">ID AGRI</a>
-          <a href="#actualites" class="nav-link">ACTUALITÉS</a>
-          <a href="#contact" class="nav-link">CONTACT</a>
+          <a href="groupe.html" class="nav-link">LE GROUPE</a>
+          <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
+          <a href="id-home.html" class="nav-link">ID HOME</a>
+          <a href="id-pro.html" class="nav-link">ID PRO</a>
+          <a href="id-agri.html" class="nav-link">ID AGRI</a>
+          <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
+          <a href="contact.html" class="nav-link">CONTACT</a>
         </nav>
         <div class="flex items-center gap-3">
-          <button class="px-5 py-2.5 text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-[var(--id-red-cta)] to-[var(--id-red)] hover:shadow-[0_15px_35px_rgba(228,30,40,0.35)] transition-all duration-300">ESPACE CLIENT</button>
+          <div class="relative">
+            <select aria-label="Changer de langue" class="appearance-none bg-gray-100 text-gray-800 text-sm font-semibold pl-4 pr-9 py-2 rounded-full shadow focus:ring-2 focus:ring-[var(--id-red)] focus:outline-none">
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+              <option value="es">ES</option>
+            </select>
+            <span class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">🌐</span>
+          </div>
+          <button class="inline-flex items-center justify-center h-11 w-11 rounded-full border border-gray-200 text-[var(--id-gray-dark)] shadow hover:shadow-lg transition bg-white" aria-label="Accéder à l'espace client">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a5 5 0 100-10 5 5 0 000 10z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 21a8 8 0 1116 0" />
+            </svg>
+          </button>
           <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
             <span class="sr-only">Ouvrir le menu</span>
             ☰
@@ -165,10 +276,10 @@
     <main class="flex-1">
       <section class="relative" aria-label="Héros vertical">
         <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-6 py-5 max-w-3xl border border-white/70">
+          <div class="pointer-events-auto hero-card rounded-2xl px-6 py-5 max-w-3xl">
             <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
-            <h1 class="text-4xl lg:text-5xl font-black text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
-            <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
+            <h1 class="text-4xl lg:text-5xl hero-headline text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
+            <p class="mt-3 text-base text-gray-700 max-w-2xl hero-subcopy">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
             <div class="mt-4 flex flex-wrap gap-3">
               <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
               <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition">Découvrir nos univers</a>
@@ -218,9 +329,12 @@
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
             <div class="collapsed-label" aria-hidden="true">AGRI</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
+                  <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
+                </div>
+                <span class="idagri-chip">ID AGRI • DAS</span>
               </div>
               <h2 class="text-4xl lg:text-5xl font-black">ID AGRI</h2>
               <p class="max-w-lg text-base text-white/85">Protéger le vivant et la performance agricole avec des solutions durables et intuitives.</p>
@@ -287,6 +401,79 @@
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.3em] text-[var(--id-red)]">Rencontrez nos équipes</p>
+              <h2 class="text-3xl font-black text-[var(--id-gray-dark)]">Les visages derrière ID GROUP</h2>
+            </div>
+            <p class="text-sm text-gray-600 max-w-xl">Un carrousel continu qui s'arrête au survol : explorez les équipes projet, design et terrain qui portent nos innovations.</p>
+          </div>
+          <div class="team-ticker" aria-label="Carrousel des équipes ID GROUP">
+            <div class="ticker-track">
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Portrait membre équipe" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Direction</span>
+                  <span class="ticker-info">Emma Laurent — CEO</span>
+                </div>
+              </article>
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Chef de projet" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Projet</span>
+                  <span class="ticker-info">Anis Dupont — Chef de projet</span>
+                </div>
+              </article>
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=800&q=80" alt="Designer" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Design</span>
+                  <span class="ticker-info">Lina Moreau — Lead designer</span>
+                </div>
+              </article>
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Équipe chantier" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Chantier</span>
+                  <span class="ticker-info">Équipe terrain — Installation</span>
+                </div>
+              </article>
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80" alt="Consultante" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Conseil</span>
+                  <span class="ticker-info">Sonia Ribeiro — Consultante RSE</span>
+                </div>
+              </article>
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=80" alt="Support client" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Support</span>
+                  <span class="ticker-info">Lucas Bernard — Support clients</span>
+                </div>
+              </article>
+              <!-- duplication pour effet continu -->
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Chef de projet" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Projet</span>
+                  <span class="ticker-info">Anis Dupont — Chef de projet</span>
+                </div>
+              </article>
+              <article class="ticker-card" tabindex="0">
+                <img src="https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?auto=format&fit=crop&w=800&q=80" alt="Designer" loading="lazy" />
+                <div class="ticker-overlay">
+                  <span class="text-xs uppercase tracking-[0.25em] text-white/70">Design</span>
+                  <span class="ticker-info">Lina Moreau — Lead designer</span>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
