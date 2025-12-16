@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "group": "Le Groupe",
+    "rse": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact",
+    "client": "Espace Client"
+  },
+  "hero": {
+    "title": "ID GROUP, l'expert industriel humaniste dédié au soin du vivant",
+    "subtitle": "Des solutions sur-mesure pour sécuriser les environnements de la maison, de l'entreprise et de la ferme."
+  },
+  "cta": {
+    "talk": "Parler à un expert",
+    "discover": "Découvrir"
+  },
+  "footer": {
+    "sitemap": "Plan du site",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "follow": "Suivez-nous",
+    "languages": "Langues"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "submit": "Envoyer la demande"
+  }
+}

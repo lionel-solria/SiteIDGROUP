@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f7f7f5;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sketch-border {
+  border: 1.5px solid #0f172a;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+.sketch-underline {
+  position: relative;
+}
+
+.sketch-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, rgba(249,115,22,0.35), rgba(37,99,235,0.35), rgba(22,163,74,0.35));
+  transform: rotate(-1deg);
+}
+
+.hero-pattern {
+  background: repeating-linear-gradient(
+      -45deg,
+      rgba(15, 23, 42, 0.05),
+      rgba(15, 23, 42, 0.05) 6px,
+      transparent 6px,
+      transparent 14px
+    ),
+    #fff;
+}
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-slate-900;
+}

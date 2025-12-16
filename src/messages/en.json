@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "group": "About",
+    "rse": "Impact & ESG",
+    "solutions": "Solutions",
+    "news": "News",
+    "contact": "Contact",
+    "client": "Client Portal"
+  },
+  "hero": {
+    "title": "ID GROUP, human-first industrial expert caring for living environments",
+    "subtitle": "Tailored solutions to secure homes, workplaces and farms."
+  },
+  "cta": {
+    "talk": "Talk to an expert",
+    "discover": "Discover"
+  },
+  "footer": {
+    "sitemap": "Sitemap",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "follow": "Follow us",
+    "languages": "Languages"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "submit": "Send request"
+  }
+}

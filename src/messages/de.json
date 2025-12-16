@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "group": "Die Gruppe",
+    "rse": "Engagements",
+    "solutions": "Lösungen",
+    "news": "Aktuelles",
+    "contact": "Kontakt",
+    "client": "Kundenportal"
+  },
+  "hero": {
+    "title": "ID GROUP, industrieller Experte mit Fokus auf das Lebendige",
+    "subtitle": "Maßgeschneiderte Lösungen für sichere Häuser, Arbeitsplätze und Höfe."
+  },
+  "cta": {
+    "talk": "Mit einem Experten sprechen",
+    "discover": "Entdecken"
+  },
+  "footer": {
+    "sitemap": "Seitenplan",
+    "legal": "Impressum",
+    "privacy": "Datenschutz",
+    "follow": "Folgen Sie uns",
+    "languages": "Sprachen"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "submit": "Anfrage senden"
+  }
+}
