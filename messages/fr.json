@@ -1,0 +1,71 @@
+{
+  "site": {
+    "title": "ID GROUP | Industrie attentive au vivant",
+    "description": "Solutions industrielles et d'accompagnement pour habitats, bâtiments professionnels et exploitations agricoles.",
+    "ctaClient": "Espace Client"
+  },
+  "nav": {
+    "group": "Le Groupe",
+    "commitments": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact"
+  },
+  "footer": {
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "sitemap": "Plan du site"
+  },
+  "hero": {
+    "title": "Expert industriel humaniste",
+    "subtitle": "Nous concevons des environnements qui protègent, rassurent et dynamisent ceux qui y vivent et y travaillent.",
+    "panels": {
+      "home": {
+        "title": "ID Home",
+        "lead": "Confort et hygiène pour les espaces de vie.",
+        "cta": "Découvrir l'univers Home"
+      },
+      "pro": {
+        "title": "ID Pro",
+        "lead": "Performance et sécurité pour les bâtiments professionnels.",
+        "cta": "Découvrir l'univers Pro"
+      },
+      "agri": {
+        "title": "ID Agri",
+        "lead": "Bien-être animal et rendement durable.",
+        "cta": "Découvrir l'univers Agri"
+      }
+    }
+  },
+  "why": {
+    "title": "Pourquoi choisir ID GROUP ?"
+  },
+  "wormhout": {
+    "title": "Wormhout, notre savoir-faire industriel",
+    "description": "Un site de production intégré, réactif et engagé, pour prototyper et livrer rapidement des solutions sur-mesure."
+  },
+  "rse": {
+    "title": "RSE / Positiv'ID",
+    "cta": "Voir nos engagements"
+  },
+  "news": {
+    "title": "Actualités & Inspirations",
+    "cta": "Toutes les actualités"
+  },
+  "team": {
+    "title": "Équipe & Fun facts"
+  },
+  "universes": {
+    "ctaExpert": "Parler à un expert",
+    "ctaClient": "Accéder à l'Espace Client",
+    "hotspots": "Zones clés"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "submit": "Envoyer"
+  },
+  "clientSpace": {
+    "title": "Espace Client",
+    "description": "Portail sécurisé (Phase 2) : commandes, documents et support personnalisé."
+  }
+}

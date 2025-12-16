@@ -1,0 +1,39 @@
+{
+  "site": {
+    "title": "ID GROUP | Engagierte Industrie",
+    "description": "Industrielle Lösungen für Wohnen, Arbeiten und Landwirtschaft mit menschlicher Haltung.",
+    "ctaClient": "Kundenportal"
+  },
+  "nav": {
+    "group": "Die Gruppe",
+    "commitments": "Engagements",
+    "solutions": "Lösungen",
+    "news": "News",
+    "contact": "Kontakt"
+  },
+  "footer": {
+    "legal": "Rechtliche Hinweise",
+    "privacy": "Datenschutz",
+    "sitemap": "Sitemap"
+  },
+  "hero": {
+    "title": "Industrie mit Menschlichkeit",
+    "subtitle": "Wir gestalten Umgebungen, die schützen, beruhigen und Energie geben.",
+    "panels": {
+      "home": {"title": "ID Home", "lead": "Komfort und Hygiene für Wohnräume.", "cta": "Home entdecken"},
+      "pro": {"title": "ID Pro", "lead": "Performance und Sicherheit für Gewerbebauten.", "cta": "Pro entdecken"},
+      "agri": {"title": "ID Agri", "lead": "Tierwohl und nachhaltiger Ertrag.", "cta": "Agri entdecken"}
+    }
+  },
+  "why": {"title": "Warum ID GROUP?"},
+  "wormhout": {
+    "title": "Wormhout, unser industrielles Know-how",
+    "description": "Ein integrierter, reaktiver Standort, um maßgeschneiderte Lösungen schnell zu liefern."
+  },
+  "rse": {"title": "CSR / Positiv'ID", "cta": "Unsere Verpflichtungen"},
+  "news": {"title": "News & Inspiration", "cta": "Alle News"},
+  "team": {"title": "Team & Fun Facts"},
+  "universes": {"ctaExpert": "Mit einem Experten sprechen", "ctaClient": "Zum Kundenportal", "hotspots": "Schlüsselzonen"},
+  "contact": {"title": "Kontakt", "submit": "Senden"},
+  "clientSpace": {"title": "Kundenportal", "description": "Sicheres Portal (Phase 2): Bestellungen, Dokumente und Support."}
+}

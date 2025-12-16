@@ -1,0 +1,51 @@
+{
+  "site": {
+    "title": "ID GROUP | Caring industry",
+    "description": "Industrial solutions for homes, workplaces and farms with a human touch.",
+    "ctaClient": "Client portal"
+  },
+  "nav": {
+    "group": "About",
+    "commitments": "Commitments",
+    "solutions": "Solutions",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "footer": {
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "sitemap": "Sitemap"
+  },
+  "hero": {
+    "title": "Human-centered industrial expert",
+    "subtitle": "We design environments that protect, reassure and energize the people who live and work in them.",
+    "panels": {
+      "home": {
+        "title": "ID Home",
+        "lead": "Comfort and hygiene for living spaces.",
+        "cta": "Explore Home"
+      },
+      "pro": {
+        "title": "ID Pro",
+        "lead": "Performance and safety for professional buildings.",
+        "cta": "Explore Pro"
+      },
+      "agri": {
+        "title": "ID Agri",
+        "lead": "Animal welfare and sustainable yield.",
+        "cta": "Explore Agri"
+      }
+    }
+  },
+  "why": {"title": "Why ID GROUP?"},
+  "wormhout": {
+    "title": "Wormhout, our industrial craft",
+    "description": "An integrated, responsive site to prototype and deliver tailored solutions fast."
+  },
+  "rse": {"title": "CSR / Positiv'ID", "cta": "See our commitments"},
+  "news": {"title": "News & Inspiration", "cta": "All news"},
+  "team": {"title": "Team & fun facts"},
+  "universes": {"ctaExpert": "Talk to an expert", "ctaClient": "Go to client portal", "hotspots": "Key zones"},
+  "contact": {"title": "Contact us", "submit": "Send"},
+  "clientSpace": {"title": "Client portal", "description": "Secure portal (Phase 2): orders, documents and tailored support."}
+}

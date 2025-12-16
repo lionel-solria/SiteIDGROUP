@@ -1,0 +1,26 @@
+{
+  "name": "siteidgroup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prototype Next.js trilingue pour le site corporate ID GROUP",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.10",
+    "next-intl": "3.17.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.4",
+    "@types/react": "18.3.10",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.13",
+    "typescript": "5.6.3"
+  }
+}
