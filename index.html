@@ -27,12 +27,24 @@
       font-family: "Trade Gothic Next LT Pro", Impact, "Arial Black", sans-serif;
       letter-spacing: -0.02em;
     }
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.2rem 0.35rem;
+      border-radius: 9999px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo-link:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+    }
     .nav-link {
       position: relative;
       padding: 0.85rem 0.85rem;
       border-radius: 999px;
       color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
     .nav-link::after {
       content: "";
@@ -49,8 +61,9 @@
     }
     .nav-link:hover {
       color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
+      background: linear-gradient(90deg, rgba(228, 30, 40, 0.08), rgba(228, 30, 40, 0.04));
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 8px 25px rgba(228, 30, 40, 0.12);
     }
     .nav-link:hover::after {
       opacity: 1;
@@ -89,8 +102,14 @@
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       pointer-events: none;
+    }
+    .panel[data-theme="agri"] .collapsed-label {
+      writing-mode: horizontal-tb;
+      font-size: 2.4rem;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.22em;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
       opacity: 0;
@@ -130,30 +149,66 @@
       transform: scale(1.1);
       background: var(--id-red-cta);
     }
+    .hero-bloc {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.4));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+    .team-marquee {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .team-marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body class="antialiased">
   <div class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
+        <a href="index.html" class="logo-link focus:outline-none focus:ring-2 focus:ring-[var(--id-red)] focus:ring-offset-2 focus:ring-offset-white">
           <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
-          <div class="hidden sm:flex flex-col">
+          <div class="hidden sm:flex flex-col text-left">
             <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
-            <span class="text-sm font-semibold text-gray-900">Espaces de Vie 360°</span>
+            <span class="text-sm text-gray-400 italic">Slogan en cours</span>
           </div>
-        </div>
+        </a>
         <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
-          <a href="#mission" class="nav-link">LE GROUPE</a>
-          <a href="#engagements" class="nav-link">NOS ENGAGEMENTS</a>
-          <a href="#home" class="nav-link">ID HOME</a>
-          <a href="#pro" class="nav-link">ID PRO</a>
-          <a href="#agri" class="nav-link">ID AGRI</a>
-          <a href="#actualites" class="nav-link">ACTUALITÉS</a>
-          <a href="#contact" class="nav-link">CONTACT</a>
+          <a href="groupe.html" class="nav-link">LE GROUPE</a>
+          <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
+          <a href="home.html" class="nav-link">ID HOME</a>
+          <a href="pro.html" class="nav-link">ID PRO</a>
+          <a href="agri.html" class="nav-link">ID AGRI</a>
+          <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
+          <a href="contact.html" class="nav-link">CONTACT</a>
         </nav>
-        <div class="flex items-center gap-3">
-          <button class="px-5 py-2.5 text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-[var(--id-red-cta)] to-[var(--id-red)] hover:shadow-[0_15px_35px_rgba(228,30,40,0.35)] transition-all duration-300">ESPACE CLIENT</button>
+        <div class="flex items-center gap-2">
+          <button class="inline-flex items-center justify-center h-11 w-11 rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm hover:shadow-md transition" aria-label="Accès espace client">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A8 8 0 0112 15a8 8 0 016.879 2.804M15 9a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+          <div class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-full bg-gray-100 text-gray-700 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 0c-3.866 0-7 2.239-7 5v1h14v-1c0-2.761-3.134-5-7-5z" />
+            </svg>
+            <select aria-label="Sélecteur de langue" class="bg-transparent focus:outline-none font-semibold">
+              <option>FR</option>
+              <option>EN</option>
+              <option>ES</option>
+            </select>
+          </div>
           <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
             <span class="sr-only">Ouvrir le menu</span>
             ☰
@@ -165,9 +220,9 @@
     <main class="flex-1">
       <section class="relative" aria-label="Héros vertical">
         <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-6 py-5 max-w-3xl border border-white/70">
-            <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
-            <h1 class="text-4xl lg:text-5xl font-black text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
+          <div class="pointer-events-auto hero-bloc backdrop-blur-md rounded-2xl px-6 py-5 max-w-3xl">
+            <p class="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
+            <h1 class="text-4xl lg:text-5xl font-light text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="font-semibold text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
             <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
             <div class="mt-4 flex flex-wrap gap-3">
               <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
@@ -216,7 +271,7 @@
           <article class="panel" data-theme="agri">
             <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
-            <div class="collapsed-label" aria-hidden="true">AGRI</div>
+            <div class="collapsed-label" aria-hidden="true">ID AGRI — DAS</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
                 <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
@@ -287,6 +342,114 @@
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="equipe" class="bg-white/90 py-14 border-y border-white/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div class="flex items-center justify-between flex-wrap gap-3">
+            <div class="space-y-2">
+              <p class="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--id-red)]">Rencontrez nos talents</p>
+              <h2 class="text-3xl font-black text-[var(--id-gray-dark)]">Les équipes qui font vivre nos univers</h2>
+            </div>
+            <p class="text-sm text-gray-600 max-w-xl">Survolez une personne pour découvrir son rôle. Le carrousel s'interrompt automatiquement pour vous laisser le temps de lire.</p>
+          </div>
+          <div class="team-marquee">
+            <div class="marquee-track">
+              <div class="group relative shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600">
+                <div class="absolute inset-0 opacity-70 bg-[url('images/ImageIDHome.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <p class="text-lg font-bold">Camille</p>
+                  <p class="text-sm text-white/80">Design d'intérieur</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/65 text-white opacity-0 group-hover:opacity-100 transition">
+                  <div class="text-center space-y-1">
+                    <p class="text-sm uppercase tracking-[0.25em] text-white/70">ID HOME</p>
+                    <p class="text-lg font-semibold">Camille Dupuis</p>
+                    <p class="text-sm text-white/80">Lead designer & expérience client</p>
+                  </div>
+                </div>
+              </div>
+              <div class="group relative shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600">
+                <div class="absolute inset-0 opacity-70 bg-[url('images/ImageIDPro.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <p class="text-lg font-bold">Samir</p>
+                  <p class="text-sm text-white/80">Ingénierie</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/65 text-white opacity-0 group-hover:opacity-100 transition">
+                  <div class="text-center space-y-1">
+                    <p class="text-sm uppercase tracking-[0.25em] text-white/70">ID PRO</p>
+                    <p class="text-lg font-semibold">Samir Benali</p>
+                    <p class="text-sm text-white/80">Chef de projet industrie & sûreté</p>
+                  </div>
+                </div>
+              </div>
+              <div class="group relative shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-700 via-gray-600 to-gray-500">
+                <div class="absolute inset-0 opacity-70 bg-[url('images/ImageIDAgri.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <p class="text-lg font-bold">Léna</p>
+                  <p class="text-sm text-white/80">Agronomie</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/65 text-white opacity-0 group-hover:opacity-100 transition">
+                  <div class="text-center space-y-1">
+                    <p class="text-sm uppercase tracking-[0.25em] text-white/70">ID AGRI</p>
+                    <p class="text-lg font-semibold">Léna Morel</p>
+                    <p class="text-sm text-white/80">Responsable DAS & bien-être animal</p>
+                  </div>
+                </div>
+              </div>
+              <div class="group relative shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600">
+                <div class="absolute inset-0 opacity-70 bg-gradient-to-br from-[var(--id-red)] via-gray-900 to-gray-800"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <p class="text-lg font-bold">Alex</p>
+                  <p class="text-sm text-white/80">Digital</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/65 text-white opacity-0 group-hover:opacity-100 transition">
+                  <div class="text-center space-y-1">
+                    <p class="text-sm uppercase tracking-[0.25em] text-white/70">ID GROUP</p>
+                    <p class="text-lg font-semibold">Alex Nguyen</p>
+                    <p class="text-sm text-white/80">Product owner & expérience digitale</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Duplication pour effet infini -->
+              <div class="group relative shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-800 via-gray-700 to-gray-600">
+                <div class="absolute inset-0 opacity-70 bg-[url('images/ImageIDHome.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <p class="text-lg font-bold">Camille</p>
+                  <p class="text-sm text-white/80">Design d'intérieur</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/65 text-white opacity-0 group-hover:opacity-100 transition">
+                  <div class="text-center space-y-1">
+                    <p class="text-sm uppercase tracking-[0.25em] text-white/70">ID HOME</p>
+                    <p class="text-lg font-semibold">Camille Dupuis</p>
+                    <p class="text-sm text-white/80">Lead designer & expérience client</p>
+                  </div>
+                </div>
+              </div>
+              <div class="group relative shrink-0 w-48 h-48 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-900 via-gray-800 to-gray-600">
+                <div class="absolute inset-0 opacity-70 bg-[url('images/ImageIDPro.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <p class="text-lg font-bold">Samir</p>
+                  <p class="text-sm text-white/80">Ingénierie</p>
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center bg-black/65 text-white opacity-0 group-hover:opacity-100 transition">
+                  <div class="text-center space-y-1">
+                    <p class="text-sm uppercase tracking-[0.25em] text-white/70">ID PRO</p>
+                    <p class="text-lg font-semibold">Samir Benali</p>
+                    <p class="text-sm text-white/80">Chef de projet industrie & sûreté</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
