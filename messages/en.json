@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Home",
+    "group": "About",
+    "commitments": "Commitments",
+    "solutions": "Solutions",
+    "news": "News",
+    "contact": "Contact",
+    "clientArea": "Client Portal",
+    "rse": "CSR",
+    "univers": {
+      "home": "ID Home",
+      "pro": "ID Pro",
+      "agri": "ID Agri"
+    }
+  },
+  "hero": {
+    "title": "Human-centered industrial expert",
+    "subtitle": "We secure, care for and boost Home, Pro and Agri environments with responsible solutions.",
+    "cta": "Explore our universes",
+    "panels": {
+      "home": "Comfort & hygiene for living spaces",
+      "pro": "Performance and safety for industrial sites",
+      "agri": "Animal care and robust farm buildings"
+    }
+  },
+  "why": {
+    "title": "Why ID GROUP",
+    "subtitle": "A solution-driven approach mixing responsible design, local manufacturing and expert guidance."
+  },
+  "wormhout": {
+    "title": "Wormhout: our industrial craft",
+    "body": "An integrated workshop to prototype fast, test in real life and industrialize without compromising quality.",
+    "metrics": "Deliveries in 7 days on average"
+  },
+  "rse": {
+    "title": "CSR / Positiv’ID",
+    "subtitle": "Transparent gauges to track our impact.",
+    "cta": "Discover the program"
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Blog, case studies and group life."
+  },
+  "team": {
+    "title": "Team & fun facts",
+    "subtitle": "Field experts who speak solutions before products."
+  },
+  "univers": {
+    "heroCta": "Talk to an expert",
+    "hotspots": "Key areas",
+    "stories": "Success stories"
+  },
+  "groupPage": {
+    "title": "The Group",
+    "mission": "We build industrial solutions that care for people and living ecosystems.",
+    "values": ["Field mindset", "Trust", "Responsiveness", "Positive impact"],
+    "sites": "Wormhout (North) and Alpespace (Savoie) orchestrate our production and tests.",
+    "brands": "ID Home, ID Pro, ID Agri: three universes, one standard."
+  },
+  "rsePage": {
+    "title": "Our CSR commitments",
+    "intro": "Positiv’ID program: measure, reduce and share our impacts.",
+    "downloads": "Certificates & resources",
+    "cta": "Download the CSR kit"
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Describe your need, we will route you to the right expert.",
+    "profile": "Your profile",
+    "need": "Your need",
+    "universe": "Target universe",
+    "submit": "Send"
+  },
+  "clientArea": {
+    "title": "Client Portal",
+    "body": "Secured access for our clients and partners. Use your SSO or reach support to request an invite.",
+    "cta": "Log in"
+  },
+  "notFound": "Page not found"
+}

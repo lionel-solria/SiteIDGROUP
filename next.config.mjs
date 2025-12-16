@@ -1,0 +1,17 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin({
+  defaultLocale: 'fr',
+  locales: ['fr', 'en', 'de'],
+});
+
+const nextConfig = {
+  reactStrictMode: true,
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+  },
+};
+
+export default withNextIntl(nextConfig);

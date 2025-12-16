@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "group": "Le Groupe",
+    "commitments": "Nos engagements",
+    "solutions": "Nos solutions",
+    "news": "Actualités",
+    "contact": "Contact",
+    "clientArea": "Espace Client",
+    "rse": "RSE",
+    "univers": {
+      "home": "ID Home",
+      "pro": "ID Pro",
+      "agri": "ID Agri"
+    }
+  },
+  "hero": {
+    "title": "Expert industriel humaniste",
+    "subtitle": "Nous sécurisons, confortons et accompagnons les environnements Home, Pro et Agri avec des solutions responsables.",
+    "cta": "Découvrir nos univers",
+    "panels": {
+      "home": "Confort & hygiène des espaces de vie",
+      "pro": "Performance et sécurité des sites industriels",
+      "agri": "Bien-être animal et robustesse agricole"
+    }
+  },
+  "why": {
+    "title": "Pourquoi ID GROUP",
+    "subtitle": "Une approche solution qui associe design responsable, fabrication locale et accompagnement expert."
+  },
+  "wormhout": {
+    "title": "Wormhout : notre savoir-faire industriel",
+    "body": "Un atelier intégré pour prototyper vite, tester en conditions réelles et industrialiser sans compromis sur la qualité.",
+    "metrics": "Livraisons sous 7 jours en moyenne"
+  },
+  "rse": {
+    "title": "RSE / Positiv’ID",
+    "subtitle": "Des indicateurs transparents pour suivre notre impact.",
+    "cta": "Explorer la démarche"
+  },
+  "news": {
+    "title": "Actualités",
+    "subtitle": "Blog, cas clients et vie du groupe."
+  },
+  "team": {
+    "title": "Équipe & fun facts",
+    "subtitle": "Des experts terrain qui parlent solutions avant produits."
+  },
+  "univers": {
+    "heroCta": "Parler à un expert",
+    "hotspots": "Zones clés",
+    "stories": "Success stories"
+  },
+  "groupPage": {
+    "title": "Le Groupe",
+    "mission": "Nous créons des solutions industrielles qui prennent soin du vivant et des opérateurs.",
+    "values": ["Sens du terrain", "Confiance", "Réactivité", "Impact positif"],
+    "sites": "Wormhout (Nord) et Alpespace (Savoie) orchestrent nos productions et tests.",
+    "brands": "ID Home, ID Pro, ID Agri : trois univers, une même exigence."
+  },
+  "rsePage": {
+    "title": "Nos engagements RSE",
+    "intro": "Programme Positiv’ID : mesurer, réduire et partager nos impacts.",
+    "downloads": "Certificats & ressources",
+    "cta": "Télécharger le kit RSE"
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Décrivez votre besoin, nous orienterons le bon expert.",
+    "profile": "Votre profil",
+    "need": "Votre besoin",
+    "universe": "Univers ciblé",
+    "submit": "Envoyer"
+  },
+  "clientArea": {
+    "title": "Espace Client",
+    "body": "Accès sécurisé réservé à nos clients et partenaires. Connectez-vous via votre SSO ou contactez notre support pour être invité.",
+    "cta": "Se connecter"
+  },
+  "notFound": "Page introuvable"
+}

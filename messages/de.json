@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "group": "Gruppe",
+    "commitments": "Engagements",
+    "solutions": "Lösungen",
+    "news": "Aktuelles",
+    "contact": "Kontakt",
+    "clientArea": "Kundenportal",
+    "rse": "CSR",
+    "univers": {
+      "home": "ID Home",
+      "pro": "ID Pro",
+      "agri": "ID Agri"
+    }
+  },
+  "hero": {
+    "title": "Humanistischer Industriepartner",
+    "subtitle": "Wir sichern, begleiten und stärken Home-, Pro- und Agri-Umgebungen mit verantwortungsvollen Lösungen.",
+    "cta": "Unsere Universen entdecken",
+    "panels": {
+      "home": "Komfort & Hygiene für Lebensräume",
+      "pro": "Performance und Sicherheit für Industrieanlagen",
+      "agri": "Tierwohl und robuste Landwirtschaftsbauten"
+    }
+  },
+  "why": {
+    "title": "Warum ID GROUP",
+    "subtitle": "Eine lösungsorientierte Haltung mit verantwortungsvollem Design, lokaler Fertigung und Expertenbegleitung."
+  },
+  "wormhout": {
+    "title": "Wormhout: unser industrielles Know-how",
+    "body": "Eine integrierte Werkstatt, um schnell zu prototypisieren, real zu testen und ohne Qualitätskompromisse zu industrialisieren.",
+    "metrics": "Lieferungen im Durchschnitt in 7 Tagen"
+  },
+  "rse": {
+    "title": "CSR / Positiv’ID",
+    "subtitle": "Transparente Kennzahlen zur Nachverfolgung unserer Wirkung.",
+    "cta": "Die Initiative ansehen"
+  },
+  "news": {
+    "title": "Aktuelles",
+    "subtitle": "Blog, Kundenfälle und Gruppenleben."
+  },
+  "team": {
+    "title": "Team & Fun Facts",
+    "subtitle": "Feldexpert:innen, die zuerst über Lösungen sprechen."
+  },
+  "univers": {
+    "heroCta": "Mit einer Expert:in sprechen",
+    "hotspots": "Schlüsselzonen",
+    "stories": "Success Stories"
+  },
+  "groupPage": {
+    "title": "Die Gruppe",
+    "mission": "Wir entwickeln industrielle Lösungen, die Menschen und lebendige Ökosysteme schützen.",
+    "values": ["Praxisnah", "Vertrauen", "Reaktivität", "Positiver Impact"],
+    "sites": "Wormhout (Nord) und Alpespace (Savoyen) steuern Produktion und Tests.",
+    "brands": "ID Home, ID Pro, ID Agri: drei Universen, ein Anspruch."
+  },
+  "rsePage": {
+    "title": "Unsere CSR-Verpflichtungen",
+    "intro": "Programm Positiv’ID: Messen, reduzieren und teilen unserer Wirkungen.",
+    "downloads": "Zertifikate & Ressourcen",
+    "cta": "CSR-Kit herunterladen"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "intro": "Beschreiben Sie Ihren Bedarf, wir verbinden Sie mit der richtigen Person.",
+    "profile": "Ihr Profil",
+    "need": "Ihr Bedarf",
+    "universe": "Ziel-Universum",
+    "submit": "Senden"
+  },
+  "clientArea": {
+    "title": "Kundenportal",
+    "body": "Gesicherter Zugang für unsere Kund:innen und Partner. Nutzen Sie Ihr SSO oder fragen Sie den Support nach einer Einladung.",
+    "cta": "Einloggen"
+  },
+  "notFound": "Seite nicht gefunden"
+}
