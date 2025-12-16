@@ -32,7 +32,7 @@
       padding: 0.85rem 0.85rem;
       border-radius: 999px;
       color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     }
     .nav-link::after {
       content: "";
@@ -50,7 +50,8 @@
     .nav-link:hover {
       color: #e41e28;
       background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     }
     .nav-link:hover::after {
       opacity: 1;
@@ -67,11 +68,44 @@
     .logo-link:focus-visible img {
       transform: scale(1.06);
     }
+    a.inline-flex,
+    button,
+    .panel,
+    .panel-trigger,
+    .mobile-tab,
+    .team-card,
+    .hotspot,
+    .hero-intro {
+      transition: transform 0.28s ease, box-shadow 0.28s ease, background-color 0.28s ease, color 0.28s ease, opacity 0.28s ease;
+    }
+    a.inline-flex:hover,
+    a.inline-flex:focus-visible,
+    button:hover,
+    button:focus-visible,
+    .panel:hover,
+    .panel:focus-within,
+    .panel-trigger:hover,
+    .panel-trigger:focus-visible,
+    .mobile-tab:hover,
+    .mobile-tab:focus-visible,
+    .team-card:hover,
+    .team-card:focus-visible,
+    .hotspot:hover,
+    .hotspot:focus-visible,
+    .hero-intro:hover,
+    .hero-intro:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.12);
+      outline: none;
+    }
     .vertical-slider-desktop {
       min-height: calc(100vh - 110px);
+      height: 78vh;
+      max-height: 920px;
     }
     .vertical-slider-desktop .panel {
       flex: 0.9 1 0%;
+      height: 100%;
       transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
       filter: grayscale(0.1) saturate(1.05);
       position: relative;
@@ -100,8 +134,16 @@
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: 2.35rem;
+      font-size: 3.4rem;
+      line-height: 1;
       pointer-events: none;
+    }
+    .vertical-slider-desktop .panel img,
+    #mobile-slider .mobile-panel img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      display: block;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
       opacity: 0;
@@ -160,14 +202,15 @@
       letter-spacing: 0.04em;
     }
     .hero-intro {
-      background: linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.45));
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.08);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
     }
     .hero-intro:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.12);
+      transform: translateY(-6px);
+      box-shadow: 0 32px 96px rgba(0, 0, 0, 0.16);
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.52));
     }
     .team-marquee {
       display: flex;
@@ -208,6 +251,42 @@
       transition: opacity 0.25s ease;
     }
     .team-card:hover .team-overlay { opacity: 1; }
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.6);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.9);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+      backdrop-filter: blur(10px);
+      animation: floaty 1.8s ease-in-out infinite, pulseGlow 2.6s ease-in-out infinite;
+    }
+    .scroll-indicator svg {
+      width: 18px;
+      height: 18px;
+      animation: arrowBounce 1.4s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -8px); }
+    }
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(6px); opacity: 0.6; }
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24), 0 0 0 0 rgba(255, 255, 255, 0.25); }
+      70% { box-shadow: 0 14px 38px rgba(0, 0, 0, 0.24), 0 0 0 10px rgba(255, 255, 255, 0); }
+      100% { box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24), 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -255,18 +334,14 @@
     <main class="flex-1">
       <section class="relative" aria-label="Héros vertical">
         <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl">
+            <div class="pointer-events-auto hero-intro rounded-2xl px-6 py-5 max-w-3xl">
             <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
-            <h1 class="text-4xl lg:text-5xl font-semibold text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
+            <h1 class="text-4xl lg:text-5xl font-medium text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
             <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
             <div class="mt-4 flex flex-wrap gap-3">
               <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
               <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/90 text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition">Découvrir nos univers</a>
             </div>
-          </div>
-          <div class="pointer-events-none hidden xl:flex flex-col items-center text-white/80 text-xs uppercase tracking-[0.35em]">
-            <span class="h-16 w-px bg-white/50 mb-2"></span>
-            <span>Scroll</span>
           </div>
         </div>
         <!-- Desktop Accordion -->
@@ -382,6 +457,11 @@
             </article>
           </div>
         </div>
+        <div class="scroll-indicator" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-5.5-5.5M12 20l5.5-5.5" />
+          </svg>
+        </div>
       </section>
 
       <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70">
@@ -389,7 +469,7 @@
           <div class="flex items-center justify-between flex-wrap gap-3">
             <div>
               <p class="text-xs font-bold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre équipe</p>
-              <h2 class="text-3xl font-black text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
+              <h2 class="text-3xl font-semibold text-[var(--id-gray-dark)]">Un collectif qui fait avancer chaque projet</h2>
             </div>
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
@@ -399,42 +479,42 @@
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Lina Dupont</p>
+                    <p class="text-lg font-semibold">Lina Dupont</p>
                     <p class="text-sm text-white/80">Directrice artistique</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-80" alt="Portrait de Karim" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Karim Bensaïd</p>
+                    <p class="text-lg font-semibold">Karim Bensaïd</p>
                     <p class="text-sm text-white/80">Chef de projet industriel</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-40" alt="Portrait de Mei" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Mei Laurent</p>
+                    <p class="text-lg font-semibold">Mei Laurent</p>
                     <p class="text-sm text-white/80">Ingénieure matériaux</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Portrait d'Amélie" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Amélie Roche</p>
+                    <p class="text-lg font-semibold">Amélie Roche</p>
                     <p class="text-sm text-white/80">Responsable RSE</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait de Julian" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Julian Ferretti</p>
+                    <p class="text-lg font-semibold">Julian Ferretti</p>
                     <p class="text-sm text-white/80">Designer produit</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=700&q=80" alt="Portrait de Sofia" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Sofia Meunier</p>
+                    <p class="text-lg font-semibold">Sofia Meunier</p>
                     <p class="text-sm text-white/80">Lead innovation</p>
                   </div>
                 </div>
@@ -443,42 +523,42 @@
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Lina Dupont</p>
+                    <p class="text-lg font-semibold">Lina Dupont</p>
                     <p class="text-sm text-white/80">Directrice artistique</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-80" alt="Portrait de Karim" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Karim Bensaïd</p>
+                    <p class="text-lg font-semibold">Karim Bensaïd</p>
                     <p class="text-sm text-white/80">Chef de projet industriel</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-40" alt="Portrait de Mei" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Mei Laurent</p>
+                    <p class="text-lg font-semibold">Mei Laurent</p>
                     <p class="text-sm text-white/80">Ingénieure matériaux</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Portrait d'Amélie" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Amélie Roche</p>
+                    <p class="text-lg font-semibold">Amélie Roche</p>
                     <p class="text-sm text-white/80">Responsable RSE</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait de Julian" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Julian Ferretti</p>
+                    <p class="text-lg font-semibold">Julian Ferretti</p>
                     <p class="text-sm text-white/80">Designer produit</p>
                   </div>
                 </div>
                 <div class="team-card group">
                   <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=700&q=80" alt="Portrait de Sofia" class="h-52 w-60 object-cover" loading="lazy" />
                   <div class="team-overlay">
-                    <p class="text-lg font-bold">Sofia Meunier</p>
+                    <p class="text-lg font-semibold">Sofia Meunier</p>
                     <p class="text-sm text-white/80">Lead innovation</p>
                   </div>
                 </div>
@@ -493,7 +573,7 @@
           <div class="flex flex-col lg:flex-row gap-8 items-start">
             <div class="lg:w-1/2 space-y-4">
               <span class="text-xs font-bold tracking-[0.25em] text-[var(--id-red)] uppercase">Croquis architecturaux</span>
-              <h2 class="text-3xl sm:text-4xl font-black text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
+              <h2 class="text-3xl sm:text-4xl font-semibold text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
               <p class="text-base text-gray-700 leading-relaxed">Chaque verticale dispose d'un plan interactif pour contextualiser nos solutions. Les hotspots révèlent les équipements et services associés à chaque zone clé.</p>
               <div class="flex gap-3">
                 <button class="px-4 py-2 rounded-full bg-[var(--id-pro)] text-white font-semibold shadow">ID PRO</button>
