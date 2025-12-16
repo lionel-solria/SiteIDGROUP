@@ -32,7 +32,8 @@
       padding: 0.85rem 0.85rem;
       border-radius: 999px;
       color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      letter-spacing: 0.02em;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
     .nav-link::after {
       content: "";
@@ -50,7 +51,8 @@
     .nav-link:hover {
       color: #e41e28;
       background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.06);
     }
     .nav-link:hover::after {
       opacity: 1;
@@ -89,7 +91,7 @@
       color: rgba(255, 255, 255, 0.38);
       text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: 1.8rem;
+      font-size: 2.25rem;
       pointer-events: none;
     }
     .vertical-slider-desktop .panel.active .collapsed-label {
@@ -130,30 +132,173 @@
       transform: scale(1.1);
       background: var(--id-red-cta);
     }
+
+    .logo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .logo-link img {
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .logo-link:hover img {
+      transform: scale(1.06);
+      filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.12));
+    }
+    .logo-tagline {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.35em;
+      color: #6b7280;
+    }
+    .client-button {
+      height: 44px;
+      width: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #fff;
+      color: #1f2937;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+    .client-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+      border-color: rgba(228, 30, 40, 0.35);
+      color: var(--id-red);
+    }
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #1b2230;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+    .language-switcher:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+    }
+    .hero-subtitle {
+      font-weight: 300;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 1rem;
+      padding: 0.35rem 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(6px);
+    }
+    .ticker-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: scroll 28s linear infinite;
+      gap: 1rem;
+    }
+    .ticker-wrapper:hover .ticker-track {
+      animation-play-state: paused;
+    }
+    .team-card {
+      position: relative;
+      flex: 0 0 auto;
+      width: 220px;
+      background: #fff;
+      border-radius: 1.25rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .team-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+    }
+    .team-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.55));
+      opacity: 0;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      transition: opacity 0.3s ease;
+    }
+    .team-card:hover .team-overlay,
+    .team-card:focus-within .team-overlay {
+      opacity: 1;
+    }
+    .avatar-placeholder {
+      height: 160px;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+      color: #1f2937;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .agri-horizontal {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.72);
+      color: #4b5563;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(6px);
+    }
   </style>
 </head>
 <body class="antialiased">
   <div class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
-        <div class="flex items-center gap-3">
+        <a href="index.html" class="flex items-center gap-3 logo-link">
           <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
           <div class="hidden sm:flex flex-col">
-            <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
-            <span class="text-sm font-semibold text-gray-900">Espaces de Vie 360°</span>
+            <span class="logo-tagline">ID GROUP</span>
+            <span class="text-sm font-semibold text-gray-400">Slogan à définir</span>
           </div>
-        </div>
+        </a>
         <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
-          <a href="#mission" class="nav-link">LE GROUPE</a>
-          <a href="#engagements" class="nav-link">NOS ENGAGEMENTS</a>
-          <a href="#home" class="nav-link">ID HOME</a>
-          <a href="#pro" class="nav-link">ID PRO</a>
-          <a href="#agri" class="nav-link">ID AGRI</a>
-          <a href="#actualites" class="nav-link">ACTUALITÉS</a>
-          <a href="#contact" class="nav-link">CONTACT</a>
+          <a href="groupe.html" class="nav-link">LE GROUPE</a>
+          <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
+          <a href="id-home.html" class="nav-link">ID HOME</a>
+          <a href="id-pro.html" class="nav-link">ID PRO</a>
+          <a href="id-agri.html" class="nav-link">ID AGRI</a>
+          <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
+          <a href="contact.html" class="nav-link">CONTACT</a>
         </nav>
         <div class="flex items-center gap-3">
-          <button class="px-5 py-2.5 text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-[var(--id-red-cta)] to-[var(--id-red)] hover:shadow-[0_15px_35px_rgba(228,30,40,0.35)] transition-all duration-300">ESPACE CLIENT</button>
+          <button class="language-switcher" aria-label="Changer de langue">
+            🌐 <span class="hidden sm:inline">FR</span>
+          </button>
+          <a href="client.html" class="client-button" aria-label="Espace client">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A9 9 0 0112 15a9 9 0 016.879 2.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </a>
           <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
             <span class="sr-only">Ouvrir le menu</span>
             ☰
@@ -166,9 +311,9 @@
       <section class="relative" aria-label="Héros vertical">
         <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
           <div class="pointer-events-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-6 py-5 max-w-3xl border border-white/70">
-            <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
+            <p class="hero-subtitle text-xs font-semibold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
             <h1 class="text-4xl lg:text-5xl font-black text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
-            <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
+            <p class="mt-3 text-base text-gray-700 max-w-2xl font-light">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
             <div class="mt-4 flex flex-wrap gap-3">
               <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
               <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition">Découvrir nos univers</a>
@@ -217,6 +362,7 @@
             <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
             <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
             <div class="collapsed-label" aria-hidden="true">AGRI</div>
+            <div class="agri-horizontal" aria-hidden="true">ID AGRI · DAS AGRICULTURE</div>
             <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
               <div class="flex items-center gap-3">
                 <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
@@ -287,6 +433,97 @@
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white/60 backdrop-blur-sm border-y border-white/50 py-12" aria-label="Carrousel équipe">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.3em] text-[var(--id-red)] mb-1">Les visages d'ID Group</p>
+              <h3 class="text-2xl sm:text-3xl font-black text-[var(--id-gray-dark)]">Une équipe engagée pour des projets durables</h3>
+            </div>
+            <div class="hidden sm:flex items-center gap-2 text-sm text-gray-600">
+              <span class="h-9 w-9 grid place-items-center rounded-full bg-white shadow">⏯</span>
+              <span class="h-9 w-9 grid place-items-center rounded-full bg-white shadow">⟳</span>
+            </div>
+          </div>
+          <div class="ticker-wrapper" role="list" aria-label="Portraits de l'équipe">
+            <div class="ticker-track">
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">M. MARTIN</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Marie Martin</p>
+                    <p class="text-xs text-white/80">Directrice Créative</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">J. DUPONT</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Julien Dupont</p>
+                    <p class="text-xs text-white/80">Lead UX & Innovation</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">ÉQUIPE PRO</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Équipe ID PRO</p>
+                    <p class="text-xs text-white/80">Ingénieurs terrain</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">AGRI LAB</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Cellule AGRI LAB</p>
+                    <p class="text-xs text-white/80">Experts R&D agro</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">HOME</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Studio ID HOME</p>
+                    <p class="text-xs text-white/80">Designers d'intérieur</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">SUPPORT</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Support Client</p>
+                    <p class="text-xs text-white/80">Accompagnement 360°</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">M. MARTIN</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Marie Martin</p>
+                    <p class="text-xs text-white/80">Directrice Créative</p>
+                  </div>
+                </div>
+              </article>
+              <article class="team-card" role="listitem" tabindex="0">
+                <div class="avatar-placeholder">J. DUPONT</div>
+                <div class="team-overlay">
+                  <div>
+                    <p class="text-sm font-bold">Julien Dupont</p>
+                    <p class="text-xs text-white/80">Lead UX & Innovation</p>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
