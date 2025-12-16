@@ -3,158 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ID GROUP V2 | Espaces de Vie</title>
+  <title>ID GROUP V3 | Espaces de Vie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --id-red: #e41e28;
-      --id-red-cta: #de0c1a;
-      --id-gray-dark: #1b2230;
-      --id-gray-neutral: #ededed;
-      --id-home: #ea611a;
-      --id-pro: #193f60;
-      --id-agri: #7c9b48;
+      --id-marine: #0a1b3a;
+      --id-marine-2: #10274f;
+      --id-elec: #a6ff3b;
+      --id-elec-strong: #c3ff63;
+      --id-soft: #ecf2ff;
+      --id-ink: #0d1424;
+      --id-white: #f8fbff;
     }
+
     body {
-      font-family: "Avenir", "Nunito", "Sans-serif";
-      background-color: var(--id-gray-neutral);
-      color: var(--id-gray-dark);
+      font-family: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--id-soft);
+      color: var(--id-ink);
     }
+
     h1, h2, h3, h4, h5, h6 {
-      font-family: "Trade Gothic Next LT Pro", Impact, "Arial Black", sans-serif;
       letter-spacing: -0.02em;
     }
+
     .nav-link {
       position: relative;
-      padding: 0.85rem 0.85rem;
+      padding: 0.85rem 0.9rem;
       border-radius: 999px;
-      color: #1b2230;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+      color: #e6edff;
+      transition: color 0.3s ease, background 0.3s ease, transform 0.25s ease;
     }
+
     .nav-link::after {
       content: "";
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 6px;
+      left: 12px;
+      right: 12px;
+      bottom: 8px;
       height: 3px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #e41e28, #de0c1a);
+      background: linear-gradient(90deg, var(--id-elec), var(--id-elec-strong));
       opacity: 0;
       transform: translateY(4px);
       transition: opacity 0.25s ease, transform 0.25s ease;
     }
+
     .nav-link:hover {
-      color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
+      color: var(--id-elec);
+      background: rgba(166, 255, 59, 0.08);
+      transform: translateY(-2px);
     }
-    .nav-link:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .vertical-slider-desktop {
-      min-height: calc(100vh - 110px);
-    }
-    .vertical-slider-desktop .panel {
-      flex: 0.9 1 0%;
-      transition: flex 0.6s ease, filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-      filter: grayscale(0.1) saturate(1.05);
-      position: relative;
-      overflow: hidden;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    }
-    .vertical-slider-desktop .panel:not(.active) {
-      filter: grayscale(0.35) brightness(0.9);
-    }
-    .vertical-slider-desktop .panel.active {
-      flex: 2.8 1 0%;
-      filter: grayscale(0) brightness(1.05);
-      transform: translateZ(0);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-    }
-    .collapsed-label {
-      position: absolute;
-      inset: 0;
-      display: flex;
+
+    .nav-link:hover::after { opacity: 1; transform: translateY(0); }
+
+    .btn-primary {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      writing-mode: vertical-rl;
-      text-transform: uppercase;
-      letter-spacing: 0.3em;
+      gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      border-radius: 14px;
+      background: linear-gradient(120deg, var(--id-elec), var(--id-elec-strong));
+      color: #0b1b3a;
       font-weight: 800;
-      color: rgba(255, 255, 255, 0.38);
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 15px 45px rgba(166, 255, 59, 0.3);
+      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+    }
+
+    .btn-primary:hover { transform: scale(1.02) translateY(-1px); box-shadow: 0 22px 55px rgba(166, 255, 59, 0.38); filter: saturate(1.1); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.4rem;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      color: #f8fbff;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: transform 180ms ease, border-color 200ms ease, background 200ms ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-secondary:hover { transform: scale(1.02) translateY(-1px); border-color: var(--id-elec); background: rgba(255,255,255,0.08); }
+
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 15%, rgba(255,255,255,0.08), transparent 40%),
+                  radial-gradient(circle at 80% 40%, rgba(166,255,59,0.18), transparent 38%),
+                  linear-gradient(145deg, rgba(16,39,79,0.75), rgba(10,27,58,0.9));
+      z-index: 1;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: 120% 120%;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease, transform 18s ease;
+      transform: scale(1.06);
+    }
+
+    .hero-slide.active { opacity: 1; transform: scale(1); }
+
+    .glass-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); box-shadow: 0 25px 80px rgba(0,0,0,0.35); backdrop-filter: blur(12px); }
+
+    .section-shell { position: relative; overflow: hidden; }
+
+    .section-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 85% 10%, rgba(166,255,59,0.08), transparent 32%),
+                  radial-gradient(circle at 15% 70%, rgba(16,39,79,0.07), transparent 36%);
       pointer-events: none;
     }
-    .vertical-slider-desktop .panel.active .collapsed-label {
-      opacity: 0;
-      transform: translateY(10px);
+
+    .mask-word {
+      font-size: clamp(4rem, 14vw, 9rem);
+      font-weight: 900;
+      line-height: 0.85;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+      -webkit-text-stroke: 1px rgba(255,255,255,0.35);
+      letter-spacing: 0.08em;
+      position: relative;
+      overflow: hidden;
     }
-    .panel-content {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      pointer-events: none;
+
+    .mask-word.with-image {
+      color: transparent;
+      -webkit-text-stroke: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      -webkit-background-clip: text;
+      background-clip: text;
+      opacity: 0.9;
+      filter: saturate(1.05) contrast(1.05);
     }
-    .vertical-slider-desktop .panel.active .panel-content {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+
+    .parallax-letter { transition: transform 0.5s ease; }
+
+    .card-grid article { transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+    .card-grid article:hover { transform: translateY(-6px); box-shadow: 0 18px 45px rgba(10,27,58,0.24); border-color: rgba(166,255,59,0.5); }
+
+    .case-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .case-card:hover { transform: translateY(-8px); box-shadow: 0 14px 34px rgba(10,27,58,0.25); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .timeline-step::before {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      top: 1.6rem;
+      bottom: -1.6rem;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(166,255,59,0.35), rgba(166,255,59,0));
     }
-    .panel-overlay {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.6) 100%);
-    }
-    .panel-trigger {
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    .panel:hover .panel-trigger {
-      transform: translateY(-4px);
-    }
-    .hotspot {
-      width: 14px;
-      height: 14px;
-      border-radius: 9999px;
-      border: 2px solid #fff;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-      cursor: pointer;
-      background: var(--id-red);
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-    .hotspot:hover {
-      transform: scale(1.1);
-      background: var(--id-red-cta);
-    }
+
+    .timeline-step:last-child::before { display: none; }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-[var(--id-soft)]">
   <div class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+    <header class="sticky top-0 z-50 bg-[rgba(10,27,58,0.82)] backdrop-blur-2xl border-b border-white/10 shadow-[0_12px_30px_rgba(0,0,0,0.25)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
         <div class="flex items-center gap-3">
           <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto drop-shadow" loading="lazy" />
-          <div class="hidden sm:flex flex-col">
-            <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
-            <span class="text-sm font-semibold text-gray-900">Espaces de Vie 360°</span>
+          <div class="hidden sm:flex flex-col text-white">
+            <span class="text-[11px] uppercase tracking-[0.36em] text-white/60">ID GROUP</span>
+            <span class="text-sm font-semibold">Espaces de Vie 360°</span>
           </div>
         </div>
-        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
-          <a href="#mission" class="nav-link">LE GROUPE</a>
-          <a href="#engagements" class="nav-link">NOS ENGAGEMENTS</a>
+        <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-3 text-sm font-semibold">
+          <a href="#hero" class="nav-link">Accueil</a>
+          <a href="#promesse" class="nav-link">Promesse</a>
           <a href="#home" class="nav-link">ID HOME</a>
           <a href="#pro" class="nav-link">ID PRO</a>
           <a href="#agri" class="nav-link">ID AGRI</a>
-          <a href="#actualites" class="nav-link">ACTUALITÉS</a>
-          <a href="#contact" class="nav-link">CONTACT</a>
+          <a href="#preuves" class="nav-link">Solutions</a>
+          <a href="#cas" class="nav-link">Cas clients</a>
         </nav>
         <div class="flex items-center gap-3">
-          <button class="px-5 py-2.5 text-sm font-bold text-white rounded-full shadow-lg bg-gradient-to-r from-[var(--id-red-cta)] to-[var(--id-red)] hover:shadow-[0_15px_35px_rgba(228,30,40,0.35)] transition-all duration-300">ESPACE CLIENT</button>
-          <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
+          <button class="btn-primary hidden sm:inline-flex">Espace Client</button>
+          <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/10 text-white shadow border border-white/10" aria-label="Ouvrir le menu mobile">
             <span class="sr-only">Ouvrir le menu</span>
             ☰
           </button>
@@ -163,127 +209,208 @@
     </header>
 
     <main class="flex-1">
-      <section class="relative" aria-label="Héros vertical">
-        <div class="absolute inset-x-4 md:inset-x-8 top-6 z-20 hidden md:flex items-start justify-between pointer-events-none">
-          <div class="pointer-events-auto bg-white/80 backdrop-blur-md rounded-2xl shadow-xl px-6 py-5 max-w-3xl border border-white/70">
-            <p class="text-xs font-bold uppercase tracking-[0.35em] text-[var(--id-red)] mb-2">Solutions durables</p>
-            <h1 class="text-4xl lg:text-5xl font-black text-[var(--id-gray-dark)] leading-tight">Imaginez des espaces <span class="text-[var(--id-red)]">modulaires</span> et responsables à 360°.</h1>
-            <p class="mt-3 text-base text-gray-700 max-w-2xl">ID GROUP orchestre ID HOME, ID PRO et ID AGRI pour offrir des expériences immersives où le design, la performance et le vivant se rejoignent.</p>
-            <div class="mt-4 flex flex-wrap gap-3">
-              <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--id-red)] text-white font-bold shadow-lg hover:bg-[var(--id-red-cta)] transition">Nous rencontrer</a>
-              <a href="#home" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:shadow-lg transition">Découvrir nos univers</a>
+      <section id="hero" class="relative overflow-hidden bg-[var(--id-marine)] text-white">
+        <div class="absolute inset-0 hero-bg">
+          <div class="hero-slide active" style="background-image: url('images/ImageIDHome.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('images/ImageIDPro.jpg');"></div>
+          <div class="hero-slide" style="background-image: url('images/ImageIDAgri.jpg');"></div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[rgba(10,27,58,0.4)] via-[rgba(10,27,58,0.6)] to-[rgba(10,27,58,0.92)]"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-28">
+          <div class="grid lg:grid-cols-12 gap-10 items-end">
+            <div class="lg:col-span-7 space-y-6">
+              <p class="text-xs sm:text-sm uppercase tracking-[0.4em] text-[var(--id-elec)] font-extrabold">Ambiance 2025 · Bleu marine & Vert électrique</p>
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">Des espaces modulaires, <span class="text-[var(--id-elec)]">vivants</span> et toujours en mouvement.</h1>
+              <p class="text-lg text-white/80 max-w-2xl">ID GROUP orchestre HOME, PRO et AGRI pour créer des expériences immersives où le design, la performance et le vivant se rencontrent. Des volumes asymétriques, des aplats généreux, des micro-animations au service du récit.</p>
+              <div class="flex flex-wrap gap-3">
+                <a class="btn-primary" href="#contact">Planifier une démo</a>
+                <a class="btn-secondary" href="#home">Explorer nos univers</a>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-white/80">
+                <div class="glass-card rounded-2xl p-4">
+                  <p class="text-[var(--id-elec)] font-black text-xl">+180</p>
+                  <p class="font-semibold">projets livrés</p>
+                </div>
+                <div class="glass-card rounded-2xl p-4">
+                  <p class="text-[var(--id-elec)] font-black text-xl">4.8/5</p>
+                  <p class="font-semibold">satisfaction client</p>
+                </div>
+                <div class="glass-card rounded-2xl p-4">
+                  <p class="text-[var(--id-elec)] font-black text-xl">-32%</p>
+                  <p class="font-semibold">empreinte carbone</p>
+                </div>
+                <div class="glass-card rounded-2xl p-4">
+                  <p class="text-[var(--id-elec)] font-black text-xl">360°</p>
+                  <p class="font-semibold">conception & suivi</p>
+                </div>
+              </div>
+            </div>
+            <div class="lg:col-span-5 flex flex-col gap-4">
+              <div class="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.35)]">
+                <div class="flex items-center justify-between gap-4 mb-3">
+                  <div class="flex items-center gap-3">
+                    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--id-elec)] text-[var(--id-marine)] font-black text-xl">∞</span>
+                    <p class="text-sm uppercase tracking-[0.24em] text-white/70">Ken Burns / Vidéo lente</p>
+                  </div>
+                  <div class="flex items-center gap-1 text-xs text-white/60">
+                    <span class="h-2 w-2 rounded-full bg-[var(--id-elec)]"></span>
+                    <span class="h-2 w-2 rounded-full bg-white/40"></span>
+                    <span class="h-2 w-2 rounded-full bg-white/25"></span>
+                  </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl h-52 bg-gradient-to-br from-[rgba(166,255,59,0.12)] to-transparent">
+                  <div class="absolute inset-0 mix-blend-screen opacity-80" style="background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.14), transparent 45%), radial-gradient(circle at 80% 40%, rgba(166,255,59,0.2), transparent 40%), linear-gradient(135deg, rgba(10,27,58,0.4), rgba(16,39,79,0.75));"></div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <p class="text-center text-white/80 max-w-xs text-sm leading-relaxed">Hero immersif, grille asymétrique, CTA contrastés, micro-interactions : une scène qui donne le ton.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3 text-xs uppercase tracking-[0.28em] text-white/60">
+                <span class="h-px flex-1 bg-white/20 self-center"></span>
+                <span>Scroll pour l'histoire</span>
+                <span class="h-px flex-1 bg-white/20 self-center"></span>
+              </div>
             </div>
           </div>
-          <div class="pointer-events-none hidden xl:flex flex-col items-center text-white/80 text-xs uppercase tracking-[0.35em]">
-            <span class="h-16 w-px bg-white/50 mb-2"></span>
-            <span>Scroll</span>
-          </div>
         </div>
-        <!-- Desktop Accordion -->
-        <div class="vertical-slider-desktop hidden md:flex">
-          <article class="panel" data-theme="home">
-            <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(234,97,26,0.25), rgba(0,0,0,0.55));"></div>
-            <div class="collapsed-label" aria-hidden="true">HOME</div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Habitat & Décoration</span>
-              </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID HOME</h2>
-              <p class="max-w-lg text-base text-white/85">Designer des intérieurs chaleureux, modulaires et responsables pour chaque espace de vie.</p>
-              <div class="flex items-center gap-3">
-                <a href="#home" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
-              </div>
-            </div>
-          </article>
-          <article class="panel" data-theme="pro">
-            <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(25,63,96,0.35), rgba(0,0,0,0.6));"></div>
-            <div class="collapsed-label" aria-hidden="true">PRO</div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Industrie & Bâtiment</span>
-              </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID PRO</h2>
-              <p class="max-w-lg text-base text-white/85">Optimiser les environnements industriels et tertiaires avec sécurité, efficacité et ergonomie.</p>
-              <div class="flex items-center gap-3">
-                <a href="#pro" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
-              </div>
-            </div>
-          </article>
-          <article class="panel" data-theme="agri">
-            <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(120deg, rgba(124,155,72,0.3), rgba(0,0,0,0.55));"></div>
-            <div class="collapsed-label" aria-hidden="true">AGRI</div>
-            <div class="absolute inset-0 flex flex-col justify-end p-10 text-white space-y-4 panel-content">
-              <div class="flex items-center gap-3">
-                <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
-                <span class="uppercase tracking-[0.3em] text-xs text-white/80">Agriculture & Élevage</span>
-              </div>
-              <h2 class="text-4xl lg:text-5xl font-black">ID AGRI</h2>
-              <p class="max-w-lg text-base text-white/85">Protéger le vivant et la performance agricole avec des solutions durables et intuitives.</p>
-              <div class="flex items-center gap-3">
-                <a href="#agri" class="panel-trigger inline-flex items-center px-5 py-3 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow hover:bg-gray-100">Explorer l'univers</a>
-              </div>
-            </div>
-          </article>
-        </div>
+      </section>
 
-        <!-- Mobile Stack -->
-        <div class="md:hidden space-y-4 p-4 bg-white">
-          <div class="flex items-center justify-between mb-2">
-            <h2 class="text-lg font-black text-[var(--id-gray-dark)]">Choisissez un univers</h2>
-            <div class="flex gap-2" aria-label="Sélection des univers">
-              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-[var(--id-home)] text-white font-bold" data-target="home">HOME</button>
-              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="pro">PRO</button>
-              <button class="mobile-tab px-3 py-2 text-xs rounded-full bg-gray-200 text-gray-800 font-bold" data-target="agri">AGRI</button>
+      <section id="promesse" class="relative bg-white py-20 lg:py-28 section-shell">
+        <div class="absolute -left-10 top-24 h-24 w-24 rounded-full bg-[var(--id-elec)] blur-3xl opacity-30"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div class="space-y-4 lg:translate-y-6 reveal">
+              <p class="text-xs uppercase tracking-[0.32em] font-bold text-[var(--id-marine)]">À propos / Promesse</p>
+              <h2 class="text-3xl sm:text-4xl font-black text-[var(--id-marine)] leading-tight">Une seule équipe pour des espaces de vie <span class="text-[var(--id-elec)]">intuitifs</span>, responsables et performants.</h2>
+              <p class="text-lg text-slate-700 leading-relaxed">Nous orchestrons design, ingénierie et opérationnel pour des expériences fluides. Layouts asymétriques, volumes chevauchés, rythme visuel : la narration guide l'action et valorise le vivant.</p>
+              <div class="flex flex-wrap gap-3 pt-2">
+                <span class="px-4 py-2 rounded-full bg-[var(--id-soft)] text-[var(--id-marine)] font-semibold shadow-sm border border-white">Stratégie 360°</span>
+                <span class="px-4 py-2 rounded-full bg-[var(--id-soft)] text-[var(--id-marine)] font-semibold shadow-sm border border-white">Design circulaire</span>
+                <span class="px-4 py-2 rounded-full bg-[var(--id-soft)] text-[var(--id-marine)] font-semibold shadow-sm border border-white">Impact mesuré</span>
+              </div>
+            </div>
+            <div class="relative lg:-mt-12 reveal">
+              <div class="absolute -left-10 top-10 h-28 w-28 bg-[var(--id-marine)] rounded-full blur-2xl opacity-40"></div>
+              <div class="bg-white rounded-[32px] shadow-2xl border border-slate-100 overflow-hidden relative z-10">
+                <div class="grid sm:grid-cols-2">
+                  <div class="p-6 sm:p-8 space-y-4">
+                    <h3 class="text-xl font-black text-[var(--id-marine)]">Une approche modulable</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Assemblage de blocs, séquençage des parcours, CTA qui respirent. Chaque univers se matérialise via des lettrages monumentaux qui cadrent la lecture.</p>
+                    <div class="flex gap-3 text-sm text-[var(--id-marine)] font-semibold">
+                      <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-[var(--id-soft)]"><span class="h-2 w-2 bg-[var(--id-elec)] rounded-full"></span>Parcours fluide</span>
+                      <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-[var(--id-soft)]"><span class="h-2 w-2 bg-[var(--id-marine)] rounded-full"></span>UX immersive</span>
+                    </div>
+                  </div>
+                  <div class="relative">
+                    <img src="images/ImageIDPro.jpg" alt="Aperçu ID PRO" class="h-full w-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-br from-[rgba(10,27,58,0.3)] to-[rgba(166,255,59,0.14)]"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="overflow-hidden rounded-2xl shadow-lg" id="mobile-slider">
-            <article class="mobile-panel" data-id="home">
-              <div class="relative h-72">
-                <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
-                <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(234,97,26,0.35), rgba(0,0,0,0.65));"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
+        </div>
+      </section>
+
+      <section id="univers" class="bg-[var(--id-marine-2)] text-white py-18 lg:py-24 section-shell">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 reveal">
+            <div>
+              <p class="text-xs uppercase tracking-[0.32em] text-[var(--id-elec)] font-bold">Sections phares</p>
+              <h2 class="text-3xl sm:text-4xl font-black">HOME / PRO / AGRI comme ancrages visuels</h2>
+            </div>
+            <div class="flex gap-3 flex-wrap">
+              <a href="#home" class="btn-secondary">HOME</a>
+              <a href="#pro" class="btn-secondary">PRO</a>
+              <a href="#agri" class="btn-secondary">AGRI</a>
+            </div>
+          </div>
+
+          <div class="space-y-12">
+            <article id="home" class="grid lg:grid-cols-12 gap-6 items-center bg-white/5 border border-white/10 rounded-[30px] overflow-hidden relative reveal">
+              <div class="lg:col-span-4 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.02)] h-full flex items-center justify-center p-6">
+                <div class="mask-word with-image parallax-letter" data-speed="-12" style="background-image: url('images/ImageIDHome.jpg');">HOME</div>
+              </div>
+              <div class="lg:col-span-8 grid md:grid-cols-2 gap-6 p-6 lg:p-10">
+                <div class="space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-10 w-auto" loading="lazy" />
-                    <span class="text-xs uppercase tracking-[0.3em]">Habitat & Décoration</span>
+                    <img src="logos/ID HOME.png" alt="Logo ID HOME" class="h-12 w-auto" loading="lazy" />
+                    <span class="text-xs uppercase tracking-[0.28em] text-white/70">Habitat & Décoration</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID HOME</h3>
-                  <p class="text-sm text-white/85">Designer des intérieurs chaleureux, modulaires et responsables.</p>
-                  <a href="#home" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
+                  <h3 class="text-3xl font-black">Intérieurs modulaires, chaleureux, responsables.</h3>
+                  <p class="text-white/80">Matériaux responsables, volumes fluides, lettrage monumental en masque photo pour guider le regard. Micro-animations douces et CTA vert électrique.</p>
+                  <div class="flex gap-3 flex-wrap">
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-sm font-semibold border border-white/10">Agencements évolutifs</span>
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-sm font-semibold border border-white/10">Design sensoriel</span>
+                  </div>
+                  <a href="#contact" class="btn-primary">Parler rénovation</a>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img src="images/ImageIDHome.jpg" alt="Univers ID HOME" class="h-full w-full object-cover" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,27,58,0.7)] via-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-sm text-white/80">
+                    <span>Lettrage masque</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/10">Hover = scale + ombre</span>
+                  </div>
                 </div>
               </div>
             </article>
-            <article class="mobile-panel hidden" data-id="pro">
-              <div class="relative h-72">
-                <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
-                <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(25,63,96,0.4), rgba(0,0,0,0.65));"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
+
+            <article id="pro" class="grid lg:grid-cols-12 gap-6 items-center bg-white/5 border border-white/10 rounded-[30px] overflow-hidden relative reveal">
+              <div class="lg:col-span-4 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.02)] h-full flex items-center justify-center p-6">
+                <div class="mask-word with-image parallax-letter" data-speed="-8" style="background-image: url('images/ImageIDPro.jpg');">PRO</div>
+              </div>
+              <div class="lg:col-span-8 grid md:grid-cols-2 gap-6 p-6 lg:p-10">
+                <div class="space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-10 w-auto" loading="lazy" />
-                    <span class="text-xs uppercase tracking-[0.3em]">Industrie & Bâtiment</span>
+                    <img src="logos/ID PRO.png" alt="Logo ID PRO" class="h-12 w-auto" loading="lazy" />
+                    <span class="text-xs uppercase tracking-[0.28em] text-white/70">Industrie & Bâtiment</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID PRO</h3>
-                  <p class="text-sm text-white/85">Optimiser les environnements industriels et tertiaires.</p>
-                  <a href="#pro" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
+                  <h3 class="text-3xl font-black">Performance & sécurité sans sacrifier l'esthétique.</h3>
+                  <p class="text-white/80">Lettrage semi-transparent sur visuel plein écran, parallax léger, bullet points orientés ROI. CTA verts aux coins adoucis.</p>
+                  <ul class="list-disc list-inside text-white/80 space-y-1">
+                    <li>Signalétique immersive & safe zones</li>
+                    <li>Matériaux techniques, lumière pilotée</li>
+                    <li>Monitoring carbone & énergie</li>
+                  </ul>
+                  <a href="#contact" class="btn-primary">Structurer un site</a>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img src="images/ImageIDPro.jpg" alt="Univers ID PRO" class="h-full w-full object-cover" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,27,58,0.7)] via-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-sm text-white/80">
+                    <span>Parallax doux</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/10">Masque photo</span>
+                  </div>
                 </div>
               </div>
             </article>
-            <article class="mobile-panel hidden" data-id="agri">
-              <div class="relative h-72">
-                <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
-                <div class="absolute inset-0 panel-overlay" style="mix-blend-mode: multiply; background: linear-gradient(180deg, rgba(124,155,72,0.35), rgba(0,0,0,0.65));"></div>
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white space-y-3">
+
+            <article id="agri" class="grid lg:grid-cols-12 gap-6 items-center bg-white/5 border border-white/10 rounded-[30px] overflow-hidden relative reveal">
+              <div class="lg:col-span-4 bg-gradient-to-b from-[rgba(255,255,255,0.06)] to-[rgba(255,255,255,0.02)] h-full flex items-center justify-center p-6">
+                <div class="mask-word with-image parallax-letter" data-speed="-10" style="background-image: url('images/ImageIDAgri.jpg');">AGRI</div>
+              </div>
+              <div class="lg:col-span-8 grid md:grid-cols-2 gap-6 p-6 lg:p-10">
+                <div class="space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-10 w-auto" loading="lazy" />
-                    <span class="text-xs uppercase tracking-[0.3em]">Agriculture & Élevage</span>
+                    <img src="logos/ID AGRI.png" alt="Logo ID AGRI" class="h-12 w-auto" loading="lazy" />
+                    <span class="text-xs uppercase tracking-[0.28em] text-white/70">Agriculture & Élevage</span>
                   </div>
-                  <h3 class="text-3xl font-black">ID AGRI</h3>
-                  <p class="text-sm text-white/85">Protéger le vivant et la performance agricole.</p>
-                  <a href="#agri" class="inline-flex items-center px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Explorer l'univers</a>
+                  <h3 class="text-3xl font-black">Le vivant comme boussole.</h3>
+                  <p class="text-white/80">Textes ancrés au bord gauche, images pleine hauteur, dégradés subtils. Focus sur bien-être animal, efficacité énergétique et confort opérateur.</p>
+                  <div class="grid grid-cols-2 gap-3 text-sm text-white/80">
+                    <div class="glass-card rounded-xl p-3 border border-white/10">+18% de productivité</div>
+                    <div class="glass-card rounded-xl p-3 border border-white/10">-25% d'eau consommée</div>
+                  </div>
+                  <a href="#contact" class="btn-primary">Imaginer un site</a>
+                </div>
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img src="images/ImageIDAgri.jpg" alt="Univers ID AGRI" class="h-full w-full object-cover" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,27,58,0.7)] via-transparent"></div>
+                  <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-sm text-white/80">
+                    <span>Lettrage vertical</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/10">Hover animé</span>
+                  </div>
                 </div>
               </div>
             </article>
@@ -291,126 +418,228 @@
         </div>
       </section>
 
-      <section id="croquis" class="bg-white py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <div class="lg:w-1/2 space-y-4">
-              <span class="text-xs font-bold tracking-[0.25em] text-[var(--id-red)] uppercase">Croquis architecturaux</span>
-              <h2 class="text-3xl sm:text-4xl font-black text-[var(--id-gray-dark)]">Cartographier nos solutions par métier</h2>
-              <p class="text-base text-gray-700 leading-relaxed">Chaque verticale dispose d'un plan interactif pour contextualiser nos solutions. Les hotspots révèlent les équipements et services associés à chaque zone clé.</p>
-              <div class="flex gap-3">
-                <button class="px-4 py-2 rounded-full bg-[var(--id-pro)] text-white font-semibold shadow">ID PRO</button>
-                <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-semibold">ID HOME</button>
-                <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-semibold">ID AGRI</button>
-              </div>
+      <section id="preuves" class="bg-white py-18 lg:py-24 section-shell">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 reveal">
+            <div>
+              <p class="text-xs uppercase tracking-[0.32em] font-bold text-[var(--id-marine)]">Preuves & solutions</p>
+              <h2 class="text-3xl sm:text-4xl font-black text-[var(--id-marine)]">Une mosaïque asymétrique pour explorer nos savoir-faire.</h2>
             </div>
-            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden">
-              <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
-              <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-10 w-auto" loading="lazy" />
-              <div class="relative h-96">
-                <div class="absolute inset-8 border border-white/20 rounded-2xl"></div>
-                <div class="absolute inset-12 border border-white/10 rounded-xl"></div>
-                <div class="absolute inset-4 bg-gradient-to-br from-white/5 to-white/0 rounded-2xl"></div>
-                <p class="absolute top-10 right-10 text-white/70 text-sm italic">Croquis d'usine – zones critiques</p>
+            <a href="#contact" class="btn-primary">Découvrir nos offres</a>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid">
+            <article class="rounded-3xl border border-slate-100 bg-gradient-to-br from-[var(--id-marine)] to-[var(--id-marine-2)] text-white p-6 flex flex-col gap-4 reveal">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center font-black">01</span>
+                <p class="text-sm uppercase tracking-[0.24em] text-[var(--id-elec)]">Design</p>
+              </div>
+              <h3 class="text-xl font-black">Stratégie spatiale & storytelling</h3>
+              <p class="text-white/80">Layouts asymétriques, lettrages monumentaux, CTA contrastés : chaque écran raconte une histoire.</p>
+              <button class="btn-secondary w-fit">En savoir plus</button>
+            </article>
+            <article class="rounded-3xl border border-slate-100 bg-white p-6 flex flex-col gap-4 shadow-xl reveal">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-[var(--id-marine)] text-white flex items-center justify-center font-black">02</span>
+                <p class="text-sm uppercase tracking-[0.24em] text-[var(--id-marine)]">Ingénierie</p>
+              </div>
+              <h3 class="text-xl font-black text-[var(--id-marine)]">Performance & impact</h3>
+              <p class="text-slate-700">Calculs thermiques, analyse cycle de vie, data énergétiques. Un pilotage à 360° avec indicateurs lisibles.</p>
+              <button class="btn-primary w-fit">Mesurer</button>
+            </article>
+            <article class="rounded-3xl border border-slate-100 bg-gradient-to-br from-white via-[var(--id-soft)] to-white p-6 flex flex-col gap-4 reveal">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-[var(--id-elec)] text-[var(--id-marine)] flex items-center justify-center font-black">03</span>
+                <p class="text-sm uppercase tracking-[0.24em] text-[var(--id-marine)]">Exécution</p>
+              </div>
+              <h3 class="text-xl font-black text-[var(--id-marine)]">Déploiement maîtrisé</h3>
+              <p class="text-slate-700">Planning vivant, mises en scène par univers, équipes dédiées. Hover = élévation, bordure verte lumineuse.</p>
+              <button class="btn-primary w-fit">Déployer</button>
+            </article>
+            <article class="rounded-3xl border border-slate-100 bg-white p-6 flex flex-col gap-4 shadow-xl lg:col-span-2 reveal">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-[var(--id-marine)] text-white flex items-center justify-center font-black">04</span>
+                <p class="text-sm uppercase tracking-[0.24em] text-[var(--id-marine)]">Services</p>
+              </div>
+              <h3 class="text-xl font-black text-[var(--id-marine)]">Accompagnement continu</h3>
+              <p class="text-slate-700">Support, maintenance, évolutions. Micro-interactions : slide-up + fade-in au scroll, CTA verts électriques.</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="px-3 py-1 rounded-full bg-[var(--id-soft)] text-sm font-semibold text-[var(--id-marine)]">Maintenance prédictive</span>
+                <span class="px-3 py-1 rounded-full bg-[var(--id-soft)] text-sm font-semibold text-[var(--id-marine)]">Formation</span>
+              </div>
+            </article>
+            <article class="rounded-3xl border border-slate-100 bg-gradient-to-br from-[var(--id-marine)] to-[var(--id-marine-2)] text-white p-6 flex flex-col gap-4 reveal">
+              <div class="flex items-center gap-3">
+                <span class="h-10 w-10 rounded-full bg-white/10 border border-white/10 flex items-center justify-center font-black">05</span>
+                <p class="text-sm uppercase tracking-[0.24em] text-[var(--id-elec)]">Solutions</p>
+              </div>
+              <h3 class="text-xl font-black">Modules prêts-à-poser</h3>
+              <p class="text-white/80">Kit signalétique, mobilier modulable, éclairage dynamique, végétalisation. Mix & match sur-mesure.</p>
+              <button class="btn-secondary w-fit">Composer</button>
+            </article>
+          </div>
+        </div>
+      </section>
 
-                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="Zone production" data-tooltip="Ligne de montage : revêtements anti-fatigue et signalétique sécurisée"></button>
-                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="Zone logistique" data-tooltip="Logistique : tapis anti-chute, protections de rack, éclairage LED industriel"></button>
-                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="Zone maintenance" data-tooltip="Maintenance : plateformes d'accès, kits de maintenance prédictive"></button>
-              </div>
-              <div id="tooltip" class="hidden absolute bottom-6 left-6 right-6 bg-white text-[var(--id-gray-dark)] rounded-xl shadow-xl p-4 text-sm font-semibold"></div>
+      <section id="cas" class="bg-[var(--id-marine)] text-white py-18 lg:py-24 section-shell">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 reveal">
+            <div>
+              <p class="text-xs uppercase tracking-[0.32em] text-[var(--id-elec)] font-bold">Études de cas / Projets</p>
+              <h2 class="text-3xl sm:text-4xl font-black">Un carrousel horizontal pour projeter vos usages.</h2>
             </div>
+            <div class="flex gap-2 text-xs uppercase tracking-[0.28em] text-white/70">
+              <span class="h-1 w-10 bg-[var(--id-elec)]"></span>
+              <span class="h-1 w-10 bg-white/25"></span>
+              <span class="h-1 w-10 bg-white/25"></span>
+            </div>
+          </div>
+          <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4" aria-label="Carrousel de cas clients">
+            <article class="case-card min-w-[280px] sm:min-w-[320px] snap-start bg-white/10 border border-white/10 rounded-3xl overflow-hidden shadow-xl reveal">
+              <div class="relative h-48">
+                <img src="images/ImageIDHome.jpg" alt="Projet Home" class="h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,27,58,0.7)] via-transparent"></div>
+                <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-[var(--id-elec)] text-[var(--id-marine)] text-xs font-black">HOME</span>
+              </div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-xl font-black">Loft modulable Paris</h3>
+                <p class="text-white/80 text-sm">Dégradé subtil, lettrage masque, mobiliers reconfigurables. Hover = micro-récit + CTA.</p>
+                <a href="#contact" class="btn-secondary w-fit">Voir le projet</a>
+              </div>
+            </article>
+            <article class="case-card min-w-[280px] sm:min-w-[320px] snap-start bg-white/10 border border-white/10 rounded-3xl overflow-hidden shadow-xl reveal">
+              <div class="relative h-48">
+                <img src="images/ImageIDPro.jpg" alt="Projet Pro" class="h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,27,58,0.7)] via-transparent"></div>
+                <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-black">PRO</span>
+              </div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-xl font-black">Usine connectée Lyon</h3>
+                <p class="text-white/80 text-sm">Signalétique lumineuse, zones sécurisées, monitoring carbone. CTA vert électrique.</p>
+                <a href="#contact" class="btn-secondary w-fit">Voir le projet</a>
+              </div>
+            </article>
+            <article class="case-card min-w-[280px] sm:min-w-[320px] snap-start bg-white/10 border border-white/10 rounded-3xl overflow-hidden shadow-xl reveal">
+              <div class="relative h-48">
+                <img src="images/ImageIDAgri.jpg" alt="Projet Agri" class="h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[rgba(10,27,58,0.7)] via-transparent"></div>
+                <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-black">AGRI</span>
+              </div>
+              <div class="p-5 space-y-3">
+                <h3 class="text-xl font-black">Ferme régénérative</h3>
+                <p class="text-white/80 text-sm">Lettrage vertical, visuels pleine hauteur, parallax doux pour raconter la biodiversité.</p>
+                <a href="#contact" class="btn-secondary w-fit">Voir le projet</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pourquoi" class="bg-white py-18 lg:py-24 section-shell">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5 bg-[var(--id-marine)] text-white rounded-[28px] p-10 shadow-2xl reveal">
+            <div class="h-16 w-16 rounded-full border border-white/15 flex items-center justify-center mb-6">
+              <span class="text-3xl">✶</span>
+            </div>
+            <h2 class="text-3xl font-black mb-3">Pourquoi nous choisir</h2>
+            <p class="text-white/75 text-lg leading-relaxed">Layout split, pictos filaires, steps animés : nous combinons esthétique et preuves concrètes. Chaque étape dessine un parcours simple et engageant.</p>
+          </div>
+          <div class="lg:col-span-7 space-y-6">
+            <div class="relative pl-10 reveal timeline-step">
+              <div class="absolute left-0 top-1 h-3 w-3 rounded-full bg-[var(--id-elec)] shadow-[0_0_0_6px_rgba(166,255,59,0.2)]"></div>
+              <h3 class="text-xl font-black text-[var(--id-marine)]">01 · Vision alignée</h3>
+              <p class="text-slate-700">Atelier immersif, lettrage monumental pour poser le cap, cartographie des besoins et scoring d'impact.</p>
+            </div>
+            <div class="relative pl-10 reveal timeline-step">
+              <div class="absolute left-0 top-1 h-3 w-3 rounded-full bg-[var(--id-elec)] shadow-[0_0_0_6px_rgba(166,255,59,0.2)]"></div>
+              <h3 class="text-xl font-black text-[var(--id-marine)]">02 · Design & prototypes</h3>
+              <p class="text-slate-700">Volumes asymétriques, aplats contrastés, interactions de hover (scale + ombre douce), parallax léger pour donner de la profondeur.</p>
+            </div>
+            <div class="relative pl-10 reveal timeline-step">
+              <div class="absolute left-0 top-1 h-3 w-3 rounded-full bg-[var(--id-elec)] shadow-[0_0_0_6px_rgba(166,255,59,0.2)]"></div>
+              <h3 class="text-xl font-black text-[var(--id-marine)]">03 · Déploiement orchestré</h3>
+              <p class="text-slate-700">Pilotage live, métriques visibles, CTA pleine largeur pour conclure. Les sections respirent grâce aux marges généreuses.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="relative overflow-hidden bg-[var(--id-marine-2)] text-white py-14">
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 15% 50%, rgba(166,255,59,0.18), transparent 30%), radial-gradient(circle at 80% 10%, rgba(255,255,255,0.08), transparent 30%), linear-gradient(120deg, rgba(10,27,58,0.8), rgba(10,27,58,0.95));"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="space-y-2">
+              <p class="text-xs uppercase tracking-[0.32em] text-[var(--id-elec)] font-bold">CTA pleine largeur</p>
+              <h2 class="text-3xl font-black">Prêt·e à accélérer ?</h2>
+              <p class="text-white/75 text-lg">Fond bleu marine, motifs translucides, bouton vert électrique large. Respirations et aplats contemporains.</p>
+            </div>
+            <a href="mailto:contact@idgroup.com" class="btn-primary text-base px-6">Co-créer avec ID GROUP</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="bg-[var(--id-gray-dark)] text-white py-10">
+    <footer class="bg-[var(--id-marine)] text-white py-12">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="space-y-3">
           <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-10 w-auto" loading="lazy" />
-          <p class="text-sm text-white/80">ID GROUP fédère ID HOME, ID PRO et ID AGRI pour concevoir des espaces de vie responsables, performants et durables.</p>
+          <p class="text-sm text-white/80">ID GROUP fédère ID HOME, ID PRO et ID AGRI pour concevoir des espaces de vie innovants, rythmés et responsables.</p>
         </div>
         <div class="space-y-3">
           <h3 class="text-sm font-black">Liens légaux</h3>
           <ul class="space-y-2 text-sm text-white/80">
-            <li><a href="#" class="hover:text-white">Mentions légales</a></li>
-            <li><a href="#" class="hover:text-white">Politique de confidentialité</a></li>
-            <li><a href="#" class="hover:text-white">Politique RSE</a></li>
+            <li><a href="#" class="hover:text-[var(--id-elec)]">Mentions légales</a></li>
+            <li><a href="#" class="hover:text-[var(--id-elec)]">Politique de confidentialité</a></li>
+            <li><a href="#" class="hover:text-[var(--id-elec)]">Politique RSE</a></li>
           </ul>
         </div>
         <div class="space-y-3">
           <h3 class="text-sm font-black">Coordonnées</h3>
           <ul class="space-y-2 text-sm text-white/80">
             <li>+33 (0)1 23 45 67 89</li>
-            <li><a href="mailto:contact@idgroup.com" class="hover:text-white">contact@idgroup.com</a></li>
+            <li><a href="mailto:contact@idgroup.com" class="hover:text-[var(--id-elec)]">contact@idgroup.com</a></li>
             <li>Parc d'activités du Vivant, 75000 Paris</li>
           </ul>
         </div>
         <div class="space-y-3">
-          <h3 class="text-sm font-black">Manifeste "Soin du Vivant"</h3>
-          <p class="text-sm text-white/80">Nous plaçons l'humain, le vivant et la planète au cœur de nos innovations, avec une approche circulaire et durable.</p>
-          <button class="px-4 py-2 rounded-full bg-white text-[var(--id-gray-dark)] font-bold shadow">Découvrir</button>
+          <h3 class="text-sm font-black">Newsletter</h3>
+          <p class="text-sm text-white/80">Briefs design, études de cas, nouveaux modules. Un mail par mois.</p>
+          <div class="flex items-center gap-2">
+            <input type="email" aria-label="Email" placeholder="Votre email" class="flex-1 px-4 py-2 rounded-full bg-white/10 border border-white/15 placeholder:text-white/60 text-white focus:outline-none" />
+            <button class="px-4 py-2 rounded-full bg-[var(--id-elec)] text-[var(--id-marine)] font-bold">OK</button>
+          </div>
+          <div class="flex gap-3 text-white/70 text-sm font-bold uppercase tracking-[0.22em]">
+            <a href="#" class="hover:text-[var(--id-elec)]">Fb</a>
+            <a href="#" class="hover:text-[var(--id-elec)]">X</a>
+            <a href="#" class="hover:text-[var(--id-elec)]">Ig</a>
+          </div>
         </div>
       </div>
     </footer>
   </div>
 
   <script>
-    const desktopPanels = document.querySelectorAll('.vertical-slider-desktop .panel');
-    if (desktopPanels.length) {
-      const setActivePanel = (panel) => {
-        desktopPanels.forEach((item) => item.classList.remove('active'));
-        panel.classList.add('active');
-      };
-      setActivePanel(desktopPanels[1] || desktopPanels[0]);
-      desktopPanels.forEach((panel) => {
-        panel.addEventListener('mouseenter', () => setActivePanel(panel));
-        panel.addEventListener('focus', () => setActivePanel(panel));
-        panel.addEventListener('click', () => setActivePanel(panel));
+    const slides = document.querySelectorAll('.hero-slide');
+    let slideIndex = 0;
+    setInterval(() => {
+      slides[slideIndex].classList.remove('active');
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }, 7000);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }
+    }, { threshold: 0.25 });
 
-    const tabs = document.querySelectorAll('.mobile-tab');
-    const panels = document.querySelectorAll('.mobile-panel');
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-    const colorClasses = ['bg-[var(--id-home)]', 'bg-[var(--id-pro)]', 'bg-[var(--id-agri)]'];
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.target;
-        tabs.forEach((btn) => {
-          colorClasses.forEach((color) => btn.classList.remove(color));
-          btn.classList.remove('text-white');
-          btn.classList.add('bg-gray-200', 'text-gray-800');
-        });
-
-        tab.classList.remove('bg-gray-200', 'text-gray-800');
-        tab.classList.add('text-white');
-
-        if (target === 'home') tab.classList.add('bg-[var(--id-home)]');
-        if (target === 'pro') tab.classList.add('bg-[var(--id-pro)]');
-        if (target === 'agri') tab.classList.add('bg-[var(--id-agri)]');
-
-        panels.forEach((panel) => {
-          panel.classList.add('hidden');
-          if (panel.dataset.id === target) panel.classList.remove('hidden');
-        });
-      });
-    });
-
-    const tooltip = document.getElementById('tooltip');
-    const hotspots = document.querySelectorAll('.hotspot');
-    hotspots.forEach((spot) => {
-      spot.addEventListener('mouseenter', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
-      });
-      spot.addEventListener('mouseleave', () => {
-        tooltip.classList.add('hidden');
-      });
-      spot.addEventListener('click', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
+    const parallaxLetters = document.querySelectorAll('.parallax-letter');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      parallaxLetters.forEach((letter) => {
+        const speed = Number(letter.dataset.speed || -8);
+        letter.style.transform = `translateY(${y * speed / 100}px)`;
       });
     });
   </script>
