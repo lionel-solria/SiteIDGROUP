@@ -215,7 +215,7 @@
       display: flex;
       gap: 1rem;
       width: max-content;
-      animation: marquee 26s linear infinite;
+      animation: marquee 32s linear infinite;
       align-items: stretch;
     }
     .team-marquee:hover {
@@ -311,6 +311,60 @@
       0%, 100% { transform: translateY(-3px); opacity: 0.9; }
       50% { transform: translateY(3px); opacity: 0.6; }
     }
+    .plan-zoomable {
+      transition: transform 0.55s ease, box-shadow 0.55s ease, border-radius 0.4s ease;
+      cursor: zoom-in;
+    }
+    .plan-zoomable.zoomed {
+      position: fixed;
+      inset: 5vh 5vw;
+      width: 90vw;
+      height: 90vh;
+      z-index: 60;
+      transform: translateZ(0) scale(1);
+      border-radius: 1.75rem;
+      box-shadow: 0 30px 120px rgba(0, 0, 0, 0.45);
+      cursor: zoom-out;
+    }
+    .plan-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+      display: none;
+    }
+    .plan-backdrop.visible { display: block; }
+    .hotspot-window {
+      position: absolute;
+      min-width: 220px;
+      max-width: 260px;
+      background: #ffffff;
+      border-radius: 1rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      padding: 0.9rem 1rem;
+      color: var(--id-gray-dark);
+      font-size: 0.9rem;
+      border: 1px solid rgba(27, 34, 48, 0.06);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+    .hotspot-window h4 {
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+    .hotspot-window p {
+      line-height: 1.4;
+    }
+    .hotspot-window.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -359,6 +413,8 @@
         </div>
       </div>
     </header>
+
+    <div id="plan-backdrop" class="plan-backdrop" aria-hidden="true"></div>
 
     <main class="flex-1">
       <section class="relative" aria-label="Héros vertical">
@@ -509,7 +565,7 @@
             </div>
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
-          <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+          <div class="relative overflow-hidden rounded-none sm:rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] -mx-4 sm:-mx-6 lg:-mx-8">
             <div class="team-marquee" aria-label="Carrousel de l'équipe">
               <div class="flex gap-4 px-6 py-5">
                 <div class="team-card group">
@@ -716,6 +772,26 @@
         </div>
       </section>
 
+      <section id="histoire" class="bg-white py-16 border-b border-gray-200/70" data-debug-label="Section historique">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre histoire</p>
+            <h2 class="text-3xl font-semibold text-[var(--id-gray-dark)]">ID GROUP, une dynamique née du terrain</h2>
+            <p class="text-base text-gray-700/90 leading-relaxed">Depuis plus de deux décennies, ID GROUP accompagne les acteurs du bâtiment, de l'industrie et de l'habitat. Notre force : réunir des expertises complémentaires pour concevoir des espaces performants, respectueux du vivant et capables d'évoluer avec les usages.</p>
+            <p class="text-base text-gray-700/90 leading-relaxed">Nos équipes pluridisciplinaires imaginent, industrialisent et déploient des solutions sur-mesure : de l'aménagement intérieur aux infrastructures professionnelles, en passant par les environnements agricoles. Chaque projet est abordé avec une vision d'ensemble, nourrie par la proximité avec nos clients.</p>
+            <div class="flex flex-wrap gap-3 text-sm text-gray-700">
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gray-100 font-semibold">Accompagnement de l'idée à la pose</span>
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gray-100 font-semibold">Ingénierie, design et exploitation réunis</span>
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-gray-100 font-semibold">Innovation responsable pour chaque DAS</span>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-br from-[var(--id-red)]/20 via-transparent to-gray-200 rounded-3xl blur-2xl"></div>
+            <img src="images/batiment73.jpg" alt="Bâtiment ID GROUP" class="relative rounded-3xl shadow-2xl border border-white/70" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
       <section id="croquis" class="bg-white py-16" data-debug-label="Section croquis">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col lg:flex-row gap-8 items-start">
@@ -729,7 +805,7 @@
                 <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID AGRI</button>
               </div>
             </div>
-            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden" data-debug-label="Plan interactif ID PRO">
+            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden plan-zoomable" data-debug-label="Plan interactif ID PRO">
               <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
               <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-12 w-auto" loading="lazy" />
               <div class="relative h-96">
@@ -737,9 +813,23 @@
                 <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-black/0 to-black/30"></div>
                 <p class="absolute top-8 right-8 text-white/85 text-sm italic bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm">Croquis des solutions</p>
 
-                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="Zone production" data-tooltip="Ligne de montage : revêtements anti-fatigue et signalétique sécurisée"></button>
-                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="Zone logistique" data-tooltip="Logistique : tapis anti-chute, protections de rack, éclairage LED industriel"></button>
-                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="Zone maintenance" data-tooltip="Maintenance : plateformes d'accès, kits de maintenance prédictive"></button>
+                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="DAS Production" data-target="production" data-tooltip="Ligne de montage : revêtements anti-fatigue et signalétique sécurisée"></button>
+                <div class="hotspot-window" data-source="production" style="top: 14%; left: 36%;">
+                  <h4>DAS Production</h4>
+                  <p>Optimisation des postes de montage, sécurisation des flux et confort opérateur grâce à des revêtements techniques et à la signalétique sur-mesure.</p>
+                </div>
+
+                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="DAS Logistique" data-target="logistique" data-tooltip="Logistique : tapis anti-chute, protections de rack, éclairage LED industriel"></button>
+                <div class="hotspot-window" data-source="logistique" style="top: 40%; left: 64%;">
+                  <h4>DAS Logistique</h4>
+                  <p>Protection des flux internes, balisage intelligible et équipements anti-chute pour sécuriser les opérations et fiabiliser la préparation de commandes.</p>
+                </div>
+
+                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="DAS Maintenance" data-target="maintenance" data-tooltip="Maintenance : plateformes d'accès, kits de maintenance prédictive"></button>
+                <div class="hotspot-window" data-source="maintenance" style="top: 60%; left: 6%;">
+                  <h4>DAS Maintenance</h4>
+                  <p>Accès facilité aux installations, sécurisation des interventions et kits de maintenance pour garantir la disponibilité des équipements.</p>
+                </div>
               </div>
               <div id="tooltip" class="hidden absolute bottom-6 left-6 right-6 bg-white text-[var(--id-gray-dark)] rounded-xl shadow-xl p-4 text-sm font-semibold"></div>
             </div>
@@ -905,18 +995,60 @@
 
     const tooltip = document.getElementById('tooltip');
     const hotspots = document.querySelectorAll('.hotspot');
+    const hotspotWindows = document.querySelectorAll('.hotspot-window');
+    const planZoomable = document.querySelector('.plan-zoomable');
+    const planBackdrop = document.getElementById('plan-backdrop');
+
+    const showHotspotWindow = (id, tooltipText) => {
+      hotspotWindows.forEach((win) => win.classList.toggle('active', win.dataset.source === id));
+      if (tooltip) {
+        tooltip.textContent = tooltipText || '';
+        tooltip.classList.toggle('hidden', !tooltipText);
+      }
+    };
+
+    const hideHotspotWindows = () => {
+      hotspotWindows.forEach((win) => win.classList.remove('active'));
+      if (tooltip) tooltip.classList.add('hidden');
+    };
+
     hotspots.forEach((spot) => {
-      spot.addEventListener('mouseenter', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
+      const tooltipText = spot.dataset.tooltip;
+      const id = spot.dataset.target;
+      spot.addEventListener('mouseenter', () => showHotspotWindow(id, tooltipText));
+      spot.addEventListener('focus', () => showHotspotWindow(id, tooltipText));
+      spot.addEventListener('mouseleave', hideHotspotWindows);
+      spot.addEventListener('blur', hideHotspotWindows);
+      spot.addEventListener('click', () => showHotspotWindow(id, tooltipText));
+    });
+
+    const openPlanZoom = () => {
+      if (!planZoomable) return;
+      planZoomable.classList.add('zoomed');
+      if (planBackdrop) planBackdrop.classList.add('visible');
+      document.body.classList.add('overflow-hidden');
+    };
+
+    const closePlanZoom = () => {
+      if (!planZoomable) return;
+      planZoomable.classList.remove('zoomed');
+      if (planBackdrop) planBackdrop.classList.remove('visible');
+      document.body.classList.remove('overflow-hidden');
+    };
+
+    if (planZoomable) {
+      planZoomable.addEventListener('mouseenter', openPlanZoom);
+      planZoomable.addEventListener('mouseleave', (event) => {
+        if (!planZoomable.contains(event.relatedTarget)) closePlanZoom();
       });
-      spot.addEventListener('mouseleave', () => {
-        tooltip.classList.add('hidden');
-      });
-      spot.addEventListener('click', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
-      });
+    }
+
+    if (planBackdrop) {
+      planBackdrop.addEventListener('click', closePlanZoom);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closePlanZoom();
     });
   </script>
 </body>
