@@ -215,7 +215,7 @@
       display: flex;
       gap: 1rem;
       width: max-content;
-      animation: marquee 26s linear infinite;
+      animation: marquee 34s linear infinite;
       align-items: stretch;
     }
     .team-marquee:hover {
@@ -247,6 +247,95 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .plan-shell {
+      position: relative;
+      transition: transform 0.45s ease, box-shadow 0.45s ease, width 0.45s ease, height 0.45s ease;
+      cursor: zoom-in;
+      z-index: 5;
+    }
+    .plan-shell .plan-surface {
+      position: relative;
+      height: 24rem;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+      transition: height 0.45s ease, box-shadow 0.45s ease;
+    }
+    .plan-shell.expanded {
+      position: fixed;
+      inset: 5%;
+      width: 90vw;
+      height: 90vh;
+      max-width: 90vw;
+      max-height: 90vh;
+      z-index: 60;
+      transform: translateZ(0) scale(1.01);
+    }
+    .plan-shell.expanded .plan-surface {
+      height: 100%;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+    }
+    .plan-shell .plan-hint {
+      position: absolute;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      padding: 0.5rem 0.85rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      background: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .plan-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(3px);
+      z-index: 50;
+    }
+    .plan-backdrop.hidden {
+      display: none;
+    }
+    .hotspot-wrap {
+      position: absolute;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .hotspot-panel {
+      min-width: 220px;
+      max-width: 320px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
+      border-left: 4px solid var(--id-pro);
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+    }
+    .hotspot-panel h4 {
+      font-weight: 800;
+      margin-bottom: 0.15rem;
+      color: var(--id-gray-dark);
+    }
+    .hotspot-panel p {
+      color: #4b5563;
+      font-size: 0.93rem;
+      line-height: 1.35;
+    }
+    .hotspot-wrap:hover .hotspot-panel,
+    .hotspot-wrap:focus-within .hotspot-panel {
+      opacity: 1;
+      transform: translate3d(6px, 0, 0);
     }
     .team-overlay {
       position: absolute;
@@ -501,7 +590,7 @@
       </section>
 
       <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70" data-debug-label="Section équipe">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-10 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-3">
             <div data-debug-label="Titre section équipe">
               <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre équipe</p>
@@ -509,7 +598,7 @@
             </div>
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
-          <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
+          <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] w-full -mx-4 sm:-mx-6 lg:-mx-10">
             <div class="team-marquee" aria-label="Carrousel de l'équipe">
               <div class="flex gap-4 px-6 py-5">
                 <div class="team-card group">
@@ -716,6 +805,21 @@
         </div>
       </section>
 
+      <section id="historique" class="bg-white py-16 border-b border-gray-200/70" data-debug-label="Section historique">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-4" data-debug-label="Texte historique">
+            <span class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--id-red)]">Notre histoire</span>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-[var(--id-gray-dark)]">ID Group : bâtir et accompagner l'activité</h2>
+            <p class="text-base text-gray-700/90 leading-relaxed">Depuis plus de 40 ans, ID Group structure des lieux de vie pour les professionnels, les particuliers et le monde agricole. Nos équipes pluridisciplinaires imaginent des dispositifs qui relient confort, sécurité et performance pour chaque environnement.</p>
+            <p class="text-base text-gray-700/90 leading-relaxed">En intégrant ID HOME, ID PRO et ID AGRI, nous apportons une réponse globale : du croquis initial à l'installation, avec une exigence opérationnelle et un accompagnement terrain constant.</p>
+          </div>
+          <div class="relative" data-debug-label="Illustration siège ID Group">
+            <div class="absolute -inset-4 bg-gradient-to-r from-[var(--id-pro)]/10 via-white to-[var(--id-home)]/10 rounded-[30px] blur-2xl"></div>
+            <img src="images/batiment73.jpg" alt="Bâtiment ID Group" class="relative w-full h-full object-cover rounded-3xl shadow-2xl border border-white/60" loading="lazy" />
+          </div>
+        </div>
+      </section>
+
       <section id="croquis" class="bg-white py-16" data-debug-label="Section croquis">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col lg:flex-row gap-8 items-start">
@@ -729,19 +833,52 @@
                 <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID AGRI</button>
               </div>
             </div>
-            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden" data-debug-label="Plan interactif ID PRO">
-              <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
-              <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-12 w-auto" loading="lazy" />
-              <div class="relative h-96">
-                <img src="images/PlanCroquis.jpg" alt="Croquis des solutions ID Group" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
-                <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-black/0 to-black/30"></div>
-                <p class="absolute top-8 right-8 text-white/85 text-sm italic bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm">Croquis des solutions</p>
+            <div class="lg:w-1/2" data-debug-label="Plan interactif ID PRO">
+              <div class="plan-shell">
+                <div class="plan-surface bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700">
+                  <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
+                  <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-12 w-auto" loading="lazy" />
+                  <div class="relative h-full">
+                    <img src="images/PlanCroquis.jpg" alt="Croquis des solutions ID Group" class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-black/0 to-black/30"></div>
+                    <p class="absolute top-8 right-8 text-white/85 text-sm italic bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm">Croquis des solutions</p>
 
-                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="Zone production" data-tooltip="Ligne de montage : revêtements anti-fatigue et signalétique sécurisée"></button>
-                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="Zone logistique" data-tooltip="Logistique : tapis anti-chute, protections de rack, éclairage LED industriel"></button>
-                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="Zone maintenance" data-tooltip="Maintenance : plateformes d'accès, kits de maintenance prédictive"></button>
+                    <div class="hotspot-wrap" style="top: 26%; left: 28%;">
+                      <button class="hotspot" aria-describedby="das-production"></button>
+                      <div class="hotspot-panel" id="das-production" role="status">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--id-pro)] mb-1">DAS Production</p>
+                        <h4 class="text-base">Ligne de montage sécurisée</h4>
+                        <p class="text-sm">Revêtements anti-fatigue, signalétique renforcée et ergonomie des postes pour un flux continu.</p>
+                      </div>
+                    </div>
+
+                    <div class="hotspot-wrap" style="top: 54%; left: 58%;">
+                      <button class="hotspot" aria-describedby="das-logistique"></button>
+                      <div class="hotspot-panel" id="das-logistique" role="status">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--id-pro)] mb-1">DAS Logistique</p>
+                        <h4 class="text-base">Circulation & stockage</h4>
+                        <p class="text-sm">Protections de rack, éclairage industriel LED et guidage au sol pour sécuriser les flux et optimiser les stocks.</p>
+                      </div>
+                    </div>
+
+                    <div class="hotspot-wrap" style="top: 70%; left: 18%;">
+                      <button class="hotspot" aria-describedby="das-maintenance"></button>
+                      <div class="hotspot-panel" id="das-maintenance" role="status">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--id-pro)] mb-1">DAS Maintenance</p>
+                        <h4 class="text-base">Prédiction & accès</h4>
+                        <p class="text-sm">Plateformes d'accès, kits préventifs et monitoring des équipements pour limiter les arrêts non planifiés.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="plan-hint">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Survolez pour agrandir à 90% de la page
+                  </div>
+                </div>
               </div>
-              <div id="tooltip" class="hidden absolute bottom-6 left-6 right-6 bg-white text-[var(--id-gray-dark)] rounded-xl shadow-xl p-4 text-sm font-semibold"></div>
+              <div id="plan-backdrop" class="plan-backdrop hidden" aria-hidden="true"></div>
             </div>
           </div>
         </div>
@@ -903,21 +1040,26 @@
       });
     });
 
-    const tooltip = document.getElementById('tooltip');
-    const hotspots = document.querySelectorAll('.hotspot');
-    hotspots.forEach((spot) => {
-      spot.addEventListener('mouseenter', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
+    const planShell = document.querySelector('.plan-shell');
+    const planBackdrop = document.getElementById('plan-backdrop');
+
+    if (planShell && planBackdrop) {
+      const closePlan = () => {
+        planShell.classList.remove('expanded');
+        planBackdrop.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      };
+
+      planShell.addEventListener('mouseenter', () => {
+        planShell.classList.add('expanded');
+        planBackdrop.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
       });
-      spot.addEventListener('mouseleave', () => {
-        tooltip.classList.add('hidden');
-      });
-      spot.addEventListener('click', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
-      });
-    });
+
+      planShell.addEventListener('mouseleave', closePlan);
+      planBackdrop.addEventListener('mouseenter', closePlan);
+      planBackdrop.addEventListener('click', closePlan);
+    }
   </script>
 </body>
 </html>
