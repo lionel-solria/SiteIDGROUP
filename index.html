@@ -248,6 +248,30 @@
       height: 100%;
       object-fit: cover;
     }
+    .team-card .image-fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.35rem;
+      width: 100%;
+      height: 100%;
+      background: #f3f4f6;
+      color: #6b7280;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .team-card .image-fallback span {
+      font-size: 2.75rem;
+      line-height: 1;
+    }
+    .team-card .image-fallback p {
+      font-size: 0.75rem;
+    }
+    .team-card--missing .team-overlay {
+      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+    }
     .plan-shell {
       position: relative;
       transition: transform 0.45s ease, box-shadow 0.45s ease, width 0.45s ease, height 0.45s ease;
@@ -599,208 +623,7 @@
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
           <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] w-full -mx-4 sm:-mx-6 lg:-mx-10">
-            <div class="team-marquee" aria-label="Carrousel de l'équipe">
-              <div class="flex gap-4 px-6 py-5">
-                <div class="team-card group">
-                  <img src="avatars/Alexandre.JPG" alt="Portrait d'Alexandre" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Alexandre</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Amandine.jpg" alt="Portrait d'Amandine" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Amandine</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Cedric.jpg" alt="Portrait de Cedric" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Cedric</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Christophe.JPG" alt="Portrait de Christophe" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Christophe</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Claude.JPG" alt="Portrait de Claude" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Claude</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Gil.jpg" alt="Portrait de Gil" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Gil</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Isabelle.JPG" alt="Portrait d'Isabelle" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Isabelle</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Jerry.JPG" alt="Portrait de Jerry" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Jerry</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Monika.jpg" alt="Portrait de Monika" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Monika</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Philippe.JPG" alt="Portrait de Philippe" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Philippe</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Sebastien.jpg" alt="Portrait de Sebastien" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Sebastien</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Sevda.JPG" alt="Portrait de Sevda" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Sevda</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Thomas.JPG" alt="Portrait de Thomas" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Thomas</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Valerie.jpg" alt="Portrait de Valerie" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Valerie</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-              </div>
-              <div class="flex gap-4 px-6 py-5" aria-hidden="true">
-                <div class="team-card group">
-                  <img src="avatars/Alexandre.JPG" alt="Portrait d'Alexandre" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Alexandre</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Amandine.jpg" alt="Portrait d'Amandine" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Amandine</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Cedric.jpg" alt="Portrait de Cedric" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Cedric</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Christophe.JPG" alt="Portrait de Christophe" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Christophe</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Claude.JPG" alt="Portrait de Claude" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Claude</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Gil.jpg" alt="Portrait de Gil" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Gil</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Isabelle.JPG" alt="Portrait d'Isabelle" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Isabelle</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Jerry.JPG" alt="Portrait de Jerry" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Jerry</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Monika.jpg" alt="Portrait de Monika" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Monika</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Philippe.JPG" alt="Portrait de Philippe" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Philippe</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Sebastien.jpg" alt="Portrait de Sebastien" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Sebastien</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Sevda.JPG" alt="Portrait de Sevda" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Sevda</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Thomas.JPG" alt="Portrait de Thomas" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Thomas</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="avatars/Valerie.jpg" alt="Portrait de Valerie" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Valerie</p>
-                    <p class="text-sm text-white/80 font-medium">Commercial</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div class="team-marquee" id="team-marquee" aria-label="Carrousel de l'équipe"></div>
           </div>
         </div>
       </section>
@@ -921,6 +744,143 @@
     debugOverlay.className = 'debug-overlay';
     debugOverlay.id = 'debug-overlay';
     document.body.appendChild(debugOverlay);
+
+    const TEAM_CSV_PATH = 'avatars/infos.csv';
+    const teamMarquee = document.getElementById('team-marquee');
+
+    const createImageFallback = (fileName) => {
+      const fallback = document.createElement('div');
+      fallback.className = 'image-fallback';
+
+      const cross = document.createElement('span');
+      cross.textContent = '❌';
+      cross.setAttribute('aria-hidden', 'true');
+
+      const caption = document.createElement('p');
+      caption.textContent = fileName || 'Image manquante';
+
+      fallback.append(cross, caption);
+      return fallback;
+    };
+
+    const renderTeamError = (message) => {
+      if (!teamMarquee) return;
+      teamMarquee.innerHTML = '';
+      teamMarquee.style.animation = 'none';
+      teamMarquee.style.width = '100%';
+      teamMarquee.style.justifyContent = 'center';
+      const errorBox = document.createElement('div');
+      errorBox.className = 'px-6 py-10 text-center text-gray-500 w-full';
+      errorBox.textContent = message;
+      teamMarquee.appendChild(errorBox);
+    };
+
+    const handleImageError = (imgElement, fileName) => {
+      const card = imgElement.closest('.team-card');
+      if (!card) return;
+      const fallback = createImageFallback(fileName);
+      imgElement.replaceWith(fallback);
+      card.classList.add('team-card--missing');
+    };
+
+    const createTeamCard = ({ fileName, lastName, firstName, role, tagline }) => {
+      const card = document.createElement('div');
+      card.className = 'team-card group';
+
+      const mediaContainer = document.createElement('div');
+      mediaContainer.className = 'h-full w-full';
+
+      if (fileName) {
+        const img = document.createElement('img');
+        img.src = `avatars/${fileName}`;
+        img.alt = `Portrait de ${firstName || lastName || fileName}`;
+        img.loading = 'lazy';
+        img.addEventListener('error', () => handleImageError(img, fileName));
+        mediaContainer.appendChild(img);
+      } else {
+        mediaContainer.appendChild(createImageFallback('Fichier non défini'));
+        card.classList.add('team-card--missing');
+      }
+
+      const overlay = document.createElement('div');
+      overlay.className = 'team-overlay';
+
+      const fullName = [firstName, lastName].filter(Boolean).join(' ') || fileName || 'Membre de l’équipe';
+      const nameLine = document.createElement('p');
+      nameLine.className = 'text-lg font-semibold';
+      nameLine.textContent = fullName;
+
+      const roleLine = document.createElement('p');
+      roleLine.className = 'text-sm text-white/80 font-medium';
+      roleLine.textContent = role || 'Équipe ID Group';
+
+      overlay.append(nameLine, roleLine);
+
+      if (tagline) {
+        const taglineLine = document.createElement('p');
+        taglineLine.className = 'text-xs text-white/70 leading-snug mt-1';
+        taglineLine.textContent = tagline;
+        overlay.appendChild(taglineLine);
+      }
+
+      card.append(mediaContainer, overlay);
+      return card;
+    };
+
+    const parseTeamCsv = (csvText) => {
+      const lines = csvText.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      if (!lines.length) return [];
+
+      const dataLines = lines[0].toLowerCase().includes('nom du fichier image') ? lines.slice(1) : lines;
+
+      return dataLines
+        .map((line) => {
+          const [fileName = '', lastName = '', firstName = '', role = '', tagline = ''] = line.split(';').map((cell) => cell.trim());
+          if (!fileName) return null;
+          return { fileName, lastName, firstName, role, tagline };
+        })
+        .filter(Boolean);
+    };
+
+    const renderTeamCards = (members) => {
+      if (!teamMarquee) return;
+      teamMarquee.innerHTML = '';
+
+      if (!members.length) {
+        renderTeamError("Aucune donnée d'équipe disponible pour le moment.");
+        return;
+      }
+
+      teamMarquee.style.animation = '';
+      teamMarquee.style.width = 'max-content';
+      teamMarquee.style.justifyContent = '';
+
+      const fragment = document.createDocumentFragment();
+
+      [0, 1].forEach((index) => {
+        const track = document.createElement('div');
+        track.className = 'flex gap-4 px-6 py-5';
+        if (index === 1) track.setAttribute('aria-hidden', 'true');
+        members.forEach((member) => track.appendChild(createTeamCard(member)));
+        fragment.appendChild(track);
+      });
+
+      teamMarquee.appendChild(fragment);
+    };
+
+    const loadTeamCarousel = async () => {
+      if (!teamMarquee) return;
+      try {
+        const response = await fetch(TEAM_CSV_PATH);
+        if (!response.ok) throw new Error(`Statut ${response.status}`);
+        const csvText = await response.text();
+        const members = parseTeamCsv(csvText);
+        renderTeamCards(members);
+      } catch (error) {
+        console.error("Impossible de charger le CSV de l'équipe :", error);
+        renderTeamError("Impossible de charger le carrousel de l'équipe.");
+      }
+    };
 
     const debugToggleButton = document.querySelector('.debug-toggle');
 
@@ -1060,6 +1020,8 @@
       planBackdrop.addEventListener('mouseenter', closePlan);
       planBackdrop.addEventListener('click', closePlan);
     }
+
+    loadTeamCarousel();
   </script>
 </body>
 </html>
