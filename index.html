@@ -17,6 +17,8 @@
       --id-home: #ea611a;
       --id-pro: #193f60;
       --id-agri: #7c9b48;
+      --team-card-size: 240px;
+      --team-hover-scale: 1.67;
     }
     body {
       font-family: "Avenir", "Nunito", "Sans-serif";
@@ -213,12 +215,15 @@
     }
     .team-marquee {
       display: flex;
-      gap: 1rem;
       width: max-content;
       animation: marquee 26s linear infinite;
     }
-    .team-marquee:hover {
-      animation-play-state: paused;
+    .team-marquee:hover { animation-play-state: paused; }
+    .team-track {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      padding: 5rem 1.5rem;
     }
     @keyframes marquee {
       0% { transform: translateX(0); }
@@ -227,29 +232,46 @@
     .team-card {
       position: relative;
       overflow: hidden;
-      border-radius: 1rem;
-      min-width: 220px;
+      border-radius: 1.25rem;
+      width: var(--team-card-size);
+      height: var(--team-card-size);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      isolation: isolate;
     }
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+    .team-card:hover, .team-card:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.2);
+      z-index: 1;
     }
-    .team-card img { display: block; }
+    .team-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease, filter 0.35s ease;
+    }
+    .team-card:hover img, .team-card:focus-within img {
+      transform: scale(var(--team-hover-scale));
+      filter: brightness(0.95);
+    }
     .team-overlay {
       position: absolute;
       inset: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      gap: 0.25rem;
       padding: 1rem;
-      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.75) 100%);
       color: #fff;
       opacity: 0;
       transition: opacity 0.25s ease;
     }
-    .team-card:hover .team-overlay { opacity: 1; }
+    .team-card:hover .team-overlay, .team-card:focus-within .team-overlay { opacity: 1; }
+    .team-name { font-size: 1.05rem; font-weight: 700; }
+    .team-role { font-size: 0.95rem; color: rgba(255,255,255,0.82); font-weight: 600; }
+    .team-description { font-size: 0.85rem; color: rgba(255,255,255,0.78); line-height: 1.4; }
 
     .scroll-indicator {
       position: absolute;
@@ -499,95 +521,9 @@
             <p class="text-sm text-gray-600 max-w-md">Survolez pour découvrir leurs expertises ; le défilement s'interrompt automatiquement pour laisser place aux détails.</p>
           </div>
           <div class="relative overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)]">
-            <div class="team-marquee" aria-label="Carrousel de l'équipe">
-              <div class="flex gap-4 px-6 py-5">
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Lina Dupont</p>
-                    <p class="text-sm text-white/80 font-medium">Directrice artistique</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-80" alt="Portrait de Karim" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Karim Bensaïd</p>
-                    <p class="text-sm text-white/80 font-medium">Chef de projet industriel</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-40" alt="Portrait de Mei" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Mei Laurent</p>
-                    <p class="text-sm text-white/80 font-medium">Ingénieure matériaux</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Portrait d'Amélie" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Amélie Roche</p>
-                    <p class="text-sm text-white/80 font-medium">Responsable RSE</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait de Julian" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Julian Ferretti</p>
-                    <p class="text-sm text-white/80 font-medium">Designer produit</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=700&q=80" alt="Portrait de Sofia" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Sofia Meunier</p>
-                    <p class="text-sm text-white/80 font-medium">Lead innovation</p>
-                  </div>
-                </div>
-              </div>
-              <div class="flex gap-4 px-6 py-5" aria-hidden="true">
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="Portrait de Lina" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Lina Dupont</p>
-                    <p class="text-sm text-white/80 font-medium">Directrice artistique</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-80" alt="Portrait de Karim" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Karim Bensaïd</p>
-                    <p class="text-sm text-white/80 font-medium">Chef de projet industriel</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80&sat=-40" alt="Portrait de Mei" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Mei Laurent</p>
-                    <p class="text-sm text-white/80 font-medium">Ingénieure matériaux</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Portrait d'Amélie" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Amélie Roche</p>
-                    <p class="text-sm text-white/80 font-medium">Responsable RSE</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80" alt="Portrait de Julian" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Julian Ferretti</p>
-                    <p class="text-sm text-white/80 font-medium">Designer produit</p>
-                  </div>
-                </div>
-                <div class="team-card group">
-                  <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=700&q=80" alt="Portrait de Sofia" class="h-52 w-60 object-cover" loading="lazy" />
-                  <div class="team-overlay">
-                    <p class="text-lg font-semibold">Sofia Meunier</p>
-                    <p class="text-sm text-white/80 font-medium">Lead innovation</p>
-                  </div>
-                </div>
-              </div>
+            <div class="team-marquee" id="team-marquee" aria-label="Carrousel de l'équipe">
+              <div class="team-track" id="team-track" data-debug-label="Liste équipe"></div>
+              <div class="team-track" id="team-track-clone" aria-hidden="true"></div>
             </div>
           </div>
         </div>
@@ -606,20 +542,20 @@
                 <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID AGRI</button>
               </div>
             </div>
-            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden" data-debug-label="Plan interactif ID PRO">
-              <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
-              <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-12 w-auto" loading="lazy" />
-              <div class="relative h-96">
-                <div class="absolute inset-8 border border-white/20 rounded-2xl"></div>
-                <div class="absolute inset-12 border border-white/10 rounded-xl"></div>
-                <div class="absolute inset-4 bg-gradient-to-br from-white/5 to-white/0 rounded-2xl"></div>
-                <p class="absolute top-10 right-10 text-white/70 text-sm italic">Croquis d'usine – zones critiques</p>
-
-                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="Zone production" data-tooltip="Ligne de montage : revêtements anti-fatigue et signalétique sécurisée"></button>
-                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="Zone logistique" data-tooltip="Logistique : tapis anti-chute, protections de rack, éclairage LED industriel"></button>
-                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="Zone maintenance" data-tooltip="Maintenance : plateformes d'accès, kits de maintenance prédictive"></button>
+            <div class="lg:w-1/2" data-debug-label="Plan croquis visuel">
+              <div class="relative overflow-hidden rounded-3xl shadow-2xl border border-gray-200 bg-white">
+                <img src="images/PlanCroquis.jpg" alt="Plan croquis ID GROUP" class="w-full h-full object-cover max-h-[34rem]" loading="lazy" />
+                <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/35 via-black/5 to-transparent"></div>
+                <div class="absolute top-4 left-4 flex items-center gap-3 px-3 py-2 rounded-full bg-white/85 backdrop-blur-md shadow">
+                  <span class="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--id-red)]">Plan croquis</span>
+                  <span class="text-xs font-semibold text-gray-700">Zones métiers</span>
+                </div>
+                <div class="absolute bottom-4 left-4 right-4 flex flex-wrap items-center gap-3 text-white">
+                  <span class="px-3 py-1 rounded-full bg-[var(--id-pro)] text-xs font-semibold uppercase tracking-wide">ID PRO</span>
+                  <span class="px-3 py-1 rounded-full bg-[var(--id-home)] text-xs font-semibold uppercase tracking-wide">ID HOME</span>
+                  <span class="px-3 py-1 rounded-full bg-[var(--id-agri)] text-xs font-semibold uppercase tracking-wide">ID AGRI</span>
+                </div>
               </div>
-              <div id="tooltip" class="hidden absolute bottom-6 left-6 right-6 bg-white text-[var(--id-gray-dark)] rounded-xl shadow-xl p-4 text-sm font-semibold"></div>
             </div>
           </div>
         </div>
@@ -658,6 +594,148 @@
   </div>
 
   <script>
+    const avatarFiles = [
+      "Alexandre.JPG",
+      "Amandine.jpg",
+      "Cedric.jpg",
+      "Christophe.JPG",
+      "Claude.JPG",
+      "Gil.jpg",
+      "Isabelle.JPG",
+      "Jerry.JPG",
+      "Monika.jpg",
+      "Philippe.JPG",
+      "Sebastien.jpg",
+      "Sevda.JPG",
+      "Thomas.JPG",
+      "Valerie.jpg",
+    ].sort((a, b) => a.localeCompare(b, "fr", { sensitivity: "base" }));
+
+    const possibleCsvFiles = [
+      "avatars/equipe.csv",
+      "avatars/team.csv",
+      "avatars/avatars.csv",
+      "avatars/membres.csv",
+    ];
+
+    const prettifyName = (rawName) => {
+      const cleaned = rawName.replace(/\.[^/.]+$/, "").replace(/[_-]+/g, " ").trim();
+      return cleaned
+        .split(/\s+/)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+        .join(" ");
+    };
+
+    const parseCsvContent = (content) =>
+      content
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .map((line) => {
+          const [file = "", lastName = "", firstName = "", role = "", description = ""] = line
+            .split(";")
+            .map((entry) => entry.trim());
+          return { file, lastName, firstName, role, description };
+        });
+
+    const buildTeamMembers = (csvRows) => {
+      const csvByFile = new Map();
+      csvRows.forEach((row) => {
+        if (row.file) {
+          csvByFile.set(row.file.toLowerCase(), row);
+        }
+      });
+
+      return avatarFiles.map((file) => {
+        const csvData = csvByFile.get(file.toLowerCase()) || {};
+        const prettyName = prettifyName(file);
+        const [firstPart, ...rest] = prettyName.split(" ");
+
+        return {
+          file,
+          firstName: csvData.firstName || firstPart || prettyName,
+          lastName: csvData.lastName || rest.join(" "),
+          role: csvData.role || "Commercial",
+          description: csvData.description || "",
+        };
+      });
+    };
+
+    const createTeamCard = (member) => {
+      const card = document.createElement("div");
+      card.className = "team-card group";
+      card.dataset.debugLabel = "Membre de l'équipe";
+      card.tabIndex = 0;
+
+      const img = document.createElement("img");
+      img.src = `avatars/${member.file}`;
+      img.alt = `Portrait de ${member.firstName}${member.lastName ? ` ${member.lastName}` : ""}`;
+      img.loading = "lazy";
+
+      const overlay = document.createElement("div");
+      overlay.className = "team-overlay";
+
+      const nameEl = document.createElement("p");
+      nameEl.className = "team-name";
+      nameEl.textContent = `${member.firstName}${member.lastName ? ` ${member.lastName}` : ""}`;
+
+      const roleEl = document.createElement("p");
+      roleEl.className = "team-role";
+      roleEl.textContent = member.role || "Commercial";
+
+      overlay.appendChild(nameEl);
+      overlay.appendChild(roleEl);
+
+      if (member.description) {
+        const descEl = document.createElement("p");
+        descEl.className = "team-description";
+        descEl.textContent = member.description;
+        overlay.appendChild(descEl);
+      }
+
+      card.appendChild(img);
+      card.appendChild(overlay);
+      return card;
+    };
+
+    const loadTeamMetadata = async () => {
+      for (const path of possibleCsvFiles) {
+        try {
+          const response = await fetch(path);
+          if (response.ok) {
+            const text = await response.text();
+            if (text.trim()) return parseCsvContent(text);
+          }
+        } catch (error) {
+          continue;
+        }
+      }
+      return [];
+    };
+
+    const renderTeamMarquee = async () => {
+      const track = document.getElementById("team-track");
+      const clone = document.getElementById("team-track-clone");
+      const marquee = document.getElementById("team-marquee");
+      if (!track || !clone || !marquee) return;
+
+      const csvRows = await loadTeamMetadata();
+      const members = buildTeamMembers(csvRows);
+
+      const fragment = document.createDocumentFragment();
+      members.forEach((member) => fragment.appendChild(createTeamCard(member)));
+      track.appendChild(fragment);
+
+      const cloneFragment = document.createDocumentFragment();
+      members.forEach((member) => cloneFragment.appendChild(createTeamCard(member)));
+      clone.appendChild(cloneFragment);
+
+      const duration = Math.max(20, members.length * 2.4);
+      marquee.style.animationDuration = `${duration}s`;
+    };
+
+    renderTeamMarquee();
+
     const debugOverlay = document.createElement('div');
     debugOverlay.className = 'debug-overlay';
     debugOverlay.id = 'debug-overlay';
