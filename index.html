@@ -183,6 +183,54 @@
       transform: scale(1.1);
       background: var(--id-red-cta);
     }
+    .interactive-plan {
+      transition: transform 0.4s ease, box-shadow 0.45s ease;
+      transform-origin: center;
+      z-index: 0;
+    }
+    .interactive-plan.plan-zoomed {
+      position: fixed;
+      inset: 5%;
+      width: 90vw;
+      height: 90vh;
+      z-index: 50;
+      box-shadow: 0 30px 120px rgba(0, 0, 0, 0.45);
+      border-radius: 1.5rem;
+      overflow: hidden;
+    }
+    .plan-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.55);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 40;
+    }
+    .plan-backdrop.visible { opacity: 1; pointer-events: auto; }
+    .plan-popover {
+      position: absolute;
+      min-width: 220px;
+      max-width: 260px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--id-gray-dark);
+      padding: 0.9rem 1rem;
+      border-radius: 0.9rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      opacity: 0;
+      transform: translateY(6px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .plan-popover.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .plan-popover h4 { font-weight: 800; font-size: 1rem; margin-bottom: 0.15rem; }
+    .plan-popover p { font-size: 0.9rem; line-height: 1.4; color: #374151; }
     .agri-horizontal-label {
       display: inline-flex;
       align-items: center;
@@ -215,7 +263,7 @@
       display: flex;
       gap: 1rem;
       width: max-content;
-      animation: marquee 26s linear infinite;
+      animation: marquee 34s linear infinite;
       align-items: stretch;
     }
     .team-marquee:hover {
@@ -501,7 +549,7 @@
       </section>
 
       <section id="equipe" class="bg-gray-50 py-14 border-y border-gray-200/70" data-debug-label="Section équipe">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div class="w-full px-4 sm:px-6 lg:px-10 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-3">
             <div data-debug-label="Titre section équipe">
               <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--id-red)] mb-1">Notre équipe</p>
@@ -716,6 +764,22 @@
         </div>
       </section>
 
+      <section class="bg-white py-14 border-b border-gray-200/70" id="histoire" data-debug-label="Section historique">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--id-red)]">Notre histoire</p>
+            <h3 class="text-3xl sm:text-4xl font-semibold text-[var(--id-gray-dark)]">ID GROUP, une vision industrielle au service du quotidien</h3>
+            <p class="text-base text-gray-700 leading-relaxed">Né d'une volonté de réunir savoir-faire industriels et sens du design, ID GROUP a structuré trois domaines d'activités stratégiques pour répondre aux enjeux des professionnels, des particuliers et du monde agricole.</p>
+            <p class="text-base text-gray-700 leading-relaxed">De la conception modulaire aux déploiements sur sites industriels, notre équipe accompagne chaque projet avec une exigence de qualité, de durabilité et d'innovation, en s'appuyant sur des partenaires locaux et des matériaux responsables.</p>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-[var(--id-pro)]/15 via-transparent to-[var(--id-red)]/10 blur-3xl"></div>
+            <img src="images/batiment73.jpg" alt="Bâtiment ID GROUP" class="relative rounded-3xl shadow-2xl border border-white/60" loading="lazy" />
+            <p class="absolute bottom-4 left-4 bg-white/90 text-[var(--id-gray-dark)] text-sm font-semibold px-4 py-2 rounded-full shadow">Depuis 1973, une aventure collective</p>
+          </div>
+        </div>
+      </section>
+
       <section id="croquis" class="bg-white py-16" data-debug-label="Section croquis">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col lg:flex-row gap-8 items-start">
@@ -729,7 +793,7 @@
                 <button class="px-4 py-2 rounded-full bg-gray-200 text-gray-800 font-medium">ID AGRI</button>
               </div>
             </div>
-            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden" data-debug-label="Plan interactif ID PRO">
+            <div class="lg:w-1/2 relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 rounded-3xl shadow-2xl overflow-hidden interactive-plan" data-debug-label="Plan interactif ID PRO" id="plan-pro">
               <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.2), transparent 35%), radial-gradient(circle at 80% 40%, rgba(255,255,255,0.1), transparent 30%), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.18), transparent 32%);"></div>
               <img src="logos/ID PRO.png" alt="ID PRO" class="absolute top-6 left-6 h-12 w-auto" loading="lazy" />
               <div class="relative h-96">
@@ -737,9 +801,22 @@
                 <div class="absolute inset-0 bg-gradient-to-b from-black/5 via-black/0 to-black/30"></div>
                 <p class="absolute top-8 right-8 text-white/85 text-sm italic bg-black/30 px-3 py-2 rounded-full backdrop-blur-sm">Croquis des solutions</p>
 
-                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="Zone production" data-tooltip="Ligne de montage : revêtements anti-fatigue et signalétique sécurisée"></button>
-                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="Zone logistique" data-tooltip="Logistique : tapis anti-chute, protections de rack, éclairage LED industriel"></button>
-                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="Zone maintenance" data-tooltip="Maintenance : plateformes d'accès, kits de maintenance prédictive"></button>
+                <button class="hotspot absolute" style="top: 28%; left: 32%;" aria-label="Zone production" data-tooltip="DAS Production" data-das="production"></button>
+                <button class="hotspot absolute" style="top: 55%; left: 60%;" aria-label="Zone logistique" data-tooltip="DAS Logistique" data-das="logistique"></button>
+                <button class="hotspot absolute" style="top: 68%; left: 20%;" aria-label="Zone maintenance" data-tooltip="DAS Maintenance" data-das="maintenance"></button>
+
+                <div class="plan-popover" style="top: 22%; left: 38%;" data-das="production">
+                  <h4>DAS Production</h4>
+                  <p>Optimisation des lignes avec des revêtements confort, de la signalétique sécurisée et des flux ergonomiques.</p>
+                </div>
+                <div class="plan-popover" style="top: 46%; left: 66%;" data-das="logistique">
+                  <h4>DAS Logistique</h4>
+                  <p>Circulation fluide, protections de racks, éclairage LED et zones de préparation pensées pour la sécurité.</p>
+                </div>
+                <div class="plan-popover" style="top: 70%; left: 26%;" data-das="maintenance">
+                  <h4>DAS Maintenance</h4>
+                  <p>Accès facilités, plateformes mobiles et kits de maintenance préventive pour des interventions rapides.</p>
+                </div>
               </div>
               <div id="tooltip" class="hidden absolute bottom-6 left-6 right-6 bg-white text-[var(--id-gray-dark)] rounded-xl shadow-xl p-4 text-sm font-semibold"></div>
             </div>
@@ -777,6 +854,8 @@
         </div>
       </div>
     </footer>
+
+  <div class="plan-backdrop" id="plan-backdrop" aria-hidden="true"></div>
   </div>
 
   <script>
@@ -905,19 +984,59 @@
 
     const tooltip = document.getElementById('tooltip');
     const hotspots = document.querySelectorAll('.hotspot');
+    const popovers = document.querySelectorAll('.plan-popover');
+    const planContainer = document.getElementById('plan-pro');
+    const planBackdrop = document.getElementById('plan-backdrop');
+
+    const hideAllPopovers = () => {
+      popovers.forEach((popover) => popover.classList.remove('visible'));
+      tooltip?.classList.add('hidden');
+    };
+
+    const showPopoverForDas = (dasLabel, tooltipText) => {
+      hideAllPopovers();
+      const target = Array.from(popovers).find((popover) => popover.dataset.das === dasLabel);
+      if (target) {
+        target.classList.add('visible');
+        tooltip.textContent = tooltipText;
+        tooltip.classList.remove('hidden');
+      }
+    };
+
     hotspots.forEach((spot) => {
+      const dasLabel = spot.dataset.das;
       spot.addEventListener('mouseenter', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
+        showPopoverForDas(dasLabel, spot.dataset.tooltip);
       });
-      spot.addEventListener('mouseleave', () => {
-        tooltip.classList.add('hidden');
+      spot.addEventListener('focus', () => {
+        showPopoverForDas(dasLabel, spot.dataset.tooltip);
       });
-      spot.addEventListener('click', () => {
-        tooltip.textContent = spot.dataset.tooltip;
-        tooltip.classList.remove('hidden');
+      spot.addEventListener('mouseleave', hideAllPopovers);
+      spot.addEventListener('blur', hideAllPopovers);
+      spot.addEventListener('click', (event) => {
+        event.preventDefault();
+        showPopoverForDas(dasLabel, spot.dataset.tooltip);
       });
     });
+
+    const togglePlanZoom = (active) => {
+      if (!planContainer || !planBackdrop) return;
+      planContainer.classList.toggle('plan-zoomed', active);
+      planBackdrop.classList.toggle('visible', active);
+      document.body.classList.toggle('overflow-hidden', active);
+      if (!active) hideAllPopovers();
+    };
+
+    if (planContainer && planBackdrop) {
+      planContainer.addEventListener('mouseenter', () => togglePlanZoom(true));
+      planContainer.addEventListener('mouseleave', (event) => {
+        if (!planContainer.contains(event.relatedTarget)) togglePlanZoom(false);
+      });
+      planBackdrop.addEventListener('click', () => togglePlanZoom(false));
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') togglePlanZoom(false);
+      });
+    }
   </script>
 </body>
 </html>
