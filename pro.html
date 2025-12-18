@@ -68,6 +68,49 @@
     .logo-link img { transition: transform 0.25s ease; }
     .logo-link:hover img,
     .logo-link:focus-visible img { transform: scale(1.06); }
+
+    .page-hero {
+      position: relative;
+      height: 33vh;
+      min-height: 260px;
+      width: 100%;
+      background: var(--hero-image) center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      color: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65));
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+      padding: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    .page-hero__eyebrow {
+      margin: 0;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .page-hero__title {
+      margin: 0.35rem 0 0;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      text-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-pro { --hero-image: url('images/ImageIDPro.jpg'); }
   </style>
 </head>
 <body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
@@ -79,7 +122,7 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">73 rue du Bâtiment<br>Siège de la société</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
@@ -118,9 +161,15 @@
       </a>
     </div>
   </header>
+  <section class="page-hero hero-pro" aria-label="Visuel de l'univers Protection, Hygiène et Sécurité">
+    <div class="page-hero__inner">
+      <p class="page-hero__eyebrow">ID PRO</p>
+      <h1 class="page-hero__title">Protection, Hygiène et Sécurité</h1>
+    </div>
+  </section>
   <main class="max-w-4xl mx-auto px-4 py-16 space-y-4">
     <p class="text-xs uppercase tracking-[0.35em] text-red-600">ID Group</p>
-    <h1 class="text-4xl font-black">Section en construction</h1>
+    <h2 class="text-4xl font-black">Section en construction</h2>
     <p class="text-lg text-gray-700">Ce gabarit sert de base pour la navigation. Personnalisez ce contenu avec vos informations spécifiques.</p>
     <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md font-semibold shadow">↩ Retour à l'accueil</a>
   </main>
