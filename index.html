@@ -65,15 +65,18 @@
     .app-shell {
       position: relative;
       min-height: 100vh;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero {
+      --hero-padding: clamp(1.5rem, 4vw, 3.5rem);
       position: relative;
       min-height: calc(100vh - var(--nav-height));
       display: flex;
       align-items: stretch;
-      padding: clamp(1.5rem, 4vw, 3.5rem);
+      padding: var(--hero-padding);
+      padding-top: calc(var(--hero-padding) + var(--nav-height));
+      margin-top: calc(-1 * var(--nav-height));
       background: #05080e;
       filter: saturate(0.98);
       color: #f6f8fb;
@@ -85,7 +88,10 @@
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0;
+      top: calc(-1 * var(--nav-height));
+      right: 0;
+      bottom: 0;
+      left: 0;
       background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.07), transparent 42%),
         radial-gradient(circle at 82% 68%, rgba(228, 30, 40, 0.15), transparent 42%),
         linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.26));
@@ -97,7 +103,10 @@
     .hero::after {
       content: "";
       position: absolute;
-      inset: -4% -6%;
+      top: calc(-1 * var(--nav-height));
+      right: -6%;
+      bottom: -4%;
+      left: -6%;
       background: url('images/fondIDGROUP.jpg') center/cover no-repeat;
       transform: scale(1.05);
       animation: heroDrift 22s ease-in-out infinite alternate;
@@ -120,6 +129,7 @@
       display: flex;
       flex-direction: column;
       gap: clamp(1.5rem, 3vw, 2.5rem);
+      transition: transform 0.45s ease;
     }
 
     .hero-body {
@@ -220,6 +230,16 @@
       backdrop-filter: blur(8px);
       box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
       align-items: center;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      will-change: transform, box-shadow;
+      cursor: default;
+    }
+
+    .value-card:hover,
+    .value-card:focus-within {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+      border-color: rgba(255, 255, 255, 0.24);
     }
 
     .value-icon {
@@ -251,6 +271,16 @@
       margin: 0.15rem 0 0;
       color: rgba(244, 245, 247, 0.8);
       line-height: 1.4;
+    }
+
+    .hero:hover::after,
+    .hero:focus-within::after {
+      transform: scale(1.55);
+    }
+
+    .hero:hover .hero-frame,
+    .hero:focus-within .hero-frame {
+      transform: scale(1.02);
     }
 
     .hero.is-hidden {
@@ -536,8 +566,8 @@
   </style>
 </head>
 <body>
-  <header class="global-nav" role="banner">
-    <a class="nav-brand" href="index.html">
+  <header class="global-nav" role="banner" data-debug-label="Div menu haut">
+    <a class="nav-brand" href="index.html" data-debug-label="Div logo ID GROUP">
       <img src="logos/ID GROUP.png" alt="ID GROUP">
       <span>ID GROUP</span>
       <span class="brand-tooltip" aria-hidden="true">
@@ -548,13 +578,13 @@
         </span>
       </span>
     </a>
-    <nav class="nav-links" aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="#universes" id="navUniversLink">Univers</a>
-      <a href="groupe.html">Groupe</a>
-      <a href="engagements.html">Engagements</a>
-      <a href="actualites.html">Actualités</a>
-      <a href="contact.html">Contact</a>
+    <nav class="nav-links" aria-label="Navigation principale" data-debug-label="Navigation principale">
+      <a href="index.html" data-debug-label="Lien Accueil">Accueil</a>
+      <a href="#universes" id="navUniversLink" data-debug-label="Lien Univers">Univers</a>
+      <a href="groupe.html" data-debug-label="Lien Groupe">Groupe</a>
+      <a href="engagements.html" data-debug-label="Lien Engagements">Engagements</a>
+      <a href="actualites.html" data-debug-label="Lien Actualités">Actualités</a>
+      <a href="contact.html" data-debug-label="Lien Contact">Contact</a>
     </nav>
     <div class="nav-actions">
       <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false" aria-label="Activer le mode debug">
@@ -584,10 +614,10 @@
     </div>
   </header>
   <main class="app-shell">
-    <section class="hero" id="intro">
+    <section class="hero" id="intro" data-debug-label="Bannière hero ID GROUP">
       <div class="hero-frame">
         <div class="hero-body">
-          <div class="hero-inner">
+          <div class="hero-inner" data-debug-label="Bloc texte hero">
             <div class="eyebrow">Notre mission</div>
             <h1>Innover pour protéger les lieux, les équipes et les élevages.</h1>
             <p>Une expérience immersive inspirée par vos besoins en protection, hygiène et bien-être. Découvrez nos trois univers complémentaires à travers un rideau interactif pensé pour être simple, moderne et exigeant.</p>
@@ -598,21 +628,21 @@
           </div>
 
           <div class="values-deck" aria-label="Valeurs ID GROUP">
-            <article class="value-card">
+            <article class="value-card" data-debug-label="Div article Respect">
               <div class="value-icon"><img src="images/respect.png" alt="Pictogramme Respect"></div>
               <div class="value-text">
                 <p class="value-label">Respect</p>
                 <p>Des solutions qui prennent soin des personnes et des lieux avec exigence et attention.</p>
               </div>
             </article>
-            <article class="value-card">
+            <article class="value-card" data-debug-label="Div article Curiosité">
               <div class="value-icon"><img src="images/curiosite.png" alt="Pictogramme Curiosité"></div>
               <div class="value-text">
                 <p class="value-label">Curiosité</p>
                 <p>Observer, tester et améliorer pour apporter des réponses simples et utiles.</p>
               </div>
             </article>
-            <article class="value-card">
+            <article class="value-card" data-debug-label="Div article Efficience">
               <div class="value-icon"><img src="images/efficience.png" alt="Pictogramme Efficience"></div>
               <div class="value-text">
                 <p class="value-label">Efficience</p>
@@ -624,8 +654,8 @@
       </div>
     </section>
 
-    <section class="accordion" id="universes">
-      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');">
+    <section class="accordion" id="universes" data-debug-label="Rideau des univers">
+      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
         <div class="content">
           <div class="tagline">Habitat</div>
           <img class="logo" src="logos/ID HOME.png" alt="ID HOME">
@@ -637,7 +667,7 @@
         </div>
       </article>
 
-      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité" data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');">
+      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité" data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');" data-debug-label="Panneau univers ID PRO">
         <div class="content">
           <div class="tagline">Protection, Hygiène et Sécurité</div>
           <img class="logo" src="logos/ID PRO.png" alt="ID PRO">
@@ -649,7 +679,7 @@
         </div>
       </article>
 
-      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal" data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');">
+      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal" data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');" data-debug-label="Panneau univers ID AGRI">
         <div class="content">
           <div class="tagline">Élevage et Bien-être animal</div>
           <img class="logo" src="logos/ID AGRI.png" alt="ID AGRI">

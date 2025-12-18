@@ -199,11 +199,19 @@ body {
   display: none;
 }
 
+body.debug-mode [data-debug-label] {
+  position: relative;
+}
+
 body.debug-mode *:hover {
   outline: 1px dashed rgba(255, 255, 255, 0.55);
 }
 
-body.debug-mode .global-nav *,
+body.debug-mode [data-debug-active] {
+  outline: 2px solid #e41e28;
+  box-shadow: 0 0 0 2px rgba(228, 30, 40, 0.35);
+}
+
 body.debug-mode .debug-tooltip {
   outline: none !important;
 }
