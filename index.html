@@ -71,7 +71,7 @@
     .hero {
       --hero-padding: clamp(1.5rem, 4vw, 3.5rem);
       position: relative;
-      min-height: calc(100vh - var(--nav-height));
+      min-height: 100vh;
       display: flex;
       align-items: stretch;
       padding: var(--hero-padding);
@@ -103,10 +103,7 @@
     .hero::after {
       content: "";
       position: absolute;
-      top: calc(-1 * var(--nav-height));
-      right: -6%;
-      bottom: -4%;
-      left: -6%;
+      inset: calc(-1 * var(--nav-height)) 0 0 0;
       background: url('images/fondIDGROUP.jpg') center/cover no-repeat;
       transform: scale(1.05);
       animation: heroDrift 22s ease-in-out infinite alternate;
@@ -298,8 +295,8 @@
 
     .accordion {
       position: relative;
-      height: calc(100vh - var(--nav-height));
-      min-height: calc(100vh - var(--nav-height));
+      height: 100vh;
+      min-height: 100vh;
       display: flex;
       visibility: hidden;
       opacity: 0;
@@ -352,7 +349,7 @@
 
     .panel .logo {
       width: clamp(150px, 22vw, 230px);
-      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
+      filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.45)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
       transition: transform 0.4s ease;
     }
 
@@ -550,7 +547,7 @@
       .accordion {
         flex-direction: column;
         height: auto;
-        min-height: calc(100vh - var(--nav-height));
+        min-height: 100vh;
       }
 
       .accordion.has-focus .panel,
@@ -574,7 +571,7 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">73 rue du Bâtiment<br>Siège de la société</p>
+          <p class="brand-tooltip__address">Emplacement : Alpespace<br>Adresse : 47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>

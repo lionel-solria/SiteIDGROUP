@@ -8,6 +8,30 @@
   let debugEnabled = false;
   let highlightedElement = null;
 
+  const resolveDebugTarget = (event) => {
+    const stack = document.elementsFromPoint(event.clientX, event.clientY) || [];
+    const labeledFromPoint = stack.find((el) => el instanceof Element && el.dataset && el.dataset.debugLabel);
+    const fallback = event.target && event.target instanceof Element ? event.target : null;
+    if (labeledFromPoint) return labeledFromPoint;
+    if (fallback && fallback.dataset && fallback.dataset.debugLabel) return fallback;
+    const closestLabeled = fallback ? fallback.closest('[data-debug-label]') : null;
+    return closestLabeled || fallback;
+  };
+
+  const describeElement = (element) => {
+    if (!element) return '';
+    if (element.dataset && element.dataset.debugLabel) return element.dataset.debugLabel;
+    if (element.getAttribute) {
+      const aria = element.getAttribute('aria-label');
+      if (aria) return aria;
+      const name = element.getAttribute('name');
+      if (name) return name;
+    }
+    if (element.id) return `#${element.id}`;
+    if (element.classList && element.classList.length) return `.${element.classList[0]}`;
+    return element.tagName ? element.tagName.toLowerCase() : 'élément';
+  };
+
   const setHighlight = (element) => {
     if (highlightedElement && highlightedElement !== element) {
       highlightedElement.removeAttribute('data-debug-active');
@@ -20,9 +44,8 @@
 
   const moveHandler = (event) => {
     if (!debugEnabled) return;
-    const target = event.target;
-    if (!target || tooltip.contains(target)) return;
-    const labeledTarget = target.closest('[data-debug-label]') || target;
+    const labeledTarget = resolveDebugTarget(event);
+    if (!labeledTarget || tooltip.contains(labeledTarget)) return;
     const tagLabel = labeledTarget.tagName ? labeledTarget.tagName.toLowerCase() : '';
     const typeLabel = labeledTarget.getAttribute && (labeledTarget.getAttribute('type') || labeledTarget.getAttribute('role'));
     const elementType = typeLabel || (labeledTarget.constructor && labeledTarget.constructor.name ? labeledTarget.constructor.name : '');
@@ -76,10 +99,30 @@
     }
   };
 
+  const copyCurrentLabel = async () => {
+    if (!debugEnabled || !highlightedElement) return;
+    const labelToCopy = describeElement(highlightedElement);
+    if (!labelToCopy) return;
+    try {
+      await navigator.clipboard.writeText(labelToCopy);
+      tooltip.textContent = `${labelToCopy} (copié)`;
+    } catch (error) {
+      console.warn('Impossible de copier le nom de l\'objet :', error);
+    }
+  };
+
   if (debugToggle) {
     debugToggle.addEventListener('click', (event) => {
       event.preventDefault();
       debugEnabled ? disableDebug() : enableDebug();
     });
   }
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key?.toLowerCase() !== 'c') return;
+    const activeTag = document.activeElement && document.activeElement.tagName;
+    const isInputting = activeTag && ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeTag);
+    if (isInputting) return;
+    copyCurrentLabel();
+  });
 })();
