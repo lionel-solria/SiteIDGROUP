@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP — Piste 1 (POC)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0c1018;
+      --bg-veil: rgba(0, 0, 0, 0.55);
+      --accent: #e41e28;
+      --home: #ea611a;
+      --pro: #193f60;
+      --agri: #7c9b48;
+      --text: #f5f7fb;
+      --muted: #cbd2dc;
+      --shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; font: inherit; }
+
+    /* HERO */
+    .intro {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 30% 20%, rgba(228, 30, 40, 0.22), transparent 45%),
+                  radial-gradient(circle at 80% 60%, rgba(124, 155, 72, 0.2), transparent 40%),
+                  linear-gradient(135deg, #0c1018 0%, #121929 100%);
+      overflow: hidden;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      z-index: 10;
+    }
+    .intro::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('images/ImageIDHome.jpg') center/cover no-repeat;
+      filter: blur(22px) brightness(0.4);
+      opacity: 0.4;
+      mix-blend-mode: lighten;
+      z-index: 0;
+      transform: scale(1.05);
+    }
+    .intro-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 640px;
+      padding: 2rem;
+      display: grid;
+      gap: 1.5rem;
+      justify-items: center;
+    }
+    .intro-logo {
+      width: min(260px, 60vw);
+      filter: drop-shadow(0 10px 40px rgba(0,0,0,0.35));
+    }
+    .intro h1 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.4vw, 2rem);
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+    .cta {
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #b3131a);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 35px rgba(228, 30, 40, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .cta:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 18px 45px rgba(228, 30, 40, 0.42); }
+    .cta:active { transform: translateY(0); }
+
+    .intro.is-hidden { opacity: 0; pointer-events: none; transform: scale(0.99); }
+
+    /* ACCORDION */
+    .accordion-stage {
+      height: 100vh;
+      display: none;
+      position: relative;
+    }
+    .accordion-stage.is-visible { display: flex; }
+    .universe {
+      flex: 1 1 0;
+      position: relative;
+      overflow: hidden;
+      transition: flex 0.6s ease, filter 0.45s ease, transform 0.45s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      isolation: isolate;
+      cursor: pointer;
+    }
+    .universe::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.42) saturate(1.05);
+      transition: filter 0.45s ease, transform 0.6s ease;
+      z-index: 0;
+    }
+    .universe::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%);
+      z-index: 0;
+      transition: background 0.45s ease;
+    }
+    .universe:hover::before { transform: scale(1.03); }
+
+    .universe-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 1rem;
+      padding: 2.5rem 1.5rem;
+      width: min(420px, 90%);
+      justify-items: center;
+      color: #fff;
+      text-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.45s ease, opacity 0.45s ease;
+    }
+    .universe .subtitle,
+    .universe .enter {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .universe-logo { width: min(200px, 50vw); filter: drop-shadow(0 10px 25px rgba(0,0,0,0.4)); }
+    .subtitle { color: #f1f5f9; font-weight: 600; letter-spacing: 0.04em; }
+    .enter {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .enter:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; }
+
+    .universe.focus { flex: 0.8 1 0%; filter: none; box-shadow: var(--shadow); }
+    .universe.dimmed { flex: 0.1 1 0%; filter: grayscale(0.4) brightness(0.65); }
+    .universe.focus .subtitle,
+    .universe.focus .enter { opacity: 1; transform: translateY(0); }
+
+    .universe[data-id="home"]::before { background-image: url('images/ImageIDHome.jpg'); }
+    .universe[data-id="pro"]::before { background-image: url('images/ImageIDPro.jpg'); }
+    .universe[data-id="agri"]::before { background-image: url('images/ImageIDAgri.jpg'); }
+
+    .badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 20;
+    }
+    .modal.is-open { opacity: 1; pointer-events: auto; }
+    .modal-card {
+      background: #0f1522;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      max-width: 960px;
+      width: min(92vw, 960px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .modal-media { background: #0b0f18; }
+    .modal-media img { height: 100%; width: 100%; object-fit: cover; }
+    .modal-body { padding: 1.8rem; display: grid; gap: 1rem; }
+    .modal-body h3 { margin: 0; font-size: 1.4rem; }
+    .modal-body p { margin: 0; line-height: 1.6; color: #d8deea; }
+    .close {
+      justify-self: start;
+      border: none;
+      background: transparent;
+      color: #fff;
+      padding: 0.2rem;
+      font-size: 1.4rem;
+      opacity: 0.8;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .close:hover { opacity: 1; transform: translateY(-1px); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .modal-card { grid-template-columns: 1fr; }
+      .modal-media { max-height: 320px; }
+    }
+    @media (max-width: 860px) {
+      .accordion-stage { flex-direction: column; height: auto; min-height: 100vh; }
+      .universe { flex: 1 1 100%; min-height: 60vh; }
+      .universe.focus { flex: 1 1 100%; }
+      .universe.dimmed { flex: 1 1 100%; filter: brightness(0.65); }
+      .badge { position: static; margin-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <section class="intro" id="intro">
+    <div class="intro-inner">
+      <img src="logos/ID GROUP.png" alt="ID GROUP" class="intro-logo">
+      <h1>Protéger les hommes, les animaux et les infrastructures</h1>
+      <button class="cta" id="start">DÉCOUVREZ NOS UNIVERS</button>
+    </div>
+  </section>
+
+  <main class="accordion-stage" id="stage" aria-live="polite">
+    <article class="universe" data-id="home" data-subtitle="Habitat" aria-label="Habitat">
+      <div class="badge">ID HOME</div>
+      <div class="universe-content">
+        <img src="logos/ID HOME.png" alt="ID HOME" class="universe-logo">
+        <p class="subtitle">Habitat</p>
+        <button class="enter" type="button">Entrer</button>
+      </div>
+    </article>
+    <article class="universe" data-id="pro" data-subtitle="Protection, Hygiène et Sécurité" aria-label="Protection, Hygiène et Sécurité">
+      <div class="badge">ID PRO</div>
+      <div class="universe-content">
+        <img src="logos/ID PRO.png" alt="ID PRO" class="universe-logo">
+        <p class="subtitle">Protection, Hygiène et Sécurité</p>
+        <button class="enter" type="button">Entrer</button>
+      </div>
+    </article>
+    <article class="universe" data-id="agri" data-subtitle="Élevage et Bien-être animal" aria-label="Élevage et Bien-être animal">
+      <div class="badge">ID AGRI</div>
+      <div class="universe-content">
+        <img src="logos/ID AGRI.png" alt="ID AGRI" class="universe-logo">
+        <p class="subtitle">Élevage et Bien-être animal</p>
+        <button class="enter" type="button">Entrer</button>
+      </div>
+    </article>
+  </main>
+
+  <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="modal-media">
+        <img src="images/PlanCroquis.jpg" alt="Plan Croquis ID GROUP">
+      </div>
+      <div class="modal-body">
+        <button class="close" type="button" aria-label="Fermer" id="closeModal">✕</button>
+        <p class="badge" id="modalTag">ID GROUP</p>
+        <h3 id="modal-title">Découvrir l'univers</h3>
+        <p id="modal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel sapien semper, sollicitudin felis ut, scelerisque lorem. Praesent congue eros vitae ligula ullamcorper, in cursus lorem viverra. Integer et augue in erat pellentesque hendrerit. Curabitur varius, nisl sit amet pulvinar rhoncus, tortor justo finibus velit, a faucibus mauris magna in felis.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const intro = document.getElementById('intro');
+    const stage = document.getElementById('stage');
+    const start = document.getElementById('start');
+    const panels = Array.from(document.querySelectorAll('.universe'));
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalText = document.getElementById('modal-text');
+    const modalTag = document.getElementById('modalTag');
+
+    let currentFocus = null;
+
+    function showStage() {
+      intro.classList.add('is-hidden');
+      setTimeout(() => stage.classList.add('is-visible'), 200);
+      focusPanel(panels[0]);
+    }
+
+    function focusPanel(panel) {
+      currentFocus = panel.dataset.id;
+      panels.forEach((item) => {
+        item.classList.remove('focus', 'dimmed');
+        if (item === panel) {
+          item.classList.add('focus');
+          item.setAttribute('aria-expanded', 'true');
+        } else {
+          item.classList.add('dimmed');
+          item.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function openModal(panel) {
+      const subtitle = panel.dataset.subtitle;
+      const badgeText = panel.querySelector('.badge').textContent;
+      modalTitle.textContent = `${badgeText} — ${subtitle}`;
+      modalTag.textContent = badgeText;
+      modal.classList.add('is-open');
+    }
+
+    function closeModalDialog() {
+      modal.classList.remove('is-open');
+    }
+
+    start.addEventListener('click', showStage);
+
+    panels.forEach((panel) => {
+      panel.addEventListener('click', (event) => {
+        const isEnter = event.target.closest('.enter');
+        if (isEnter) {
+          openModal(panel);
+        } else {
+          focusPanel(panel);
+        }
+      });
+    });
+
+    closeModal.addEventListener('click', closeModalDialog);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalDialog();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModalDialog();
+    });
+  </script>
+</body>
+</html>
