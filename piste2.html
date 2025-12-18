@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Piste 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --id-red: #e41e28;
+      --id-navy: #122032;
+      --id-soft: #f3f5f8;
+      --id-border: #e2e8f0;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--id-soft);
+      color: var(--id-navy);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    .logo-chip {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .logo-chip:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
+    }
+    .logo-chip img {
+      transition: transform 0.3s ease;
+    }
+    .logo-chip:hover img {
+      transform: scale(1.06);
+    }
+    .logo-chip .tag {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .logo-chip:hover .tag,
+    .logo-chip:focus-visible .tag {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.55) 100%);
+      opacity: 0.7;
+      transition: opacity 0.4s ease;
+    }
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    .tile:hover::after {
+      opacity: 0.55;
+    }
+    .tile img {
+      transition: transform 0.7s ease;
+    }
+    .tile:hover img {
+      transform: scale(1.08);
+    }
+    .tile .copy {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .tile:hover .copy,
+    .tile:focus-within .copy {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-30 glass">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-6">
+      <a href="#" class="flex items-center gap-3">
+        <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID GROUP.png" alt="ID GROUP" class="h-12 w-auto drop-shadow-sm">
+      </a>
+      <div class="flex-1 flex justify-end gap-4 md:gap-6 lg:gap-8">
+        <button class="logo-chip relative flex flex-col items-center gap-2 px-3" aria-label="ID HOME">
+          <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID HOME.png" alt="ID HOME" class="h-12 w-auto">
+          <span class="tag flex items-center gap-2 text-sm font-semibold text-slate-700 bg-white/90 px-3 py-1 rounded-full shadow-sm">
+            <span class="w-2 h-2 bg-orange-500 rounded-full"></span> Habitat
+          </span>
+        </button>
+        <button class="logo-chip relative flex flex-col items-center gap-2 px-3" aria-label="ID PRO">
+          <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID PRO.png" alt="ID PRO" class="h-12 w-auto">
+          <span class="tag flex items-center gap-2 text-sm font-semibold text-slate-700 bg-white/90 px-3 py-1 rounded-full shadow-sm">
+            <span class="w-2 h-2 bg-blue-900 rounded-full"></span> Protection, Hygiène et Sécurité
+          </span>
+        </button>
+        <button class="logo-chip relative flex flex-col items-center gap-2 px-3" aria-label="ID AGRI">
+          <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID AGRI.png" alt="ID AGRI" class="h-12 w-auto">
+          <span class="tag flex items-center gap-2 text-sm font-semibold text-slate-700 bg-white/90 px-3 py-1 rounded-full shadow-sm">
+            <span class="w-2 h-2 bg-lime-600 rounded-full"></span> Élevage et Bien-être animal
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Tiles -->
+  <main>
+    <section class="max-w-6xl mx-auto px-6 pt-10 pb-16 space-y-10">
+      <div class="space-y-2 text-center">
+        <p class="uppercase tracking-[0.35em] text-sm text-slate-500">Piste 2 — Offre ID GROUP</p>
+        <h1 class="text-4xl md:text-5xl font-semibold text-slate-900">Une lecture claire, un scroll fluide</h1>
+        <p class="text-lg text-slate-600">Trois univers complémentaires pour accompagner vos projets, de l'habitat au bien-être animal.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="#home" class="tile group focus:outline-none">
+          <div class="absolute inset-0">
+            <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/images/ImageIDHome.jpg" alt="ID HOME" class="h-full w-full object-cover">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-orange-500 rounded-full"></span>
+              <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID HOME.png" alt="ID HOME" class="h-12 w-auto drop-shadow-lg">
+            </div>
+            <h2 class="text-2xl font-semibold">Habitat</h2>
+            <p class="copy text-sm leading-relaxed text-white/90">Solutions intégrées pour aménager et embellir les espaces de vie, avec une attention portée à la durabilité et au confort.</p>
+          </div>
+        </a>
+
+        <a href="#pro" class="tile group focus:outline-none">
+          <div class="absolute inset-0">
+            <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/images/ImageIDPro.jpg" alt="ID PRO" class="h-full w-full object-cover">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-blue-900 rounded-full"></span>
+              <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID PRO.png" alt="ID PRO" class="h-12 w-auto drop-shadow-lg">
+            </div>
+            <h2 class="text-2xl font-semibold">Protection, Hygiène et Sécurité</h2>
+            <p class="copy text-sm leading-relaxed text-white/90">Expertise multisectorielle pour protéger les équipes, garantir l'hygiène et sécuriser les environnements professionnels.</p>
+          </div>
+        </a>
+
+        <a href="#agri" class="tile group focus:outline-none">
+          <div class="absolute inset-0">
+            <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/images/ImageIDAgri.jpg" alt="ID AGRI" class="h-full w-full object-cover">
+          </div>
+          <div class="relative z-10 h-full flex flex-col justify-end p-8 text-white space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-lime-600 rounded-full"></span>
+              <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/logos/ID AGRI.png" alt="ID AGRI" class="h-12 w-auto drop-shadow-lg">
+            </div>
+            <h2 class="text-2xl font-semibold">Élevage et Bien-être animal</h2>
+            <p class="copy text-sm leading-relaxed text-white/90">Dispositifs innovants pour accompagner les professionnels de l'élevage dans une approche responsable et durable.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section Détail -->
+    <section id="home" class="bg-white border-y border-slate-200">
+      <div class="max-w-6xl mx-auto px-6 py-14 space-y-12">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-4">
+            <p class="uppercase text-sm tracking-[0.28em] text-slate-500">Habitat</p>
+            <h3 class="text-3xl font-semibold text-slate-900">Concevoir des espaces de vie plus fluides et responsables</h3>
+            <p class="text-lg text-slate-600">ID HOME rassemble des solutions qui facilitent les parcours d'aménagement, connectent les partenaires et garantissent une expérience utilisateur élégante.</p>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-orange-500"></span><span>Parcours digital unifié pour inspirer, configurer et commander rapidement.</span></li>
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-orange-500"></span><span>Offre modulable pour les programmes résidentiels, tertiaires et hospitalité.</span></li>
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-orange-500"></span><span>Accompagnement projet avec un réseau d'experts régionaux.</span></li>
+            </ul>
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-xl">
+            <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/images/PlanCroquis.jpg" alt="Plan de croquis" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div id="pro" class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="rounded-3xl overflow-hidden shadow-xl order-2 lg:order-1">
+            <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/images/PlanCroquis.jpg" alt="Schéma opérationnel" class="w-full h-full object-cover">
+          </div>
+          <div class="space-y-4 order-1 lg:order-2">
+            <p class="uppercase text-sm tracking-[0.28em] text-slate-500">Protection, Hygiène et Sécurité</p>
+            <h3 class="text-3xl font-semibold text-slate-900">Sécuriser les équipes et les sites avec des solutions intégrées</h3>
+            <p class="text-lg text-slate-600">ID PRO propose des dispositifs combinant équipements fiables, protocole d'hygiène renforcé et services de prévention pour chaque secteur.</p>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-blue-900"></span><span>Équipements de protection conformes et ergonomiques pour les équipes terrain.</span></li>
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-blue-900"></span><span>Parcours de formation et protocoles digitaux pour ancrer les bonnes pratiques.</span></li>
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-blue-900"></span><span>Services d'audit et de maintenance préventive pour sécuriser vos infrastructures.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="agri" class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-4">
+            <p class="uppercase text-sm tracking-[0.28em] text-slate-500">Élevage et Bien-être animal</p>
+            <h3 class="text-3xl font-semibold text-slate-900">Des solutions responsables pour les acteurs de l'élevage</h3>
+            <p class="text-lg text-slate-600">ID AGRI accompagne la performance durable des élevages grâce à des équipements conçus pour la santé animale et l'efficience opérationnelle.</p>
+            <ul class="space-y-3 text-slate-700">
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-lime-600"></span><span>Outils connectés pour le suivi des cheptels et l'optimisation énergétique.</span></li>
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-lime-600"></span><span>Solutions de biosécurité et d'hygiène adaptées à chaque filière.</span></li>
+              <li class="flex items-start gap-3"><span class="mt-2 w-2 h-2 rounded-full bg-lime-600"></span><span>Accompagnement terrain pour concevoir des installations respectueuses du bien-être animal.</span></li>
+            </ul>
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-xl">
+            <img src="lionel-solria/siteidgroup/SiteIDGROUP-2/images/PlanCroquis.jpg" alt="Plan d'implantation" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dernières Actualités -->
+    <section class="max-w-6xl mx-auto px-6 py-14 space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="uppercase text-sm tracking-[0.3em] text-slate-500">Actualités</p>
+          <h3 class="text-3xl font-semibold text-slate-900">Dernières actualités</h3>
+        </div>
+        <a href="#" class="text-sm font-semibold text-red-600 hover:text-red-700">Voir toutes &rarr;</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 hover:shadow-lg transition-shadow">
+          <p class="text-xs uppercase tracking-wide text-slate-500">12 juin 2024</p>
+          <h4 class="text-lg font-semibold text-slate-900">Ouverture d'un nouveau centre logistique ID HOME</h4>
+          <p class="text-sm text-slate-600">Un site pensé pour accélérer la livraison des solutions Habitat et renforcer la proximité clients.</p>
+          <button class="text-sm font-semibold text-red-600 hover:text-red-700">En savoir plus</button>
+        </article>
+        <article class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 hover:shadow-lg transition-shadow">
+          <p class="text-xs uppercase tracking-wide text-slate-500">04 juin 2024</p>
+          <h4 class="text-lg font-semibold text-slate-900">Programme de formation HSE renforcé</h4>
+          <p class="text-sm text-slate-600">Des parcours immersifs pour diffuser les meilleures pratiques de protection et d'hygiène sur site.</p>
+          <button class="text-sm font-semibold text-red-600 hover:text-red-700">En savoir plus</button>
+        </article>
+        <article class="bg-white border border-slate-200 rounded-2xl p-6 space-y-3 hover:shadow-lg transition-shadow">
+          <p class="text-xs uppercase tracking-wide text-slate-500">23 mai 2024</p>
+          <h4 class="text-lg font-semibold text-slate-900">Partenariat ID AGRI pour l'innovation responsable</h4>
+          <p class="text-sm text-slate-600">Une collaboration avec des start-ups AgTech pour accélérer le bien-être animal et l'efficience.</p>
+          <button class="text-sm font-semibold text-red-600 hover:text-red-700">En savoir plus</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-6 pb-12 text-sm text-slate-500 flex flex-col gap-2">
+    <span>ID GROUP &mdash; Piste 2 Scroll & Clarté</span>
+    <span>Proposition UI/UX par un design corporate et aéré.</span>
+  </footer>
+</body>
+</html>
