@@ -70,17 +70,21 @@
 
     .hero {
       position: relative;
-      min-height: calc(100vh - var(--nav-height));
+      min-height: 100vh;
       display: flex;
       align-items: stretch;
       padding: clamp(1.5rem, 4vw, 3.5rem);
-      background: linear-gradient(120deg, rgba(5, 8, 14, 0.72), rgba(5, 8, 14, 0.32) 58%, rgba(10, 16, 24, 0.12)),
-        url('images/fondIDGROUP.jpg') center/contain no-repeat;
+      background-image: linear-gradient(120deg, rgba(5, 8, 14, 0.72), rgba(5, 8, 14, 0.32) 58%, rgba(10, 16, 24, 0.12)),
+        url('images/fondIDGROUP.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       background-color: #05080e;
       filter: saturate(0.98);
       color: #f6f8fb;
       isolation: isolate;
-      transition: opacity 0.65s ease, transform 0.65s ease, height 0.65s ease, padding 0.65s ease;
+      transition: opacity 0.65s ease, transform 0.65s ease, height 0.65s ease, padding 0.65s ease, background-position 1.8s ease;
+      animation: hero-pan 22s ease-in-out infinite alternate;
     }
 
     .hero::before {
@@ -183,37 +187,6 @@
       background: rgba(255, 255, 255, 0.14);
       border-color: rgba(255, 255, 255, 0.6);
       transform: translateY(-1px);
-    }
-
-    .hero-pill {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.85rem 1rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    }
-
-    .pill-icon {
-      width: 12px;
-      height: 12px;
-      background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0));
-      border-radius: 50%;
-      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
-    }
-
-    .pill-title {
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .pill-sub {
-      margin: 0;
-      color: rgba(244, 245, 247, 0.78);
-      font-size: 0.98rem;
     }
 
     .values-deck {
@@ -547,6 +520,15 @@
         flex: 2.2;
       }
     }
+
+    @keyframes hero-pan {
+      from {
+        background-position: 50% 48%;
+      }
+      to {
+        background-position: 52% 54%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -601,13 +583,6 @@
             <div class="hero-actions">
               <button id="discoverBtn">Découvrir nos univers</button>
               <button class="ghost-btn" type="button">Voir nos références</button>
-            </div>
-            <div class="hero-pill">
-              <span class="pill-icon" aria-hidden="true"></span>
-              <div>
-                <p class="pill-title">Expérience plein écran</p>
-                <p class="pill-sub">Un fond immersif et des valeurs claires pour guider chaque décision.</p>
-              </div>
             </div>
           </div>
 
@@ -714,8 +689,15 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalSubtitle = document.getElementById('modalSubtitle');
     const modalClose = document.getElementById('modalClose');
+    const universesNavLink = document.querySelector('.nav-links a[href="#universes"]');
 
     function showUniverses() {
+      if (intro.classList.contains('is-gone')) {
+        universes.classList.add('is-visible');
+        universes.scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
       intro.classList.add('is-hidden');
       setTimeout(() => {
         intro.classList.add('is-gone');
@@ -742,6 +724,13 @@
     }
 
     discoverBtn.addEventListener('click', showUniverses);
+
+    if (universesNavLink) {
+      universesNavLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        showUniverses();
+      });
+    }
 
     panels.forEach(panel => {
       panel.addEventListener('click', (event) => {

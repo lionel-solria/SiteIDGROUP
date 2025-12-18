@@ -6,13 +6,16 @@
   document.body.appendChild(tooltip);
 
   let debugEnabled = false;
+  const navBrand = document.querySelector('.nav-brand');
 
   const moveHandler = (event) => {
     if (!debugEnabled) return;
     const target = event.target;
     if (!target || tooltip.contains(target)) return;
     const tagLabel = target.tagName ? target.tagName.toLowerCase() : '';
-    tooltip.textContent = `<${tagLabel}>`;
+    const typeLabel = target.getAttribute && target.getAttribute('type');
+    const descriptor = typeLabel ? ` – type="${typeLabel}"` : '';
+    tooltip.textContent = `<${tagLabel}>${descriptor}`;
     tooltip.style.display = 'block';
     tooltip.style.left = `${event.clientX + 12}px`;
     tooltip.style.top = `${event.clientY + 12}px`;
@@ -51,5 +54,20 @@
       event.preventDefault();
       debugEnabled ? disableDebug() : enableDebug();
     });
+  }
+
+  if (navBrand) {
+    const popover = document.createElement('div');
+    popover.className = 'brand-popover';
+    popover.innerHTML = `
+      <div class="brand-popover__media">
+        <img src="images/batiment73.png" alt="Illustration du siège ID GROUP">
+      </div>
+      <div class="brand-popover__text">
+        <p class="brand-popover__title">ID GROUP</p>
+        <p class="brand-popover__address">73 rue du Bâtiment<br>59000 Lille · France</p>
+      </div>
+    `;
+    navBrand.appendChild(popover);
   }
 })();
