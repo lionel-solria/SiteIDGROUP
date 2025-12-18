@@ -10,9 +10,11 @@
   const moveHandler = (event) => {
     if (!debugEnabled) return;
     const target = event.target;
-    if (!target || tooltip.contains(target)) return;
+    if (!target || tooltip.contains(target) || target.nodeType !== Node.ELEMENT_NODE) return;
     const tagLabel = target.tagName ? target.tagName.toLowerCase() : '';
-    tooltip.textContent = `<${tagLabel}>`;
+    const typeLabel = typeof target.getAttribute === 'function' ? (target.getAttribute('type') || target.type) : '';
+    const detail = typeLabel ? `<${tagLabel}> • type="${typeLabel}"` : `<${tagLabel}>`;
+    tooltip.textContent = detail;
     tooltip.style.display = 'block';
     tooltip.style.left = `${event.clientX + 12}px`;
     tooltip.style.top = `${event.clientY + 12}px`;
