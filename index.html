@@ -3,31 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP | Piste 1</title>
+  <title>ID GROUP | Expérience immersive</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --id-red: #e41e28;
-      --neutral-dark: #0f141b;
-      --veil: rgba(8, 12, 18, 0.66);
-      --home: #ea611a;
-      --pro: #193f60;
-      --agri: #7c9b48;
+      --ink: #0c1118;
+      --white: #f6f8fb;
+      --frost: rgba(255, 255, 255, 0.14);
+      --line: rgba(255, 255, 255, 0.18);
+      --respect: #6dd2c7;
+      --curiosite: #f4c95d;
+      --efficience: #7ba6ff;
+      --glass: rgba(11, 15, 24, 0.7);
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
       font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #05080e;
-      color: #f4f5f7;
+      color: var(--white);
+      background: var(--ink);
       min-height: 100vh;
       overflow-x: hidden;
+      position: relative;
+      letter-spacing: 0.01em;
     }
 
     img {
@@ -40,498 +45,353 @@
       cursor: pointer;
       border: none;
       border-radius: 999px;
-      padding: 0.9rem 1.5rem;
+      padding: 0.95rem 1.5rem;
       background: var(--id-red);
       color: #fff;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
     }
 
     button:hover,
     button:focus-visible {
-      transform: translateY(-1px);
+      transform: translateY(-1px) scale(1.01);
       background: #c81a22;
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
     }
 
     button:focus-visible {
-      outline: 2px solid rgba(255, 255, 255, 0.35);
+      outline: 2px solid rgba(255, 255, 255, 0.4);
       outline-offset: 4px;
     }
 
-    .app-shell {
+    .page {
       position: relative;
       min-height: 100vh;
-      overflow: hidden;
-    }
-
-    .hero {
-      position: relative;
-      height: 100vh;
+      padding: clamp(1.2rem, 4vw, 2.4rem);
       display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 2rem;
-      background: linear-gradient(145deg, rgba(12, 15, 24, 0.9), rgba(12, 15, 24, 0.6)),
-        url('images/ImageIDPro.jpg') center/cover no-repeat;
-      filter: saturate(0.95);
-      transition: opacity 0.65s ease, transform 0.65s ease, height 0.65s ease, padding 0.65s ease;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(228, 30, 40, 0.25), transparent 35%);
-      filter: blur(6px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      max-width: 720px;
-      padding: 1.25rem 1.5rem;
-      background: rgba(8, 12, 18, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero img {
-      width: min(280px, 60vw);
-      filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.35));
-    }
-
-    .hero h1 {
-      margin: 0.5rem 0 0.25rem;
-      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
-      letter-spacing: 0.02em;
-      color: #ffffff;
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero p {
-      margin: 0;
-      color: rgba(244, 245, 247, 0.82);
-      line-height: 1.6;
-      font-size: 1.05rem;
-    }
-
-    .hero.is-hidden {
-      opacity: 0;
-      transform: scale(0.985);
-      pointer-events: none;
-      height: 0;
-      padding: 0;
-      min-height: 0;
-    }
-
-    .hero.is-gone {
-      display: none;
-    }
-
-    .accordion {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.6s ease 0.1s;
-    }
-
-    .accordion.is-visible {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .panel {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
+      grid-template-rows: auto 1fr;
       isolation: isolate;
-      transition: flex 0.7s ease, filter 0.5s ease;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
-      filter: grayscale(0.25) brightness(0.9);
+      background: linear-gradient(140deg, rgba(4, 8, 16, 0.85), rgba(4, 8, 16, 0.55)),
+        url('images/fondIDGROUP.jpg') center/cover no-repeat;
     }
 
-    .panel::after {
+    .page::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65));
+      background: radial-gradient(circle at 28% 25%, rgba(255, 255, 255, 0.12), transparent 32%),
+        radial-gradient(circle at 78% 65%, rgba(228, 30, 40, 0.25), transparent 38%);
+      filter: blur(14px);
       opacity: 0.9;
-      transition: opacity 0.4s ease;
+      pointer-events: none;
       z-index: 0;
     }
 
-    .panel:hover::after,
-    .panel:focus-within::after {
-      opacity: 0.8;
-    }
-
-    .panel .content {
+    .chrome {
       position: relative;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
-      padding: 1.5rem;
-      color: #f8fafc;
-    }
-
-    .panel .logo {
-      width: clamp(150px, 22vw, 230px);
-      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
-      transition: transform 0.4s ease;
-    }
-
-    .panel:hover .logo,
-    .panel:focus-within .logo {
-      transform: translateY(-2px);
-    }
-
-    .tagline {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(6px);
-    }
-
-    .focus-extra {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hint {
-      margin: 0;
-      color: rgba(248, 250, 252, 0.8);
-      max-width: 360px;
-      line-height: 1.5;
-    }
-
-    .focus-extra h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      letter-spacing: 0.04em;
-    }
-
-    .accordion.has-focus .panel {
-      flex: 1;
-      filter: grayscale(0.55) brightness(0.8);
-    }
-
-    .accordion.has-focus .panel.active {
-      flex: 8;
-      filter: grayscale(0) brightness(1.05);
-    }
-
-    .accordion.has-focus .panel.active::after {
-      opacity: 0.72;
-    }
-
-    .accordion.has-focus .panel.active .focus-extra {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .accordion.has-focus .panel:not(.active) .focus-extra {
-      pointer-events: none;
-    }
-
-    .accordion.has-focus .panel:not(.active) .logo {
-      opacity: 0.75;
-    }
-
-    .panel[data-id="home"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(234,97,26,0.55)); }
-    .panel[data-id="pro"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(25,63,96,0.52)); }
-    .panel[data-id="agri"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(124,155,72,0.52)); }
-
-    .enter-btn {
-      background: #fff;
-      color: #0d121a;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-      padding-inline: 1.8rem;
-    }
-
-    .enter-btn:hover,
-    .enter-btn:focus-visible {
-      background: #e7ebf1;
-      color: #0d121a;
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 6, 12, 0.8);
-      display: grid;
-      place-items: center;
-      padding: clamp(1rem, 3vw, 2rem);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease;
-      z-index: 30;
-    }
-
-    .modal-backdrop.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal {
-      background: #0f141b;
-      color: #e8ecf2;
-      border-radius: 18px;
-      max-width: 960px;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    }
-
-    .modal img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .modal-content {
-      padding: clamp(1.2rem, 2vw, 1.8rem);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
     }
 
-    .modal h2 {
-      margin: 0;
-      letter-spacing: 0.02em;
-    }
-
-    .badge {
+    .chip {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.8rem;
-      border-radius: 10px;
+      gap: 0.5rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.85rem;
+      border: 1px solid var(--line);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      font-size: 0.75rem;
     }
 
-    .close-btn {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(246, 248, 251, 0.8);
+      font-size: 0.92rem;
+    }
+
+    .nav-links span {
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      transition: border-color 0.25s ease, background-color 0.25s ease;
+      cursor: default;
+    }
+
+    .nav-links span.is-active {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.5rem, 3vw, 2.6rem);
+      align-items: center;
+      margin-top: clamp(1.6rem, 4vw, 3rem);
+    }
+
+    .hero h1 {
+      margin: 0.35rem 0 0.5rem;
+      font-size: clamp(2rem, 4vw, 3.05rem);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      text-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero p {
+      margin: 0;
+      color: rgba(246, 248, 251, 0.82);
+      line-height: 1.6;
+      max-width: 620px;
+      font-size: 1.04rem;
+    }
+
+    .pill { color: rgba(255, 255, 255, 0.82); }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.4rem;
+      align-items: center;
+    }
+
+    .ghost-btn {
       background: transparent;
+      border: 1px solid var(--line);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      padding: 0.45rem 0.9rem;
-      border-radius: 10px;
       box-shadow: none;
-      text-transform: none;
-      letter-spacing: 0.01em;
+      padding-inline: 1.4rem;
     }
 
-    .close-btn:hover,
-    .close-btn:focus-visible {
-      background: rgba(255, 255, 255, 0.08);
+    .ghost-btn:hover,
+    .ghost-btn:focus-visible {
+      background: rgba(255, 255, 255, 0.06);
       transform: translateY(-1px);
     }
 
-    @media (max-width: 960px) {
-      .accordion {
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-      }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+    }
 
-      .accordion.has-focus .panel,
-      .panel {
-        flex: 1;
-        min-height: 260px;
-      }
+    .stat {
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
 
-      .accordion.has-focus .panel.active {
-        flex: 2.2;
-      }
+    .stat strong {
+      font-size: 1.15rem;
+    }
+
+    .values {
+      position: relative;
+      z-index: 1;
+      margin-top: clamp(1.5rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    .value-card {
+      background: rgba(9, 12, 20, 0.78);
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      padding: 1.2rem 1.2rem 1.35rem;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.22;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), transparent 32%);
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .value-card:hover::before,
+    .value-card:focus-within::before {
+      opacity: 0.32;
+    }
+
+    .value-card header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .value-card .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+    }
+
+    .value-card .icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .value-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+
+    .value-card p {
+      margin: 0;
+      color: rgba(244, 246, 250, 0.78);
+      line-height: 1.55;
+      font-size: 0.98rem;
+    }
+
+    .value-card .tagline {
+      align-self: flex-start;
+      margin-top: auto;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.08);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .accent-respect { border-color: rgba(109, 210, 199, 0.35); box-shadow: 0 0 0 1px rgba(109, 210, 199, 0.1); }
+    .accent-curiosite { border-color: rgba(244, 201, 93, 0.35); box-shadow: 0 0 0 1px rgba(244, 201, 93, 0.1); }
+    .accent-efficience { border-color: rgba(123, 166, 255, 0.35); box-shadow: 0 0 0 1px rgba(123, 166, 255, 0.1); }
+
+    @media (max-width: 720px) {
+      .chrome { flex-direction: column; align-items: flex-start; }
+      .nav-links { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+      .hero { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <main class="app-shell">
-    <section class="hero" id="intro">
-      <div class="hero-inner">
-        <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
-        <h1>Protéger les hommes, les animaux et les infrastructures</h1>
-        <p>Découvrez la nouvelle expérience ID GROUP. Un rideau interactif qui dévoile nos trois univers complémentaires.</p>
-        <button id="discoverBtn">DÉCOUVREZ NOS UNIVERS</button>
+  <main class="page">
+    <div class="chrome">
+      <div class="chip">ID GROUP</div>
+      <div class="nav-links">
+        <span class="is-active">Vision</span>
+        <span>Valeurs</span>
+        <span>Expérience</span>
       </div>
-    </section>
+    </div>
 
-    <section class="accordion" id="universes">
-      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');">
-        <div class="content">
-          <div class="tagline">Habitat</div>
-          <img class="logo" src="logos/ID HOME.png" alt="ID HOME">
-          <div class="focus-extra">
-            <h3>Habitat</h3>
-            <p class="hint">Solutions pour des espaces de vie sains et inspirants.</p>
-            <button class="enter-btn" type="button">Entrer</button>
+    <section class="hero">
+      <div>
+        <p class="chip pill">Pour protéger les hommes, les animaux et les infrastructures</p>
+        <h1>Une identité forte, inspirée par la confiance et la performance</h1>
+        <p>
+          Inspirée de l'univers Danone, la mise en scène plein écran révèle un univers moderniste,
+          épuré et profondément humain. Chaque détail met en valeur la solidité de notre groupe
+          et l'élan collectif qui nous anime.
+        </p>
+        <div class="hero-cta">
+          <button id="discoverValues" type="button">Découvrir nos valeurs</button>
+          <button class="ghost-btn" type="button">Explorer nos univers</button>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>+20 000</strong>
+            <small>Clients accompagnés avec exigence</small>
+          </div>
+          <div class="stat">
+            <strong>3 expertises</strong>
+            <small>Habitat, Professionnels, Élevage</small>
+          </div>
+          <div class="stat">
+            <strong>France &amp; Europe</strong>
+            <small>Un maillage proche des terrains</small>
           </div>
         </div>
-      </article>
+      </div>
+      <div class="values" id="values">
+        <article class="value-card accent-respect">
+          <header>
+            <div class="icon" aria-hidden="true">
+              <img src="images/respect.png" alt="Illustration respect">
+            </div>
+            <h3>Respect</h3>
+          </header>
+          <p>Des relations authentiques qui placent l'humain au cœur, avec des engagements clairs envers nos clients et nos équipes.</p>
+          <span class="tagline">Culture humaine</span>
+        </article>
 
-      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité" data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');">
-        <div class="content">
-          <div class="tagline">Protection, Hygiène et Sécurité</div>
-          <img class="logo" src="logos/ID PRO.png" alt="ID PRO">
-          <div class="focus-extra">
-            <h3>Protection, Hygiène et Sécurité</h3>
-            <p class="hint">Des équipements pour sécuriser les environnements exigeants.</p>
-            <button class="enter-btn" type="button">Entrer</button>
-          </div>
-        </div>
-      </article>
+        <article class="value-card accent-curiosite">
+          <header>
+            <div class="icon" aria-hidden="true">
+              <img src="images/curiosite.png" alt="Illustration curiosité">
+            </div>
+            <h3>Curiosité</h3>
+          </header>
+          <p>Une ouverture permanente pour explorer, tester et imaginer de nouvelles réponses aux enjeux de demain.</p>
+          <span class="tagline">Esprit pionnier</span>
+        </article>
 
-      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal" data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');">
-        <div class="content">
-          <div class="tagline">Élevage et Bien-être animal</div>
-          <img class="logo" src="logos/ID AGRI.png" alt="ID AGRI">
-          <div class="focus-extra">
-            <h3>Élevage et Bien-être animal</h3>
-            <p class="hint">Des solutions pour protéger les élevages et leurs équipes.</p>
-            <button class="enter-btn" type="button">Entrer</button>
-          </div>
-        </div>
-      </article>
+        <article class="value-card accent-efficience">
+          <header>
+            <div class="icon" aria-hidden="true">
+              <img src="images/efficience.png" alt="Illustration efficience">
+            </div>
+            <h3>Efficience</h3>
+          </header>
+          <p>Des solutions robustes, simples à déployer, qui optimisent la protection et la performance sur chaque site.</p>
+          <span class="tagline">Qualité mesurable</span>
+        </article>
+      </div>
     </section>
   </main>
 
-  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <picture>
-        <img id="modalImage" src="images/PlanCroquis.jpg" alt="Plan ID GROUP">
-      </picture>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div>
-            <div class="badge">Plan &amp; Croquis</div>
-            <h2 id="modalTitle">ID GROUP</h2>
-            <p id="modalSubtitle" style="margin: 0; color: rgba(232, 236, 242, 0.82);">Exploration des univers</p>
-          </div>
-          <button class="close-btn" type="button" id="modalClose">Fermer</button>
-        </div>
-        <p id="modalBody">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu nunc eget elit venenatis
-          tincidunt. Praesent pulvinar neque at congue gravida. Proin bibendum porttitor arcu, a finibus urna
-          semper quis. Nunc gravida fermentum eros, vitae finibus eros sodales sed.
-        </p>
-        <p>
-          Donec id justo risus. Praesent semper neque libero, id tempus odio tempor eget. Integer rutrum
-          condimentum orci, sit amet fermentum quam sodales sit amet. Suspendisse egestas posuere cursus.
-        </p>
-      </div>
-    </div>
-  </div>
-
   <script>
-    const intro = document.getElementById('intro');
-    const universes = document.getElementById('universes');
-    const discoverBtn = document.getElementById('discoverBtn');
-    const panels = Array.from(document.querySelectorAll('.panel'));
-    const modal = document.getElementById('detailModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalSubtitle = document.getElementById('modalSubtitle');
-    const modalClose = document.getElementById('modalClose');
+    const discoverValues = document.getElementById('discoverValues');
+    const valuesSection = document.getElementById('values');
 
-    function showUniverses() {
-      intro.classList.add('is-hidden');
-      setTimeout(() => {
-        intro.classList.add('is-gone');
-        universes.classList.add('is-visible');
-        universes.scrollIntoView({ behavior: 'smooth' });
-      }, 550);
-    }
-
-    function setActivePanel(targetPanel) {
-      universes.classList.add('has-focus');
-      panels.forEach(panel => panel.classList.toggle('active', panel === targetPanel));
-    }
-
-    function openModal(panel) {
-      const title = panel.dataset.title || 'ID GROUP';
-      const subtitle = panel.dataset.subtitle || '';
-      modalTitle.textContent = title;
-      modalSubtitle.textContent = subtitle;
-      modal.classList.add('is-open');
-    }
-
-    function closeModal() {
-      modal.classList.remove('is-open');
-    }
-
-    discoverBtn.addEventListener('click', showUniverses);
-
-    panels.forEach(panel => {
-      panel.addEventListener('click', (event) => {
-        const isEnterBtn = event.target.closest('.enter-btn');
-        if (!universes.classList.contains('is-visible')) return;
-
-        if (isEnterBtn) {
-          event.stopPropagation();
-          if (!panel.classList.contains('active')) {
-            setActivePanel(panel);
-          }
-          openModal(panel);
-          return;
-        }
-
-        setActivePanel(panel);
+    if (discoverValues && valuesSection) {
+      discoverValues.addEventListener('click', () => {
+        valuesSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
-    });
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    modalClose.addEventListener('click', closeModal);
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeModal();
-      }
-    });
+    }
   </script>
 </body>
 </html>
