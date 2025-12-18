@@ -20,9 +20,15 @@
 
   const moveHandler = (event) => {
     if (!debugEnabled) return;
-    const target = event.target;
+    const pointedElement = document.elementFromPoint(event.clientX, event.clientY);
+    const target = (!pointedElement || tooltip.contains(pointedElement)) ? event.target : pointedElement;
     if (!target || tooltip.contains(target)) return;
-    const labeledTarget = target.closest('[data-debug-label]') || target;
+
+    const path = event.composedPath ? event.composedPath() : [];
+    const labeledTarget = (path.find((node) => node && node.dataset && node.dataset.debugLabel))
+      || (target.closest && target.closest('[data-debug-label]'))
+      || target;
+
     const tagLabel = labeledTarget.tagName ? labeledTarget.tagName.toLowerCase() : '';
     const typeLabel = labeledTarget.getAttribute && (labeledTarget.getAttribute('type') || labeledTarget.getAttribute('role'));
     const elementType = typeLabel || (labeledTarget.constructor && labeledTarget.constructor.name ? labeledTarget.constructor.name : '');
@@ -82,4 +88,23 @@
       debugEnabled ? disableDebug() : enableDebug();
     });
   }
+
+  const getLabelForCopy = () => {
+    if (!highlightedElement) return '';
+    const customLabel = highlightedElement.dataset && highlightedElement.dataset.debugLabel;
+    if (customLabel) return customLabel;
+    if (highlightedElement.id) return `#${highlightedElement.id}`;
+    if (highlightedElement.classList && highlightedElement.classList.length) return `.${highlightedElement.classList[0]}`;
+    return highlightedElement.tagName ? highlightedElement.tagName.toLowerCase() : '';
+  };
+
+  window.addEventListener('keydown', (event) => {
+    const key = (event.key || '').toLowerCase();
+    if (!debugEnabled || key !== 'c') return;
+    const labelToCopy = getLabelForCopy();
+    if (!labelToCopy) return;
+
+    navigator.clipboard?.writeText(labelToCopy).catch(() => {});
+    tooltip.textContent = `${labelToCopy} copié`;
+  });
 })();
