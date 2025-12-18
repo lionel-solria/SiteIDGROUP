@@ -12,7 +12,13 @@
     const target = event.target;
     if (!target || tooltip.contains(target)) return;
     const tagLabel = target.tagName ? target.tagName.toLowerCase() : '';
-    tooltip.textContent = `<${tagLabel}>`;
+    const typeLabel = target.getAttribute && (target.getAttribute('type') || target.getAttribute('role'));
+    const elementType = typeLabel || (target.constructor && target.constructor.name ? target.constructor.name : '');
+    const identifier = target.id ? `#${target.id}` : (target.classList && target.classList.length ? `.${target.classList[0]}` : '');
+    const parts = [`<${tagLabel}>`];
+    if (elementType) parts.push(`type="${elementType}"`);
+    if (identifier) parts.push(identifier);
+    tooltip.textContent = parts.join(' · ');
     tooltip.style.display = 'block';
     tooltip.style.left = `${event.clientX + 12}px`;
     tooltip.style.top = `${event.clientY + 12}px`;
