@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP | POC Expérience Scroll</title>
+  <title>ID GROUP | Interface inspirée</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,116 +17,176 @@
     body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
     .logo-group:hover .logo-tooltip { opacity: 1; transform: translateY(4px); }
     .logo-tooltip { transition: opacity .25s ease, transform .25s ease; }
-    .hero-card::after {
+    .hero-bg {
+      background-image: linear-gradient(120deg, rgba(25,63,96,0.82), rgba(25,63,96,0.58)), url('images/ImageIDPro.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .pill-tag {
+      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.14);
+    }
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(25,63,96,0.08), rgba(25,63,96,0.02));
+      border: 1px solid rgba(25,63,96,0.08);
+      display: grid;
+      place-items: center;
+      color: #193f60;
+    }
+    .metier-card::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.65) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.55) 100%);
       pointer-events: none;
-      transition: opacity .35s ease;
-      opacity: .65;
     }
-    .hero-card:hover::after { opacity: .85; }
-    .hero-visual { transition: transform 0.6s ease; }
-    .hero-card:hover .hero-visual { transform: scale(1.08); }
-    .hero-description { opacity: 0; transform: translateY(10px); transition: opacity .3s ease, transform .3s ease; }
-    .hero-card:hover .hero-description { opacity: 1; transform: translateY(0); }
+    .metier-card img { transition: transform 0.5s ease; }
+    .metier-card:hover img { transform: scale(1.05); }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
-  <header class="fixed inset-x-0 top-0 z-30 bg-white/90 backdrop-blur shadow-sm">
+  <header class="fixed inset-x-0 top-0 z-30 border-b border-slate-200/60 bg-white/85 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
       <a href="#top" class="flex items-center gap-3">
         <img src="logos/ID GROUP.png" alt="ID GROUP" class="h-12 w-auto drop-shadow-sm">
-        <div class="text-sm uppercase tracking-[0.25em] text-slate-500">Groupes d'activités</div>
+        <div class="text-xs uppercase tracking-[0.28em] text-slate-500">Créateur de possibles</div>
       </a>
-      <nav class="flex items-center gap-4 sm:gap-6">
-        <div class="flex items-center gap-4 text-sm font-semibold text-slate-700">
-          <div class="logo-group relative flex flex-col items-center gap-1">
-            <img src="logos/ID HOME.png" alt="ID HOME" class="h-12 w-auto drop-shadow-md">
-            <div class="logo-tooltip flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs text-slate-700 shadow ring-1 ring-slate-200 opacity-0">
-              <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-home);"></span>
-              Habitat
-            </div>
-          </div>
-          <span class="hidden text-slate-300 sm:inline">•</span>
-          <div class="logo-group relative flex flex-col items-center gap-1">
-            <img src="logos/ID PRO.png" alt="ID PRO" class="h-12 w-auto drop-shadow-md">
-            <div class="logo-tooltip flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs text-slate-700 shadow ring-1 ring-slate-200 opacity-0">
-              <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-pro);"></span>
-              Protection, Hygiène et Sécurité
-            </div>
-          </div>
-          <span class="hidden text-slate-300 sm:inline">•</span>
-          <div class="logo-group relative flex flex-col items-center gap-1">
-            <img src="logos/ID AGRI.png" alt="ID AGRI" class="h-12 w-auto drop-shadow-md">
-            <div class="logo-tooltip flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs text-slate-700 shadow ring-1 ring-slate-200 opacity-0">
-              <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-agri);"></span>
-              Élevage et Bien-être animal
-            </div>
-          </div>
-        </div>
+      <nav class="flex items-center gap-6 text-sm font-semibold text-slate-700">
+        <a href="#entreprise" class="transition hover:text-slate-900">L'Entreprise</a>
+        <a href="#valeurs" class="transition hover:text-slate-900">Nos valeurs</a>
+        <a href="#metiers" class="transition hover:text-slate-900">Nos métiers</a>
+        <a href="#actualites" class="transition hover:text-slate-900">Actualités</a>
+        <a href="#contact" class="transition hover:text-slate-900">Contact</a>
+        <a href="#contact" class="hidden rounded-full bg-slate-900 px-4 py-2 text-white shadow-sm transition hover:bg-slate-800 sm:inline-flex">Prendre rendez-vous</a>
       </nav>
     </div>
   </header>
 
-  <main id="top" class="pt-28 sm:pt-32">
-    <section class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-      <div class="space-y-4 text-center">
-        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">ID GROUP</p>
-        <h1 class="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">Une expérience de navigation verticale, claire et inspirante</h1>
-        <p class="mx-auto max-w-3xl text-base text-slate-600">Découvrez les trois domaines d'activités stratégiques du groupe et accédez à un aperçu détaillé en un scroll fluide. Chaque tuile met en avant l'essentiel, l'image et la valeur ajoutée.</p>
-      </div>
-
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        <a href="#home" class="group hero-card relative overflow-hidden rounded-2xl bg-slate-900 shadow-lg ring-1 ring-slate-200/70">
-          <div class="hero-visual absolute inset-0 bg-cover bg-center" style="background-image: url('images/ImageIDHome.jpg');"></div>
-          <div class="relative z-10 flex h-full flex-col justify-end gap-3 p-6 text-white">
-            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
-              <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-home);"></span>
-              ID HOME
-            </div>
-            <div>
-              <img src="logos/ID HOME.png" alt="ID HOME" class="h-12 w-auto drop-shadow-md">
-              <h2 class="mt-2 text-2xl font-semibold">Habitat</h2>
-              <p class="hero-description mt-2 text-sm text-white/80">Solutions dédiées à l'habitat : confort, durabilité et élégance pour chaque intérieur.</p>
-            </div>
+  <main id="top" class="pt-24 sm:pt-32">
+    <section id="entreprise" class="hero-bg relative overflow-hidden rounded-b-[28px] shadow-xl">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-slate-900/20 to-slate-900/50"></div>
+      <div class="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+        <div class="flex flex-col gap-3 text-white">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-white/70">ID GROUP</p>
+          <h1 class="text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">Créateur de possibles</h1>
+          <p class="max-w-3xl text-base text-white/80 sm:text-lg">Entreprendre pour demain : logistique, immobilier, innovation, solutions digitales et services sur-mesure pour accompagner les projets ambitieux.</p>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a href="#metiers" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">Découvrir nos métiers</a>
+            <a href="#valeurs" class="pill-tag rounded-full px-4 py-2 text-sm font-semibold text-white/90 ring-1 ring-white/30 transition hover:bg-white/20">Nos engagements</a>
           </div>
-        </a>
-
-        <a href="#pro" class="group hero-card relative overflow-hidden rounded-2xl bg-slate-900 shadow-lg ring-1 ring-slate-200/70">
-          <div class="hero-visual absolute inset-0 bg-cover bg-center" style="background-image: url('images/ImageIDPro.jpg');"></div>
-          <div class="relative z-10 flex h-full flex-col justify-end gap-3 p-6 text-white">
-            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
-              <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-pro);"></span>
-              ID PRO
-            </div>
-            <div>
-              <img src="logos/ID PRO.png" alt="ID PRO" class="h-12 w-auto drop-shadow-md">
-              <h2 class="mt-2 text-2xl font-semibold">Protection, Hygiène et Sécurité</h2>
-              <p class="hero-description mt-2 text-sm text-white/80">Des solutions robustes pour sécuriser et protéger les environnements professionnels exigeants.</p>
-            </div>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="pill-tag flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-md ring-1 ring-white/20">
+            <img src="logos/ID HOME.png" alt="ID HOME" class="h-10 w-auto drop-shadow">
+            <div class="text-xs uppercase tracking-[0.25em] text-white/80">Habitat</div>
           </div>
-        </a>
-
-        <a href="#agri" class="group hero-card relative overflow-hidden rounded-2xl bg-slate-900 shadow-lg ring-1 ring-slate-200/70">
-          <div class="hero-visual absolute inset-0 bg-cover bg-center" style="background-image: url('images/ImageIDAgri.jpg');"></div>
-          <div class="relative z-10 flex h-full flex-col justify-end gap-3 p-6 text-white">
-            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-white/80">
-              <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-agri);"></span>
-              ID AGRI
-            </div>
-            <div>
-              <img src="logos/ID AGRI.png" alt="ID AGRI" class="h-12 w-auto drop-shadow-md">
-              <h2 class="mt-2 text-2xl font-semibold">Élevage et Bien-être animal</h2>
-              <p class="hero-description mt-2 text-sm text-white/80">Innovation et respect du vivant pour des élevages responsables et durables.</p>
-            </div>
+          <div class="pill-tag flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-md ring-1 ring-white/20">
+            <img src="logos/ID PRO.png" alt="ID PRO" class="h-10 w-auto drop-shadow">
+            <div class="text-xs uppercase tracking-[0.25em] text-white/80">Protection, Hygiène et Sécurité</div>
           </div>
-        </a>
+          <div class="pill-tag flex items-center gap-3 rounded-2xl px-4 py-3 text-white shadow-md ring-1 ring-white/20">
+            <img src="logos/ID AGRI.png" alt="ID AGRI" class="h-10 w-auto drop-shadow">
+            <div class="text-xs uppercase tracking-[0.25em] text-white/80">Élevage et Bien-être animal</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="home" class="mt-24 scroll-mt-32 bg-white/70 py-14 shadow-inner">
+    <section id="valeurs" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Nos valeurs</p>
+        <h2 class="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">La colonne vertébrale du groupe</h2>
+      </div>
+      <div class="mt-10 grid gap-8 md:grid-cols-5">
+        <div class="flex flex-col items-center gap-3 text-center">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold">Réactivité responsable</h3>
+          <p class="text-sm text-slate-600">Décisions rapides, traçabilité et cohérence avec nos engagements.</p>
+        </div>
+        <div class="flex flex-col items-center gap-3 text-center">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7h18M6 7v10a3 3 0 006 0V7" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold">Logistique & légèreté</h3>
+          <p class="text-sm text-slate-600">Livrer vite et bien, avec un impact maîtrisé et des flux optimisés.</p>
+        </div>
+        <div class="flex flex-col items-center gap-3 text-center">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m0 0l-4.5-4.5M12 19.5l4.5-4.5" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold">Monnaie & innovation</h3>
+          <p class="text-sm text-slate-600">Des modèles économiques souples pour financer l'innovation utile.</p>
+        </div>
+        <div class="flex flex-col items-center gap-3 text-center">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9l2.25 2.25L12 13.5m-5.75.25a9 9 0 1111.5 0L12 21l-5.75-7.25z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold">Humain & environnement</h3>
+          <p class="text-sm text-slate-600">Des solutions qui respectent les équipes, les usagers et les ressources.</p>
+        </div>
+        <div class="flex flex-col items-center gap-3 text-center">
+          <div class="value-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.636 18.364A9 9 0 1118.364 5.636 9 9 0 015.636 18.364z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-semibold">Résilience & services</h3>
+          <p class="text-sm text-slate-600">Accompagnement continu, maintenance et support pour sécuriser chaque projet.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="metiers" class="bg-slate-100/70 py-14">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Nos métiers</p>
+          <h2 class="mt-2 text-3xl font-bold text-slate-900 sm:text-4xl">Une expertise multi-domaines</h2>
+          <p class="mt-3 text-base text-slate-600">Des pôles complémentaires pour répondre aux besoins terrain, infrastructures et services.</p>
+        </div>
+        <div class="mt-10 grid gap-4 md:grid-cols-3">
+          <a href="#home" class="metier-card relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200/70">
+            <img src="images/ImageIDHome.jpg" alt="ID HOME" class="h-56 w-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex flex-col justify-end p-5 text-white">
+              <p class="text-xs uppercase tracking-[0.25em] text-white/70">ID HOME</p>
+              <h3 class="text-xl font-semibold">Habitat</h3>
+              <p class="text-sm text-white/80">Aménagement, confort et design responsable.</p>
+            </div>
+          </a>
+          <a href="#pro" class="metier-card relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200/70">
+            <img src="images/ImageIDPro.jpg" alt="ID PRO" class="h-56 w-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex flex-col justify-end p-5 text-white">
+              <p class="text-xs uppercase tracking-[0.25em] text-white/70">ID PRO</p>
+              <h3 class="text-xl font-semibold">Protection, Hygiène et Sécurité</h3>
+              <p class="text-sm text-white/80">Solutions globales pour sites exigeants.</p>
+            </div>
+          </a>
+          <a href="#agri" class="metier-card relative overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-200/70">
+            <img src="images/ImageIDAgri.jpg" alt="ID AGRI" class="h-56 w-full object-cover" loading="lazy">
+            <div class="absolute inset-0 flex flex-col justify-end p-5 text-white">
+              <p class="text-xs uppercase tracking-[0.25em] text-white/70">ID AGRI</p>
+              <h3 class="text-xl font-semibold">Élevage et Bien-être animal</h3>
+              <p class="text-sm text-white/80">Solutions respectueuses et performantes.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="home" class="bg-white py-16 scroll-mt-32">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div class="rounded-3xl bg-white shadow-lg ring-1 ring-slate-200/80">
@@ -135,7 +195,7 @@
           <div class="space-y-6">
             <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Habitat</p>
             <h3 class="text-3xl font-semibold text-slate-900">ID HOME — expériences d'habitat sur mesure</h3>
-            <p class="text-slate-600">Nous concevons des solutions d'aménagement et de décoration qui simplifient le quotidien et subliment l'habitat. De la sélection des matériaux à l'installation, chaque étape est pensée pour assurer confort, durabilité et esthétisme.</p>
+            <p class="text-slate-600">Une approche globale de l'habitat pour concilier confort, durabilité et esthétique. Les équipes accompagnent les projets de la conception à l'installation.</p>
             <ul class="space-y-3 text-slate-700">
               <li class="flex items-start gap-3">
                 <span class="mt-1 inline-block h-2 w-2 rounded-full" style="background: var(--id-home);"></span>
@@ -209,13 +269,13 @@
       </div>
     </section>
 
-    <section class="bg-slate-900 py-16 text-white">
+    <section id="actualites" class="bg-slate-900 py-16 text-white">
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">Dernières Actualités</p>
+            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-white/60">Actualités</p>
             <h3 class="text-3xl font-semibold">Un groupe en mouvement</h3>
-            <p class="mt-2 max-w-3xl text-white/70">Aperçu des initiatives, innovations et projets qui rythment ID GROUP. Une sélection de contenus pour illustrer le dynamisme des trois domaines.</p>
+            <p class="mt-2 max-w-3xl text-white/70">Initiatives, innovations et projets illustrent le dynamisme des trois domaines. Une sélection pour garder le rythme.</p>
           </div>
           <a href="#top" class="text-sm font-semibold text-white/80 underline decoration-white/40 underline-offset-4 transition hover:text-white">Retour en haut</a>
         </div>
@@ -240,13 +300,14 @@
     </section>
   </main>
 
-  <footer class="bg-white py-8">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <div class="text-sm text-slate-500">© 2024 ID GROUP — POC expérientiel scroll & fluidité.</div>
-      <div class="flex items-center gap-3 text-sm text-slate-600">
+  <footer id="contact" class="bg-white py-8">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div class="text-sm text-slate-500">© 2024 ID GROUP — Interface inspirée et structurée.</div>
+      <div class="flex flex-wrap items-center gap-3 text-sm text-slate-600">
         <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-home);"></span> Habitat
         <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-pro);"></span> Protection, Hygiène et Sécurité
         <span class="inline-block h-2 w-2 rounded-full" style="background: var(--id-agri);"></span> Élevage et Bien-être animal
+        <a href="mailto:contact@idgroup.fr" class="rounded-full border border-slate-200 px-4 py-1.5 font-semibold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow">Contact rapide</a>
       </div>
     </div>
   </footer>
