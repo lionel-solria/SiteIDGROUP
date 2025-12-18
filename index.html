@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP | Piste 1</title>
+  <title>ID GROUP | Nouvelle expérience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --id-red: #e41e28;
-      --neutral-dark: #0f141b;
-      --veil: rgba(8, 12, 18, 0.66);
-      --home: #ea611a;
-      --pro: #193f60;
-      --agri: #7c9b48;
+      --bg-dark: #070c14;
+      --text: #eef2f7;
+      --muted: rgba(238, 242, 247, 0.78);
+      --accent: #e41e28;
+      --accent-soft: rgba(228, 30, 40, 0.18);
+      --glass: rgba(255, 255, 255, 0.06);
+      --stroke: rgba(255, 255, 255, 0.16);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
     }
 
     * {
@@ -24,9 +26,10 @@
     body {
       margin: 0;
       font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #05080e;
-      color: #f4f5f7;
+      background: var(--bg-dark);
+      color: var(--text);
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
@@ -35,503 +38,629 @@
       display: block;
     }
 
-    button {
-      font: inherit;
-      cursor: pointer;
-      border: none;
-      border-radius: 999px;
-      padding: 0.9rem 1.5rem;
-      background: var(--id-red);
-      color: #fff;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    button:hover,
-    button:focus-visible {
-      transform: translateY(-1px);
-      background: #c81a22;
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
-    }
-
-    button:focus-visible {
-      outline: 2px solid rgba(255, 255, 255, 0.35);
-      outline-offset: 4px;
-    }
-
-    .app-shell {
+    .landing {
       position: relative;
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      isolation: isolate;
+    }
+
+    .landing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(7, 12, 20, 0.88), rgba(7, 12, 20, 0.6) 38%, rgba(7, 12, 20, 0.72)),
+        linear-gradient(180deg, rgba(5, 9, 15, 0.8), rgba(5, 9, 15, 0.35)),
+        url("images/fondIDGROUP.jpg") center/cover no-repeat;
+      filter: saturate(0.95);
+      z-index: 0;
+    }
+
+    .landing::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(228, 30, 40, 0.16), transparent 28%),
+        radial-gradient(circle at 78% 76%, rgba(255, 255, 255, 0.08), transparent 30%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .top-bar {
+      position: absolute;
+      inset: 0 0 auto 0;
+      padding: 1.4rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      z-index: 2;
+    }
+
+    .top-bar::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      z-index: 1;
+    }
+
+    .brand img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.32));
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-tag {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      z-index: 1;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      opacity: 0.8;
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .pill-link {
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .content-shell {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(1.5rem, 5vw, 3rem) 6vw clamp(2rem, 5vw, 3.5rem);
     }
 
     .hero {
-      position: relative;
-      height: 100vh;
+      min-height: 100vh;
       display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 2rem;
-      background: linear-gradient(145deg, rgba(12, 15, 24, 0.9), rgba(12, 15, 24, 0.6)),
-        url('images/ImageIDPro.jpg') center/cover no-repeat;
-      filter: saturate(0.95);
-      transition: opacity 0.65s ease, transform 0.65s ease, height 0.65s ease, padding 0.65s ease;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(228, 30, 40, 0.25), transparent 35%);
-      filter: blur(6px);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
-      max-width: 720px;
-      padding: 1.25rem 1.5rem;
-      background: rgba(8, 12, 18, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-    }
-
-    .hero img {
-      width: min(280px, 60vw);
-      filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.35));
-    }
-
-    .hero h1 {
-      margin: 0.5rem 0 0.25rem;
-      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
-      letter-spacing: 0.02em;
-      color: #ffffff;
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .hero p {
-      margin: 0;
-      color: rgba(244, 245, 247, 0.82);
-      line-height: 1.6;
-      font-size: 1.05rem;
-    }
-
-    .hero.is-hidden {
-      opacity: 0;
-      transform: scale(0.985);
-      pointer-events: none;
-      height: 0;
-      padding: 0;
-      min-height: 0;
-    }
-
-    .hero.is-gone {
-      display: none;
-    }
-
-    .accordion {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.6s ease 0.1s;
-    }
-
-    .accordion.is-visible {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .panel {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
-      transition: flex 0.7s ease, filter 0.5s ease;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
-      filter: grayscale(0.25) brightness(0.9);
-    }
-
-    .panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65));
-      opacity: 0.9;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-
-    .panel:hover::after,
-    .panel:focus-within::after {
-      opacity: 0.8;
-    }
-
-    .panel .content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
-      padding: 1.5rem;
-      color: #f8fafc;
-    }
-
-    .panel .logo {
-      width: clamp(150px, 22vw, 230px);
-      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
-      transition: transform 0.4s ease;
-    }
-
-    .panel:hover .logo,
-    .panel:focus-within .logo {
-      transform: translateY(-2px);
-    }
-
-    .tagline {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(6px);
-    }
-
-    .focus-extra {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hint {
-      margin: 0;
-      color: rgba(248, 250, 252, 0.8);
-      max-width: 360px;
-      line-height: 1.5;
-    }
-
-    .focus-extra h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      letter-spacing: 0.04em;
-    }
-
-    .accordion.has-focus .panel {
-      flex: 1;
-      filter: grayscale(0.55) brightness(0.8);
-    }
-
-    .accordion.has-focus .panel.active {
-      flex: 8;
-      filter: grayscale(0) brightness(1.05);
-    }
-
-    .accordion.has-focus .panel.active::after {
-      opacity: 0.72;
-    }
-
-    .accordion.has-focus .panel.active .focus-extra {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .accordion.has-focus .panel:not(.active) .focus-extra {
-      pointer-events: none;
-    }
-
-    .accordion.has-focus .panel:not(.active) .logo {
-      opacity: 0.75;
-    }
-
-    .panel[data-id="home"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(234,97,26,0.55)); }
-    .panel[data-id="pro"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(25,63,96,0.52)); }
-    .panel[data-id="agri"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(124,155,72,0.52)); }
-
-    .enter-btn {
-      background: #fff;
-      color: #0d121a;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-      padding-inline: 1.8rem;
-    }
-
-    .enter-btn:hover,
-    .enter-btn:focus-visible {
-      background: #e7ebf1;
-      color: #0d121a;
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 6, 12, 0.8);
-      display: grid;
-      place-items: center;
-      padding: clamp(1rem, 3vw, 2rem);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease;
-      z-index: 30;
-    }
-
-    .modal-backdrop.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal {
-      background: #0f141b;
-      color: #e8ecf2;
-      border-radius: 18px;
-      max-width: 960px;
-      width: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: clamp(1.5rem, 4vw, 3rem);
+      padding-top: 2.5rem;
     }
 
-    .modal img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .hero-copy h1 {
+      margin: 0.4rem 0 0.75rem;
+      font-size: clamp(2.1rem, 3.6vw, 3rem);
+      letter-spacing: -0.01em;
+      text-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
     }
 
-    .modal-content {
-      padding: clamp(1.2rem, 2vw, 1.8rem);
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .lede {
+      margin: 0 0 1.1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 54ch;
+    }
+
+    .chips {
       display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin: 1.2rem 0 1.5rem;
     }
 
-    .modal-header {
+    .chip {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #fff;
+      backdrop-filter: blur(8px);
+    }
+
+    .cta-row {
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
       align-items: center;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.45rem;
+      border-radius: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #ff5a53);
+      color: #fff;
+    }
+
+    .btn.ghost {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: var(--stroke);
+      box-shadow: none;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn.ghost:hover,
+    .btn.ghost:focus-visible {
+      background: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 1.4rem 1.5rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .glass-card h3 {
+      margin: 0.3rem 0 0.5rem;
+      font-size: 1.35rem;
+      letter-spacing: 0.01em;
+    }
+
+    .glass-card p {
+      margin: 0.15rem 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .inline-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+    }
+
+    .mini-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, 0.06);
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .section-header {
+      display: grid;
+      gap: 0.35rem;
+      max-width: 960px;
+      margin-bottom: 1.1rem;
+    }
+
+    .section-header h2 {
+      margin: 0.25rem 0;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      letter-spacing: -0.01em;
+    }
+
+    .section-header .lede {
+      margin: 0;
+    }
+
+    .values {
+      margin-top: clamp(2rem, 6vw, 3.5rem);
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1rem;
     }
 
-    .modal h2 {
+    .value-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.2rem 1.3rem;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(7, 12, 20, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .value-card img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .value-card h3 {
       margin: 0;
-      letter-spacing: 0.02em;
+      font-size: 1.15rem;
+    }
+
+    .value-card p {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .univers {
+      margin-top: clamp(2rem, 6vw, 3.5rem);
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .univers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .universe-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      min-height: 240px;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.3rem 1.4rem;
+      isolation: isolate;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .universe-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(185deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.65));
+      z-index: 0;
+    }
+
+    .universe-card .layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      filter: saturate(0.95);
+      transform: scale(1.02);
+      transition: transform 0.6s ease;
+    }
+
+    .universe-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+    }
+
+    .universe-card:hover .layer {
+      transform: scale(1.05);
+    }
+
+    .universe-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0.35rem;
+      max-width: 360px;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.35rem 0.8rem;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
-    .close-btn {
-      background: transparent;
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      padding: 0.45rem 0.9rem;
+    .universe-content h3 {
+      margin: 0.1rem 0;
+      font-size: 1.3rem;
+    }
+
+    .universe-content p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+
+    .universe-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.85rem;
       border-radius: 10px;
-      box-shadow: none;
-      text-transform: none;
-      letter-spacing: 0.01em;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: fit-content;
+      margin-top: 0.35rem;
+      font-weight: 700;
     }
 
-    .close-btn:hover,
-    .close-btn:focus-visible {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
+    .footer-note {
+      margin-top: clamp(2rem, 6vw, 3rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .accent-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 8px var(--accent-soft);
     }
 
     @media (max-width: 960px) {
-      .accordion {
+      .top-bar {
         flex-direction: column;
-        height: auto;
-        min-height: 100vh;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1rem 6vw;
+        position: relative;
       }
 
-      .accordion.has-focus .panel,
-      .panel {
-        flex: 1;
-        min-height: 260px;
+      .top-bar::after {
+        display: none;
       }
 
-      .accordion.has-focus .panel.active {
-        flex: 2.2;
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links a {
+        padding: 0.45rem 0.65rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .universe-card {
+        min-height: 200px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="app-shell">
-    <section class="hero" id="intro">
-      <div class="hero-inner">
-        <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
-        <h1>Protéger les hommes, les animaux et les infrastructures</h1>
-        <p>Découvrez la nouvelle expérience ID GROUP. Un rideau interactif qui dévoile nos trois univers complémentaires.</p>
-        <button id="discoverBtn">DÉCOUVREZ NOS UNIVERS</button>
+  <main class="landing">
+    <header class="top-bar">
+      <div class="brand">
+        <img src="logos/ID GROUP.png" alt="ID GROUP">
+        <div class="brand-text">
+          <span class="brand-tag">Expertise globale</span>
+          <span class="brand-name">ID GROUP</span>
+        </div>
       </div>
-    </section>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#mission">Mission</a>
+        <a href="#valeurs">Valeurs</a>
+        <a href="#univers">Univers</a>
+        <a class="pill-link" href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-    <section class="accordion" id="universes">
-      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');">
-        <div class="content">
-          <div class="tagline">Habitat</div>
-          <img class="logo" src="logos/ID HOME.png" alt="ID HOME">
-          <div class="focus-extra">
-            <h3>Habitat</h3>
-            <p class="hint">Solutions pour des espaces de vie sains et inspirants.</p>
-            <button class="enter-btn" type="button">Entrer</button>
+    <div class="content-shell">
+      <section class="hero" id="mission">
+        <div class="hero-copy">
+          <p class="kicker">Notre mission</p>
+          <h1>Protéger les hommes, les animaux et les infrastructures</h1>
+          <p class="lede">
+            Une vision unique au service des professionnels et des particuliers, avec des solutions qui combinent
+            exigence opérationnelle, élégance et conscience environnementale.
+          </p>
+          <div class="chips">
+            <span class="chip">Habitat</span>
+            <span class="chip">Protection &amp; hygiène</span>
+            <span class="chip">Bien-être animal</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn primary" href="#univers">Découvrir nos univers</a>
+            <a class="btn ghost" href="groupe.html">En savoir plus</a>
           </div>
         </div>
-      </article>
 
-      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité" data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');">
-        <div class="content">
-          <div class="tagline">Protection, Hygiène et Sécurité</div>
-          <img class="logo" src="logos/ID PRO.png" alt="ID PRO">
-          <div class="focus-extra">
-            <h3>Protection, Hygiène et Sécurité</h3>
-            <p class="hint">Des équipements pour sécuriser les environnements exigeants.</p>
-            <button class="enter-btn" type="button">Entrer</button>
+        <div class="hero-panel">
+          <div class="glass-card">
+            <p class="kicker" style="letter-spacing:0.12em;">Approche holistique</p>
+            <h3>Un niveau d'exigence qui se voit</h3>
+            <p>Chaque détail compte : matériaux durables, design intemporel et accompagnement terrain.</p>
+            <p>Une expérience fluide et premium, inspirée des standards des plus grandes marques.</p>
+            <div class="inline-badges">
+              <span class="mini-chip">Service clé en main</span>
+              <span class="mini-chip">Éthique &amp; respect</span>
+              <span class="mini-chip">Innovation continue</span>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
 
-      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal" data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');">
-        <div class="content">
-          <div class="tagline">Élevage et Bien-être animal</div>
-          <img class="logo" src="logos/ID AGRI.png" alt="ID AGRI">
-          <div class="focus-extra">
-            <h3>Élevage et Bien-être animal</h3>
-            <p class="hint">Des solutions pour protéger les élevages et leurs équipes.</p>
-            <button class="enter-btn" type="button">Entrer</button>
-          </div>
+      <section class="values" id="valeurs">
+        <div class="section-header">
+          <p class="kicker">Nos valeurs</p>
+          <h2>Ce qui guide ID GROUP au quotidien</h2>
+          <p class="lede">Des principes simples, incarnés par des gestes concrets, pour garantir la confiance et la
+            performance durable.</p>
         </div>
-      </article>
-    </section>
-  </main>
+        <div class="values-grid">
+          <article class="value-card">
+            <img src="images/respect.png" alt="Respect">
+            <div>
+              <h3>Respect</h3>
+              <p>Des relations transparentes et responsables, avec une attention constante portée aux personnes et aux
+                environnements que nous protégeons.</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <img src="images/curiosite.png" alt="Curiosité">
+            <div>
+              <h3>Curiosité</h3>
+              <p>Une ouverture permanente pour anticiper les nouveaux usages, tester, apprendre et proposer des solutions
+                qui gardent une longueur d'avance.</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <img src="images/efficience.png" alt="Efficience">
+            <div>
+              <h3>Efficience</h3>
+              <p>Des dispositifs précis, pensés pour livrer le meilleur résultat, avec une simplicité d'usage et
+                d'entretien qui fait gagner du temps.</p>
+            </div>
+          </article>
+        </div>
+      </section>
 
-  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <picture>
-        <img id="modalImage" src="images/PlanCroquis.jpg" alt="Plan ID GROUP">
-      </picture>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div>
-            <div class="badge">Plan &amp; Croquis</div>
-            <h2 id="modalTitle">ID GROUP</h2>
-            <p id="modalSubtitle" style="margin: 0; color: rgba(232, 236, 242, 0.82);">Exploration des univers</p>
-          </div>
-          <button class="close-btn" type="button" id="modalClose">Fermer</button>
+      <section class="univers" id="univers">
+        <div class="section-header">
+          <p class="kicker">Nos univers</p>
+          <h2>Trois expertises, une même exigence</h2>
+          <p class="lede">Chaque univers dispose de ses propres solutions, toujours alignées sur la promesse ID GROUP :
+            rigueur, esthétique et efficacité.</p>
         </div>
-        <p id="modalBody">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu nunc eget elit venenatis
-          tincidunt. Praesent pulvinar neque at congue gravida. Proin bibendum porttitor arcu, a finibus urna
-          semper quis. Nunc gravida fermentum eros, vitae finibus eros sodales sed.
-        </p>
-        <p>
-          Donec id justo risus. Praesent semper neque libero, id tempus odio tempor eget. Integer rutrum
-          condimentum orci, sit amet fermentum quam sodales sit amet. Suspendisse egestas posuere cursus.
-        </p>
+        <div class="univers-grid">
+          <a class="universe-card" href="home.html">
+            <div class="layer" style="background-image: url('images/ImageIDHome.jpg');"></div>
+            <div class="universe-content">
+              <span class="badge">Habitat</span>
+              <h3>ID HOME</h3>
+              <p>Confort, sécurité et bien-être pour les espaces de vie, avec des produits fiables et discrets.</p>
+              <span class="universe-link">Voir ID HOME</span>
+            </div>
+          </a>
+          <a class="universe-card" href="pro.html">
+            <div class="layer" style="background-image: url('images/ImageIDPro.jpg');"></div>
+            <div class="universe-content">
+              <span class="badge">Protection</span>
+              <h3>ID PRO</h3>
+              <p>Solutions professionnelles pour les environnements exigeants : hygiène, sécurité, performance.</p>
+              <span class="universe-link">Voir ID PRO</span>
+            </div>
+          </a>
+          <a class="universe-card" href="agri.html">
+            <div class="layer" style="background-image: url('images/ImageIDAgri.jpg');"></div>
+            <div class="universe-content">
+              <span class="badge">Bien-être animal</span>
+              <h3>ID AGRI</h3>
+              <p>Protection des élevages et des équipes, avec des dispositifs respectueux et durables.</p>
+              <span class="universe-link">Voir ID AGRI</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        <span class="accent-dot" aria-hidden="true"></span>
+        <span>Une esthétique premium, une expérience fluide : ID GROUP met la barre plus haut pour protéger et
+          servir.</span>
       </div>
     </div>
-  </div>
-
-  <script>
-    const intro = document.getElementById('intro');
-    const universes = document.getElementById('universes');
-    const discoverBtn = document.getElementById('discoverBtn');
-    const panels = Array.from(document.querySelectorAll('.panel'));
-    const modal = document.getElementById('detailModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalSubtitle = document.getElementById('modalSubtitle');
-    const modalClose = document.getElementById('modalClose');
-
-    function showUniverses() {
-      intro.classList.add('is-hidden');
-      setTimeout(() => {
-        intro.classList.add('is-gone');
-        universes.classList.add('is-visible');
-        universes.scrollIntoView({ behavior: 'smooth' });
-      }, 550);
-    }
-
-    function setActivePanel(targetPanel) {
-      universes.classList.add('has-focus');
-      panels.forEach(panel => panel.classList.toggle('active', panel === targetPanel));
-    }
-
-    function openModal(panel) {
-      const title = panel.dataset.title || 'ID GROUP';
-      const subtitle = panel.dataset.subtitle || '';
-      modalTitle.textContent = title;
-      modalSubtitle.textContent = subtitle;
-      modal.classList.add('is-open');
-    }
-
-    function closeModal() {
-      modal.classList.remove('is-open');
-    }
-
-    discoverBtn.addEventListener('click', showUniverses);
-
-    panels.forEach(panel => {
-      panel.addEventListener('click', (event) => {
-        const isEnterBtn = event.target.closest('.enter-btn');
-        if (!universes.classList.contains('is-visible')) return;
-
-        if (isEnterBtn) {
-          event.stopPropagation();
-          if (!panel.classList.contains('active')) {
-            setActivePanel(panel);
-          }
-          openModal(panel);
-          return;
-        }
-
-        setActivePanel(panel);
-      });
-    });
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    modalClose.addEventListener('click', closeModal);
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeModal();
-      }
-    });
-  </script>
+  </main>
 </body>
 </html>
