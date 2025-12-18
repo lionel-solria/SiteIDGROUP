@@ -1,0 +1,13 @@
+[Thu Dec 18 14:35:29 2025] PHP 8.3.6 Development Server (http://0.0.0.0:8000) started
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46660 Accepted
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46660 [200]: GET /
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46660 Closing
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46672 Accepted
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46674 Accepted
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46672 [200]: GET /picocms.css
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46674 [200]: GET /picocms.js
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46672 Closing
+[Thu Dec 18 14:35:37 2025] 127.0.0.1:46674 Closing
+[Thu Dec 18 14:35:38 2025] 127.0.0.1:46686 Accepted
+[Thu Dec 18 14:35:38 2025] 127.0.0.1:46686 [200]: GET /picocms/picocms-logo.svg
+[Thu Dec 18 14:35:38 2025] 127.0.0.1:46686 Closing

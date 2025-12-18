@@ -1,0 +1,500 @@
+/* Styles du mode édition PicoCMS */
+/* Highlight au survol en mode édition */
+.pico-editable-hover {
+    outline: 2px dashed #3b82f6 !important;
+    cursor: pointer !important;
+    position: relative;
+}
+
+/* Label au survol pour savoir ce qu'on touche */
+.pico-editable-hover::after {
+    content: attr(data-tag-name);
+    position: absolute;
+    top: -20px;
+    left: 0;
+    background: #3b82f6;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    z-index: 9990;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Élément actuellement sélectionné */
+.pico-active-element {
+    outline: 3px solid #2563eb !important;
+    z-index: 40;
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0% { outline-color: #2563eb; }
+    50% { outline-color: #60a5fa; }
+    100% { outline-color: #2563eb; }
+}
+
+/* Interface UI du CMS */
+#pico-cms-ui {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+#pico-cms-ui * {
+    pointer-events: auto;
+    box-sizing: border-box;
+}
+
+/* Bouton Flottant (Toggle Edit) */
+.pico-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #111827, #0b1226);
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    z-index: 10000;
+    border: 2px solid white;
+}
+.pico-toggle-btn:hover { transform: scale(1.1); }
+.pico-toggle-btn.active { background: #2563eb; }
+
+.pico-toggle-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pico-toggle-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.pico-pen-badge {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background: #0f172a;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border: 1px solid #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Barre d'outils latérale */
+.pico-sidebar {
+    position: fixed;
+    top: 0;
+    right: -340px;
+    width: 340px;
+    height: 100vh;
+    background: #ffffff;
+    border-left: 1px solid #e5e7eb;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 9998;
+}
+.pico-sidebar.open { right: 0; }
+
+/* Header Sidebar */
+.pico-sidebar-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pico-sidebar-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.pico-header-title { display: flex; align-items: center; gap: 8px; }
+
+.pico-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pico-save-top {
+    background: #2563eb;
+    color: #fff;
+    border-color: #1d4ed8;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.pico-save-top:hover { background: #1d4ed8; color: #fff; }
+
+/* Content Sidebar */
+.pico-sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Sections de contrôles */
+.pico-section-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    font-weight: 700;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 5px;
+}
+
+.pico-control-group {
+    margin-bottom: 15px;
+}
+.pico-control-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: #4b5563;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.pico-input, .pico-select, .pico-textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+.pico-input:focus { border-color: #2563eb; outline: none; }
+
+.pico-row { display: flex; gap: 10px; }
+.pico-col { flex: 1; }
+
+/* Boutons d'action */
+.pico-btn-icon {
+    padding: 8px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    color: #374151;
+    transition: all 0.2s;
+}
+.pico-btn-icon:hover { background: #e5e7eb; color: #111; }
+
+.pico-grid-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.pico-btn-insert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: #fff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 70px;
+}
+.pico-btn-insert:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+}
+.pico-btn-insert i { font-size: 1.2rem; margin-bottom: 5px; }
+
+.pico-btn-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.pico-btn-danger:hover { background: #fecaca; }
+
+.pico-btn-primary {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+.pico-btn-primary:hover { background: #1d4ed8; }
+
+/* Footer Sidebar */
+.pico-sidebar-footer {
+    padding: 20px;
+    background: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+}
+
+.pico-badge {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/* Infobulle commerciale (hover) */
+.pico-hover-modal {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 360px;
+    max-width: calc(100% - 40px);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.18);
+    padding: 16px 18px;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 10001;
+}
+
+.pico-hover-modal.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.pico-hover-modal h4 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.pico-hover-modal p {
+    margin: 4px 0;
+    font-size: 0.92rem;
+    color: #374151;
+    line-height: 1.45;
+}
+
+.pico-hover-modal .pico-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-right: 6px;
+    margin-top: 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.pico-hover-modal strong {
+    color: #0b1226;
+}
+
+/* Modal PicoCMS */
+.pico-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10001;
+}
+
+.pico-modal-dialog {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    width: min(900px, 90vw);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.pico-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f8fafc;
+}
+
+.pico-modal-content {
+    padding: 16px;
+    background: #ffffff;
+}
+
+.pico-versions-list {
+    background: #f9fafb;
+    border: 1px dashed #e5e7eb;
+    border-radius: 10px;
+    padding: 12px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.pico-version-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+}
+
+.pico-version-item.active {
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+.pico-version-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.pico-version-meta {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 4px 0 8px;
+}
+
+/* Overlay de sauvegarde */
+.pico-saving-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    color: #e5e7eb;
+}
+
+.pico-saving-box {
+    background: rgba(17, 24, 39, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 18px 22px;
+    border-radius: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.pico-hourglass {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #3b82f6;
+    border-radius: 50%;
+    position: relative;
+    animation: pico-spin 1.1s linear infinite;
+}
+
+.pico-hourglass::after,
+.pico-hourglass::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #93c5fd;
+}
+
+.pico-hourglass::before {
+    animation: pico-hourglass 1.1s ease-in-out infinite;
+}
+
+.pico-saving-text {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+@keyframes pico-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pico-hourglass {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+}
+
+/* Password Modal Specifics */
+#picoPasswordModal .pico-modal-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+#picoPasswordInput {
+    margin: 20px 0;
+    text-align: center;
+    letter-spacing: 4px;
+    font-size: 1.5rem;
+    font-family: monospace;
+    padding: 10px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    width: 100%;
+}
+
+#picoPasswordInput:focus {
+    border-color: #2563eb;
+    outline: none;
+}
