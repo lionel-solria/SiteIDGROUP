@@ -15,11 +15,10 @@
       --home: #ea611a;
       --pro: #193f60;
       --agri: #7c9b48;
+      --header-height: 104px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -28,6 +27,12 @@
       color: #f4f5f7;
       min-height: 100vh;
       overflow-x: hidden;
+      padding-top: var(--header-height);
+    }
+
+    body.debug-mode * {
+      outline: 1px dashed rgba(228, 30, 40, 0.6);
+      outline-offset: 2px;
     }
 
     img {
@@ -39,7 +44,7 @@
       font: inherit;
       cursor: pointer;
       border: none;
-      border-radius: 999px;
+      border-radius: 12px;
       padding: 0.9rem 1.5rem;
       background: var(--id-red);
       color: #fff;
@@ -61,10 +66,16 @@
       outline-offset: 4px;
     }
 
-    .app-shell {
-      position: relative;
-      min-height: 100vh;
-      overflow: hidden;
+    .app-shell { position: relative; min-height: 100vh; overflow: hidden; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 0.65rem 1rem;
+      background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.05), transparent 40%), rgba(7, 10, 16, 0.78);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
     }
 
     .hero {
@@ -73,8 +84,9 @@
       display: flex;
       align-items: stretch;
       padding: clamp(1.5rem, 4vw, 3.5rem);
-      background: linear-gradient(120deg, rgba(5, 8, 14, 0.82), rgba(5, 8, 14, 0.35) 58%, rgba(10, 16, 24, 0.2)),
-        url('images/fondIDGROUP.jpg') center/cover no-repeat;
+      background: linear-gradient(120deg, rgba(5, 8, 14, 0.7), rgba(5, 8, 14, 0.32) 58%, rgba(10, 16, 24, 0.18)),
+        url('images/fondIDGROUP.jpg') center/contain no-repeat;
+      background-color: #05080e;
       filter: saturate(0.98);
       color: #f6f8fb;
       isolation: isolate;
@@ -85,23 +97,15 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08), transparent 38%),
-        radial-gradient(circle at 82% 68%, rgba(228, 30, 40, 0.16), transparent 40%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35));
-      backdrop-filter: blur(6px);
+      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.06), transparent 40%),
+        radial-gradient(circle at 82% 68%, rgba(228, 30, 40, 0.12), transparent 42%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.28));
+      backdrop-filter: blur(3px);
       z-index: 0;
       pointer-events: none;
     }
 
-    .hero-frame {
-      position: relative;
-      z-index: 1;
-      width: min(1200px, 100%);
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-    }
+    .hero-frame { position: relative; z-index: 1; width: min(1200px, 100%); margin: auto; display: flex; flex-direction: column; gap: clamp(1.5rem, 3vw, 2.5rem); }
 
     .topbar {
       display: grid;
@@ -111,9 +115,11 @@
       padding: 0.85rem 1rem;
       background: rgba(9, 12, 18, 0.65);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
+      border-radius: 16px;
       backdrop-filter: blur(12px);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      width: min(1200px, calc(100% - 1.5rem));
+      margin: 0 auto;
     }
 
     .brand {
@@ -154,18 +160,33 @@
       flex-wrap: wrap;
     }
 
-    .topnav a {
+    .topnav a,
+    .topnav button {
       color: rgba(244, 245, 247, 0.92);
       text-decoration: none;
       font-weight: 600;
       letter-spacing: 0.02em;
-      transition: color 0.25s ease, transform 0.25s ease;
+      transition: color 0.25s ease, transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
     }
 
     .topnav a:hover,
-    .topnav a:focus-visible {
+    .topnav a:focus-visible,
+    .topnav button:hover,
+    .topnav button:focus-visible {
       color: #fff;
       transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .debug-toggle.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.28);
     }
 
     .top-actions {
@@ -181,7 +202,7 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.45rem 0.9rem;
-      border-radius: 999px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.16);
       color: #f6f8fb;
@@ -209,9 +230,9 @@
       display: grid;
       gap: 0.9rem;
       padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
+      background: rgba(8, 12, 18, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
     }
@@ -263,7 +284,7 @@
       border: 1px solid rgba(255, 255, 255, 0.45);
       color: #fff;
       padding: 0.85rem 1.4rem;
-      border-radius: 12px;
+      border-radius: 10px;
       text-transform: none;
       letter-spacing: 0.01em;
       box-shadow: none;
@@ -283,7 +304,7 @@
       padding: 0.85rem 1rem;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
+      border-radius: 12px;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
@@ -307,56 +328,35 @@
       font-size: 0.98rem;
     }
 
-    .values-deck {
-      display: grid;
-      gap: 0.9rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
+    .values-deck { display: grid; gap: 1.4rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 
     .value-card {
       position: relative;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.85rem;
-      padding: 1rem 1.1rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.55rem;
+      padding: 1.35rem 1.4rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 18px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
-      align-items: center;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      min-height: 360px;
+      justify-content: space-between;
     }
 
-    .value-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
+    .value-icon { width: 52px; height: 52px; border-radius: 12px; background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.26); display: grid; place-items: center; }
 
-    .value-icon img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
-    }
+    .value-icon img { width: 34px; height: 34px; object-fit: contain; filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28)); }
 
-    .value-label {
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: #fff;
-    }
+    .value-kicker { margin: 0; font-size: 0.86rem; letter-spacing: 0.01em; color: rgba(255, 255, 255, 0.8); }
 
-    .value-text p {
-      margin: 0.15rem 0 0;
-      color: rgba(244, 245, 247, 0.8);
-      line-height: 1.4;
-    }
+    .value-label { margin: 0; font-weight: 800; letter-spacing: 0.01em; color: #fff; font-size: 1.25rem; }
+
+    .value-text { display: flex; flex-direction: column; gap: 0.25rem; }
+
+    .value-text p { margin: 0.35rem 0 0; color: rgba(244, 245, 247, 0.9); line-height: 1.6; font-size: 1.02rem; }
 
     .hero.is-hidden {
       opacity: 0;
@@ -441,7 +441,7 @@
       font-weight: 700;
       font-size: 0.78rem;
       padding: 0.55rem 0.9rem;
-      border-radius: 999px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(6px);
@@ -606,6 +606,7 @@
       .topbar {
         grid-template-columns: 1fr;
         text-align: left;
+        width: 100%;
       }
 
       .top-actions,
@@ -636,33 +637,42 @@
       .accordion.has-focus .panel.active {
         flex: 2.2;
       }
+
+      :root { --header-height: 148px; }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="topbar">
+      <div class="brand">
+        <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
+        <div class="brand-text">
+          <span class="brand-name">ID GROUP</span>
+          <span class="brand-tag">Protection globale</span>
+        </div>
+      </div>
+      <nav class="topnav" aria-label="Navigation principale">
+        <a href="#intro">Accueil</a>
+        <a href="#universes">Nos univers</a>
+        <a href="groupe.html">Groupe</a>
+        <a href="engagements.html">Engagements</a>
+        <a href="home.html">ID Home</a>
+        <a href="pro.html">ID Pro</a>
+        <a href="agri.html">ID Agri</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Contact</a>
+        <button type="button" class="debug-toggle" id="debugToggle" aria-pressed="false">Mode debug</button>
+      </nav>
+      <div class="top-actions">
+        <span class="pill subtle">France • Europe</span>
+        <button class="ghost-btn" type="button">Prendre contact</button>
+      </div>
+    </div>
+  </header>
   <main class="app-shell">
     <section class="hero" id="intro">
       <div class="hero-frame">
-        <header class="topbar">
-          <div class="brand">
-            <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
-            <div class="brand-text">
-              <span class="brand-name">ID GROUP</span>
-              <span class="brand-tag">Protection globale</span>
-            </div>
-          </div>
-          <nav class="topnav" aria-label="Navigation principale">
-            <a href="#universes">Nos univers</a>
-            <a href="groupe.html">Groupe</a>
-            <a href="engagements.html">Engagements</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="top-actions">
-            <span class="pill subtle">France • Europe</span>
-            <button class="ghost-btn" type="button">Prendre contact</button>
-          </div>
-        </header>
-
         <div class="hero-body">
           <div class="hero-inner">
             <div class="eyebrow">Notre mission</div>
@@ -685,22 +695,25 @@
             <article class="value-card">
               <div class="value-icon"><img src="images/respect.png" alt="Pictogramme Respect"></div>
               <div class="value-text">
+                <p class="value-kicker">Respect</p>
                 <p class="value-label">Respect</p>
-                <p>Des solutions qui prennent soin des personnes et des lieux avec exigence et attention.</p>
+                <p>Prendre soin des personnes et des environnements que nous protégeons, avec transparence et exigence.</p>
               </div>
             </article>
             <article class="value-card">
               <div class="value-icon"><img src="images/curiosite.png" alt="Pictogramme Curiosité"></div>
               <div class="value-text">
+                <p class="value-kicker">Curiosité</p>
                 <p class="value-label">Curiosité</p>
-                <p>Observer, tester et améliorer pour apporter des réponses simples et utiles.</p>
+                <p>Explorer, tester, innover pour imaginer des solutions toujours plus efficaces et adaptées à chaque univers.</p>
               </div>
             </article>
             <article class="value-card">
               <div class="value-icon"><img src="images/efficience.png" alt="Pictogramme Efficience"></div>
               <div class="value-text">
+                <p class="value-kicker">Efficience</p>
                 <p class="value-label">Efficience</p>
-                <p>Des produits fiables, prêts à l'emploi, qui sécurisent vos équipes au quotidien.</p>
+                <p>Intervenir vite, bien et durablement grâce à des process clairs et des technologies éprouvées.</p>
               </div>
             </article>
           </div>
@@ -783,6 +796,32 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalSubtitle = document.getElementById('modalSubtitle');
     const modalClose = document.getElementById('modalClose');
+    const debugToggle = document.getElementById('debugToggle');
+
+    function applyDebugState(isOn) {
+      document.body.classList.toggle('debug-mode', isOn);
+      if (debugToggle) {
+        debugToggle.classList.toggle('active', isOn);
+        debugToggle.setAttribute('aria-pressed', String(isOn));
+      }
+    }
+
+    function loadDebugPreference() {
+      return localStorage.getItem('debugMode') === '1';
+    }
+
+    function toggleDebug() {
+      const nextState = !document.body.classList.contains('debug-mode');
+      localStorage.setItem('debugMode', nextState ? '1' : '0');
+      applyDebugState(nextState);
+    }
+
+    applyDebugState(loadDebugPreference());
+
+    debugToggle?.addEventListener('click', (event) => {
+      event.preventDefault();
+      toggleDebug();
+    });
 
     function showUniverses() {
       intro.classList.add('is-hidden');

@@ -14,11 +14,17 @@
       --id-red-cta: #de0c1a;
       --id-gray-dark: #1b2230;
       --id-gray-neutral: #ededed;
+      --header-height: 108px;
     }
     body {
       font-family: 'Avenir', 'Nunito', sans-serif;
       background-color: var(--id-gray-neutral);
       color: var(--id-gray-dark);
+      padding-top: var(--header-height);
+    }
+    body.debug-mode * {
+      outline: 1px dashed rgba(228, 30, 40, 0.6);
+      outline-offset: 2px;
     }
     a,
     button {
@@ -33,7 +39,7 @@
     .nav-link {
       position: relative;
       padding: 0.85rem 0.85rem;
-      border-radius: 999px;
+      border-radius: 12px;
       color: #1b2230;
       font-weight: 700;
       transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
@@ -67,10 +73,14 @@
     .logo-link img { transition: transform 0.25s ease; }
     .logo-link:hover img,
     .logo-link:focus-visible img { transform: scale(1.06); }
+
+    @media (max-width: 1024px) {
+      :root { --header-height: 152px; }
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-xl border-b border-white/60 shadow-[0_12px_30px_rgba(0,0,0,0.06)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-6">
       <div class="flex items-center gap-3">
         <a href="index.html" class="logo-link inline-flex items-center gap-3 focus-visible:outline-none">
@@ -81,7 +91,8 @@
           <span class="text-xs uppercase tracking-[0.35em] text-gray-500">ID GROUP</span>
         </div>
       </div>
-      <nav aria-label="Navigation principale" class="hidden lg:flex items-center gap-4 text-sm font-semibold">
+      <nav aria-label="Navigation principale" class="flex flex-wrap items-center gap-4 text-sm font-semibold">
+        <a href="index.html#intro" class="nav-link">ACCUEIL</a>
         <a href="groupe.html" class="nav-link">LE GROUPE</a>
         <a href="engagements.html" class="nav-link">NOS ENGAGEMENTS</a>
         <a href="home.html" class="nav-link">ID HOME</a>
@@ -89,20 +100,21 @@
         <a href="agri.html" class="nav-link">ID AGRI</a>
         <a href="actualites.html" class="nav-link">ACTUALITÉS</a>
         <a href="contact.html" class="nav-link">CONTACT</a>
+        <button type="button" id="debugToggle" class="nav-link nav-debug" aria-pressed="false">MODE DEBUG</button>
       </nav>
       <div class="flex items-center gap-3">
-        <button class="h-11 w-11 inline-flex items-center justify-center rounded-full border border-gray-200 text-gray-800 bg-white shadow-sm hover:-translate-y-[2px] hover:shadow-lg transition duration-200" aria-label="Espace client">
+        <button class="h-11 w-11 inline-flex items-center justify-center rounded-lg border border-gray-200 text-gray-800 bg-white shadow-sm hover:-translate-y-[2px] hover:shadow-lg transition duration-200" aria-label="Espace client">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 7.5a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0ZM4.5 19.75A7.25 7.25 0 0 1 12 12.5a7.25 7.25 0 0 1 7.5 7.25v.25H4.5v-.25Z" />
           </svg>
         </button>
-        <button class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-800 text-sm font-semibold shadow-inner hover:bg-gray-200 transition" aria-label="Changer de langue">
+        <button class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-gray-800 text-sm font-semibold shadow-inner hover:bg-gray-200 transition" aria-label="Changer de langue">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0 0c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 18c-4.97 0-9-4.03-9-9s4.03-9 9-9m0 0c0 4.97 4.03 9 9 9m-9-9c0 4.97-4.03 9-9 9" />
           </svg>
           FR
         </button>
-        <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
+        <button class="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg bg-gray-100 text-gray-800 shadow" aria-label="Ouvrir le menu mobile">
           <span class="sr-only">Ouvrir le menu</span>
           ☰
         </button>
@@ -113,7 +125,30 @@
     <p class="text-xs uppercase tracking-[0.35em] text-red-600">ID Group</p>
     <h1 class="text-4xl font-black">Section en construction</h1>
     <p class="text-lg text-gray-700">Ce gabarit sert de base pour la navigation. Personnalisez ce contenu avec vos informations spécifiques.</p>
-    <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-full font-semibold">↩ Retour à l'accueil</a>
+    <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg font-semibold">↩ Retour à l'accueil</a>
   </main>
+
+  <script>
+    const debugToggle = document.getElementById('debugToggle');
+
+    const applyDebug = (isOn) => {
+      document.body.classList.toggle('debug-mode', isOn);
+      if (debugToggle) {
+        debugToggle.classList.toggle('bg-gray-100', isOn);
+        debugToggle.classList.toggle('text-red-700', isOn);
+        debugToggle.setAttribute('aria-pressed', String(isOn));
+      }
+    };
+
+    const initialDebug = localStorage.getItem('debugMode') === '1';
+    applyDebug(initialDebug);
+
+    debugToggle?.addEventListener('click', (event) => {
+      event.preventDefault();
+      const nextState = !document.body.classList.contains('debug-mode');
+      localStorage.setItem('debugMode', nextState ? '1' : '0');
+      applyDebug(nextState);
+    });
+  </script>
 </body>
 </html>
