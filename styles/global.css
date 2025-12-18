@@ -208,6 +208,12 @@ body.debug-mode .debug-tooltip {
   outline: none !important;
 }
 
+body.debug-mode .debug-highlighted {
+  outline: 2px solid #e41e28 !important;
+  box-shadow: 0 0 0 3px rgba(228, 30, 40, 0.18);
+  border-radius: 10px;
+}
+
 @media (max-width: 768px) {
   :root { --nav-height: 82px; }
   .global-nav { align-items: flex-start; padding-top: 0.85rem; padding-bottom: 0.85rem; }

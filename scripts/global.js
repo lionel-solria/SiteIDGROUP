@@ -6,26 +6,52 @@
   document.body.appendChild(tooltip);
 
   let debugEnabled = false;
+  let lastHighlighted = null;
+
+  const describeTarget = (target) => {
+    const tagLabel = target.tagName ? target.tagName.toLowerCase() : 'élément';
+    const readableName = target.dataset?.debugLabel
+      || (target.getAttribute && target.getAttribute('aria-label'))
+      || (target.getAttribute && target.getAttribute('title'))
+      || `Balise ${tagLabel}`;
+    const typeLabel = target.getAttribute && (target.getAttribute('type') || target.getAttribute('role'));
+    const identifier = target.id
+      ? `#${target.id}`
+      : (target.classList && target.classList.length ? `.${target.classList[0]}` : '');
+
+    const details = [tagLabel, typeLabel, identifier].filter(Boolean).join(' · ');
+    return details ? `${readableName} · ${details}` : readableName;
+  };
 
   const moveHandler = (event) => {
     if (!debugEnabled) return;
     const target = event.target;
     if (!target || tooltip.contains(target)) return;
-    const tagLabel = target.tagName ? target.tagName.toLowerCase() : '';
-    const typeLabel = target.getAttribute && (target.getAttribute('type') || target.getAttribute('role'));
-    const elementType = typeLabel || (target.constructor && target.constructor.name ? target.constructor.name : '');
-    const identifier = target.id ? `#${target.id}` : (target.classList && target.classList.length ? `.${target.classList[0]}` : '');
-    const parts = [`<${tagLabel}>`];
-    if (elementType) parts.push(`type="${elementType}"`);
-    if (identifier) parts.push(identifier);
-    tooltip.textContent = parts.join(' · ');
+    const elementTarget = target.nodeType === 1 ? target : target.parentElement;
+    if (!elementTarget) return;
+    const highlightTarget = elementTarget.closest('[data-debug-label]') || elementTarget;
+    tooltip.textContent = describeTarget(highlightTarget);
     tooltip.style.display = 'block';
     tooltip.style.left = `${event.clientX + 12}px`;
     tooltip.style.top = `${event.clientY + 12}px`;
+
+    if (lastHighlighted && lastHighlighted !== highlightTarget) {
+      lastHighlighted.classList.remove('debug-highlighted');
+    }
+
+    if (highlightTarget.classList && !highlightTarget.classList.contains('debug-highlighted')) {
+      highlightTarget.classList.add('debug-highlighted');
+    }
+
+    lastHighlighted = highlightTarget.classList ? highlightTarget : null;
   };
 
   const leaveHandler = () => {
     tooltip.style.display = 'none';
+    if (lastHighlighted) {
+      lastHighlighted.classList.remove('debug-highlighted');
+      lastHighlighted = null;
+    }
   };
 
   const enableDebug = () => {
@@ -49,6 +75,10 @@
     if (debugToggle) {
       debugToggle.setAttribute('aria-pressed', 'false');
       debugToggle.classList.remove('primary');
+    }
+    if (lastHighlighted) {
+      lastHighlighted.classList.remove('debug-highlighted');
+      lastHighlighted = null;
     }
   };
 
