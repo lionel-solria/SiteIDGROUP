@@ -6,6 +6,7 @@
   <title>ID GROUP | Piste 1</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles/navigation.css">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -26,7 +27,7 @@
       font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
       background: #05080e;
       color: #f4f5f7;
-      min-height: 100vh;
+      min-height: calc(100vh - var(--header-height));
       overflow-x: hidden;
     }
 
@@ -39,7 +40,7 @@
       font: inherit;
       cursor: pointer;
       border: none;
-      border-radius: 999px;
+      border-radius: 14px;
       padding: 0.9rem 1.5rem;
       background: var(--id-red);
       color: #fff;
@@ -69,12 +70,13 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: calc(100vh - var(--header-height));
       display: flex;
       align-items: stretch;
       padding: clamp(1.5rem, 4vw, 3.5rem);
       background: linear-gradient(120deg, rgba(5, 8, 14, 0.82), rgba(5, 8, 14, 0.35) 58%, rgba(10, 16, 24, 0.2)),
-        url('images/fondIDGROUP.jpg') center/cover no-repeat;
+        url('images/fondIDGROUP.jpg') center/contain no-repeat;
+      background-color: #05080e;
       filter: saturate(0.98);
       color: #f6f8fb;
       isolation: isolate;
@@ -209,7 +211,7 @@
       display: grid;
       gap: 0.9rem;
       padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.6);
+      background: rgba(8, 12, 18, 0.42);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
@@ -309,53 +311,106 @@
 
     .values-deck {
       display: grid;
-      gap: 0.9rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
 
     .value-card {
       position: relative;
-      display: grid;
-      grid-template-columns: auto 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 0.85rem;
-      padding: 1rem 1.1rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.4rem 1.35rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 18px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
-      align-items: center;
-    }
-
-    .value-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      display: grid;
-      place-items: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      color: #fff;
+      min-height: 360px;
       overflow: hidden;
     }
 
+    .value-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(12, 16, 22, 0.35));
+      z-index: 0;
+    }
+
+    .value-card--respect::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(12, 16, 22, 0.35)),
+        linear-gradient(120deg, rgba(6, 161, 195, 0.12), transparent);
+    }
+
+    .value-card--curiosite::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(12, 16, 22, 0.35)),
+        linear-gradient(120deg, rgba(255, 193, 59, 0.12), transparent);
+    }
+
+    .value-card--efficience::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(12, 16, 22, 0.35)),
+        linear-gradient(120deg, rgba(95, 207, 100, 0.14), transparent);
+    }
+
+    .value-card * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .value-meta::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+    }
+
+    .value-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+
     .value-icon img {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       object-fit: contain;
       filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
     }
 
-    .value-label {
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 0.01em;
+    .value-title {
+      margin: 0.1rem 0 0;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 1.35rem;
       color: #fff;
     }
 
-    .value-text p {
-      margin: 0.15rem 0 0;
-      color: rgba(244, 245, 247, 0.8);
-      line-height: 1.4;
+    .value-desc {
+      margin: 0.2rem 0 0;
+      color: #f6f7fa;
+      line-height: 1.7;
+      font-size: 1rem;
+      font-weight: 600;
     }
 
     .hero.is-hidden {
@@ -373,7 +428,7 @@
 
     .accordion {
       position: relative;
-      height: 100vh;
+      height: calc(100vh - var(--header-height));
       display: flex;
       visibility: hidden;
       opacity: 0;
@@ -618,7 +673,7 @@
       }
 
       .values-deck {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       }
 
       .accordion {
@@ -640,29 +695,36 @@
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="index.html">
+        <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
+        <div class="brand-text">
+          <span class="brand-name">ID GROUP</span>
+          <span class="brand-tag">Protection globale</span>
+        </div>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html#universes">Nos univers</a>
+        <a href="groupe.html">Groupe</a>
+        <a href="engagements.html">Engagements</a>
+        <a href="home.html">ID Home</a>
+        <a href="pro.html">ID Pro</a>
+        <a href="agri.html">ID Agri</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Contact</a>
+        <button type="button" class="nav-debug" data-debug-toggle aria-pressed="false">Debug</button>
+      </nav>
+      <div class="site-header__actions">
+        <span class="location-pill">France • Europe</span>
+        <span class="site-header__hint">Navigation toujours visible</span>
+        <a class="nav-cta" href="contact.html">Prendre contact</a>
+      </div>
+    </div>
+  </header>
   <main class="app-shell">
     <section class="hero" id="intro">
       <div class="hero-frame">
-        <header class="topbar">
-          <div class="brand">
-            <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
-            <div class="brand-text">
-              <span class="brand-name">ID GROUP</span>
-              <span class="brand-tag">Protection globale</span>
-            </div>
-          </div>
-          <nav class="topnav" aria-label="Navigation principale">
-            <a href="#universes">Nos univers</a>
-            <a href="groupe.html">Groupe</a>
-            <a href="engagements.html">Engagements</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="top-actions">
-            <span class="pill subtle">France • Europe</span>
-            <button class="ghost-btn" type="button">Prendre contact</button>
-          </div>
-        </header>
-
         <div class="hero-body">
           <div class="hero-inner">
             <div class="eyebrow">Notre mission</div>
@@ -682,26 +744,23 @@
           </div>
 
           <div class="values-deck" aria-label="Valeurs ID GROUP">
-            <article class="value-card">
+            <article class="value-card value-card--respect">
+              <div class="value-meta">Respect</div>
               <div class="value-icon"><img src="images/respect.png" alt="Pictogramme Respect"></div>
-              <div class="value-text">
-                <p class="value-label">Respect</p>
-                <p>Des solutions qui prennent soin des personnes et des lieux avec exigence et attention.</p>
-              </div>
+              <p class="value-title">Respect</p>
+              <p class="value-desc">Prendre soin des personnes et des environnements que nous protégeons, avec transparence et exigence.</p>
             </article>
-            <article class="value-card">
+            <article class="value-card value-card--curiosite">
+              <div class="value-meta">Curiosité</div>
               <div class="value-icon"><img src="images/curiosite.png" alt="Pictogramme Curiosité"></div>
-              <div class="value-text">
-                <p class="value-label">Curiosité</p>
-                <p>Observer, tester et améliorer pour apporter des réponses simples et utiles.</p>
-              </div>
+              <p class="value-title">Curiosité</p>
+              <p class="value-desc">Explorer, tester, innover pour imaginer des solutions toujours plus efficaces et adaptées à chaque univers.</p>
             </article>
-            <article class="value-card">
+            <article class="value-card value-card--efficience">
+              <div class="value-meta">Efficience</div>
               <div class="value-icon"><img src="images/efficience.png" alt="Pictogramme Efficience"></div>
-              <div class="value-text">
-                <p class="value-label">Efficience</p>
-                <p>Des produits fiables, prêts à l'emploi, qui sécurisent vos équipes au quotidien.</p>
-              </div>
+              <p class="value-title">Efficience</p>
+              <p class="value-desc">Intervenir vite, bien et durablement grâce à des process clairs et des technologies éprouvées.</p>
             </article>
           </div>
         </div>
@@ -774,6 +833,7 @@
     </div>
   </div>
 
+  <script src="scripts/navigation.js"></script>
   <script>
     const intro = document.getElementById('intro');
     const universes = document.getElementById('universes');
