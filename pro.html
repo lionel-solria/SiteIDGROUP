@@ -68,6 +68,60 @@
     .logo-link img { transition: transform 0.25s ease; }
     .logo-link:hover img,
     .logo-link:focus-visible img { transform: scale(1.06); }
+
+    .page-hero {
+      position: relative;
+      min-height: 33vh;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.62)), var(--page-hero-image) center/cover no-repeat;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: clamp(1.5rem, 3vw, 2.75rem);
+      color: #fff;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+    }
+
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0.6rem;
+      max-width: 560px;
+    }
+
+    .page-hero__eyebrow {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 0.8rem;
+      opacity: 0.92;
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      letter-spacing: 0.01em;
+    }
+
+    .page-hero p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .page-body {
+      width: min(1000px, 100%);
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 3vw, 2.75rem) clamp(2.5rem, 5vw, 3.25rem);
+    }
+
+    .page-hero--pro {
+      --page-hero-image: url('images/ImageIDPro.jpg');
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
@@ -79,7 +133,7 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">73 rue du Bâtiment<br>Siège de la société</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
@@ -118,11 +172,21 @@
       </a>
     </div>
   </header>
-  <main class="max-w-4xl mx-auto px-4 py-16 space-y-4">
-    <p class="text-xs uppercase tracking-[0.35em] text-red-600">ID Group</p>
-    <h1 class="text-4xl font-black">Section en construction</h1>
-    <p class="text-lg text-gray-700">Ce gabarit sert de base pour la navigation. Personnalisez ce contenu avec vos informations spécifiques.</p>
-    <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md font-semibold shadow">↩ Retour à l'accueil</a>
+  <main class="space-y-10 pb-16">
+    <section class="page-hero page-hero--pro">
+      <div class="page-hero__content">
+        <p class="page-hero__eyebrow">ID PRO</p>
+        <h1>Protection, Hygiène et Sécurité</h1>
+        <p>Des équipements robustes et performants pour sécuriser les environnements les plus exigeants.</p>
+      </div>
+    </section>
+
+    <section class="page-body space-y-4">
+      <p class="text-xs uppercase tracking-[0.35em] text-red-600">ID Group</p>
+      <h2 class="text-3xl font-black">Section en construction</h2>
+      <p class="text-lg text-gray-700">Ce gabarit sert de base pour la navigation. Personnalisez ce contenu avec vos informations spécifiques.</p>
+      <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md font-semibold shadow">↩ Retour à l'accueil</a>
+    </section>
   </main>
   <script src="scripts/global.js"></script>
 </body>

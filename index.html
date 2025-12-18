@@ -568,7 +568,7 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">Emplacement : Alpespace<br>Adresse : 47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
@@ -721,10 +721,7 @@
     const discoverBtn = document.getElementById('discoverBtn');
     const navUniversLink = document.getElementById('navUniversLink');
     const panels = Array.from(document.querySelectorAll('.panel'));
-    const modal = document.getElementById('detailModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalSubtitle = document.getElementById('modalSubtitle');
-    const modalClose = document.getElementById('modalClose');
+    const topNav = document.querySelector('.global-nav');
 
     function showUniverses() {
       if (intro.classList.contains('is-gone')) {
@@ -746,16 +743,16 @@
       panels.forEach(panel => panel.classList.toggle('active', panel === targetPanel));
     }
 
-    function openModal(panel) {
-      const title = panel.dataset.title || 'ID GROUP';
-      const subtitle = panel.dataset.subtitle || '';
-      modalTitle.textContent = title;
-      modalSubtitle.textContent = subtitle;
-      modal.classList.add('is-open');
+    function resetPanels() {
+      universes.classList.remove('has-focus');
+      panels.forEach(panel => panel.classList.remove('active'));
     }
 
-    function closeModal() {
-      modal.classList.remove('is-open');
+    function goToPanelPage(panel) {
+      const targetId = panel.dataset.id;
+      if (!targetId) return;
+      const targetPage = `${targetId}.html`;
+      window.location.href = targetPage;
     }
 
     discoverBtn.addEventListener('click', showUniverses);
@@ -767,36 +764,43 @@
     }
 
     panels.forEach(panel => {
+      panel.addEventListener('mouseenter', () => {
+        if (!universes.classList.contains('is-visible')) return;
+        setActivePanel(panel);
+      });
+
+      panel.addEventListener('focusin', () => {
+        if (!universes.classList.contains('is-visible')) return;
+        setActivePanel(panel);
+      });
+
       panel.addEventListener('click', (event) => {
         const isEnterBtn = event.target.closest('.enter-btn');
-        if (!universes.classList.contains('is-visible')) return;
 
         if (isEnterBtn) {
           event.stopPropagation();
-          if (!panel.classList.contains('active')) {
-            setActivePanel(panel);
-          }
-          openModal(panel);
+          goToPanelPage(panel);
           return;
         }
 
-        setActivePanel(panel);
+        if (!universes.classList.contains('is-visible')) return;
+
+        const prefersHover = window.matchMedia('(hover: hover)').matches;
+        if (!prefersHover) {
+          setActivePanel(panel);
+        }
       });
     });
 
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    if (topNav) {
+      const navResetHandler = () => {
+        if (!universes.classList.contains('is-visible')) return;
+        resetPanels();
+      };
 
-    modalClose.addEventListener('click', closeModal);
-
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeModal();
-      }
-    });
+      topNav.addEventListener('mouseenter', navResetHandler);
+      topNav.addEventListener('focusin', navResetHandler);
+    }
 
     if (window.location.hash === '#universes') {
       requestAnimationFrame(showUniverses);
