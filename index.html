@@ -568,7 +568,7 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">Emplacement : Alpespace<br>Adresse : 47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
@@ -725,6 +725,7 @@
     const modalTitle = document.getElementById('modalTitle');
     const modalSubtitle = document.getElementById('modalSubtitle');
     const modalClose = document.getElementById('modalClose');
+    const globalNav = document.querySelector('.global-nav');
 
     function showUniverses() {
       if (intro.classList.contains('is-gone')) {
@@ -746,16 +747,18 @@
       panels.forEach(panel => panel.classList.toggle('active', panel === targetPanel));
     }
 
-    function openModal(panel) {
-      const title = panel.dataset.title || 'ID GROUP';
-      const subtitle = panel.dataset.subtitle || '';
-      modalTitle.textContent = title;
-      modalSubtitle.textContent = subtitle;
-      modal.classList.add('is-open');
-    }
-
     function closeModal() {
       modal.classList.remove('is-open');
+    }
+
+    function resetPanels() {
+      universes.classList.remove('has-focus');
+      panels.forEach(panel => panel.classList.remove('active'));
+    }
+
+    function handlePanelHover(panel) {
+      if (!universes.classList.contains('is-visible')) return;
+      setActivePanel(panel);
     }
 
     discoverBtn.addEventListener('click', showUniverses);
@@ -767,22 +770,27 @@
     }
 
     panels.forEach(panel => {
+      panel.addEventListener('mouseenter', () => handlePanelHover(panel));
+      panel.addEventListener('focusin', () => handlePanelHover(panel));
       panel.addEventListener('click', (event) => {
         const isEnterBtn = event.target.closest('.enter-btn');
         if (!universes.classList.contains('is-visible')) return;
 
         if (isEnterBtn) {
           event.stopPropagation();
-          if (!panel.classList.contains('active')) {
-            setActivePanel(panel);
-          }
-          openModal(panel);
+          const destination = `${panel.dataset.id}.html`;
+          window.location.href = destination;
           return;
         }
-
-        setActivePanel(panel);
       });
     });
+
+    if (globalNav) {
+      globalNav.addEventListener('mouseenter', () => {
+        if (!universes.classList.contains('is-visible')) return;
+        resetPanels();
+      });
+    }
 
     modal.addEventListener('click', (event) => {
       if (event.target === modal) {
