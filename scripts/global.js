@@ -12,7 +12,9 @@
     const target = event.target;
     if (!target || tooltip.contains(target)) return;
     const tagLabel = target.tagName ? target.tagName.toLowerCase() : '';
-    tooltip.textContent = `<${tagLabel}>`;
+    const typeLabel = target.constructor && target.constructor.name ? target.constructor.name : 'élément';
+    const descriptor = tagLabel ? `${typeLabel} — <${tagLabel}>` : typeLabel;
+    tooltip.textContent = descriptor;
     tooltip.style.display = 'block';
     tooltip.style.left = `${event.clientX + 12}px`;
     tooltip.style.top = `${event.clientY + 12}px`;
@@ -51,5 +53,21 @@
       event.preventDefault();
       debugEnabled ? disableDebug() : enableDebug();
     });
+  }
+
+  const navBrand = document.querySelector('.nav-brand');
+  if (navBrand && !navBrand.querySelector('.brand-popover')) {
+    const popover = document.createElement('div');
+    popover.className = 'brand-popover';
+    popover.innerHTML = `
+      <div class="brand-popover__media">
+        <img src="images/batiment73.png" alt="Façade du siège ID GROUP">
+      </div>
+      <div class="brand-popover__content">
+        <p class="brand-popover__title">ID GROUP</p>
+        <p class="brand-popover__address">73 avenue des Peupliers, 59650 Villeneuve-d'Ascq</p>
+      </div>
+    `;
+    navBrand.appendChild(popover);
   }
 })();
