@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
   <style>
     :root {
       --id-red: #e41e28;
@@ -39,7 +40,7 @@
       font: inherit;
       cursor: pointer;
       border: none;
-      border-radius: 999px;
+      border-radius: 10px;
       padding: 0.9rem 1.5rem;
       background: var(--id-red);
       color: #fff;
@@ -69,12 +70,13 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: calc(100vh - var(--nav-height));
       display: flex;
       align-items: stretch;
       padding: clamp(1.5rem, 4vw, 3.5rem);
-      background: linear-gradient(120deg, rgba(5, 8, 14, 0.82), rgba(5, 8, 14, 0.35) 58%, rgba(10, 16, 24, 0.2)),
-        url('images/fondIDGROUP.jpg') center/cover no-repeat;
+      background: linear-gradient(120deg, rgba(5, 8, 14, 0.72), rgba(5, 8, 14, 0.32) 58%, rgba(10, 16, 24, 0.12)),
+        url('images/fondIDGROUP.jpg') center/contain no-repeat;
+      background-color: #05080e;
       filter: saturate(0.98);
       color: #f6f8fb;
       isolation: isolate;
@@ -85,9 +87,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08), transparent 38%),
-        radial-gradient(circle at 82% 68%, rgba(228, 30, 40, 0.16), transparent 40%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35));
+      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.07), transparent 42%),
+        radial-gradient(circle at 82% 68%, rgba(228, 30, 40, 0.15), transparent 42%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.26));
       backdrop-filter: blur(6px);
       z-index: 0;
       pointer-events: none;
@@ -103,99 +105,6 @@
       gap: clamp(1.5rem, 3vw, 2.5rem);
     }
 
-    .topbar {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: clamp(1rem, 2vw, 1.5rem);
-      padding: 0.85rem 1rem;
-      background: rgba(9, 12, 18, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .brand img {
-      width: 72px;
-      height: auto;
-      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-      line-height: 1.2;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .brand-tag {
-      font-size: 0.9rem;
-      color: rgba(244, 245, 247, 0.75);
-    }
-
-    .topnav {
-      display: flex;
-      gap: clamp(0.9rem, 2vw, 1.75rem);
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .topnav a {
-      color: rgba(244, 245, 247, 0.92);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: color 0.25s ease, transform 0.25s ease;
-    }
-
-    .topnav a:hover,
-    .topnav a:focus-visible {
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #f6f8fb;
-      letter-spacing: 0.02em;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .pill.subtle {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.12);
-      font-weight: 500;
-    }
-
     .hero-body {
       display: grid;
       grid-template-columns: minmax(320px, 1.1fr) minmax(320px, 0.9fr);
@@ -209,8 +118,8 @@
       display: grid;
       gap: 0.9rem;
       padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 12, 18, 0.32);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
@@ -263,7 +172,7 @@
       border: 1px solid rgba(255, 255, 255, 0.45);
       color: #fff;
       padding: 0.85rem 1.4rem;
-      border-radius: 12px;
+      border-radius: 10px;
       text-transform: none;
       letter-spacing: 0.01em;
       box-shadow: none;
@@ -373,7 +282,8 @@
 
     .accordion {
       position: relative;
-      height: 100vh;
+      height: calc(100vh - var(--nav-height));
+      min-height: calc(100vh - var(--nav-height));
       display: flex;
       visibility: hidden;
       opacity: 0;
@@ -624,7 +534,7 @@
       .accordion {
         flex-direction: column;
         height: auto;
-        min-height: 100vh;
+        min-height: calc(100vh - var(--nav-height));
       }
 
       .accordion.has-focus .panel,
@@ -640,29 +550,49 @@
   </style>
 </head>
 <body>
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="#universes">Univers</a>
+      <a href="groupe.html">Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false" aria-label="Activer le mode debug">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3v3m8-3v3" />
+          <path d="M4 8h16" />
+          <path d="M4 16h16" />
+          <path d="M9 8v4a3 3 0 1 0 6 0V8" />
+          <path d="M5 19h14" />
+        </svg>
+      </button>
+      <button class="icon-btn icon-only" type="button" title="Langue" aria-label="Changer de langue">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18" />
+          <path d="M12 3a15 15 0 0 1 0 18" />
+          <path d="M12 3a15 15 0 0 0 0 18" />
+        </svg>
+      </button>
+      <a class="icon-btn primary" href="contact.html" title="Prendre contact">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5h16v14H4z" />
+          <path d="m4 7 8 5 8-5" />
+        </svg>
+        <span>Contact</span>
+      </a>
+    </div>
+  </header>
   <main class="app-shell">
     <section class="hero" id="intro">
       <div class="hero-frame">
-        <header class="topbar">
-          <div class="brand">
-            <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
-            <div class="brand-text">
-              <span class="brand-name">ID GROUP</span>
-              <span class="brand-tag">Protection globale</span>
-            </div>
-          </div>
-          <nav class="topnav" aria-label="Navigation principale">
-            <a href="#universes">Nos univers</a>
-            <a href="groupe.html">Groupe</a>
-            <a href="engagements.html">Engagements</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="top-actions">
-            <span class="pill subtle">France • Europe</span>
-            <button class="ghost-btn" type="button">Prendre contact</button>
-          </div>
-        </header>
-
         <div class="hero-body">
           <div class="hero-inner">
             <div class="eyebrow">Notre mission</div>
@@ -774,6 +704,7 @@
     </div>
   </div>
 
+  <script src="scripts/global.js"></script>
   <script>
     const intro = document.getElementById('intro');
     const universes = document.getElementById('universes');
