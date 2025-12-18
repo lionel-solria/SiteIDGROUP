@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Piste 1 – POC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0c1018;
+      --veil: rgba(0, 0, 0, 0.45);
+      --accent: #e41e28;
+      --home: #ea611a;
+      --pro: #193f60;
+      --agri: #7c9b48;
+      --transition-speed: 0.6s;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: #f4f6fb;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    .hero {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 20% 20%, rgba(228, 30, 40, 0.08), transparent 40%), radial-gradient(circle at 80% 30%, rgba(124, 155, 72, 0.08), transparent 35%), linear-gradient(135deg, #0b0f18, #101726 55%, #0c111d);
+      overflow: hidden;
+      z-index: 3;
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: url("images/ImageIDHome.jpg") center/cover no-repeat;
+      filter: blur(12px) brightness(0.45);
+      z-index: 0;
+      opacity: 0.65;
+      transform: scale(1.05);
+      animation: slowPan 32s ease-in-out infinite alternate;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 1;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      backdrop-filter: blur(10px);
+      background: rgba(12, 16, 24, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-logo {
+      width: clamp(180px, 30vw, 240px);
+      margin: 0 auto 1.4rem;
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.45));
+    }
+
+    .hero h1 {
+      margin: 0 0 0.75rem;
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 0 1.5rem;
+      color: rgba(244, 246, 251, 0.85);
+      font-size: clamp(1rem, 2.8vw, 1.15rem);
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    .cta {
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #e41e28, #ff4856);
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      box-shadow: 0 15px 35px rgba(228, 30, 40, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(228, 30, 40, 0.4);
+      filter: brightness(1.03);
+    }
+
+    .cta:active {
+      transform: translateY(0);
+    }
+
+    .hero.fade-out {
+      opacity: 0;
+      transform: scale(1.02);
+      pointer-events: none;
+    }
+
+    .accordion {
+      position: relative;
+      display: flex;
+      min-height: 100vh;
+      transition: opacity 0.8s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .accordion.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .panel {
+      position: relative;
+      flex: 1 1 0%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      cursor: pointer;
+      transition: flex var(--transition-speed) ease, filter 0.6s ease, transform 0.6s ease;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-image: var(--image);
+      transform: scale(1.05);
+      filter: brightness(0.55) saturate(1.05);
+      transition: filter 0.6s ease, transform 1.2s ease;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.7) 85%), linear-gradient(130deg, rgba(0, 0, 0, 0.2), transparent 40%), linear-gradient(230deg, rgba(0, 0, 0, 0.2), transparent 40%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    .panel .logo {
+      width: clamp(120px, 16vw, 180px);
+      filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.45));
+      margin-bottom: 1.1rem;
+    }
+
+    .panel-content {
+      position: relative;
+      text-align: center;
+      max-width: 420px;
+      z-index: 1;
+      transition: opacity 0.35s ease, transform 0.45s ease;
+      opacity: 0.8;
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      margin: 0.35rem 0 1rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.88);
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.45s ease;
+    }
+
+    .enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.45s ease, background-color 0.3s ease;
+    }
+
+    .enter:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .panel.active {
+      flex: 8;
+      filter: brightness(1.08);
+      transform: translateZ(0);
+    }
+
+    .panel.active::before {
+      filter: brightness(0.85) saturate(1.1);
+      transform: scale(1.02);
+    }
+
+    .panel.active .panel-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .panel.active .subtitle,
+    .panel.active .enter {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .panel.reduced {
+      flex: 1;
+    }
+
+    .ribbon {
+      position: absolute;
+      inset: 1.4rem 1.4rem auto auto;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35), 0 0 0 1px color-mix(in srgb, var(--theme) 50%, transparent);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.72);
+      z-index: 1;
+    }
+
+    .ribbon strong {
+      color: #fff;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.45s ease, visibility 0.45s ease;
+      z-index: 5;
+    }
+
+    .modal.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-card {
+      background: #0f1622;
+      color: #e7ebf3;
+      border-radius: 18px;
+      width: min(960px, 90vw);
+      max-height: 82vh;
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .modal img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      padding: clamp(1.4rem, 4vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .modal h3 {
+      margin: 0;
+      font-size: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .modal p {
+      margin: 0;
+      color: rgba(231, 235, 243, 0.8);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .close {
+      margin-left: auto;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .badges {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    @media (max-width: 960px) {
+      body {
+        overflow-y: auto;
+      }
+      .accordion {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+      }
+      .panel,
+      .panel.active,
+      .panel.reduced {
+        flex: 1 1 auto;
+        min-height: 55vh;
+      }
+      .panel::after {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.72) 100%);
+      }
+      .ribbon {
+        position: relative;
+        inset: auto;
+        margin-bottom: 1rem;
+      }
+      body.hide-overflow {
+        overflow: hidden;
+      }
+      .modal-card {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+      }
+    }
+
+    @keyframes slowPan {
+      to {
+        transform: scale(1.08) translate3d(10px, -10px, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" id="intro">
+    <div class="hero-content">
+      <img src="logos/ID GROUP.png" alt="ID GROUP" class="hero-logo">
+      <h1>Protéger les hommes, les animaux et les infrastructures</h1>
+      <p>Une expérience immersive en trois univers : Habitat, Protection, Hygiène et Sécurité, Élevage et Bien-être animal. Faites défiler et découvrez le rideau interactif.</p>
+      <button class="cta" id="discover">DÉCOUVREZ NOS UNIVERS</button>
+    </div>
+  </section>
+
+  <main class="accordion" id="accordion">
+    <article class="panel" data-id="agri" style="--theme: var(--agri);" aria-label="ID AGRI">
+      <span class="ribbon">ID <strong>AGRI</strong></span>
+      <div class="panel-content">
+        <img src="logos/ID AGRI.png" alt="ID AGRI" class="logo">
+        <h2>Élevage et Bien-être animal</h2>
+        <p class="subtitle">Accompagner les éleveurs avec des solutions qui respectent l’animal et optimisent la performance.</p>
+        <button class="enter" data-target="agri">Entrer</button>
+      </div>
+    </article>
+
+    <article class="panel" data-id="home" style="--theme: var(--home);" aria-label="ID HOME">
+      <span class="ribbon">ID <strong>HOME</strong></span>
+      <div class="panel-content">
+        <img src="logos/ID HOME.png" alt="ID HOME" class="logo">
+        <h2>Habitat</h2>
+        <p class="subtitle">Améliorer les espaces de vie grâce à des solutions pratiques et modulables au quotidien.</p>
+        <button class="enter" data-target="home">Entrer</button>
+      </div>
+    </article>
+
+    <article class="panel" data-id="pro" style="--theme: var(--pro);" aria-label="ID PRO">
+      <span class="ribbon">ID <strong>PRO</strong></span>
+      <div class="panel-content">
+        <img src="logos/ID PRO.png" alt="ID PRO" class="logo">
+        <h2>Protection, Hygiène et Sécurité</h2>
+        <p class="subtitle">Sécuriser les équipes et les infrastructures par des solutions robustes et performantes.</p>
+        <button class="enter" data-target="pro">Entrer</button>
+      </div>
+    </article>
+  </main>
+
+  <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <img src="images/PlanCroquis.jpg" alt="Plan ID GROUP">
+      <div class="modal-body">
+        <div class="badges" id="badge-group"></div>
+        <h3 id="modal-title">Nos univers ID GROUP</h3>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dapibus, magna nec sagittis tempor, dolor justo feugiat sem, sed dapibus purus velit quis nulla. Nullam vitae tellus nec lorem egestas laoreet. Integer interdum at enim nec tincidunt. Mauris interdum dui eget iaculis fermentum. Nunc interdum efficitur nisi, id gravida justo. Suspendisse potenti. Proin eget nibh non lacus suscipit facilisis. Integer ac libero vel nisi porttitor laoreet vel vel urna.</p>
+        <div class="badges">
+          <span class="badge">Innovation</span>
+          <span class="badge">Impact</span>
+          <span class="badge">Responsabilité</span>
+        </div>
+        <button class="close" id="close-modal">Fermer</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hero = document.getElementById("intro");
+    const accordion = document.getElementById("accordion");
+    const discoverBtn = document.getElementById("discover");
+    const panels = Array.from(document.querySelectorAll(".panel"));
+    const modal = document.getElementById("modal");
+    const badgeGroup = document.getElementById("badge-group");
+    const closeModal = document.getElementById("close-modal");
+    const modalTitle = document.getElementById("modal-title");
+
+    const assets = {
+      agri: { bg: "images/ImageIDAgri.jpg", title: "Élevage et Bien-être animal" },
+      home: { bg: "images/ImageIDHome.jpg", title: "Habitat" },
+      pro: { bg: "images/ImageIDPro.jpg", title: "Protection, Hygiène et Sécurité" },
+    };
+
+    function revealAccordion() {
+      hero.classList.add("fade-out");
+      setTimeout(() => {
+        accordion.classList.add("visible");
+      }, 450);
+    }
+
+    function refreshPanels(clickedId) {
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.id === clickedId;
+        panel.classList.toggle("active", isActive);
+        panel.classList.toggle("reduced", !isActive);
+        panel.setAttribute("aria-expanded", isActive ? "true" : "false");
+      });
+    }
+
+    function openModal(targetId) {
+      badgeGroup.innerHTML = "";
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = assets[targetId].title;
+      badgeGroup.appendChild(badge);
+      modalTitle.textContent = assets[targetId].title;
+      modal.classList.add("open");
+      document.body.classList.add("hide-overflow");
+    }
+
+    function closeModalWindow() {
+      modal.classList.remove("open");
+      document.body.classList.remove("hide-overflow");
+    }
+
+    discoverBtn.addEventListener("click", revealAccordion);
+
+    panels.forEach((panel) => {
+      const id = panel.dataset.id;
+      const bg = assets[id].bg;
+      panel.style.setProperty("--image", `url(${bg})`);
+      panel.setAttribute("aria-expanded", "false");
+      panel.querySelector(".enter").addEventListener("click", (event) => {
+        event.stopPropagation();
+        openModal(id);
+      });
+      panel.addEventListener("click", () => refreshPanels(id));
+    });
+
+    closeModal.addEventListener("click", closeModalWindow);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModalWindow();
+      }
+    });
+  </script>
+</body>
+</html>
