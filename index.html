@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
   <style>
     :root {
       --id-red: #e41e28;
@@ -39,7 +40,7 @@
       font: inherit;
       cursor: pointer;
       border: none;
-      border-radius: 999px;
+      border-radius: 12px;
       padding: 0.9rem 1.5rem;
       background: var(--id-red);
       color: #fff;
@@ -74,7 +75,7 @@
       align-items: stretch;
       padding: clamp(1.5rem, 4vw, 3.5rem);
       background: linear-gradient(120deg, rgba(5, 8, 14, 0.82), rgba(5, 8, 14, 0.35) 58%, rgba(10, 16, 24, 0.2)),
-        url('images/fondIDGROUP.jpg') center/cover no-repeat;
+        url('images/fondIDGROUP.jpg') center/contain no-repeat;
       filter: saturate(0.98);
       color: #f6f8fb;
       isolation: isolate;
@@ -103,99 +104,6 @@
       gap: clamp(1.5rem, 3vw, 2.5rem);
     }
 
-    .topbar {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: clamp(1rem, 2vw, 1.5rem);
-      padding: 0.85rem 1rem;
-      background: rgba(9, 12, 18, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .brand img {
-      width: 72px;
-      height: auto;
-      filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-      line-height: 1.2;
-    }
-
-    .brand-name {
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .brand-tag {
-      font-size: 0.9rem;
-      color: rgba(244, 245, 247, 0.75);
-    }
-
-    .topnav {
-      display: flex;
-      gap: clamp(0.9rem, 2vw, 1.75rem);
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .topnav a {
-      color: rgba(244, 245, 247, 0.92);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      transition: color 0.25s ease, transform 0.25s ease;
-    }
-
-    .topnav a:hover,
-    .topnav a:focus-visible {
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      color: #f6f8fb;
-      letter-spacing: 0.02em;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .pill.subtle {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.12);
-      font-weight: 500;
-    }
-
     .hero-body {
       display: grid;
       grid-template-columns: minmax(320px, 1.1fr) minmax(320px, 0.9fr);
@@ -209,7 +117,7 @@
       display: grid;
       gap: 0.9rem;
       padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.6);
+      background: rgba(8, 12, 18, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
@@ -263,7 +171,7 @@
       border: 1px solid rgba(255, 255, 255, 0.45);
       color: #fff;
       padding: 0.85rem 1.4rem;
-      border-radius: 12px;
+      border-radius: 10px;
       text-transform: none;
       letter-spacing: 0.01em;
       box-shadow: none;
@@ -283,7 +191,7 @@
       padding: 0.85rem 1rem;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
+      border-radius: 14px;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
     }
 
@@ -640,29 +548,46 @@
   </style>
 </head>
 <body>
+  <header class="global-nav">
+    <div class="nav-bar">
+      <a class="brand-link" href="index.html">
+        <img src="logos/ID GROUP.png" alt="ID GROUP">
+        <span>ID GROUP</span>
+      </a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="index.html#universes">Univers</a>
+        <a href="groupe.html">Groupe</a>
+        <a href="engagements.html">Engagements</a>
+        <a href="home.html">ID Home</a>
+        <a href="pro.html">ID Pro</a>
+        <a href="agri.html">ID Agri</a>
+        <a href="actualites.html">Actualités</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" id="debugToggle" aria-pressed="false">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h3m-6 0h.008v.008H7.5V6Zm9 0h.008v.008H16.5V6Zm-9 12h.008v.008H7.5V18Zm9 0h.008v.008H16.5V18Zm-9-9h.008v.008H7.5V9Zm9 0h.008v.008H16.5V9ZM12 6V4m0 2v2m0 0H9m3 0h3m0 0V4m0 2v2m-3 3v-2m0 2v2m0 0H9m3 0h3m0 0v-2m0 2v2m-3 3v-2m0 2v2m0 0H9m3 0h3" />
+          </svg>
+          <span>Debug</span>
+        </button>
+        <button class="icon-btn" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0Zm9-9v18m0 0c4.97 0 9-4.03 9-9s-4.03-9-9-9m0 18c-4.97 0-9-4.03-9-9s4.03-9 9-9" />
+          </svg>
+          <span>Langue</span>
+        </button>
+        <a class="icon-btn primary" href="contact.html">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 6.75 4.5c.75.5 1.5.5 2.25 0L18.75 7M5 18h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2Z" />
+          </svg>
+          <span>Contact</span>
+        </a>
+      </div>
+    </div>
+  </header>
   <main class="app-shell">
     <section class="hero" id="intro">
       <div class="hero-frame">
-        <header class="topbar">
-          <div class="brand">
-            <img src="logos/ID GROUP.png" alt="Logo ID GROUP">
-            <div class="brand-text">
-              <span class="brand-name">ID GROUP</span>
-              <span class="brand-tag">Protection globale</span>
-            </div>
-          </div>
-          <nav class="topnav" aria-label="Navigation principale">
-            <a href="#universes">Nos univers</a>
-            <a href="groupe.html">Groupe</a>
-            <a href="engagements.html">Engagements</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-          <div class="top-actions">
-            <span class="pill subtle">France • Europe</span>
-            <button class="ghost-btn" type="button">Prendre contact</button>
-          </div>
-        </header>
-
         <div class="hero-body">
           <div class="hero-inner">
             <div class="eyebrow">Notre mission</div>
@@ -774,6 +699,7 @@
     </div>
   </div>
 
+  <script src="scripts/debug.js"></script>
   <script>
     const intro = document.getElementById('intro');
     const universes = document.getElementById('universes');
