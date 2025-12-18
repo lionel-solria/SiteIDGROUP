@@ -203,6 +203,28 @@ body.debug-mode *:hover {
   outline: 1px dashed rgba(255, 255, 255, 0.55);
 }
 
+body.debug-mode .debug-highlight {
+  position: relative;
+  outline: 2px solid #e41e28 !important;
+  box-shadow: 0 0 0 3px rgba(228, 30, 40, 0.45), 0 0 0 7px rgba(228, 30, 40, 0.18);
+  z-index: 1201;
+}
+
+body.debug-mode .debug-highlight[data-debug-label]::after {
+  content: attr(data-debug-label);
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  padding: 0.2rem 0.5rem;
+  background: rgba(5, 8, 14, 0.9);
+  color: #fefefe;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+
 body.debug-mode .global-nav *,
 body.debug-mode .debug-tooltip {
   outline: none !important;
