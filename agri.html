@@ -20,6 +20,8 @@
       font-family: 'Avenir', 'Nunito', sans-serif;
       background-color: var(--id-gray-neutral);
       color: var(--id-gray-dark);
+      --accent-color: #7c9b48;
+      --accent-color-rgb: 124, 155, 72;
     }
     a,
     button {
@@ -68,6 +70,157 @@
     .logo-link img { transition: transform 0.25s ease; }
     .logo-link:hover img,
     .logo-link:focus-visible img { transform: scale(1.06); }
+
+    main { padding-bottom: 3rem; }
+
+    .page-hero {
+      position: relative;
+      min-height: 35vh;
+      display: flex;
+      align-items: flex-end;
+      background: linear-gradient(180deg, rgba(6, 10, 16, 0.25), rgba(6, 10, 16, 0.78)), var(--hero-image) center/cover no-repeat;
+      border-radius: 24px;
+      overflow: hidden;
+      margin: 1.25rem clamp(1rem, 4vw, 2rem) 2rem;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
+      color: #ffffff;
+    }
+
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.48));
+      pointer-events: none;
+    }
+
+    .page-hero__content {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: clamp(1.5rem, 4vw, 2.6rem);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.8rem;
+      background: rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 999px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 0.78rem;
+    }
+
+    .hero-kicker::after {
+      content: "";
+      width: 18px;
+      height: 2px;
+      background: var(--accent-color);
+      border-radius: 999px;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 2.8rem);
+      letter-spacing: 0.02em;
+      text-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+    }
+
+    .hero-lead {
+      margin: 0;
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .page-shell {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .info-card h2 {
+      margin: 0;
+      color: #111827;
+      letter-spacing: 0.01em;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(var(--accent-color-rgb), 0.08);
+      color: var(--accent-color);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.12);
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 12px;
+      background: var(--accent-color);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+      width: fit-content;
+    }
+
+    .cta-link:hover,
+    .cta-link:focus-visible {
+      filter: brightness(0.95);
+      transform: translateY(-1px);
+    }
+
+    .cta-link svg {
+      width: 18px;
+      height: 18px;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
@@ -118,11 +271,43 @@
       </a>
     </div>
   </header>
-  <main class="max-w-4xl mx-auto px-4 py-16 space-y-4">
-    <p class="text-xs uppercase tracking-[0.35em] text-red-600">ID Group</p>
-    <h1 class="text-4xl font-black">Section en construction</h1>
-    <p class="text-lg text-gray-700">Ce gabarit sert de base pour la navigation. Personnalisez ce contenu avec vos informations spécifiques.</p>
-    <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md font-semibold shadow">↩ Retour à l'accueil</a>
+  <main>
+    <section class="page-hero" data-debug-label="Bannière univers ID AGRI" style="--hero-image: url('images/ImageIDAgri.jpg');">
+      <div class="page-hero__content">
+        <span class="hero-kicker">ID AGRI</span>
+        <h1 class="hero-title">Élevage et bien-être animal</h1>
+        <p class="hero-lead">Solutions durables pour protéger les élevages, sécuriser les équipes et préserver l'environnement des animaux.</p>
+      </div>
+    </section>
+
+    <section class="page-shell" aria-label="Informations sur l'univers ID AGRI">
+      <article class="info-card">
+        <h2>Solutions terrain</h2>
+        <p>De la biosécurité aux équipements d'hygiène, nous accompagnons les éleveurs avec des produits fiables, adaptés aux contraintes des exploitations.</p>
+      </article>
+
+      <article class="info-card">
+        <h2>Nos priorités</h2>
+        <ul class="pill-list">
+          <li class="pill">Protection des cheptels</li>
+          <li class="pill">Sécurité des équipes</li>
+          <li class="pill">Prévention sanitaire</li>
+          <li class="pill">Durabilité des installations</li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h2>Échanger avec nous</h2>
+        <p>Besoin d'un conseil produit ou d'une solution clé en main ? Contactez nos spécialistes pour sécuriser vos sites d'élevage.</p>
+        <a class="cta-link" href="contact.html">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 5h16v14H4z" />
+            <path d="m4 7 8 5 8-5" />
+          </svg>
+          Prendre contact
+        </a>
+      </article>
+    </section>
   </main>
   <script src="scripts/global.js"></script>
 </body>
