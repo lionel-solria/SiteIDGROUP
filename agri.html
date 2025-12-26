@@ -222,6 +222,76 @@
       width: 18px;
       height: 18px;
     }
+
+    .universe-layout {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .section-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .section-heading {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .interactive-sketch {
+      min-height: 300px;
+      background: linear-gradient(135deg, rgba(var(--accent-color-rgb), 0.14), rgba(0, 0, 0, 0.02));
+      border: 1px dashed rgba(0, 0, 0, 0.1);
+      place-items: center;
+      text-align: center;
+    }
+
+    .essentials-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .essentials-item {
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: rgba(var(--accent-color-rgb), 0.05);
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .strengths {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+    }
+
+    .strengths-visual img {
+      border-radius: 14px;
+      width: 100%;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+    }
+
+    .resources-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .cta-link.secondary {
+      background: #ffffff;
+      color: var(--accent-color);
+      border: 1px solid rgba(var(--accent-color-rgb), 0.25);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    }
   </style>
 </head>
 <body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
@@ -263,6 +333,13 @@
           <path d="M12 3a15 15 0 0 0 0 18" />
         </svg>
       </button>
+      <a class="icon-btn" href="#" title="Espace Client / Outils">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7h-9" /><path d="M14 17H5" />
+          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        </svg>
+        <span>Outils</span>
+      </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 5h16v14H4z" />
@@ -276,38 +353,74 @@
     <section class="page-hero" data-debug-label="Bannière univers ID AGRI" style="--hero-image: url('images/ImageIDAgri.jpg');">
       <div class="page-hero__content">
         <span class="hero-kicker">ID AGRI</span>
-        <h1 class="hero-title">Élevage et bien-être animal</h1>
-        <p class="hero-lead">Solutions durables pour protéger les élevages, sécuriser les équipes et préserver l'environnement des animaux.</p>
+        <h1 class="hero-title">Élevage et Bien-être animal</h1>
+        <p class="hero-lead">Des solutions conçues pour protéger les élevages, les équipes et les environnements agricoles.</p>
       </div>
     </section>
 
-    <section class="page-shell" aria-label="Informations sur l'univers ID AGRI">
-      <article class="info-card">
-        <h2>Solutions terrain</h2>
-        <p>De la biosécurité aux équipements d'hygiène, nous accompagnons les éleveurs avec des produits fiables, adaptés aux contraintes des exploitations.</p>
-      </article>
+    <section class="universe-layout" aria-label="Parcours ID AGRI">
+      <div id="interactive-sketch" class="section-card interactive-sketch">
+        <div class="section-heading">
+          <span class="hero-kicker">Croquis interactif</span>
+          <h2>Cartographiez vos bâtiments d'élevage</h2>
+        </div>
+        <p>Espace dédié à l'affichage du croquis interactif pour visualiser les flux, sas sanitaires et zones de biosécurité.</p>
+      </div>
 
-      <article class="info-card">
-        <h2>Nos priorités</h2>
-        <ul class="pill-list">
-          <li class="pill">Protection des cheptels</li>
-          <li class="pill">Sécurité des équipes</li>
-          <li class="pill">Prévention sanitaire</li>
-          <li class="pill">Durabilité des installations</li>
-        </ul>
-      </article>
+      <section class="section-card" aria-label="Essentiels ID AGRI">
+        <div class="section-heading">
+          <span class="hero-kicker">Les essentiels</span>
+          <h2>Produits phares pour vos élevages</h2>
+        </div>
+        <div class="essentials-grid">
+          <article class="essentials-item">
+            <h3>Hygiène d'élevage</h3>
+            <p>Désinfection, nettoyage haute pression et protocoles adaptés aux bâtiments sensibles.</p>
+          </article>
+          <article class="essentials-item">
+            <h3>Biosécurité</h3>
+            <p>Contrôle des accès, pédiluves et solutions de décontamination pour protéger les cheptels.</p>
+          </article>
+          <article class="essentials-item">
+            <h3>Bien-être animal</h3>
+            <p>Equipements d'ambiance, ventilation et solutions d'apaisement pour limiter le stress.</p>
+          </article>
+          <article class="essentials-item">
+            <h3>Protection des équipes</h3>
+            <p>EPI terrain et kits d'intervention adaptés aux contraintes agricoles.</p>
+          </article>
+        </div>
+      </section>
 
-      <article class="info-card">
-        <h2>Échanger avec nous</h2>
-        <p>Besoin d'un conseil produit ou d'une solution clé en main ? Contactez nos spécialistes pour sécuriser vos sites d'élevage.</p>
-        <a class="cta-link" href="contact.html">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 5h16v14H4z" />
-            <path d="m4 7 8 5 8-5" />
-          </svg>
-          Prendre contact
-        </a>
-      </article>
+      <section class="section-card strengths" aria-label="Points forts ID AGRI">
+        <div>
+          <div class="section-heading">
+            <span class="hero-kicker">Points forts</span>
+            <h2>Pourquoi choisir ID AGRI ?</h2>
+          </div>
+          <p>Un savoir-faire construit aux côtés des éleveurs, des solutions robustes et des livraisons synchronisées avec vos cycles.</p>
+          <ul class="pill-list">
+            <li class="pill">Robustesse terrain</li>
+            <li class="pill">Accompagnement sanitaire</li>
+            <li class="pill">Support réactif</li>
+          </ul>
+        </div>
+        <div class="strengths-visual">
+          <img src="images/ImageIDAgri.jpg" alt="Exploitation agricole illustrant l'univers ID AGRI">
+        </div>
+      </section>
+
+      <section class="section-card resources" aria-label="Ressources ID AGRI">
+        <div class="section-heading">
+          <span class="hero-kicker">Ressources</span>
+          <h2>Documents à télécharger</h2>
+        </div>
+        <p>Accédez aux catalogues et fiches techniques pour préparer vos investissements et vos audits.</p>
+        <div class="resources-actions">
+          <a class="cta-link" href="#">Catalogue</a>
+          <a class="cta-link secondary" href="#">Fiches techniques</a>
+        </div>
+      </section>
     </section>
   </main>
   <script src="scripts/global.js"></script>
