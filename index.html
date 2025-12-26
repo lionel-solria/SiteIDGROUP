@@ -17,6 +17,8 @@
       --home: #ea611a;
       --pro: #193f60;
       --agri: #7c9b48;
+      --dock-height: 150px;
+      --tab-rise: clamp(220px, 42vh, 380px);
     }
 
     * {
@@ -67,6 +69,7 @@
       position: relative;
       min-height: 100vh;
       overflow: visible;
+      padding-bottom: calc(var(--dock-height) + 2.5rem);
     }
 
     .hero {
@@ -294,30 +297,42 @@
     }
 
     .accordion {
-      position: relative;
-      height: 100vh;
-      min-height: 100vh;
+      position: fixed;
+      inset: auto 0 0 0;
+      height: var(--dock-height);
       display: flex;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.6s ease 0.1s;
-    }
-
-    .accordion.is-visible {
+      align-items: flex-end;
+      gap: clamp(0.75rem, 1.6vw, 1.2rem);
+      padding: 0.75rem clamp(1rem, 2.5vw, 2rem) 1.2rem;
       visibility: visible;
       opacity: 1;
+      background: linear-gradient(180deg, rgba(5, 8, 14, 0) 0%, rgba(5, 8, 14, 0.92) 40%);
+      backdrop-filter: blur(8px);
+      z-index: 12;
+      overflow: visible;
+      transition: opacity 0.6s ease 0.1s, transform 0.6s ease;
+    }
+
+    .accordion.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(30px);
     }
 
     .panel {
       flex: 1;
       position: relative;
+      height: var(--dock-height);
       overflow: hidden;
       display: grid;
       place-items: center;
       isolation: isolate;
-      transition: flex 0.7s ease, filter 0.5s ease;
+      transition: height 0.65s ease, filter 0.45s ease, transform 0.45s ease, box-shadow 0.45s ease;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
       filter: grayscale(0.25) brightness(0.9);
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .panel::after {
@@ -341,20 +356,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      gap: 1rem;
+      justify-content: center;
+      gap: 0.55rem;
       text-align: center;
-      padding: 1.5rem;
-      padding-top: 10vh;
+      padding: 1rem;
       color: #f8fafc;
     }
 
     .panel .logo {
-      width: clamp(150px, 22vw, 230px);
+      width: clamp(130px, 18vw, 210px);
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
       transition: transform 0.4s ease;
-      margin-top: 2rem;
-      margin-bottom: auto;
+      margin-top: 0.35rem;
+      margin-bottom: 0.35rem;
     }
 
     .panel:hover .logo,
@@ -399,12 +413,17 @@
 
     .accordion.has-focus .panel {
       flex: 1;
-      filter: grayscale(0.55) brightness(0.8);
+      filter: grayscale(0.55) brightness(0.86);
+      transform: translateY(-6px);
     }
 
     .accordion.has-focus .panel.active {
-      flex: 8;
+      flex: 1.08;
+      height: calc(var(--dock-height) + var(--tab-rise));
       filter: grayscale(0) brightness(1.05);
+      transform: translateY(calc(-1 * var(--tab-rise) * 0.25));
+      z-index: 2;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
     }
 
     .accordion.has-focus .panel.active::after {
@@ -549,15 +568,22 @@
       }
 
       .accordion {
+        position: static;
         flex-direction: column;
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
+        padding: 1rem;
+        gap: 1rem;
+        background: none;
+        backdrop-filter: none;
       }
 
       .accordion.has-focus .panel,
       .panel {
         flex: 1;
-        min-height: 260px;
+        min-height: 220px;
+        height: auto;
+        border-radius: 16px;
       }
 
       .accordion.has-focus .panel.active {
@@ -638,7 +664,7 @@
       </div>
     </section>
 
-    <section class="accordion" id="universes" data-debug-label="Rideau des univers">
+    <section class="accordion is-visible" id="universes" data-debug-label="Rideau des univers">
       <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
         <div class="content">
           <div class="tagline">Habitat</div>
