@@ -218,6 +218,115 @@
       transform: translateY(-1px);
     }
 
+    .content-section {
+      width: min(1100px, 100%);
+      margin: 0 auto 1.5rem;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .section-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .section-header {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(var(--accent-color-rgb), 0.08);
+      color: var(--accent-color);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      width: fit-content;
+    }
+
+    .section-lead {
+      margin: 0;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    #interactive-sketch {
+      min-height: 320px;
+      border-radius: 16px;
+      border: 1px dashed rgba(0, 0, 0, 0.12);
+      background: linear-gradient(120deg, rgba(var(--accent-color-rgb), 0.08), rgba(255, 255, 255, 0.9));
+      display: grid;
+      place-items: center;
+      color: #1f2937;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 700;
+    }
+
+    .essentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .essential-item {
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: rgba(var(--accent-color-rgb), 0.04);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .essential-item h3 {
+      margin: 0;
+      color: #111827;
+    }
+
+    .strengths {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .strengths__visual {
+      min-height: 220px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, rgba(var(--accent-color-rgb), 0.18), transparent 52%),
+        linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.08));
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .resources {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .resources-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .resource-note {
+      margin: 0;
+      color: #4b5563;
+    }
+
     .cta-link svg {
       width: 18px;
       height: 18px;
@@ -263,6 +372,13 @@
           <path d="M12 3a15 15 0 0 0 0 18" />
         </svg>
       </button>
+      <a class="icon-btn" href="#" title="Espace Client / Outils">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7h-9" /><path d="M14 17H5" />
+          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        </svg>
+        <span>Outils</span>
+      </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 5h16v14H4z" />
@@ -281,32 +397,78 @@
       </div>
     </section>
 
-    <section class="page-shell" aria-label="Informations sur l'univers ID AGRI">
-      <article class="info-card">
-        <h2>Solutions terrain</h2>
-        <p>De la biosécurité aux équipements d'hygiène, nous accompagnons les éleveurs avec des produits fiables, adaptés aux contraintes des exploitations.</p>
+    <section class="content-section" aria-labelledby="agri-sketch-title">
+      <article class="section-card">
+        <div class="section-header">
+          <span class="section-kicker">Croquis interactif</span>
+          <h2 id="agri-sketch-title">Croquis ID AGRI</h2>
+          <p class="section-lead">Projetez l'aménagement de vos bâtiments d'élevage et la circulation des équipes.</p>
+        </div>
+        <div id="interactive-sketch" aria-label="Croquis interactif ID AGRI">Croquis interactif en préparation</div>
       </article>
+    </section>
 
-      <article class="info-card">
-        <h2>Nos priorités</h2>
-        <ul class="pill-list">
-          <li class="pill">Protection des cheptels</li>
-          <li class="pill">Sécurité des équipes</li>
-          <li class="pill">Prévention sanitaire</li>
-          <li class="pill">Durabilité des installations</li>
-        </ul>
+    <section class="content-section" aria-labelledby="agri-essentials-title">
+      <article class="section-card">
+        <div class="section-header">
+          <span class="section-kicker">Les essentiels</span>
+          <h2 id="agri-essentials-title">Produits phares pour les élevages</h2>
+          <p class="section-lead">Des équipements adaptés aux exigences sanitaires et au bien-être animal.</p>
+        </div>
+        <div class="essentials-grid">
+          <article class="essential-item">
+            <h3>Biosécurité</h3>
+            <p>Portiques de désinfection, pédiluves et solutions de nettoyage pour les zones sensibles.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Protection des équipes</h3>
+            <p>EPI spécialisés, lunettes, gants et masques adaptés aux environnements agricoles.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Hygiène des bâtiments</h3>
+            <p>Détergents, désinfectants et équipements de lavage haute pression.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Bien-être animal</h3>
+            <p>Matelas de confort, éclairage adapté et solutions de ventilation maîtrisée.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Gestion des effluents</h3>
+            <p>Solutions de collecte, de traitement et d'épandage sécurisées.</p>
+          </article>
+        </div>
       </article>
+    </section>
 
-      <article class="info-card">
-        <h2>Échanger avec nous</h2>
-        <p>Besoin d'un conseil produit ou d'une solution clé en main ? Contactez nos spécialistes pour sécuriser vos sites d'élevage.</p>
-        <a class="cta-link" href="contact.html">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 5h16v14H4z" />
-            <path d="m4 7 8 5 8-5" />
-          </svg>
-          Prendre contact
-        </a>
+    <section class="content-section" aria-labelledby="agri-strengths-title">
+      <article class="section-card strengths">
+        <div class="strengths__text">
+          <div class="section-header">
+            <span class="section-kicker">Points forts</span>
+            <h2 id="agri-strengths-title">Pourquoi choisir ID AGRI</h2>
+            <p class="section-lead">Des solutions robustes pour protéger les cheptels et sécuriser vos équipes sur le terrain.</p>
+          </div>
+          <ul class="pill-list">
+            <li class="pill">Matériel éprouvé</li>
+            <li class="pill">Conseil terrain</li>
+            <li class="pill">Logistique adaptée</li>
+          </ul>
+        </div>
+        <div class="strengths__visual" role="img" aria-label="Illustration des bénéfices ID AGRI"></div>
+      </article>
+    </section>
+
+    <section class="content-section" aria-labelledby="agri-resources-title">
+      <article class="section-card resources">
+        <div class="section-header">
+          <span class="section-kicker">Ressources</span>
+          <h2 id="agri-resources-title">Catalogues et fiches</h2>
+          <p class="resource-note">Retrouvez les documents ID AGRI pour préparer vos chantiers et vos plans de biosécurité.</p>
+        </div>
+        <div class="resources-actions">
+          <a class="cta-link" href="#">Catalogue</a>
+          <a class="cta-link" href="#">Fiches techniques</a>
+        </div>
       </article>
     </section>
   </main>
