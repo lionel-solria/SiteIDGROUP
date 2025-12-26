@@ -3,337 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP - Page</title>
+  <title>ID PRO | ID GROUP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="picocms.css">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --id-red: #e41e28;
-      --id-red-cta: #de0c1a;
-      --id-gray-dark: #1b2230;
-      --id-gray-neutral: #ededed;
+      --accent: #193f60;
+      --accent-rgb: 25, 63, 96;
+      --surface: rgba(10, 14, 20, 0.62);
+      --border: rgba(255, 255, 255, 0.08);
     }
-    body {
-      font-family: 'Avenir', 'Nunito', sans-serif;
-      background-color: var(--id-gray-neutral);
-      color: var(--id-gray-dark);
-      --accent-color: #193f60;
-      --accent-color-rgb: 25, 63, 96;
-    }
-    a,
-    button {
-      transition: transform 0.25s ease, box-shadow 0.25s ease,
-        background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease,
-        border-color 0.25s ease;
-    }
-    a:hover,
-    button:hover { transform: translateY(-2px); }
-    a:active,
-    button:active { transform: translateY(0); }
-    .nav-link {
-      position: relative;
-      padding: 0.85rem 0.85rem;
-      border-radius: 999px;
-      color: #1b2230;
-      font-weight: 700;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 6px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e41e28, #de0c1a);
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-    .nav-link:hover {
-      color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
-    }
-    .nav-link:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .nav-link:focus-visible {
-      outline: 2px solid rgba(228, 30, 40, 0.45);
-      outline-offset: 6px;
-    }
-    .logo-link img { transition: transform 0.25s ease; }
-    .logo-link:hover img,
-    .logo-link:focus-visible img { transform: scale(1.06); }
 
-    main { padding-bottom: 3rem; }
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #05080e;
+      color: #f6f8fb;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; border-radius: 16px; }
+
+    .page-shell { padding-bottom: 3rem; }
 
     .page-hero {
       position: relative;
-      min-height: 35vh;
-      display: flex;
+      min-height: 60vh;
+      display: grid;
       align-items: flex-end;
-      background: linear-gradient(180deg, rgba(6, 10, 16, 0.25), rgba(6, 10, 16, 0.78)), var(--hero-image) center/cover no-repeat;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      background: linear-gradient(180deg, rgba(5, 8, 14, 0.35), rgba(5, 8, 14, 0.9)), var(--hero-image) center/cover no-repeat fixed;
       border-radius: 24px;
+      margin: 1.5rem clamp(1rem, 4vw, 2rem) 2.5rem;
       overflow: hidden;
-      margin: 1.25rem clamp(1rem, 4vw, 2rem) 2rem;
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
-      color: #ffffff;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
     }
 
     .page-hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.48));
+      background: radial-gradient(circle at 20% 20%, rgba(var(--accent-rgb), 0.3), transparent 40%);
       pointer-events: none;
     }
 
-    .page-hero__content {
+    .hero-content {
       position: relative;
       z-index: 1;
-      width: min(1100px, 100%);
-      margin: 0 auto;
-      padding: clamp(1.5rem, 4vw, 2.6rem);
+      max-width: 820px;
       display: grid;
       gap: 0.75rem;
+      padding: clamp(1rem, 3vw, 1.6rem);
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
     }
 
     .hero-kicker {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 0.8rem;
-      background: rgba(0, 0, 0, 0.38);
-      border: 1px solid rgba(255, 255, 255, 0.38);
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
       border-radius: 999px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 0.78rem;
-    }
-
-    .hero-kicker::after {
-      content: "";
-      width: 18px;
-      height: 2px;
-      background: var(--accent-color);
-      border-radius: 999px;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-size: clamp(2.2rem, 4vw, 2.8rem);
-      letter-spacing: 0.02em;
-      text-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
-    }
-
-    .hero-lead {
-      margin: 0;
-      max-width: 680px;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-      font-size: 1.05rem;
-    }
-
-    .page-shell {
-      width: min(1100px, 100%);
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .info-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      display: grid;
-      gap: 0.55rem;
-    }
-
-    .info-card h2 {
-      margin: 0;
-      color: #111827;
-      letter-spacing: 0.01em;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(var(--accent-color-rgb), 0.08);
-      color: var(--accent-color);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .pill::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: var(--accent-color);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.12);
-    }
-
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.65rem 1.1rem;
-      border-radius: 12px;
-      background: var(--accent-color);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
-      width: fit-content;
-    }
-
-    .cta-link:hover,
-    .cta-link:focus-visible {
-      filter: brightness(0.95);
-      transform: translateY(-1px);
-    }
-
-    .content-section {
-      width: min(1100px, 100%);
-      margin: 0 auto 1.5rem;
-      padding: 0 clamp(1rem, 4vw, 2rem);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .section-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .section-header {
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(var(--accent-color-rgb), 0.08);
-      color: var(--accent-color);
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-weight: 800;
-      width: fit-content;
+      background: rgba(var(--accent-rgb), 0.16);
+      border: 1px solid rgba(var(--accent-rgb), 0.35);
+      color: #fff;
     }
 
-    .section-lead {
-      margin: 0;
-      color: #374151;
-      line-height: 1.6;
-    }
+    .hero-title { margin: 0; font-size: clamp(2.2rem, 4vw, 3rem); letter-spacing: 0.01em; }
+    .hero-lead { margin: 0; color: rgba(246, 248, 251, 0.9); max-width: 720px; }
 
-    #interactive-sketch {
-      min-height: 320px;
-      border-radius: 16px;
-      border: 1px dashed rgba(0, 0, 0, 0.12);
-      background: linear-gradient(120deg, rgba(var(--accent-color-rgb), 0.08), rgba(255, 255, 255, 0.9));
+    .section-block {
+      position: relative;
+      padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1.2rem, 4vw, 2.2rem);
+      margin: 0 auto;
+      width: min(1180px, 100%);
       display: grid;
-      place-items: center;
-      color: #1f2937;
-      text-align: center;
-      padding: 1rem;
-      font-weight: 700;
+      gap: 1.5rem;
+      background: linear-gradient(180deg, rgba(10, 14, 20, 0.92), rgba(5, 8, 14, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
     }
 
-    .essentials-grid {
+    .section-heading { margin: 0; font-size: clamp(1.6rem, 3vw, 2.1rem); letter-spacing: 0.01em; }
+    .section-lead { margin: 0; color: rgba(244, 245, 247, 0.82); }
+
+    .section-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1rem;
     }
 
-    .essential-item {
-      padding: 1rem 1.1rem;
-      border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      background: rgba(var(--accent-color-rgb), 0.04);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
       display: grid;
       gap: 0.4rem;
     }
 
-    .essential-item h3 {
-      margin: 0;
-      color: #111827;
-    }
+    .tag { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; letter-spacing: 0.02em; color: #fff; }
+    .tag::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(var(--accent-rgb), 0.18); }
 
-    .strengths {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-      align-items: center;
-    }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; align-items: center; }
 
-    .strengths__visual {
-      min-height: 220px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 30% 30%, rgba(var(--accent-color-rgb), 0.18), transparent 52%),
-        linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.08));
-      border: 1px solid rgba(0, 0, 0, 0.06);
-    }
+    .cta-bar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.3rem; border-radius: 12px; background: linear-gradient(120deg, var(--accent), #3a6a92); color: #fff; text-decoration: none; font-weight: 800; letter-spacing: 0.02em; box-shadow: 0 18px 40px rgba(0,0,0,0.32); }
+    .cta-btn:hover, .cta-btn:focus-visible { filter: brightness(0.95); transform: translateY(-1px); }
 
-    .resources {
-      display: grid;
-      gap: 0.75rem;
-    }
+    .note { margin: 0; color: rgba(244, 245, 247, 0.7); }
 
-    .resources-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .resource-note {
-      margin: 0;
-      color: #4b5563;
-    }
-
-    .cta-link svg {
-      width: 18px;
-      height: 18px;
+    @media (max-width: 768px) {
+      .page-hero { margin: 1rem 1rem 2rem; }
     }
   </style>
 </head>
-<body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
+<body>
   <header class="global-nav" role="banner">
     <a class="nav-brand" href="index.html">
       <img src="logos/ID GROUP.png" alt="ID GROUP">
@@ -342,15 +137,15 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">73 rue du Bâtiment<br>Siège de la société</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="index.html#universes">Univers</a>
-      <a href="groupe.html">Groupe</a>
-      <a href="engagements.html">Engagements</a>
+      <a href="index.html#about">Groupe</a>
+      <a href="index.html#commitments">Engagements</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -388,90 +183,71 @@
       </a>
     </div>
   </header>
-  <main>
-    <section class="page-hero" data-debug-label="Bannière univers ID PRO" style="--hero-image: url('images/ImageIDPro.jpg');">
-      <div class="page-hero__content">
-        <span class="hero-kicker">ID PRO</span>
-        <h1 class="hero-title">Protection, Hygiène et Sécurité</h1>
-        <p class="hero-lead">Des équipements robustes et réglementaires pour sécuriser vos équipes et vos environnements les plus exigeants.</p>
+
+  <main class="page-shell">
+    <section class="page-hero" style="--hero-image: url('images/ImageIDPro.jpg');">
+      <div class="hero-content">
+        <span class="hero-kicker">ID Pro</span>
+        <h1 class="hero-title">Sécuriser les environnements professionnels.</h1>
+        <p class="hero-lead">Bâtiments, industrie, collectivités : ID Pro conçoit des protections de sols et des tapis techniques capables de résister aux usages intensifs et aux normes les plus exigeantes.</p>
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="pro-sketch-title">
-      <article class="section-card">
-        <div class="section-header">
-          <span class="section-kicker">Croquis interactif</span>
-          <h2 id="pro-sketch-title">Croquis ID PRO</h2>
-          <p class="section-lead">Visualisez le déploiement des équipements d'hygiène et de sécurité dans vos sites sensibles.</p>
-        </div>
-        <div id="interactive-sketch" aria-label="Croquis interactif ID PRO">Croquis interactif en préparation</div>
-      </article>
-    </section>
-
-    <section class="content-section" aria-labelledby="pro-essentials-title">
-      <article class="section-card">
-        <div class="section-header">
-          <span class="section-kicker">Les essentiels</span>
-          <h2 id="pro-essentials-title">Solutions clés pour vos équipes</h2>
-          <p class="section-lead">Des produits sélectionnés pour sécuriser les environnements industriels, tertiaires ou hospitaliers.</p>
-        </div>
-        <div class="essentials-grid">
-          <article class="essential-item">
-            <h3>EPI et protection</h3>
-            <p>Gants, lunettes, vêtements techniques et protections respiratoires conformes aux normes.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Nettoyage professionnel</h3>
-            <p>Détergents haute performance, matériels de lavage et systèmes de dosage sécurisés.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Signalétique et contrôle</h3>
-            <p>Marquage au sol, panneaux de prévention et kits d'intervention rapide.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Gestion des déchets</h3>
-            <p>Collecteurs, sacs et solutions de confinement pour limiter les risques de contamination.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Maintenance des surfaces</h3>
-            <p>Revêtements de protection, absorbants et produits anti-corrosion pour zones critiques.</p>
-          </article>
-        </div>
-      </article>
-    </section>
-
-    <section class="content-section" aria-labelledby="pro-strengths-title">
-      <article class="section-card strengths">
-        <div class="strengths__text">
-          <div class="section-header">
-            <span class="section-kicker">Points forts</span>
-            <h2 id="pro-strengths-title">Pourquoi choisir ID PRO</h2>
-            <p class="section-lead">Une approche experte pour protéger vos équipes sur le terrain comme dans les environnements les plus exigeants.</p>
+    <section class="section-block">
+      <div class="section-grid media-grid">
+        <div>
+          <p class="tag">Approche ID Pro</p>
+          <h2 class="section-heading">Performance, hygiène et sécurité.</h2>
+          <p class="section-lead">Nos équipes techniques dimensionnent chaque solution selon vos flux, vos process et vos contraintes réglementaires. Traction, absorption, drainage : les revêtements ID Pro sont conçus pour limiter les risques, faciliter le nettoyage et garantir la continuité d’activité.</p>
+          <p class="section-lead">Ancré à Wormhout, notre outil industriel nous permet d’assurer une production maîtrisée et des délais fiables, avec un suivi de qualité constant.</p>
+          <div class="cta-bar">
+            <a class="cta-btn" href="contact.html">Demander une étude sur site</a>
+            <p class="note">Visite technique et recommandations adaptées à vos métiers.</p>
           </div>
-          <ul class="pill-list">
-            <li class="pill">Conformité réglementaire</li>
-            <li class="pill">Accompagnement technique</li>
-            <li class="pill">Livraisons maîtrisées</li>
-          </ul>
         </div>
-        <div class="strengths__visual" role="img" aria-label="Illustration des bénéfices ID PRO"></div>
-      </article>
+        <div>
+          <img src="images/PlanCroquis.jpg" alt="Schéma technique ID Pro pour zones industrielles">
+        </div>
+      </div>
     </section>
 
-    <section class="content-section" aria-labelledby="pro-resources-title">
-      <article class="section-card resources">
-        <div class="section-header">
-          <span class="section-kicker">Ressources</span>
-          <h2 id="pro-resources-title">Guides et référentiels</h2>
-          <p class="resource-note">Téléchargez le catalogue ID PRO et les fiches techniques pour planifier vos déploiements.</p>
+    <section class="section-block">
+      <p class="tag">Zones d’application</p>
+      <h2 class="section-heading">Des protections pensées pour chaque activité.</h2>
+      <div class="section-grid">
+        <article class="card">
+          <h3>Industrie et logistique</h3>
+          <p>Surfaces antidérapantes, amortissantes et résistantes aux chocs pour sécuriser les déplacements et les postes de travail.</p>
+        </article>
+        <article class="card">
+          <h3>Commerces et ERP</h3>
+          <p>Tapis techniques pour contrôler l’hygiène des points d’entrée, limiter la glissance et protéger les finitions intérieures.</p>
+        </article>
+        <article class="card">
+          <h3>Collectivités</h3>
+          <p>Solutions robustes pour gymnases, ateliers municipaux, médiathèques et espaces recevant du public.</p>
+        </article>
+        <article class="card">
+          <h3>Bâtiments tertiaires</h3>
+          <p>Revêtements confortables et faciles à entretenir pour halls, open spaces et zones de passage intensif.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-grid media-grid">
+        <div>
+          <p class="tag">Sur le terrain</p>
+          <h2 class="section-heading">Des chantiers suivis et documentés.</h2>
+          <p class="section-lead">ID Pro accompagne les équipes travaux dans le choix des formats, la préparation des supports et la maintenance préventive. Chaque projet est documenté pour capitaliser sur les retours d’expérience.</p>
         </div>
-        <div class="resources-actions">
-          <a class="cta-link" href="#">Catalogue</a>
-          <a class="cta-link" href="#">Fiches techniques</a>
+        <div>
+          <img src="images/ImageIDPro.jpg" alt="Installation ID Pro dans un environnement industriel">
         </div>
-      </article>
+      </div>
     </section>
   </main>
+
   <script src="scripts/global.js"></script>
   <script defer src="picocms.js"></script>
 </body>

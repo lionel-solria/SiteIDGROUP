@@ -19,7 +19,7 @@ body {
   align-items: center;
   gap: clamp(0.5rem, 1vw, 1rem);
   padding: 0.65rem clamp(1rem, 3vw, 2rem);
-  background: linear-gradient(120deg, rgba(5, 8, 14, 0.72), rgba(5, 8, 14, 0.38));
+  background: linear-gradient(120deg, rgba(5, 8, 14, 0.6), rgba(5, 8, 14, 0.28));
   color: var(--nav-text);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--nav-border);
