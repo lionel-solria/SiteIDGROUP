@@ -105,11 +105,13 @@
       content: "";
       position: absolute;
       inset: calc(-1 * var(--nav-height)) -8% -6% -8%;
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat fixed;
+      background: url('images/fondIDGROUP.jpg') center/115% no-repeat;
       transform: scale(1.02);
       z-index: 0;
       pointer-events: none;
-      will-change: background-position;
+      will-change: background-position, transform;
+      animation: hero-pan 28s ease-in-out infinite;
+      filter: saturate(1.05);
     }
 
     .hero-frame {
@@ -143,6 +145,7 @@
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
+      animation: float-card 16s ease-in-out infinite;
     }
 
     .section-block {
@@ -259,6 +262,33 @@
     @keyframes shimmer {
       from { transform: translate3d(-6px, -4px, 0) scale(1.02); opacity: 0.65; }
       to { transform: translate3d(6px, 6px, 0) scale(1.05); opacity: 0.9; }
+    }
+
+    @keyframes hero-pan {
+      0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+        background-position: 50% 48%;
+      }
+      50% {
+        transform: scale(1.07) translate3d(8px, -6px, 0);
+        background-position: 46% 52%;
+      }
+      100% {
+        transform: scale(1.1) translate3d(-10px, 8px, 0);
+        background-position: 53% 47%;
+      }
+    }
+
+    @keyframes float-card {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(0, -8px, 0) scale(1.01);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
     }
 
     .hero h1 {
