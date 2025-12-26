@@ -105,11 +105,28 @@
       content: "";
       position: absolute;
       inset: calc(-1 * var(--nav-height)) -8% -6% -8%;
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat fixed;
-      transform: scale(1.02);
+      background: url('images/fondIDGROUP.jpg') center/cover no-repeat;
+      transform: scale(1.08);
       z-index: 0;
       pointer-events: none;
-      will-change: background-position;
+      will-change: transform, background-position;
+      animation: hero-pan 28s ease-in-out infinite alternate;
+      opacity: 0.9;
+    }
+
+    @keyframes hero-pan {
+      0% {
+        transform: scale(1.08) translateY(-12px);
+        background-position: 42% 34%;
+      }
+      50% {
+        transform: scale(1.12) translateY(6px);
+        background-position: 50% 48%;
+      }
+      100% {
+        transform: scale(1.15) translateY(18px);
+        background-position: 58% 64%;
+      }
     }
 
     .hero-frame {
@@ -143,6 +160,20 @@
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
+      animation: hero-rise 0.9s ease-out both;
+    }
+
+    @keyframes hero-rise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
     }
 
     .section-block {
