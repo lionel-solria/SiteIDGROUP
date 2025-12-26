@@ -145,7 +145,7 @@
       display: grid;
       gap: 0.9rem;
       padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.32);
+      background: rgba(8, 12, 18, 0.18);
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
@@ -216,6 +216,72 @@
       display: grid;
       gap: 0.9rem;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: clamp(1.25rem, 3vw, 2rem);
+      align-items: stretch;
+    }
+
+    .section-shell {
+      padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 3rem);
+      color: #f4f5f7;
+      background: linear-gradient(180deg, rgba(10, 13, 19, 0.92), rgba(8, 11, 17, 0.9));
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .section-shell:nth-of-type(even) {
+      background: linear-gradient(180deg, rgba(8, 11, 17, 0.96), rgba(6, 9, 14, 0.94));
+    }
+
+    .section-heading {
+      margin: 0 0 1.25rem;
+      font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+      letter-spacing: 0.02em;
+    }
+
+    .pill-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(228, 30, 40, 0.16);
+      color: #fff;
+      border: 1px solid rgba(228, 30, 40, 0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .info-card {
+      height: 100%;
+      display: grid;
+      gap: 0.8rem;
+      padding: clamp(1.15rem, 2vw, 1.6rem);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.38);
+      backdrop-filter: blur(6px);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .info-card:hover,
+    .info-card:focus-within {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 22px 62px rgba(0, 0, 0, 0.46);
+    }
+
+    .info-card p {
+      margin: 0;
+      color: rgba(244, 245, 247, 0.88);
+      line-height: 1.55;
     }
 
     .value-card {
@@ -296,7 +362,7 @@
       display: none;
     }
 
-    .accordion {
+    .accordion { 
       position: fixed;
       inset: auto 0 0 0;
       height: var(--dock-height);
@@ -332,7 +398,8 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
       filter: grayscale(0.25) brightness(0.9);
       border-radius: 18px 18px 0 0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 14px 46px rgba(0, 0, 0, 0.52), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+      animation: tabFloat 18s ease-in-out infinite alternate;
     }
 
     .panel::after {
@@ -373,7 +440,7 @@
 
     .panel:hover .logo,
     .panel:focus-within .logo {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.02);
     }
 
     .tagline {
@@ -414,20 +481,30 @@
     .accordion.has-focus .panel {
       flex: 1;
       filter: grayscale(0.55) brightness(0.86);
-      transform: translateY(-6px);
+      transform: translateY(-6px) scale(1.01);
     }
 
     .accordion.has-focus .panel.active {
       flex: 1.08;
       height: calc(var(--dock-height) + var(--tab-rise));
       filter: grayscale(0) brightness(1.05);
-      transform: translateY(calc(-1 * var(--tab-rise) * 0.25));
+      transform: translateY(calc(-1 * var(--tab-rise) * 0.25)) scale(1.02);
       z-index: 2;
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
     }
 
     .accordion.has-focus .panel.active::after {
       opacity: 0.72;
+    }
+
+    .accordion .panel:nth-child(1) { animation-delay: 0s; }
+    .accordion .panel:nth-child(2) { animation-delay: 0.8s; }
+    .accordion .panel:nth-child(3) { animation-delay: 1.4s; }
+
+    @keyframes tabFloat {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.01); }
+      100% { transform: translateY(0) scale(1); }
     }
 
     .accordion.has-focus .panel.active .focus-extra {
@@ -664,6 +741,62 @@
       </div>
     </section>
 
+    <section class="section-shell" id="aboutGroup" data-debug-label="Présentation ID GROUP">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="pill-label">Présentation</div>
+          <h2 class="section-heading">Un groupe engagé sur l'ensemble de vos univers</h2>
+          <p>
+            ID GROUP rassemble des expertises complémentaires pour protéger les lieux, les équipes et les élevages. Nous
+            concevons des solutions sur-mesure, depuis l'audit terrain jusqu'au déploiement, pour que chaque projet reste
+            aligné avec vos exigences de sécurité, d'hygiène et de performance.
+          </p>
+          <p>
+            Notre approche associe innovation, design et accompagnement opérationnel. Nous travaillons main dans la main avec
+            vos équipes pour rendre les environnements plus sûrs, plus durables et plus inspirants.
+          </p>
+        </div>
+        <div class="info-card">
+          <div class="pill-label">Nos forces</div>
+          <p>
+            <strong>Proximité.</strong> Une équipe terrain qui connaît vos contraintes et anticipe les risques.
+          </p>
+          <p>
+            <strong>Innovation.</strong> Des solutions testées et améliorées en continu pour rester à la pointe.
+          </p>
+          <p>
+            <strong>Service.</strong> Un accompagnement complet : audit, conseil, installation et suivi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="commitments" data-debug-label="Engagements ID GROUP">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="pill-label">Engagements</div>
+          <h2 class="section-heading">Des engagements concrets pour des lieux plus responsables</h2>
+          <p>
+            Nous privilégions des matériaux durables, optimisons les flux pour limiter l'empreinte environnementale et
+            renforçons la sécurité de chaque site. Chaque mission est l'occasion de réduire les impacts et d'améliorer le
+            bien-être des personnes comme des animaux.
+          </p>
+        </div>
+        <div class="info-card">
+          <div class="pill-label">Actions clés</div>
+          <p>
+            <strong>Hygiène &amp; sécurité.</strong> Process rigoureux et équipements certifiés pour protéger vos équipes.
+          </p>
+          <p>
+            <strong>Accompagnement.</strong> Formations et suivi continu pour pérenniser les bonnes pratiques.
+          </p>
+          <p>
+            <strong>Responsabilité.</strong> Sélection de fournisseurs engagés et transparence sur nos choix techniques.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="accordion is-visible" id="universes" data-debug-label="Rideau des univers">
       <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
         <div class="content">
@@ -733,6 +866,7 @@
   <script src="scripts/global.js"></script>
   <script>
     const intro = document.getElementById('intro');
+    const aboutSection = document.getElementById('aboutGroup');
     const universes = document.getElementById('universes');
     const discoverBtn = document.getElementById('discoverBtn');
     const navUniversLink = document.getElementById('navUniversLink');
@@ -744,19 +878,15 @@
       agri: 'agri.html',
     };
 
-    function showUniverses() {
-      if (intro.classList.contains('is-gone')) {
-        universes.classList.add('is-visible');
-        universes.scrollIntoView({ behavior: 'smooth' });
-        return;
+    function scrollToSection(section) {
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
       }
+    }
 
-      intro.classList.add('is-hidden');
-      setTimeout(() => {
-        intro.classList.add('is-gone');
-        universes.classList.add('is-visible');
-        universes.scrollIntoView({ behavior: 'smooth' });
-      }, 550);
+    function showUniverses() {
+      universes.classList.add('is-visible');
+      scrollToSection(universes);
     }
 
     function setActivePanel(targetPanel) {
@@ -774,13 +904,14 @@
       setActivePanel(panel);
     }
 
-    intro.addEventListener('wheel', (event) => {
-      if (event.deltaY > 0 && !intro.classList.contains('is-hidden') && !intro.classList.contains('is-gone')) {
+    discoverBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (aboutSection) {
+        scrollToSection(aboutSection);
+      } else {
         showUniverses();
       }
-    }, { passive: true });
-
-    discoverBtn.addEventListener('click', showUniverses);
+    });
     if (navUniversLink) {
       navUniversLink.addEventListener('click', (event) => {
         event.preventDefault();
