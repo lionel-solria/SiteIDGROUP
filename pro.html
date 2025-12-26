@@ -147,54 +147,111 @@
       margin: 0 auto;
       padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
       display: grid;
-      gap: 1.5rem;
+      gap: 1.6rem;
     }
 
-    .info-card {
+    .page-section {
       background: #ffffff;
       border-radius: 18px;
-      padding: 1.4rem 1.6rem;
+      padding: clamp(1.4rem, 2vw, 2rem);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.04);
       display: grid;
-      gap: 0.55rem;
+      gap: 1rem;
     }
 
-    .info-card h2 {
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
       margin: 0;
       color: #111827;
       letter-spacing: 0.01em;
     }
 
-    .pill-list {
+    .section-subtitle {
+      margin: 0;
+      color: #4b5563;
+    }
+
+    #interactive-sketch {
+      width: 100%;
+      min-height: 320px;
+      border-radius: 14px;
+      background: repeating-linear-gradient(45deg, rgba(25, 63, 96, 0.06), rgba(25, 63, 96, 0.06) 20px, rgba(0, 0, 0, 0.02) 20px, rgba(0, 0, 0, 0.02) 40px);
+      border: 1px dashed rgba(25, 63, 96, 0.4);
+      display: grid;
+      place-items: center;
+      color: #9ca3af;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .essentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .essential-card {
+      background: rgba(var(--accent-color-rgb), 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .essential-card h3 {
+      margin: 0;
+      color: #0f172a;
+    }
+
+    .essential-card p {
+      margin: 0;
+      color: #4b5563;
+    }
+
+    .strengths-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .strengths-copy {
+      display: grid;
+      gap: 0.65rem;
+      color: #374151;
+    }
+
+    .strengths-copy ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .strengths-visual {
+      min-height: 220px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(25, 63, 96, 0.12), rgba(25, 63, 96, 0.35));
+      display: grid;
+      place-items: center;
+      color: rgba(15, 23, 42, 0.85);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .resource-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(var(--accent-color-rgb), 0.08);
-      color: var(--accent-color);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .pill::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: var(--accent-color);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.12);
+      gap: 0.75rem;
     }
 
     .cta-link {
@@ -221,6 +278,19 @@
     .cta-link svg {
       width: 18px;
       height: 18px;
+    }
+
+    .ghost-link {
+      background: transparent;
+      color: var(--accent-color);
+      box-shadow: none;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .ghost-link:hover,
+    .ghost-link:focus-visible {
+      background: rgba(var(--accent-color-rgb), 0.08);
+      color: #0f172a;
     }
   </style>
 </head>
@@ -263,6 +333,13 @@
           <path d="M12 3a15 15 0 0 0 0 18" />
         </svg>
       </button>
+      <a class="icon-btn" href="#" title="Espace Client / Outils">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7h-9" /><path d="M14 17H5" />
+          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        </svg>
+        <span>Outils</span>
+      </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 5h16v14H4z" />
@@ -281,33 +358,76 @@
       </div>
     </section>
 
-    <section class="page-shell" aria-label="Informations sur l'univers ID PRO">
-      <article class="info-card">
-        <h2>Équipements prêts à l'emploi</h2>
-        <p>Nous couvrons l'ensemble de la chaîne : EPI, hygiène des sites, décontamination, protections périmétriques et accessoires de terrain.</p>
-      </article>
+    <section class="page-shell" aria-label="Parcours ID PRO">
+      <section class="page-section" aria-labelledby="pro-sketch-title">
+        <div class="section-header">
+          <div>
+            <h2 id="pro-sketch-title" class="section-title">Croquis interactif</h2>
+            <p class="section-subtitle">Cartographiez vos flux et vos zones critiques avant d'équiper le terrain.</p>
+          </div>
+        </div>
+        <div id="interactive-sketch" aria-label="Croquis interactif ID PRO">Croquis interactif à explorer</div>
+      </section>
 
-      <article class="info-card">
-        <h2>Nos priorités</h2>
-        <ul class="pill-list">
-          <li class="pill">Sécurité réglementaire</li>
-          <li class="pill">Hygiène renforcée</li>
-          <li class="pill">Signalétique claire</li>
-          <li class="pill">Maintenance simplifiée</li>
-        </ul>
-      </article>
+      <section class="page-section" aria-labelledby="pro-essentials-title">
+        <div class="section-header">
+          <div>
+            <h2 id="pro-essentials-title" class="section-title">Les essentiels</h2>
+            <p class="section-subtitle">Une sélection prête à déployer pour sécuriser vos équipes.</p>
+          </div>
+        </div>
+        <div class="essentials-grid">
+          <article class="essential-card">
+            <h3>Kit EPI polyvalent</h3>
+            <p>Casques, gants et lunettes certifiés pour interventions multi-métiers.</p>
+          </article>
+          <article class="essential-card">
+            <h3>Stations de décontamination</h3>
+            <p>Modules mobiles pour maîtriser l'hygiène des zones sensibles.</p>
+          </article>
+          <article class="essential-card">
+            <h3>Signalétique terrain</h3>
+            <p>Panneaux et marquages prêts à poser pour guider les interventions.</p>
+          </article>
+          <article class="essential-card">
+            <h3>Hygiène de site</h3>
+            <p>Solutions de nettoyage industriel et désinfection à large spectre.</p>
+          </article>
+        </div>
+      </section>
 
-      <article class="info-card">
-        <h2>Parlons de vos besoins</h2>
-        <p>Audit de site, sélection de produits ou logistique : nos équipes vous aident à sécuriser vos opérations sans complexifier vos process.</p>
-        <a class="cta-link" href="contact.html">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 5h16v14H4z" />
-            <path d="m4 7 8 5 8-5" />
-          </svg>
-          Prendre contact
-        </a>
-      </article>
+      <section class="page-section" aria-labelledby="pro-strengths-title">
+        <div class="section-header">
+          <div>
+            <h2 id="pro-strengths-title" class="section-title">Points forts</h2>
+            <p class="section-subtitle">Pourquoi choisir ID PRO.</p>
+          </div>
+        </div>
+        <div class="strengths-layout">
+          <div class="strengths-copy">
+            <p>Des gammes robustes et réglementaires pour les environnements exigeants.</p>
+            <ul>
+              <li>Conformité assurée et veille réglementaire continue.</li>
+              <li>Stocks sécurisés pour répondre aux urgences opérationnelles.</li>
+              <li>Support terrain pour la mise en œuvre et la formation.</li>
+            </ul>
+          </div>
+          <div class="strengths-visual" aria-hidden="true">Focus pro</div>
+        </div>
+      </section>
+
+      <section class="page-section" aria-labelledby="pro-resources-title">
+        <div class="section-header">
+          <div>
+            <h2 id="pro-resources-title" class="section-title">Ressources</h2>
+            <p class="section-subtitle">Accédez rapidement à nos supports et procédures.</p>
+          </div>
+        </div>
+        <div class="resource-actions">
+          <a class="cta-link" href="#">Catalogue</a>
+          <a class="cta-link ghost-link" href="#">Fiches techniques</a>
+        </div>
+      </section>
     </section>
   </main>
   <script src="scripts/global.js"></script>
