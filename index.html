@@ -103,9 +103,9 @@
 
     .hero::after {
       content: "";
-      position: absolute;
-      inset: calc(-1 * var(--nav-height)) -8% -6% -8%;
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat;
+      position: fixed;
+      inset: 0;
+      background: url('images/fondIDGROUP.jpg') center/cover no-repeat fixed;
       transform: scale(1.05);
       animation: heroDrift 22s ease-in-out infinite alternate;
       z-index: 0;
@@ -738,8 +738,8 @@
     <nav class="nav-links" aria-label="Navigation principale" data-debug-label="Navigation principale">
       <a href="index.html" data-debug-label="Lien Accueil">Accueil</a>
       <a href="#universes" id="navUniversLink" data-debug-label="Lien Univers">Univers</a>
-      <a href="groupe.html" data-debug-label="Lien Groupe">Groupe</a>
-      <a href="engagements.html" data-debug-label="Lien Engagements">Engagements</a>
+      <a href="#about" data-debug-label="Lien Groupe">Groupe</a>
+      <a href="#commitments" data-debug-label="Lien Engagements">Engagements</a>
       <a href="actualites.html" data-debug-label="Lien Actualités">Actualités</a>
       <a href="contact.html" data-debug-label="Lien Contact">Contact</a>
     </nav>
@@ -787,7 +787,6 @@
             <p>Une expérience immersive inspirée par vos besoins en protection, hygiène et bien-être. Découvrez nos trois univers complémentaires à travers un rideau interactif pensé pour être simple, moderne et exigeant.</p>
             <div class="hero-actions">
               <button id="discoverBtn">Découvrir nos univers</button>
-              <button class="ghost-btn" type="button">Voir nos références</button>
             </div>
           </div>
         </div>
@@ -798,18 +797,25 @@
       <div class="section-frame about-layout">
         <div>
           <p class="eyebrow">Présentation</p>
-          <h2 class="section-heading">ID GROUP, trois expertises réunies autour d'une même exigence.</h2>
-          <p class="section-lead">Nous accompagnons les professionnels de l'habitat, des environnements industriels et du monde agricole avec des solutions fiables et responsables. Notre approche globale allie protection, hygiène et confort pour sécuriser chaque lieu de vie.</p>
+          <h2 class="section-heading">ID Group, des solutions durables pour tous vos espaces.</h2>
+          <p class="section-lead">ID Group est un groupe industriel français, expert des revêtements de sols et tapis techniques, qui conçoit et fabrique des solutions adaptées aux usages de la maison, du bâtiment, de l’industrie et de l’agriculture.</p>
+          <p class="section-lead">Depuis plus de 30 ans, nous accompagnons nos clients dans leurs problématiques de sécurité, de confort, d’hygiène et de durabilité, en apportant des solutions concrètes, pensées pour leurs environnements réels et leurs contraintes métier.</p>
+          <p class="section-lead">Notre force repose sur une approche simple et exigeante : partir de l’usage, comprendre le besoin, et concevoir la solution la plus juste. Nous ne vendons pas seulement des produits, nous aidons nos clients à améliorer leurs espaces de vie et de travail, jour après jour.</p>
           <div class="section-grid">
             <div class="card">
-              <h3>Proximité et écoute</h3>
-              <p>Des équipes présentes sur le terrain pour comprendre vos enjeux et co-construire des réponses adaptées.</p>
+              <h3>ID Home</h3>
+              <p>Pour l’habitat et les espaces de vie, avec des solutions pensées pour le confort et la facilité d’entretien.</p>
             </div>
             <div class="card">
-              <h3>Innovation utile</h3>
-              <p>Une veille permanente sur les matériaux et les procédés pour proposer des solutions performantes et durables.</p>
+              <h3>ID Pro</h3>
+              <p>Pour le bâtiment, l’industrie et les collectivités, en réponse aux exigences de sécurité et d’hygiène.</p>
+            </div>
+            <div class="card">
+              <h3>ID Agri</h3>
+              <p>Pour l’élevage et le confort animal, afin de protéger les animaux et les équipes sur le terrain.</p>
             </div>
           </div>
+          <p class="section-lead">Ancré localement, avec un site de production basé à Wormhout, ID Group s’appuie sur un savoir-faire industriel reconnu, une culture technique forte et des équipes engagées, proches du terrain et de leurs clients. Notre ambition est claire : concevoir des espaces plus sûrs, plus propres et plus accueillants, en prenant soin du vivant.</p>
         </div>
         <div class="about-visual" aria-hidden="true"></div>
       </div>
@@ -818,22 +824,31 @@
     <section class="section-block final" id="commitments" data-debug-label="Engagements ID GROUP">
       <div class="section-frame">
         <p class="eyebrow">Engagements</p>
-        <h2 class="section-heading">Nos engagements au service de vos équipes et de vos sites.</h2>
-        <p class="section-lead">Parce que chaque activité mérite un environnement sûr et serein, nous travaillons avec des partenaires de confiance et une traçabilité complète pour protéger les personnes, les animaux et les infrastructures.</p>
+        <h2 class="section-heading">Agir durablement, concrètement, collectivement.</h2>
+        <p class="section-lead">Chez ID Group, l’engagement n’est pas un discours. À travers notre approche Positiv’ID, nous affirmons une vision responsable de notre métier : concevoir des solutions utiles, durables et respectueuses des hommes, des animaux et de leur environnement.</p>
         <div class="section-grid">
           <div class="card">
-            <h3>Sécurité renforcée</h3>
-            <p>Des équipements testés et certifiés pour résister aux environnements les plus exigeants.</p>
+            <h3>Des solutions pensées pour durer</h3>
+            <p>Des revêtements robustes et adaptés aux usages intensifs pour prolonger la durée de vie des installations et limiter leur impact environnemental.</p>
           </div>
           <div class="card">
-            <h3>Responsabilité</h3>
-            <p>Des approvisionnements maîtrisés et une réduction continue de notre impact environnemental.</p>
+            <h3>Un savoir-faire industriel maîtrisé</h3>
+            <p>Notre site de production de Wormhout incarne une industrie responsable, locale et exigeante sur la qualité constante des produits.</p>
           </div>
           <div class="card">
-            <h3>Accompagnement</h3>
-            <p>Des conseils personnalisés, de la conception à la mise en service, pour des déploiements sereins.</p>
+            <h3>L’humain au cœur des décisions</h3>
+            <p>Des équipes engagées, formées et reconnues, qui cultivent la proximité, la transmission du savoir et le respect.</p>
+          </div>
+          <div class="card">
+            <h3>Prendre soin du vivant</h3>
+            <p>Des solutions qui réduisent la pénibilité, améliorent le bien-être et sécurisent utilisateurs et animaux au quotidien.</p>
+          </div>
+          <div class="card">
+            <h3>Une démarche responsable et mesurable</h3>
+            <p>Certifications, éco-conception et indicateurs concrets jalonnent nos actions pour progresser avec méthode et transparence.</p>
           </div>
         </div>
+        <p class="section-lead">S’engager, pour ID Group, c’est avancer avec curiosité, respect et efficience, au service de solutions utiles aujourd’hui et responsables pour demain.</p>
       </div>
     </section>
 

@@ -2,8 +2,8 @@
 
 :root {
   --nav-height: 74px;
-  --nav-surface: rgba(6, 10, 16, 0.38);
-  --nav-border: rgba(255, 255, 255, 0.12);
+  --nav-surface: rgba(6, 10, 16, 0.24);
+  --nav-border: rgba(255, 255, 255, 0.08);
   --nav-text: #f7f8fb;
 }
 
@@ -19,7 +19,7 @@ body {
   align-items: center;
   gap: clamp(0.5rem, 1vw, 1rem);
   padding: 0.65rem clamp(1rem, 3vw, 2rem);
-  background: linear-gradient(120deg, rgba(5, 8, 14, 0.72), rgba(5, 8, 14, 0.38));
+  background: linear-gradient(120deg, rgba(5, 8, 14, 0.48), rgba(5, 8, 14, 0.24));
   color: var(--nav-text);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--nav-border);
