@@ -145,7 +145,7 @@
       display: grid;
       gap: 0.9rem;
       padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.32);
+      background: rgba(8, 12, 18, 0.18);
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
@@ -283,6 +283,128 @@
       transform: scale(1.02);
     }
 
+    .story {
+      position: relative;
+      padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+      margin: 0 auto;
+      width: min(1200px, 100%);
+      color: #f2f4f8;
+      display: grid;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 22px;
+      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(14px);
+      transform: translateY(-30px);
+      z-index: 3;
+    }
+
+    .story__title {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      letter-spacing: 0.02em;
+    }
+
+    .story__grid {
+      display: grid;
+      gap: clamp(1.2rem, 2vw, 1.8rem);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: stretch;
+    }
+
+    .story-card {
+      padding: clamp(1.2rem, 2.4vw, 1.8rem);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      display: grid;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .story-card::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10% auto;
+      height: 60%;
+      background: radial-gradient(circle at 25% 20%, rgba(228, 30, 40, 0.25), rgba(228, 30, 40, 0));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .story-card:hover,
+    .story-card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .story-card:hover::before,
+    .story-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .story-card h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: rgba(242, 244, 248, 0.85);
+      line-height: 1.6;
+    }
+
+    .story__eyebrow {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .story__eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 46px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(228, 30, 40, 0.9), rgba(255, 255, 255, 0));
+    }
+
+    .engagement-list {
+      display: grid;
+      gap: 0.85rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .engagement-list li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      color: rgba(242, 244, 248, 0.82);
+    }
+
+    .engagement-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 12px;
+      height: 12px;
+      margin-top: 0.35rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(228, 30, 40, 0.95), rgba(234, 97, 26, 0.85));
+      box-shadow: 0 4px 12px rgba(228, 30, 40, 0.4);
+    }
+
     .hero.is-hidden {
       opacity: 0;
       transform: scale(0.985);
@@ -332,7 +454,15 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
       filter: grayscale(0.25) brightness(0.9);
       border-radius: 18px 18px 0 0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5), 0 12px 28px rgba(0, 0, 0, 0.35);
+      background-size: 110%;
+      animation: panelDrift 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes panelDrift {
+      0% { background-position: 48% 52%; }
+      50% { background-position: 50% 48%; }
+      100% { background-position: 52% 54%; }
     }
 
     .panel::after {
@@ -374,6 +504,13 @@
     .panel:hover .logo,
     .panel:focus-within .logo {
       transform: translateY(-2px);
+    }
+
+    .panel:hover,
+    .panel:focus-within {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 26px 72px rgba(0, 0, 0, 0.6), 0 14px 30px rgba(0, 0, 0, 0.4);
+      filter: grayscale(0.1) brightness(1);
     }
 
     .tagline {
@@ -421,9 +558,9 @@
       flex: 1.08;
       height: calc(var(--dock-height) + var(--tab-rise));
       filter: grayscale(0) brightness(1.05);
-      transform: translateY(calc(-1 * var(--tab-rise) * 0.25));
+      transform: translateY(calc(-1 * var(--tab-rise) * 0.25)) scale(1.02);
       z-index: 2;
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6), 0 18px 40px rgba(0, 0, 0, 0.45);
     }
 
     .accordion.has-focus .panel.active::after {
@@ -664,6 +801,59 @@
       </div>
     </section>
 
+    <section class="story" id="a-propos" data-debug-label="Présentation ID GROUP">
+      <div class="story__eyebrow">Présentation</div>
+      <h2 class="story__title">ID GROUP, partenaire global de la protection et du bien-être</h2>
+      <div class="story__grid">
+        <div class="story-card" tabindex="0">
+          <h3>Un collectif d'expertises complémentaires</h3>
+          <p>De l'habitat au secteur professionnel en passant par l'élevage, nos équipes imaginent des solutions cohérentes pour protéger les lieux et les personnes avec la même exigence.</p>
+        </div>
+        <div class="story-card" tabindex="0">
+          <h3>Innovation au service du terrain</h3>
+          <p>Nous mêlons design, matériaux performants et retours d'expérience pour créer des équipements fiables, intuitifs et simples à déployer dans les environnements les plus exigeants.</p>
+        </div>
+        <div class="story-card" tabindex="0">
+          <h3>Proximité et accompagnement</h3>
+          <p>Chaque projet est suivi par des interlocuteurs dédiés qui coordonnent conseils, installation et support pour garantir des déploiements rapides et sereins.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="engagements" data-debug-label="Engagements ID GROUP">
+      <div class="story__eyebrow">Engagements</div>
+      <h2 class="story__title">Des engagements clairs pour vos équipes et vos clients</h2>
+      <div class="story__grid">
+        <div class="story-card" tabindex="0">
+          <h3>Qualité et fiabilité</h3>
+          <p>Des produits testés, certifiés et suivis dans la durée, avec des approvisionnements maîtrisés pour sécuriser chaque installation.</p>
+          <ul class="engagement-list">
+            <li>Traçabilité et contrôle continu</li>
+            <li>Matériaux sélectionnés pour leur durabilité</li>
+            <li>Maintenance simplifiée et documentée</li>
+          </ul>
+        </div>
+        <div class="story-card" tabindex="0">
+          <h3>Responsabilité</h3>
+          <p>Réduction des impacts, circuits d'approvisionnement courts et accompagnement des utilisateurs pour limiter les déchets et prolonger la durée de vie des équipements.</p>
+          <ul class="engagement-list">
+            <li>Optimisation énergétique et recyclabilité</li>
+            <li>Formation aux bons usages et à la sécurité</li>
+            <li>Partenaires locaux privilégiés</li>
+          </ul>
+        </div>
+        <div class="story-card" tabindex="0">
+          <h3>Réactivité</h3>
+          <p>Une organisation orientée service pour répondre vite, ajuster les solutions et intervenir sur site lorsque c'est nécessaire.</p>
+          <ul class="engagement-list">
+            <li>Support dédié multi-univers</li>
+            <li>Plan d'action partagé et suivi</li>
+            <li>Interventions planifiées ou express</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="accordion is-visible" id="universes" data-debug-label="Rideau des univers">
       <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
         <div class="content">
@@ -745,18 +935,8 @@
     };
 
     function showUniverses() {
-      if (intro.classList.contains('is-gone')) {
-        universes.classList.add('is-visible');
-        universes.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      intro.classList.add('is-hidden');
-      setTimeout(() => {
-        intro.classList.add('is-gone');
-        universes.classList.add('is-visible');
-        universes.scrollIntoView({ behavior: 'smooth' });
-      }, 550);
+      universes.classList.add('is-visible');
+      universes.scrollIntoView({ behavior: 'smooth' });
     }
 
     function setActivePanel(targetPanel) {
@@ -773,12 +953,6 @@
       if (!universes.classList.contains('is-visible')) return;
       setActivePanel(panel);
     }
-
-    intro.addEventListener('wheel', (event) => {
-      if (event.deltaY > 0 && !intro.classList.contains('is-hidden') && !intro.classList.contains('is-gone')) {
-        showUniverses();
-      }
-    }, { passive: true });
 
     discoverBtn.addEventListener('click', showUniverses);
     if (navUniversLink) {
