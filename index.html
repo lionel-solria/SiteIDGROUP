@@ -129,9 +129,9 @@
 
     .hero-body {
       display: grid;
-      grid-template-columns: minmax(320px, 1.1fr) minmax(320px, 0.9fr);
+      grid-template-columns: 1fr;
       gap: clamp(1.25rem, 3vw, 2.25rem);
-      align-items: start;
+      align-items: center;
     }
 
     .hero-inner {
@@ -343,12 +343,17 @@
       text-align: center;
       padding: 1.5rem;
       color: #f8fafc;
+      justify-content: flex-start;
+      padding-top: 10vh;
+      height: 100%;
     }
 
     .panel .logo {
       width: clamp(150px, 22vw, 230px);
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
       transition: transform 0.4s ease;
+      margin-top: 2rem;
+      margin-bottom: auto;
     }
 
     .panel:hover .logo,
@@ -599,6 +604,13 @@
           <path d="M12 3a15 15 0 0 0 0 18" />
         </svg>
       </button>
+      <a class="icon-btn" href="#" title="Espace Client / Outils">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7h-9" /><path d="M14 17H5" />
+          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        </svg>
+        <span>Outils</span>
+      </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 5h16v14H4z" />
@@ -622,6 +634,7 @@
             </div>
           </div>
 
+          <!--
           <div class="values-deck" aria-label="Valeurs ID GROUP">
             <article class="value-card" data-debug-label="Div article Respect">
               <div class="value-icon"><img src="images/respect.png" alt="Pictogramme Respect"></div>
@@ -645,6 +658,7 @@
               </div>
             </article>
           </div>
+          -->
         </div>
       </div>
     </section>
@@ -728,6 +742,12 @@
       pro: 'pro.html',
       agri: 'agri.html',
     };
+
+    intro.addEventListener('wheel', (e) => {
+      if (e.deltaY > 0 && !intro.classList.contains('is-hidden')) {
+        showUniverses();
+      }
+    });
 
     function showUniverses() {
       if (intro.classList.contains('is-gone')) {
