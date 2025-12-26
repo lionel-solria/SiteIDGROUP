@@ -105,18 +105,11 @@
       content: "";
       position: absolute;
       inset: calc(-1 * var(--nav-height)) -8% -6% -8%;
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat;
-      transform: scale(1.05);
-      animation: heroDrift 22s ease-in-out infinite alternate;
+      background: url('images/fondIDGROUP.jpg') center/cover fixed no-repeat;
+      transform: none;
       z-index: 0;
       pointer-events: none;
-      will-change: transform, background-position;
-    }
-
-    @keyframes heroDrift {
-      0% { transform: translate3d(-8px, -6px, 0) scale(1.05); }
-      50% { transform: translate3d(10px, 4px, 0) scale(1.08); }
-      100% { transform: translate3d(-6px, 10px, 0) scale(1.06); }
+      will-change: auto;
     }
 
     .hero-frame {
@@ -391,7 +384,7 @@
 
     .hero:hover::after,
     .hero:focus-within::after {
-      transform: scale(1.55);
+      transform: none;
     }
 
     .hero:hover .hero-frame,
@@ -738,8 +731,8 @@
     <nav class="nav-links" aria-label="Navigation principale" data-debug-label="Navigation principale">
       <a href="index.html" data-debug-label="Lien Accueil">Accueil</a>
       <a href="#universes" id="navUniversLink" data-debug-label="Lien Univers">Univers</a>
-      <a href="groupe.html" data-debug-label="Lien Groupe">Groupe</a>
-      <a href="engagements.html" data-debug-label="Lien Engagements">Engagements</a>
+      <a href="#groupe" data-debug-label="Lien Groupe">Groupe</a>
+      <a href="#engagements" data-debug-label="Lien Engagements">Engagements</a>
       <a href="actualites.html" data-debug-label="Lien Actualités">Actualités</a>
       <a href="contact.html" data-debug-label="Lien Contact">Contact</a>
     </nav>
@@ -787,27 +780,35 @@
             <p>Une expérience immersive inspirée par vos besoins en protection, hygiène et bien-être. Découvrez nos trois univers complémentaires à travers un rideau interactif pensé pour être simple, moderne et exigeant.</p>
             <div class="hero-actions">
               <button id="discoverBtn">Découvrir nos univers</button>
-              <button class="ghost-btn" type="button">Voir nos références</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-block" id="about" data-debug-label="Présentation ID GROUP">
+    <section class="section-block" id="groupe" data-debug-label="Présentation ID GROUP">
       <div class="section-frame about-layout">
         <div>
           <p class="eyebrow">Présentation</p>
-          <h2 class="section-heading">ID GROUP, trois expertises réunies autour d'une même exigence.</h2>
-          <p class="section-lead">Nous accompagnons les professionnels de l'habitat, des environnements industriels et du monde agricole avec des solutions fiables et responsables. Notre approche globale allie protection, hygiène et confort pour sécuriser chaque lieu de vie.</p>
+          <h2 class="section-heading">ID Group, des solutions durables pour tous vos espaces.</h2>
+          <p class="section-lead">ID Group est un groupe industriel français expert des revêtements de sols et tapis techniques, qui conçoit et fabrique des solutions adaptées aux usages de la maison, du bâtiment, de l’industrie et de l’agriculture. Depuis plus de 30 ans, nous accompagnons nos clients dans leurs problématiques de sécurité, de confort, d’hygiène et de durabilité.</p>
+          <p class="section-lead">Notre force repose sur une approche simple et exigeante : partir de l’usage, comprendre le besoin et concevoir la solution la plus juste. Ancré localement avec un site de production basé à Wormhout, le groupe s’appuie sur un savoir-faire industriel reconnu et des équipes engagées, proches du terrain.</p>
           <div class="section-grid">
             <div class="card">
-              <h3>Proximité et écoute</h3>
-              <p>Des équipes présentes sur le terrain pour comprendre vos enjeux et co-construire des réponses adaptées.</p>
+              <h3>Approche terrain</h3>
+              <p>Nous ne vendons pas seulement des produits : nous aidons nos clients à améliorer leurs espaces de vie et de travail en apportant des solutions concrètes pensées pour leurs environnements réels.</p>
             </div>
             <div class="card">
-              <h3>Innovation utile</h3>
-              <p>Une veille permanente sur les matériaux et les procédés pour proposer des solutions performantes et durables.</p>
+              <h3>Trois univers complémentaires</h3>
+              <ul style="margin: 0; padding-left: 1.1rem; color: rgba(244, 245, 247, 0.82); line-height: 1.6;">
+                <li><strong>ID Home</strong> pour l’habitat et les espaces de vie.</li>
+                <li><strong>ID Pro</strong> pour le bâtiment, l’industrie et les collectivités.</li>
+                <li><strong>ID Agri</strong> pour l’élevage et le confort animal.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Une ambition claire</h3>
+              <p>Concevoir des espaces plus sûrs, plus propres et plus accueillants, en prenant soin du vivant et en garantissant une qualité constante.</p>
             </div>
           </div>
         </div>
@@ -815,25 +816,49 @@
       </div>
     </section>
 
-    <section class="section-block final" id="commitments" data-debug-label="Engagements ID GROUP">
+    <section class="section-block final" id="engagements" data-debug-label="Engagements ID GROUP">
       <div class="section-frame">
-        <p class="eyebrow">Engagements</p>
-        <h2 class="section-heading">Nos engagements au service de vos équipes et de vos sites.</h2>
-        <p class="section-lead">Parce que chaque activité mérite un environnement sûr et serein, nous travaillons avec des partenaires de confiance et une traçabilité complète pour protéger les personnes, les animaux et les infrastructures.</p>
-        <div class="section-grid">
-          <div class="card">
-            <h3>Sécurité renforcée</h3>
-            <p>Des équipements testés et certifiés pour résister aux environnements les plus exigeants.</p>
-          </div>
-          <div class="card">
-            <h3>Responsabilité</h3>
-            <p>Des approvisionnements maîtrisés et une réduction continue de notre impact environnemental.</p>
-          </div>
-          <div class="card">
-            <h3>Accompagnement</h3>
-            <p>Des conseils personnalisés, de la conception à la mise en service, pour des déploiements sereins.</p>
-          </div>
+        <p class="eyebrow">Positiv'ID</p>
+        <h2 class="section-heading">Agir durablement, concrètement, collectivement.</h2>
+        <p class="section-lead">Chez ID Group, l’engagement n’est pas un discours. À travers notre approche Positiv’ID, nous affirmons une vision responsable : concevoir des solutions utiles, durables et respectueuses des hommes, des animaux et de leur environnement.</p>
+        <div class="values-deck">
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true"><span style="font-size: 1.6rem;">🌱</span></div>
+            <div class="value-text">
+              <p class="value-label">Des solutions pensées pour durer</p>
+              <p>Des revêtements robustes et adaptés aux usages intensifs pour prolonger leur durée de vie et limiter l’impact environnemental dès la conception.</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true"><span style="font-size: 1.6rem;">🏭</span></div>
+            <div class="value-text">
+              <p class="value-label">Un savoir-faire industriel maîtrisé</p>
+              <p>Notre site de production de Wormhout incarne une industrie responsable, ancrée localement, garantissant une qualité constante et des process maîtrisés.</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true"><span style="font-size: 1.6rem;">👥</span></div>
+            <div class="value-text">
+              <p class="value-label">L’humain au cœur</p>
+              <p>Nous croyons que la performance durable passe par des équipes engagées, formées et reconnues, avec une culture de proximité et de transmission.</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true"><span style="font-size: 1.6rem;">🐄</span></div>
+            <div class="value-text">
+              <p class="value-label">Prendre soin du vivant</p>
+              <p>Confort animal, sécurité des utilisateurs, amélioration des conditions de travail : nos solutions sont pensées pour réduire la pénibilité et favoriser le bien-être.</p>
+            </div>
+          </article>
+          <article class="value-card">
+            <div class="value-icon" aria-hidden="true"><span style="font-size: 1.6rem;">♻️</span></div>
+            <div class="value-text">
+              <p class="value-label">Une démarche responsable et mesurable</p>
+              <p>Certifications, évaluation des impacts, éco-conception : nous avançons avec méthode et transparence en intégrant des indicateurs concrets.</p>
+            </div>
+          </article>
         </div>
+        <p class="section-lead" style="max-width: 880px;">S’engager, pour ID Group, c’est avancer avec curiosité, respect et efficience, au service de solutions utiles aujourd’hui et responsables pour demain.</p>
       </div>
     </section>
 
@@ -907,7 +932,7 @@
   <script>
     const intro = document.getElementById('intro');
     const universes = document.getElementById('universes');
-    const aboutSection = document.getElementById('about');
+    const aboutSection = document.getElementById('groupe');
     const discoverBtn = document.getElementById('discoverBtn');
     const navUniversLink = document.getElementById('navUniversLink');
     const panels = Array.from(document.querySelectorAll('.panel'));
