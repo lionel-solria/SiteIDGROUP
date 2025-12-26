@@ -105,11 +105,12 @@
       content: "";
       position: absolute;
       inset: calc(-1 * var(--nav-height)) -8% -6% -8%;
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat fixed;
-      transform: scale(1.02);
+      background: url('images/fondIDGROUP.jpg') center/115% no-repeat;
+      transform: scale(1.03);
       z-index: 0;
       pointer-events: none;
-      will-change: background-position;
+      animation: hero-pan 18s ease-in-out infinite alternate;
+      will-change: background-position, transform;
     }
 
     .hero-frame {
@@ -121,6 +122,7 @@
       flex-direction: column;
       gap: clamp(1.5rem, 3vw, 2.5rem);
       transition: transform 0.45s ease;
+      animation: float-up 12s ease-in-out infinite;
     }
 
     .hero-body {
@@ -143,6 +145,54 @@
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
+      animation: pulse-glow 14s ease-in-out infinite;
+    }
+
+    @keyframes hero-pan {
+      0% {
+        background-position: 50% 30%;
+        transform: scale(1.03) translateY(-4px);
+      }
+      50% {
+        background-position: 48% 60%;
+        transform: scale(1.05) translateY(6px);
+      }
+      100% {
+        background-position: 52% 40%;
+        transform: scale(1.04) translateY(-2px);
+      }
+    }
+
+    @keyframes float-up {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes pulse-glow {
+      0%,
+      100% {
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4), 0 0 0 rgba(228, 30, 40, 0.25);
+        border-color: rgba(255, 255, 255, 0.05);
+      }
+      50% {
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.36), 0 0 24px rgba(228, 30, 40, 0.25);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero::after,
+      .hero-frame,
+      .hero-inner {
+        animation: none;
+        background-position: center;
+        transform: none;
+      }
     }
 
     .section-block {
