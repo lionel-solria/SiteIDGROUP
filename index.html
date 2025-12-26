@@ -110,6 +110,7 @@
       z-index: 0;
       pointer-events: none;
       will-change: background-position;
+      animation: pan-hero 18s ease-in-out infinite alternate;
     }
 
     .hero-frame {
@@ -143,6 +144,7 @@
       border-radius: 24px;
       box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
+      animation: floaty 10s ease-in-out infinite alternate;
     }
 
     .section-block {
@@ -374,6 +376,70 @@
       transform: scale(1.02);
     }
 
+    .hero-marquee {
+      position: absolute;
+      inset: auto -14% 12% -14%;
+      height: 64px;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.88;
+    }
+
+    .hero-marquee::before,
+    .hero-marquee::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 12%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .hero-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(5, 8, 14, 0.9), rgba(5, 8, 14, 0));
+    }
+
+    .hero-marquee::after {
+      right: 0;
+      background: linear-gradient(270deg, rgba(5, 8, 14, 0.9), rgba(5, 8, 14, 0));
+    }
+
+    .marquee-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      animation: marquee 26s linear infinite;
+      will-change: transform;
+    }
+
+    .marquee-track span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1rem;
+      border-radius: 14px;
+      background: rgba(8, 12, 18, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.32);
+    }
+
+    .marquee-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(90deg, #e41e28, #f26630);
+      box-shadow: 0 0 18px rgba(228, 30, 40, 0.6);
+    }
+
     .hero.is-hidden {
       opacity: 0;
       transform: scale(0.985);
@@ -385,6 +451,33 @@
 
     .hero.is-gone {
       display: none;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes pan-hero {
+      from {
+        background-position: 50% 48%;
+      }
+      to {
+        background-position: 48% 60%;
+      }
+    }
+
+    @keyframes floaty {
+      from {
+        transform: translateY(-6px);
+      }
+      to {
+        transform: translateY(6px);
+      }
     }
 
     .accordion {
@@ -763,6 +856,30 @@
             <div class="hero-actions">
               <button id="discoverBtn">Découvrir nos univers</button>
             </div>
+          </div>
+        </div>
+        <div class="hero-marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span><span class="marquee-dot"></span>ID Group</span>
+            <span><span class="marquee-dot"></span>Protection</span>
+            <span><span class="marquee-dot"></span>Hygiène</span>
+            <span><span class="marquee-dot"></span>Confort animal</span>
+            <span><span class="marquee-dot"></span>Industrie</span>
+            <span><span class="marquee-dot"></span>Bâtiment</span>
+            <span><span class="marquee-dot"></span>Habitat</span>
+            <span><span class="marquee-dot"></span>Durabilité</span>
+            <span><span class="marquee-dot"></span>Innovation</span>
+            <span><span class="marquee-dot"></span>Fabrication française</span>
+            <span><span class="marquee-dot"></span>ID Group</span>
+            <span><span class="marquee-dot"></span>Protection</span>
+            <span><span class="marquee-dot"></span>Hygiène</span>
+            <span><span class="marquee-dot"></span>Confort animal</span>
+            <span><span class="marquee-dot"></span>Industrie</span>
+            <span><span class="marquee-dot"></span>Bâtiment</span>
+            <span><span class="marquee-dot"></span>Habitat</span>
+            <span><span class="marquee-dot"></span>Durabilité</span>
+            <span><span class="marquee-dot"></span>Innovation</span>
+            <span><span class="marquee-dot"></span>Fabrication française</span>
           </div>
         </div>
       </div>
