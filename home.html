@@ -218,6 +218,115 @@
       transform: translateY(-1px);
     }
 
+    .content-section {
+      width: min(1100px, 100%);
+      margin: 0 auto 1.5rem;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .section-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .section-header {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(var(--accent-color-rgb), 0.08);
+      color: var(--accent-color);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      width: fit-content;
+    }
+
+    .section-lead {
+      margin: 0;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    #interactive-sketch {
+      min-height: 320px;
+      border-radius: 16px;
+      border: 1px dashed rgba(0, 0, 0, 0.12);
+      background: linear-gradient(120deg, rgba(var(--accent-color-rgb), 0.08), rgba(255, 255, 255, 0.9));
+      display: grid;
+      place-items: center;
+      color: #1f2937;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 700;
+    }
+
+    .essentials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .essential-item {
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      background: rgba(var(--accent-color-rgb), 0.04);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .essential-item h3 {
+      margin: 0;
+      color: #111827;
+    }
+
+    .strengths {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .strengths__visual {
+      min-height: 220px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 30%, rgba(var(--accent-color-rgb), 0.18), transparent 52%),
+        linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.08));
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .resources {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .resources-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .resource-note {
+      margin: 0;
+      color: #4b5563;
+    }
+
     .cta-link svg {
       width: 18px;
       height: 18px;
@@ -263,6 +372,13 @@
           <path d="M12 3a15 15 0 0 0 0 18" />
         </svg>
       </button>
+      <a class="icon-btn" href="#" title="Espace Client / Outils">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 7h-9" /><path d="M14 17H5" />
+          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        </svg>
+        <span>Outils</span>
+      </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M4 5h16v14H4z" />
@@ -281,32 +397,74 @@
       </div>
     </section>
 
-    <section class="page-shell" aria-label="Informations sur l'univers Habitat">
-      <article class="info-card">
-        <h2>Confort et protection</h2>
-        <p>Nous sélectionnons des produits qui concilient design, praticité et durabilité pour préserver la qualité de l'air, la propreté et la sécurité des espaces de vie.</p>
+    <section class="content-section" aria-labelledby="home-sketch-title">
+      <article class="section-card">
+        <div class="section-header">
+          <span class="section-kicker">Croquis interactif</span>
+          <h2 id="home-sketch-title">Croquis ID HOME</h2>
+          <p class="section-lead">Prévisualisez la façon dont nos solutions s'intègrent dans vos projets d'habitat en explorant le croquis interactif.</p>
+        </div>
+        <div id="interactive-sketch" aria-label="Croquis interactif ID HOME">Croquis interactif en préparation</div>
       </article>
+    </section>
 
-      <article class="info-card">
-        <h2>Nos priorités</h2>
-        <ul class="pill-list">
-          <li class="pill">Hygiène intérieure</li>
-          <li class="pill">Matériaux responsables</li>
-          <li class="pill">Bien-être des occupants</li>
-          <li class="pill">Esthétique durable</li>
-        </ul>
+    <section class="content-section" aria-labelledby="home-essentials-title">
+      <article class="section-card">
+        <div class="section-header">
+          <span class="section-kicker">Les essentiels</span>
+          <h2 id="home-essentials-title">Produits phares pour un habitat sain</h2>
+          <p class="section-lead">Une sélection courte et efficace pour sécuriser l'entretien des logements et améliorer le confort des occupants.</p>
+        </div>
+        <div class="essentials-grid">
+          <article class="essential-item">
+            <h3>Purification de l'air</h3>
+            <p>Filtres, purificateurs et diffuseurs assainissants pour maintenir une qualité d'air optimale.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Hygiène des surfaces</h3>
+            <p>Détergents neutres et protections hydrofuges pour préserver les matériaux sensibles.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Confort thermique</h3>
+            <p>Solutions isolantes et textiles techniques pour limiter les variations de température.</p>
+          </article>
+          <article class="essential-item">
+            <h3>Équipements de soin</h3>
+            <p>Produits d'entretien prêts à l'emploi pour simplifier le quotidien des résidents.</p>
+          </article>
+        </div>
       </article>
+    </section>
 
-      <article class="info-card">
-        <h2>Contactez-nous</h2>
-        <p>Parlons de votre projet : de la rénovation aux nouveaux aménagements, nos équipes vous accompagnent avec des recommandations adaptées.</p>
-        <a class="cta-link" href="contact.html">
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 5h16v14H4z" />
-            <path d="m4 7 8 5 8-5" />
-          </svg>
-          Prendre contact
-        </a>
+    <section class="content-section" aria-labelledby="home-strengths-title">
+      <article class="section-card strengths">
+        <div class="strengths__text">
+          <div class="section-header">
+            <span class="section-kicker">Points forts</span>
+            <h2 id="home-strengths-title">Pourquoi choisir ID HOME</h2>
+            <p class="section-lead">Une offre pensée pour accompagner les copropriétés, bailleurs sociaux et gestionnaires de résidences.</p>
+          </div>
+          <ul class="pill-list">
+            <li class="pill">Approche durable</li>
+            <li class="pill">Sélection certifiée</li>
+            <li class="pill">Support réactif</li>
+          </ul>
+        </div>
+        <div class="strengths__visual" role="img" aria-label="Illustration des bénéfices ID HOME"></div>
+      </article>
+    </section>
+
+    <section class="content-section" aria-labelledby="home-resources-title">
+      <article class="section-card resources">
+        <div class="section-header">
+          <span class="section-kicker">Ressources</span>
+          <h2 id="home-resources-title">Télécharger nos supports</h2>
+          <p class="resource-note">Accédez directement au catalogue ID HOME et aux fiches techniques des solutions présentées.</p>
+        </div>
+        <div class="resources-actions">
+          <a class="cta-link" href="#">Catalogue</a>
+          <a class="cta-link" href="#">Fiches techniques</a>
+        </div>
       </article>
     </section>
   </main>
