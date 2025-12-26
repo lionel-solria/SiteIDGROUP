@@ -77,6 +77,7 @@
       align-items: center;
       padding: var(--hero-padding);
       padding-top: calc(var(--hero-padding) + var(--nav-height));
+      padding-bottom: calc(var(--hero-padding) + 12vh);
       margin-top: calc(-1 * var(--nav-height));
       background: #05080e;
       filter: saturate(0.98);
@@ -294,13 +295,19 @@
     }
 
     .accordion {
-      position: relative;
-      height: 100vh;
-      min-height: 100vh;
+      --collapsed-height: 10vh;
+      position: fixed;
+      inset: auto 0 0 0;
+      height: var(--collapsed-height);
+      min-height: var(--collapsed-height);
       display: flex;
       visibility: hidden;
       opacity: 0;
-      transition: opacity 0.6s ease 0.1s;
+      transition: opacity 0.6s ease 0.1s, height 0.7s ease, transform 0.7s ease;
+      z-index: 700;
+      box-shadow: 0 -12px 50px rgba(0, 0, 0, 0.45);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(5, 8, 14, 0), rgba(5, 8, 14, 0.6));
     }
 
     .accordion.is-visible {
@@ -308,12 +315,16 @@
       opacity: 1;
     }
 
+    .accordion.has-focus {
+      height: calc(100vh - var(--nav-height));
+    }
+
     .panel {
       flex: 1;
       position: relative;
       overflow: hidden;
       display: grid;
-      place-items: center;
+      align-items: end;
       isolation: isolate;
       transition: flex 0.7s ease, filter 0.5s ease;
       background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
@@ -341,20 +352,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      gap: 1rem;
+      justify-content: flex-end;
+      gap: 0.75rem;
       text-align: center;
       padding: 1.5rem;
-      padding-top: 10vh;
+      padding-bottom: 2rem;
       color: #f8fafc;
+      transform: translateY(24%);
+      transition: transform 0.55s ease;
     }
 
     .panel .logo {
-      width: clamp(150px, 22vw, 230px);
+      width: clamp(140px, 14vw, 210px);
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
-      transition: transform 0.4s ease;
-      margin-top: 2rem;
-      margin-bottom: auto;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      margin: 0 auto;
     }
 
     .panel:hover .logo,
@@ -365,13 +377,14 @@
     .tagline {
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.55rem 0.9rem;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 0.55rem 1rem;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.16);
       backdrop-filter: blur(6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
     }
 
     .focus-extra {
@@ -400,6 +413,10 @@
     .accordion.has-focus .panel {
       flex: 1;
       filter: grayscale(0.55) brightness(0.8);
+    }
+
+    .accordion.has-focus .panel .content {
+      transform: translateY(0);
     }
 
     .accordion.has-focus .panel.active {
@@ -549,9 +566,13 @@
       }
 
       .accordion {
+        position: relative;
+        inset: auto;
         flex-direction: column;
         height: auto;
-        min-height: 100vh;
+        min-height: auto;
+        box-shadow: none;
+        border-top: none;
       }
 
       .accordion.has-focus .panel,
@@ -562,6 +583,10 @@
 
       .accordion.has-focus .panel.active {
         flex: 2.2;
+      }
+
+      .panel .content {
+        transform: translateY(0);
       }
     }
   </style>
