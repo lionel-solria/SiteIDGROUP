@@ -3,337 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP - Page</title>
+  <title>ID AGRI | ID GROUP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="picocms.css">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --id-red: #e41e28;
-      --id-red-cta: #de0c1a;
-      --id-gray-dark: #1b2230;
-      --id-gray-neutral: #ededed;
+      --accent: #7c9b48;
+      --accent-soft: rgba(124, 155, 72, 0.12);
     }
+
     body {
-      font-family: 'Avenir', 'Nunito', sans-serif;
-      background-color: var(--id-gray-neutral);
-      color: var(--id-gray-dark);
-      --accent-color: #7c9b48;
-      --accent-color-rgb: 124, 155, 72;
+      margin: 0;
+      background: #05080e;
+      color: #f4f5f7;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      min-height: 100vh;
     }
-    a,
-    button {
-      transition: transform 0.25s ease, box-shadow 0.25s ease,
-        background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease,
-        border-color 0.25s ease;
-    }
-    a:hover,
-    button:hover { transform: translateY(-2px); }
-    a:active,
-    button:active { transform: translateY(0); }
-    .nav-link {
-      position: relative;
-      padding: 0.85rem 0.85rem;
-      border-radius: 999px;
-      color: #1b2230;
-      font-weight: 700;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
-    }
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 6px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e41e28, #de0c1a);
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-    .nav-link:hover {
-      color: #e41e28;
-      background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
-    }
-    .nav-link:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .nav-link:focus-visible {
-      outline: 2px solid rgba(228, 30, 40, 0.45);
-      outline-offset: 6px;
-    }
-    .logo-link img { transition: transform 0.25s ease; }
-    .logo-link:hover img,
-    .logo-link:focus-visible img { transform: scale(1.06); }
 
     main { padding-bottom: 3rem; }
 
-    .page-hero {
-      position: relative;
-      min-height: 35vh;
-      display: flex;
-      align-items: flex-end;
-      background: linear-gradient(180deg, rgba(6, 10, 16, 0.25), rgba(6, 10, 16, 0.78)), var(--hero-image) center/cover no-repeat;
-      border-radius: 24px;
-      overflow: hidden;
-      margin: 1.25rem clamp(1rem, 4vw, 2rem) 2rem;
-      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22);
-      color: #ffffff;
+    .page-shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+      display: grid;
+      gap: 2rem;
     }
 
-    .page-hero::after {
+    .universe-hero {
+      position: relative;
+      min-height: 70vh;
+      margin: 0 clamp(1rem, 4vw, 2rem);
+      border-radius: 28px;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: url('images/ImageIDAgri.jpg') center/cover no-repeat fixed;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+      isolation: isolate;
+    }
+
+    .universe-hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.48));
-      pointer-events: none;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 42%),
+        linear-gradient(120deg, rgba(5, 8, 14, 0.15), rgba(5, 8, 14, 0.75));
+      backdrop-filter: blur(4px);
+      z-index: 0;
     }
 
-    .page-hero__content {
+    .hero-content {
       position: relative;
       z-index: 1;
-      width: min(1100px, 100%);
-      margin: 0 auto;
-      padding: clamp(1.5rem, 4vw, 2.6rem);
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 0.8rem;
-      background: rgba(0, 0, 0, 0.38);
-      border: 1px solid rgba(255, 255, 255, 0.38);
-      border-radius: 999px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 800;
-      font-size: 0.78rem;
-    }
-
-    .hero-kicker::after {
-      content: "";
-      width: 18px;
-      height: 2px;
-      background: var(--accent-color);
-      border-radius: 999px;
-    }
-
-    .hero-title {
-      margin: 0;
-      font-size: clamp(2.2rem, 4vw, 2.8rem);
-      letter-spacing: 0.02em;
-      text-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
-    }
-
-    .hero-lead {
-      margin: 0;
-      max-width: 680px;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-      font-size: 1.05rem;
-    }
-
-    .page-shell {
-      width: min(1100px, 100%);
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 4vw, 2rem) 3rem;
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .info-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      display: grid;
-      gap: 0.55rem;
-    }
-
-    .info-card h2 {
-      margin: 0;
-      color: #111827;
-      letter-spacing: 0.01em;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(var(--accent-color-rgb), 0.08);
-      color: var(--accent-color);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .pill::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background: var(--accent-color);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.12);
-    }
-
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.65rem 1.1rem;
-      border-radius: 12px;
-      background: var(--accent-color);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
-      width: fit-content;
-    }
-
-    .cta-link:hover,
-    .cta-link:focus-visible {
-      filter: brightness(0.95);
-      transform: translateY(-1px);
-    }
-
-    .content-section {
-      width: min(1100px, 100%);
-      margin: 0 auto 1.5rem;
-      padding: 0 clamp(1rem, 4vw, 2rem);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .section-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 1.4rem 1.6rem;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.04);
+      width: min(960px, 100%);
       display: grid;
       gap: 0.9rem;
+      padding: clamp(1.5rem, 4vw, 2.75rem);
+      background: rgba(5, 8, 14, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.45);
     }
 
-    .section-header {
-      display: grid;
-      gap: 0.35rem;
+    .eyebrow { letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .eyebrow::before { content: ""; width: 36px; height: 2px; background: linear-gradient(90deg, rgba(124, 155, 72, 0.9), rgba(255, 255, 255, 0)); border-radius: 999px; display: inline-block; }
+
+    .hero-content h1 { margin: 0; font-size: clamp(2rem, 3.4vw, 2.8rem); letter-spacing: 0.02em; }
+    .hero-content p { margin: 0; color: rgba(244, 245, 247, 0.9); line-height: 1.65; max-width: 820px; }
+    .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-top: 0.5rem; }
+
+    .primary-btn,
+    .ghost-btn { border-radius: 12px; padding: 0.95rem 1.4rem; font-weight: 700; letter-spacing: 0.02em; text-transform: none; border: 1px solid transparent; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease; }
+    .primary-btn { background: var(--accent); color: #fff; box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32); border-color: rgba(255, 255, 255, 0.06); }
+    .ghost-btn { background: transparent; border-color: rgba(255, 255, 255, 0.2); color: #fff; }
+    .primary-btn:hover,
+    .primary-btn:focus-visible,
+    .ghost-btn:hover,
+    .ghost-btn:focus-visible { transform: translateY(-1px); box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35); }
+
+    .section-block {
+      background: radial-gradient(circle at 20% 20%, rgba(124, 155, 72, 0.08), rgba(5, 8, 14, 0)),
+        linear-gradient(180deg, rgba(12, 16, 24, 0.95), rgba(5, 8, 14, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 22px;
+      padding: clamp(1.8rem, 3vw, 2.6rem);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
     }
 
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(var(--accent-color-rgb), 0.08);
-      color: var(--accent-color);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 800;
-      width: fit-content;
-    }
+    .section-block::after { content: ""; position: absolute; inset: 10% -12% auto -12%; height: 200px; background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 60%); pointer-events: none; }
+    .section-frame { position: relative; z-index: 1; display: grid; gap: 1rem; }
+    .section-heading { margin: 0; font-size: clamp(1.6rem, 2.8vw, 2.2rem); color: #fff; letter-spacing: 0.01em; }
+    .section-lead { margin: 0; color: rgba(244, 245, 247, 0.86); line-height: 1.7; }
 
-    .section-lead {
-      margin: 0;
-      color: #374151;
-      line-height: 1.6;
-    }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.2rem 1.3rem; border-radius: 16px; box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28); display: grid; gap: 0.35rem; }
+    .card h3 { margin: 0; color: #fff; font-size: 1.1rem; letter-spacing: 0.01em; }
+    .card p { margin: 0; color: rgba(244, 245, 247, 0.8); line-height: 1.55; }
 
-    #interactive-sketch {
-      min-height: 320px;
-      border-radius: 16px;
-      border: 1px dashed rgba(0, 0, 0, 0.12);
-      background: linear-gradient(120deg, rgba(var(--accent-color-rgb), 0.08), rgba(255, 255, 255, 0.9));
-      display: grid;
-      place-items: center;
-      color: #1f2937;
-      text-align: center;
-      padding: 1rem;
-      font-weight: 700;
-    }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .media-card { position: relative; border-radius: 18px; overflow: hidden; min-height: 220px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); }
+    .media-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .media-card span { position: absolute; inset: auto 0 0 0; padding: 1rem; background: linear-gradient(180deg, transparent, rgba(5, 8, 14, 0.9)); color: #fff; font-weight: 700; letter-spacing: 0.01em; }
 
-    .essentials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-
-    .essential-item {
-      padding: 1rem 1.1rem;
-      border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      background: rgba(var(--accent-color-rgb), 0.04);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.05);
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .essential-item h3 {
-      margin: 0;
-      color: #111827;
-    }
-
-    .strengths {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-      align-items: center;
-    }
-
-    .strengths__visual {
-      min-height: 220px;
-      border-radius: 14px;
-      background: radial-gradient(circle at 30% 30%, rgba(var(--accent-color-rgb), 0.18), transparent 52%),
-        linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.08));
-      border: 1px solid rgba(0, 0, 0, 0.06);
-    }
-
-    .resources {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .resources-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .resource-note {
-      margin: 0;
-      color: #4b5563;
-    }
-
-    .cta-link svg {
-      width: 18px;
-      height: 18px;
-    }
+    @media (max-width: 768px) { .universe-hero { min-height: 60vh; } }
   </style>
 </head>
-<body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
+<body>
   <header class="global-nav" role="banner">
     <a class="nav-brand" href="index.html">
       <img src="logos/ID GROUP.png" alt="ID GROUP">
@@ -342,15 +124,15 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">73 rue du Bâtiment<br>Siège de la société</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
     <nav class="nav-links" aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="index.html#universes">Univers</a>
-      <a href="groupe.html">Groupe</a>
-      <a href="engagements.html">Engagements</a>
+      <a href="index.html#about">Groupe</a>
+      <a href="index.html#commitments">Engagements</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -388,91 +170,67 @@
       </a>
     </div>
   </header>
+
   <main>
-    <section class="page-hero" data-debug-label="Bannière univers ID AGRI" style="--hero-image: url('images/ImageIDAgri.jpg');">
-      <div class="page-hero__content">
-        <span class="hero-kicker">ID AGRI</span>
-        <h1 class="hero-title">Élevage et bien-être animal</h1>
-        <p class="hero-lead">Solutions durables pour protéger les élevages, sécuriser les équipes et préserver l'environnement des animaux.</p>
+    <section class="universe-hero" data-debug-label="Bannière univers AGRI">
+      <div class="hero-content">
+        <span class="eyebrow">ID AGRI</span>
+        <h1>Confort animal et sécurité des élevages, chaque jour.</h1>
+        <p>Idées, tapis techniques et revêtements spécialisés : ID Agri accompagne les éleveurs et leurs équipes pour réduire la pénibilité, améliorer l’hygiène et protéger le vivant.</p>
+        <div class="hero-actions">
+          <a class="icon-btn primary" href="contact.html">Échanger avec un conseiller</a>
+          <a class="icon-btn" href="index.html#commitments">Nos engagements</a>
+        </div>
       </div>
     </section>
 
-    <section class="content-section" aria-labelledby="agri-sketch-title">
-      <article class="section-card">
-        <div class="section-header">
-          <span class="section-kicker">Croquis interactif</span>
-          <h2 id="agri-sketch-title">Croquis ID AGRI</h2>
-          <p class="section-lead">Projetez l'aménagement de vos bâtiments d'élevage et la circulation des équipes.</p>
-        </div>
-        <div id="interactive-sketch" aria-label="Croquis interactif ID AGRI">Croquis interactif en préparation</div>
-      </article>
-    </section>
-
-    <section class="content-section" aria-labelledby="agri-essentials-title">
-      <article class="section-card">
-        <div class="section-header">
-          <span class="section-kicker">Les essentiels</span>
-          <h2 id="agri-essentials-title">Produits phares pour les élevages</h2>
-          <p class="section-lead">Des équipements adaptés aux exigences sanitaires et au bien-être animal.</p>
-        </div>
-        <div class="essentials-grid">
-          <article class="essential-item">
-            <h3>Biosécurité</h3>
-            <p>Portiques de désinfection, pédiluves et solutions de nettoyage pour les zones sensibles.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Protection des équipes</h3>
-            <p>EPI spécialisés, lunettes, gants et masques adaptés aux environnements agricoles.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Hygiène des bâtiments</h3>
-            <p>Détergents, désinfectants et équipements de lavage haute pression.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Bien-être animal</h3>
-            <p>Matelas de confort, éclairage adapté et solutions de ventilation maîtrisée.</p>
-          </article>
-          <article class="essential-item">
-            <h3>Gestion des effluents</h3>
-            <p>Solutions de collecte, de traitement et d'épandage sécurisées.</p>
-          </article>
-        </div>
-      </article>
-    </section>
-
-    <section class="content-section" aria-labelledby="agri-strengths-title">
-      <article class="section-card strengths">
-        <div class="strengths__text">
-          <div class="section-header">
-            <span class="section-kicker">Points forts</span>
-            <h2 id="agri-strengths-title">Pourquoi choisir ID AGRI</h2>
-            <p class="section-lead">Des solutions robustes pour protéger les cheptels et sécuriser vos équipes sur le terrain.</p>
+    <div class="page-shell">
+      <section class="section-block" id="mission">
+        <div class="section-frame">
+          <p class="eyebrow">Notre promesse</p>
+          <h2 class="section-heading">Prendre soin du vivant dans chaque bâtiment d’élevage.</h2>
+          <p class="section-lead">Nous concevons des surfaces robustes qui améliorent le confort animal, sécurisent les trajets des équipes et résistent aux conditions exigeantes des fermes et exploitations.</p>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Bien-être animal</h3>
+              <p>Tapis amortissants, isolation et hygiène renforcée pour réduire le stress et préserver la santé des troupeaux.</p>
+            </article>
+            <article class="card">
+              <h3>Confort des équipes</h3>
+              <p>Revêtements antidérapants et faciles à nettoyer pour diminuer la pénibilité et sécuriser les gestes quotidiens.</p>
+            </article>
+            <article class="card">
+              <h3>Résistance terrain</h3>
+              <p>Solutions capables d’affronter l’humidité, les chocs et l’intensité des élevages, sans compromis sur la durabilité.</p>
+            </article>
           </div>
-          <ul class="pill-list">
-            <li class="pill">Matériel éprouvé</li>
-            <li class="pill">Conseil terrain</li>
-            <li class="pill">Logistique adaptée</li>
-          </ul>
         </div>
-        <div class="strengths__visual" role="img" aria-label="Illustration des bénéfices ID AGRI"></div>
-      </article>
-    </section>
+      </section>
 
-    <section class="content-section" aria-labelledby="agri-resources-title">
-      <article class="section-card resources">
-        <div class="section-header">
-          <span class="section-kicker">Ressources</span>
-          <h2 id="agri-resources-title">Catalogues et fiches</h2>
-          <p class="resource-note">Retrouvez les documents ID AGRI pour préparer vos chantiers et vos plans de biosécurité.</p>
+      <section class="section-block" id="solutions">
+        <div class="section-frame">
+          <p class="eyebrow">Applications</p>
+          <h2 class="section-heading">Élevage, circulations, aires de repos.</h2>
+          <p class="section-lead">Nos tapis et revêtements sécurisent les zones de couchage, les couloirs de traite, les quais et toutes les aires sensibles, avec un accompagnement sur-mesure.</p>
+          <div class="media-grid">
+            <figure class="media-card">
+              <img src="images/ImageIDAgri.jpg" alt="Solutions ID AGRI dans un élevage">
+              <span>Confort animal</span>
+            </figure>
+            <figure class="media-card">
+              <img src="images/PlanCroquis.jpg" alt="Croquis ID AGRI">
+              <span>Études sur plan</span>
+            </figure>
+            <figure class="media-card">
+              <img src="images/batiment73.png" alt="Site ID Group">
+              <span>Fabrication locale</span>
+            </figure>
+          </div>
         </div>
-        <div class="resources-actions">
-          <a class="cta-link" href="#">Catalogue</a>
-          <a class="cta-link" href="#">Fiches techniques</a>
-        </div>
-      </article>
-    </section>
+      </section>
+    </div>
   </main>
+
   <script src="scripts/global.js"></script>
-  <script defer src="picocms.js"></script>
 </body>
 </html>
