@@ -7,6 +7,10 @@
   --nav-text: #f7f8fb;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   padding-top: var(--nav-height);
 }
@@ -17,15 +21,17 @@ body {
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  gap: clamp(0.5rem, 1vw, 1rem);
-  padding: 0.65rem clamp(1rem, 3vw, 2rem);
-  background: linear-gradient(120deg, rgba(5, 8, 14, 0.62), rgba(5, 8, 14, 0.22));
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 4%;
+  background: rgba(8, 12, 18, 0.4);
   color: var(--nav-text);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--nav-border);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  transition: background 0.3s ease;
 }
 
 .nav-brand {
@@ -103,9 +109,8 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(0.6rem, 1.6vw, 1.25rem);
-  flex: 1;
-  flex-wrap: wrap;
+  gap: clamp(0.8rem, 2vw, 1.8rem);
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -217,8 +222,21 @@ body.debug-mode .debug-tooltip {
 }
 
 @media (max-width: 768px) {
-  :root { --nav-height: 82px; }
-  .global-nav { align-items: flex-start; padding-top: 0.85rem; padding-bottom: 0.85rem; }
-  .nav-links { justify-content: flex-start; }
-  body { padding-top: var(--nav-height); }
+  :root {
+    --nav-height: 82px;
+  }
+
+  .global-nav {
+    align-items: flex-start;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+  }
+
+  body {
+    padding-top: var(--nav-height);
+  }
 }

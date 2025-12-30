@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="picocms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <style>
     :root {
       --id-red: #e41e28;
@@ -26,7 +30,10 @@
       min-height: 100vh;
     }
 
-    img { max-width: 100%; display: block; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .universe-shell {
       padding-bottom: 3rem;
@@ -207,7 +214,11 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
     }
 
-    .photo-card img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     .photo-card span {
       position: absolute;
@@ -260,6 +271,7 @@
     }
   </style>
 </head>
+
 <body>
   <header class="global-nav" role="banner">
     <a class="nav-brand" href="index.html">
@@ -282,34 +294,49 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false" aria-label="Activer le mode debug">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 3v3m8-3v3" />
-          <path d="M4 8h16" />
-          <path d="M4 16h16" />
-          <path d="M9 8v4a3 3 0 1 0 6 0V8" />
-          <path d="M5 19h14" />
+      <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false"
+        aria-label="Activer le mode debug">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m8 2 1.88 1.88" />
+          <path d="M14.12 3.88 16 2" />
+          <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" />
+          <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6" />
+          <path d="M12 20v-9" />
+          <path d="M6.53 9C4.6 8.8 3 7.1 3 5" />
+          <path d="M6 13H2" />
+          <path d="m3 21 3-3" />
+          <path d="M20.97 5c0 2.1-1.6 3.8-3.53 4" />
+          <path d="M22 13h-4" />
+          <path d="m21 21-3-3" />
         </svg>
       </button>
       <button class="icon-btn icon-only" type="button" title="Langue" aria-label="Changer de langue">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18" />
-          <path d="M12 3a15 15 0 0 1 0 18" />
-          <path d="M12 3a15 15 0 0 0 0 18" />
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 2a14.5 14.5 0 0 0 0 20" />
+          <path d="M12 2a14.5 14.5 0 0 1 0 20" />
+          <path d="M2 12h20" />
         </svg>
       </button>
       <a class="icon-btn" href="#" title="Espace Client / Outils">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 7h-9" /><path d="M14 17H5" />
-          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="21" y1="9" x2="14" y2="9" />
+          <line x1="10" y1="9" x2="3" y2="9" />
+          <line x1="21" y1="15" x2="12" y2="15" />
+          <line x1="8" y1="15" x2="3" y2="15" />
+          <line x1="14" y1="7" x2="14" y2="11" />
+          <line x1="8" y1="13" x2="8" y2="17" />
         </svg>
         <span>Outils</span>
       </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 5h16v14H4z" />
-          <path d="m4 7 8 5 8-5" />
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
         </svg>
         <span>Contact</span>
       </a>
@@ -317,41 +344,48 @@
   </header>
 
   <main class="universe-shell">
-    <section class="page-hero" data-debug-label="Bannière univers Habitat" style="--hero-image: url('images/ImageIDHome.jpg');">
-      <div class="page-hero__content">
+    <section class="page-hero" data-debug-label="Bannière univers Habitat"
+      style="--hero-image: url('images/ImageIDHome.jpg');">
+      <div class="page-hero__content" data-aos="fade-up" data-aos-duration="1000">
         <span class="hero-kicker">ID Home</span>
         <h1 class="hero-title">Un habitat sain et inspirant</h1>
-        <p class="hero-lead">Revêtements techniques, confort acoustique, hygiène simplifiée : ID Home imagine des solutions qui protègent les occupants tout en valorisant chaque espace de vie.</p>
+        <p class="hero-lead">Revêtements techniques, confort acoustique, hygiène simplifiée : ID Home imagine des
+          solutions qui protègent les occupants tout en valorisant chaque espace de vie.</p>
       </div>
     </section>
 
     <section class="section-block" aria-labelledby="home-intro">
       <div class="section-frame about-layout">
-        <div>
+        <div data-aos="fade-right">
           <p class="eyebrow" id="home-intro">Solutions Habitat</p>
           <h2 class="section-heading">Conçues pour durer, pensées pour le quotidien</h2>
-          <p class="section-lead">De l’entrée aux pièces à vivre, nous sécurisons les zones de passage, améliorons le confort et simplifions l’entretien. Nos équipes s’appuient sur une culture technique forte pour proposer des matières résistantes et esthétiques.</p>
+          <p class="section-lead">De l’entrée aux pièces à vivre, nous sécurisons les zones de passage, améliorons le
+            confort et simplifions l’entretien. Nos équipes s’appuient sur une culture technique forte pour proposer des
+            matières résistantes et esthétiques.</p>
           <div class="section-grid">
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
               <h3>Confort et sécurité</h3>
-              <p>Antidérapants, résistants aux chocs et faciles à nettoyer, nos revêtements préservent la qualité de l’air intérieur et protègent les occupants.</p>
+              <p>Antidérapants, résistants aux chocs et faciles à nettoyer, nos revêtements préservent la qualité de
+                l’air intérieur et protègent les occupants.</p>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="400">
               <h3>Adaptés à chaque usage</h3>
-              <p>Habitat individuel, copropriété ou hébergement collectif : nous ajustons les textures, les formats et les performances aux contraintes du lieu.</p>
+              <p>Habitat individuel, copropriété ou hébergement collectif : nous ajustons les textures, les formats et
+                les performances aux contraintes du lieu.</p>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="600">
               <h3>Finitions harmonieuses</h3>
-              <p>Des teintes et détails soignés pour s’intégrer à votre identité décorative tout en assurant une durabilité maximale.</p>
+              <p>Des teintes et détails soignés pour s’intégrer à votre identité décorative tout en assurant une
+                durabilité maximale.</p>
             </div>
           </div>
-          <div class="pill-row">
+          <div class="pill-row" data-aos="fade-up" data-aos-delay="800">
             <span class="pill">Confort acoustique</span>
             <span class="pill">Hygiène renforcée</span>
             <span class="pill">Sécurité des passages</span>
           </div>
         </div>
-        <div class="about-visual" aria-hidden="true"></div>
+        <div class="about-visual" aria-hidden="true" data-aos="fade-left"></div>
       </div>
     </section>
 
@@ -359,7 +393,8 @@
       <div class="section-frame">
         <p class="eyebrow" id="home-gallery">Réalisations & inspirations</p>
         <h2 class="section-heading">Des espaces de vie plus sûrs et plus chaleureux</h2>
-        <p class="section-lead">Chaque projet est accompagné par des conseils sur-mesure : choix des matériaux, gestion des contraintes techniques et suivi de la pose.</p>
+        <p class="section-lead">Chaque projet est accompagné par des conseils sur-mesure : choix des matériaux, gestion
+          des contraintes techniques et suivi de la pose.</p>
         <div class="photo-grid">
           <div class="photo-card">
             <img src="images/ImageIDHome.jpg" alt="Revêtement antidérapant dans un espace de vie">
@@ -376,13 +411,35 @@
         </div>
         <div class="cta-row">
           <a class="primary-btn" href="contact.html">Discuter de votre projet</a>
-          <p class="section-lead" style="margin:0; max-width:520px;">Nos équipes ID Home vous guident sur les bonnes épaisseurs, la résistance à l’humidité et la facilité d’entretien selon vos espaces.</p>
+          <p class="section-lead" style="margin:0; max-width:520px;">Nos équipes ID Home vous guident sur les bonnes
+            épaisseurs, la résistance à l’humidité et la facilité d’entretien selon vos espaces.</p>
         </div>
       </div>
     </section>
   </main>
 
   <script src="scripts/global.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      once: false,
+      mirror: true,
+      duration: 800,
+      easing: 'ease-out-cubic'
+    });
+
+    // GSAP Entrance Animations
+    window.addEventListener('load', () => {
+      const tl = gsap.timeline();
+      tl.from(".nav-brand", { y: -50, opacity: 0, duration: 1, ease: "power4.out" })
+        .from(".nav-links a", { y: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.5")
+        .from(".page-hero", { scale: 1.1, opacity: 0, duration: 1.5, ease: "power4.out" }, "-=0.5")
+        .from(".hero-kicker", { x: -30, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=1")
+        .from(".hero-title", { x: -50, opacity: 0, duration: 1, ease: "power4.out" }, "-=0.8")
+        .from(".hero-lead", { x: -30, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6");
+    });
+  </script>
   <script defer src="picocms.js"></script>
 </body>
+
 </html>
