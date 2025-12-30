@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="picocms.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <style>
     :root {
       --id-red: #e41e28;
@@ -65,6 +70,25 @@
       outline-offset: 4px;
     }
 
+    .primary-pulse {
+      position: relative;
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(228, 30, 40, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(228, 30, 40, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(228, 30, 40, 0);
+      }
+    }
+
     .app-shell {
       position: relative;
       min-height: 100vh;
@@ -99,6 +123,17 @@
       backdrop-filter: blur(6px);
       z-index: 1;
       pointer-events: none;
+      animation: drift 20s infinite alternate linear;
+    }
+
+    @keyframes drift {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.1);
+      }
     }
 
     .hero::after {
@@ -207,9 +242,9 @@
 
     .card:hover,
     .card:focus-within {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-      border-color: rgba(228, 30, 40, 0.35);
+      transform: translateY(-10px);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 20px rgba(228, 30, 40, 0.15);
+      border-color: var(--id-red);
     }
 
     .card h3 {
@@ -257,8 +292,15 @@
     }
 
     @keyframes shimmer {
-      from { transform: translate3d(-6px, -4px, 0) scale(1.02); opacity: 0.65; }
-      to { transform: translate3d(6px, 6px, 0) scale(1.05); opacity: 0.9; }
+      from {
+        transform: translate3d(-6px, -4px, 0) scale(1.02);
+        opacity: 0.65;
+      }
+
+      to {
+        transform: translate3d(6px, 6px, 0) scale(1.05);
+        opacity: 0.9;
+      }
     }
 
     .hero h1 {
@@ -436,8 +478,13 @@
     }
 
     @keyframes floaty {
-      from { transform: translateY(0); }
-      to { transform: translateY(-6px); }
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-6px);
+      }
     }
 
     .panel::after {
@@ -548,9 +595,17 @@
       opacity: 0.75;
     }
 
-    .panel[data-id="home"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(234,97,26,0.55)); }
-    .panel[data-id="pro"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(25,63,96,0.52)); }
-    .panel[data-id="agri"]::after { background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(124,155,72,0.52)); }
+    .panel[data-id="home"]::after {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(234, 97, 26, 0.55));
+    }
+
+    .panel[data-id="pro"]::after {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(25, 63, 96, 0.52));
+    }
+
+    .panel[data-id="agri"]::after {
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(124, 155, 72, 0.52));
+    }
 
     .enter-btn {
       background: #fff;
@@ -695,8 +750,27 @@
         flex: 2.2;
       }
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #05080e;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--id-red);
+    }
   </style>
 </head>
+
 <body>
   <header class="global-nav" role="banner" data-debug-label="Div menu haut">
     <a class="nav-brand" href="index.html" data-debug-label="Div logo ID GROUP">
@@ -719,34 +793,49 @@
       <a href="contact.html" data-debug-label="Lien Contact">Contact</a>
     </nav>
     <div class="nav-actions">
-      <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false" aria-label="Activer le mode debug">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 3v3m8-3v3" />
-          <path d="M4 8h16" />
-          <path d="M4 16h16" />
-          <path d="M9 8v4a3 3 0 1 0 6 0V8" />
-          <path d="M5 19h14" />
+      <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false"
+        aria-label="Activer le mode debug">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m8 2 1.88 1.88" />
+          <path d="M14.12 3.88 16 2" />
+          <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" />
+          <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6" />
+          <path d="M12 20v-9" />
+          <path d="M6.53 9C4.6 8.8 3 7.1 3 5" />
+          <path d="M6 13H2" />
+          <path d="m3 21 3-3" />
+          <path d="M20.97 5c0 2.1-1.6 3.8-3.53 4" />
+          <path d="M22 13h-4" />
+          <path d="m21 21-3-3" />
         </svg>
       </button>
       <button class="icon-btn icon-only" type="button" title="Langue" aria-label="Changer de langue">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9" />
-          <path d="M3 12h18" />
-          <path d="M12 3a15 15 0 0 1 0 18" />
-          <path d="M12 3a15 15 0 0 0 0 18" />
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 2a14.5 14.5 0 0 0 0 20" />
+          <path d="M12 2a14.5 14.5 0 0 1 0 20" />
+          <path d="M2 12h20" />
         </svg>
       </button>
       <a class="icon-btn" href="#" title="Espace Client / Outils">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 7h-9" /><path d="M14 17H5" />
-          <circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" />
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="21" y1="9" x2="14" y2="9" />
+          <line x1="10" y1="9" x2="3" y2="9" />
+          <line x1="21" y1="15" x2="12" y2="15" />
+          <line x1="8" y1="15" x2="3" y2="15" />
+          <line x1="14" y1="7" x2="14" y2="11" />
+          <line x1="8" y1="13" x2="8" y2="17" />
         </svg>
         <span>Outils</span>
       </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 5h16v14H4z" />
-          <path d="m4 7 8 5 8-5" />
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
         </svg>
         <span>Contact</span>
       </a>
@@ -756,12 +845,14 @@
     <section class="hero" id="intro" data-debug-label="Bannière hero ID GROUP">
       <div class="hero-frame">
         <div class="hero-body">
-          <div class="hero-inner" data-debug-label="Bloc texte hero">
+          <div class="hero-inner" data-aos="fade-up" data-aos-duration="1000" data-debug-label="Bloc texte hero">
             <div class="eyebrow">Notre mission</div>
             <h1>Innover pour protéger les lieux, les équipes et les élevages.</h1>
-            <p>Une expérience immersive inspirée par vos besoins en protection, hygiène et bien-être. Découvrez nos trois univers complémentaires à travers un rideau interactif pensé pour être simple, moderne et exigeant.</p>
+            <p>Une expérience immersive inspirée par vos besoins en protection, hygiène et bien-être. Découvrez nos
+              trois univers complémentaires à travers un rideau interactif pensé pour être simple, moderne et exigeant.
+            </p>
             <div class="hero-actions">
-              <button id="discoverBtn">Découvrir nos univers</button>
+              <button id="discoverBtn" class="primary-pulse">Découvrir nos univers</button>
             </div>
           </div>
         </div>
@@ -770,60 +861,82 @@
 
     <section class="section-block" id="groupe" data-debug-label="Présentation ID GROUP">
       <div class="section-frame about-layout">
-        <div>
+        <div data-aos="fade-right" data-aos-duration="1000">
           <p class="eyebrow">Présentation</p>
           <h2 class="section-heading">ID Group – Des solutions durables pour tous vos espaces</h2>
-          <p class="section-lead">ID Group est un groupe industriel français, expert des revêtements de sols et tapis techniques, qui conçoit et fabrique des solutions adaptées aux usages de la maison, du bâtiment, de l’industrie et de l’agriculture.</p>
-          <p class="section-lead">Depuis plus de 30 ans, nous accompagnons nos clients dans leurs problématiques de sécurité, de confort, d’hygiène et de durabilité, en apportant des solutions concrètes pensées pour leurs environnements réels et leurs contraintes métier.</p>
+          <p class="section-lead">ID Group est un groupe industriel français, expert des revêtements de sols et tapis
+            techniques, qui conçoit et fabrique des solutions adaptées aux usages de la maison, du bâtiment, de
+            l’industrie et de l’agriculture.</p>
+          <p class="section-lead">Depuis plus de 30 ans, nous accompagnons nos clients dans leurs problématiques de
+            sécurité, de confort, d’hygiène et de durabilité, en apportant des solutions concrètes pensées pour leurs
+            environnements réels et leurs contraintes métier.</p>
           <div class="section-grid">
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
               <h3>Une approche simple et exigeante</h3>
-              <p>Partir de l’usage, comprendre le besoin, et concevoir la solution la plus juste. Chez ID Group, nous ne vendons pas seulement des produits, nous aidons nos clients à améliorer leurs espaces de vie et de travail, jour après jour.</p>
+              <p>Partir de l’usage, comprendre le besoin, et concevoir la solution la plus juste. Chez ID Group, nous ne
+                vendons pas seulement des produits, nous aidons nos clients à améliorer leurs espaces de vie et de
+                travail, jour après jour.</p>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="400">
               <h3>Trois univers complémentaires</h3>
-              <p><strong>ID Home</strong> pour l’habitat et les espaces de vie<br><strong>ID Pro</strong> pour le bâtiment, l’industrie et les collectivités<br><strong>ID Agri</strong> pour l’élevage et le confort animal.</p>
+              <p><strong>ID Home</strong> pour l’habitat et les espaces de vie<br><strong>ID Pro</strong> pour le
+                bâtiment, l’industrie et les collectivités<br><strong>ID Agri</strong> pour l’élevage et le confort
+                animal.</p>
             </div>
           </div>
-          <p class="section-lead">Ancré localement, avec un site de production basé à Wormhout, ID Group s’appuie sur un savoir-faire industriel reconnu, une culture technique forte et des équipes engagées, proches du terrain et de leurs clients. Notre ambition est claire : concevoir des espaces plus sûrs, plus propres et plus accueillants, en prenant soin du vivant.</p>
+          <p class="section-lead" data-aos="fade-up" data-aos-delay="600">Ancré localement, avec un site de production
+            basé à Wormhout, ID Group s’appuie sur un savoir-faire industriel reconnu, une culture technique forte et
+            des équipes engagées, proches du terrain et de leurs clients. Notre ambition est claire : concevoir des
+            espaces plus sûrs, plus propres et plus accueillants, en prenant soin du vivant.</p>
         </div>
-        <div class="about-visual" aria-hidden="true"></div>
+        <div class="about-visual" aria-hidden="true" data-aos="fade-left" data-aos-duration="1000"></div>
       </div>
     </section>
 
     <section class="section-block final" id="engagements" data-debug-label="Engagements ID GROUP">
       <div class="section-frame">
-        <p class="eyebrow">Nos engagements</p>
-        <h2 class="section-heading">Positiv’ID : agir durablement, concrètement, collectivement</h2>
-        <p class="section-lead">Chez ID Group, l’engagement n’est pas un discours. C’est une démarche quotidienne, intégrée à nos choix industriels, humains et environnementaux. Nous concevons des solutions utiles, durables et respectueuses des hommes, des animaux et de leur environnement.</p>
+        <p class="eyebrow" data-aos="fade-up">Nos engagements</p>
+        <h2 class="section-heading" data-aos="fade-up" data-aos-delay="100">Positiv’ID : agir durablement, concrètement,
+          collectivement</h2>
+        <p class="section-lead" data-aos="fade-up" data-aos-delay="200">Chez ID Group, l’engagement n’est pas un
+          discours. C’est une démarche quotidienne, intégrée à nos choix industriels, humains et environnementaux. Nous
+          concevons des solutions utiles, durables et respectueuses des hommes, des animaux et de leur environnement.
+        </p>
         <div class="section-grid">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="300">
             <h3>🌱 Des solutions pensées pour durer</h3>
-            <p>Des revêtements robustes, fiables et adaptés aux usages intensifs pour prolonger leur durée de vie et limiter l’impact environnemental dès la conception.</p>
+            <p>Des revêtements robustes, fiables et adaptés aux usages intensifs pour prolonger leur durée de vie et
+              limiter l’impact environnemental dès la conception.</p>
           </div>
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="400">
             <h3>🏭 Un savoir-faire industriel maîtrisé</h3>
-            <p>Notre site de production de Wormhout incarne une industrie responsable, ancrée localement, maîtrisant ses process et garantissant une qualité constante.</p>
+            <p>Notre site de production de Wormhout incarne une industrie responsable, ancrée localement, maîtrisant ses
+              process et garantissant une qualité constante.</p>
           </div>
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="500">
             <h3>👥 L’humain au cœur</h3>
-            <p>Des équipes engagées, formées et reconnues. Nous cultivons la proximité, la transmission du savoir et le respect des femmes et des hommes qui font vivre le groupe.</p>
+            <p>Des équipes engagées, formées et reconnues. Nous cultivons la proximité, la transmission du savoir et le
+              respect des femmes et des hommes qui font vivre le groupe.</p>
           </div>
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="600">
             <h3>🐄 Prendre soin du vivant</h3>
-            <p>Des solutions pensées pour le confort animal, la sécurité des utilisateurs et l’amélioration des conditions de travail, en réduisant la pénibilité au quotidien.</p>
+            <p>Des solutions pensées pour le confort animal, la sécurité des utilisateurs et l’amélioration des
+              conditions de travail, en réduisant la pénibilité au quotidien.</p>
           </div>
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-delay="700">
             <h3>♻️ Une démarche responsable et mesurable</h3>
-            <p>Certifications, évaluation des impacts, éco-conception : nous avançons avec méthode et transparence, en intégrant progressivement des indicateurs concrets dans notre développement.</p>
+            <p>Certifications, évaluation des impacts, éco-conception : nous avançons avec méthode et transparence, en
+              intégrant progressivement des indicateurs concrets dans notre développement.</p>
           </div>
         </div>
-        <p class="section-lead">S’engager, pour ID Group, c’est avancer avec curiosité, respect et efficience, au service de solutions utiles aujourd’hui et responsables pour demain.</p>
+        <p class="section-lead" data-aos="fade-up" data-aos-delay="800">S’engager, pour ID Group, c’est avancer avec
+          curiosité, respect et efficience, au service de solutions utiles aujourd’hui et responsables pour demain.</p>
       </div>
     </section>
 
     <section class="accordion is-visible" id="universes" data-debug-label="Rideau des univers">
-      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat" style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
+      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat"
+        style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
         <div class="content">
           <div class="tagline">Habitat</div>
           <img class="logo" src="logos/ID HOME.png" alt="ID HOME">
@@ -835,7 +948,9 @@
         </div>
       </article>
 
-      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité" data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');" data-debug-label="Panneau univers ID PRO">
+      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité"
+        data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');"
+        data-debug-label="Panneau univers ID PRO">
         <div class="content">
           <div class="tagline">Protection, Hygiène et Sécurité</div>
           <img class="logo" src="logos/ID PRO.png" alt="ID PRO">
@@ -847,7 +962,9 @@
         </div>
       </article>
 
-      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal" data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');" data-debug-label="Panneau univers ID AGRI">
+      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal"
+        data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');"
+        data-debug-label="Panneau univers ID AGRI">
         <div class="content">
           <div class="tagline">Élevage et Bien-être animal</div>
           <img class="logo" src="logos/ID AGRI.png" alt="ID AGRI">
@@ -966,7 +1083,55 @@
     if (window.location.hash === '#universes') {
       requestAnimationFrame(showUniverses);
     }
+
+    // Initialize AOS
+    AOS.init({
+      once: false,
+      mirror: true,
+      duration: 800,
+      easing: 'ease-out-cubic'
+    });
+
+    // GSAP Entrance Animations
+    window.addEventListener('load', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const tl = gsap.timeline();
+      tl.from(".nav-brand", { y: -50, opacity: 0, duration: 1, ease: "power4.out" })
+        .from(".nav-links a", { y: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.5")
+        .from(".nav-actions .icon-btn", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.3")
+        .from(".hero h1", { x: -100, opacity: 0, duration: 1.2, ease: "power4.out" }, "-=0.5")
+        .from(".hero p", { x: -50, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
+        .from(".hero-actions", { y: 30, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.6");
+
+      // ScrollTrigger Animations
+      gsap.from("#groupe .about-visual", {
+        scrollTrigger: {
+          trigger: "#groupe",
+          start: "top 80%",
+          end: "top 20%",
+          scrub: 1
+        },
+        x: 100,
+        opacity: 0,
+        rotate: 5
+      });
+
+      gsap.from(".panel", {
+        scrollTrigger: {
+          trigger: "#universes",
+          start: "top 90%",
+          toggleActions: "play none none reverse"
+        },
+        y: 100,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power4.out"
+      });
+    });
   </script>
   <script defer src="picocms.js"></script>
 </body>
+
 </html>
