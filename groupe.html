@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Le Groupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="picocms.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: #101217;
+    }
+
+    .page-hero {
+      padding: calc(var(--nav-height) + 3rem) 8% 3rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .page-hero h1 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+    }
+
+    .page-hero p {
+      margin: 0;
+      line-height: 1.7;
+      color: rgba(16, 18, 23, 0.7);
+      max-width: 780px;
+    }
+
+    .page-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .sketch {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(16, 18, 23, 0.12);
+      background: #ffffff;
+      box-shadow: 0 18px 40px rgba(16, 18, 23, 0.08);
+    }
+
+    .sketch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    footer {
+      padding: 2.5rem 6%;
+      border-top: 1px solid rgba(16, 18, 23, 0.08);
+      color: rgba(16, 18, 23, 0.7);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="groupe.html">Le Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-hero">
+    <div class="page-layout">
+      <div>
+        <h1>Qui sommes-nous ?</h1>
+        <p>ID Group conçoit et fabrique des solutions techniques pour les sols, pensées pour protéger les espaces de vie,
+          soutenir les professionnels et améliorer le bien-être animal. Notre groupe s’appuie sur un savoir-faire
+          industriel français, une culture d’innovation concrète et une proximité permanente avec nos clients.</p>
+        <p>Nos équipes imaginent des environnements plus sûrs, plus confortables et plus durables, en conciliant usage,
+          performance et responsabilité.</p>
+      </div>
+      <div class="sketch" aria-hidden="true">
+        <img src="images/PlanCroquis.jpg" alt="Croquis architectural du groupe">
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p><strong>ID Group</strong> · Industrie française des revêtements techniques · Wormhout</p>
+  </footer>
+
+  <script src="scripts/global.js"></script>
+  <script>
+    const navBar = document.querySelector('.global-nav');
+    const updateNavState = () => {
+      if (!navBar) return;
+      navBar.classList.toggle('is-scrolled', window.scrollY > 10);
+    };
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    updateNavState();
+  </script>
+  <script defer src="picocms.js"></script>
+</body>
+
+</html>

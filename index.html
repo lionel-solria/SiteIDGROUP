@@ -4,39 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP | Piste 1</title>
+  <title>ID GROUP | Accueil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="picocms.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <style>
     :root {
       --id-red: #e41e28;
-      --neutral-dark: #0f141b;
-      --veil: rgba(8, 12, 18, 0.66);
-      --home: #ea611a;
-      --pro: #193f60;
-      --agri: #7c9b48;
-      --dock-height: 150px;
-      --tab-rise: clamp(220px, 42vh, 380px);
+      --text-dark: #101217;
+      --text-light: #f9fafb;
+      --glass-white: rgba(255, 255, 255, 0.82);
+      --glass-border: rgba(255, 255, 255, 0.45);
+      --hero-image: url('images/fondIDGROUP.jpg');
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
+    body.home-landing {
       margin: 0;
       font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: #05080e;
-      color: #f4f5f7;
-      min-height: 100vh;
-      overflow-x: hidden;
+      background: #ffffff;
+      color: var(--text-dark);
+      scroll-snap-type: y mandatory;
     }
 
     img {
@@ -44,1092 +37,385 @@
       display: block;
     }
 
-    button {
-      font: inherit;
-      cursor: pointer;
-      border: none;
-      border-radius: 10px;
-      padding: 0.9rem 1.5rem;
-      background: var(--id-red);
-      color: #fff;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.3);
+    .home-landing .global-nav {
+      background: transparent;
+      color: var(--text-light);
     }
 
-    button:hover,
-    button:focus-visible {
-      transform: translateY(-1px);
-      background: #c81a22;
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+    .home-landing .global-nav.is-scrolled {
+      color: var(--text-dark);
     }
 
-    button:focus-visible {
-      outline: 2px solid rgba(255, 255, 255, 0.35);
-      outline-offset: 4px;
+    .home-landing .global-nav.is-scrolled .nav-links a,
+    .home-landing .global-nav.is-scrolled .nav-brand,
+    .home-landing .global-nav.is-scrolled .nav-brand span {
+      color: var(--text-dark);
     }
 
-    .primary-pulse {
-      position: relative;
-      animation: pulse-glow 2s infinite;
+    .home-landing .global-nav.is-scrolled .nav-links a:hover,
+    .home-landing .global-nav.is-scrolled .nav-links a:focus-visible {
+      color: var(--text-dark);
     }
 
-    @keyframes pulse-glow {
-      0% {
-        box-shadow: 0 0 0 0 rgba(228, 30, 40, 0.4);
-      }
-
-      70% {
-        box-shadow: 0 0 0 15px rgba(228, 30, 40, 0);
-      }
-
-      100% {
-        box-shadow: 0 0 0 0 rgba(228, 30, 40, 0);
-      }
+    .home-landing .global-nav.is-scrolled .nav-links a {
+      color: rgba(16, 18, 23, 0.7);
     }
 
     .app-shell {
-      position: relative;
       min-height: 100vh;
-      overflow: visible;
-      padding-bottom: calc(var(--dock-height) + 2.5rem);
     }
 
-    .hero {
-      --hero-padding: clamp(1.5rem, 4vw, 3.5rem);
+    .hero,
+    .das-section {
       position: relative;
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      padding: var(--hero-padding);
-      padding-top: calc(var(--hero-padding) + var(--nav-height));
-      margin-top: calc(-1 * var(--nav-height));
-      background: #05080e;
-      filter: saturate(0.98);
-      color: #f6f8fb;
-      isolation: isolate;
-      transition: opacity 0.65s ease, transform 0.65s ease, height 0.65s ease, padding 0.65s ease;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: calc(-1 * var(--nav-height)) 0 0 0;
-      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.07), transparent 42%),
-        radial-gradient(circle at 82% 68%, rgba(228, 30, 40, 0.15), transparent 42%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.26));
-      backdrop-filter: blur(6px);
-      z-index: 1;
-      pointer-events: none;
-      animation: drift 20s infinite alternate linear;
-    }
-
-    @keyframes drift {
-      from {
-        transform: scale(1);
-      }
-
-      to {
-        transform: scale(1.1);
-      }
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: calc(-1 * var(--nav-height)) -8% -6% -8%;
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat fixed;
-      transform: scale(1.02);
-      z-index: 0;
-      pointer-events: none;
-      will-change: background-position;
-    }
-
-    .hero-frame {
-      position: relative;
-      z-index: 2;
-      width: min(1200px, 100%);
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-      transition: transform 0.45s ease;
-    }
-
-    .hero-body {
-      display: grid;
-      grid-template-columns: minmax(320px, 820px);
-      gap: clamp(1.25rem, 3vw, 2.25rem);
       align-items: center;
       justify-content: center;
-      min-height: 70vh;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 0.9rem;
-      padding: clamp(1.2rem, 2.5vw, 1.75rem);
-      background: rgba(8, 12, 18, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 24px;
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-block {
-      position: relative;
-      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
-      background: radial-gradient(circle at 20% 20%, rgba(228, 30, 40, 0.06), rgba(5, 8, 14, 0)),
-        radial-gradient(circle at 85% 40%, rgba(124, 155, 72, 0.05), rgba(5, 8, 14, 0)),
-        linear-gradient(180deg, rgba(10, 14, 20, 0.92), rgba(5, 8, 14, 1));
-      border-top: 1px solid rgba(255, 255, 255, 0.04);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      text-align: center;
+      color: var(--text-light);
+      background: var(--hero-image) center/cover no-repeat fixed;
       overflow: hidden;
+      scroll-snap-align: start;
     }
 
-    .section-block::after {
-      content: "";
-      position: absolute;
-      inset: 10% -10% auto -10%;
-      height: 220px;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04), transparent 60%);
-      pointer-events: none;
-    }
-
-    .section-frame {
-      position: relative;
-      z-index: 1;
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-    }
-
-    .section-heading {
-      margin: 0;
-      font-size: clamp(1.6rem, 2.8vw, 2.25rem);
-      letter-spacing: 0.01em;
-      color: #ffffff;
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    }
-
-    .section-lead {
-      margin: 0.4rem 0 0;
-      color: rgba(244, 245, 247, 0.82);
-      line-height: 1.65;
-      max-width: 840px;
-    }
-
-    .section-grid {
-      display: grid;
-      gap: clamp(1.2rem, 2.6vw, 1.8rem);
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .card {
-      padding: clamp(1.3rem, 2.4vw, 1.8rem);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(6px);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-
-    .card:hover,
-    .card:focus-within {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 20px rgba(228, 30, 40, 0.15);
-      border-color: var(--id-red);
-    }
-
-    .card h3 {
-      margin: 0 0 0.4rem;
-      color: #fff;
-      letter-spacing: 0.01em;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      margin: 0;
-      color: rgba(244, 245, 247, 0.82);
-      line-height: 1.6;
-    }
-
-    .section-block.final {
-      padding-bottom: calc(clamp(2.5rem, 5vw, 4rem) + var(--dock-height));
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-      align-items: center;
-    }
-
-    .about-visual {
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      min-height: 260px;
-      background: url('images/PlanCroquis.jpg') center/cover no-repeat;
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.4);
-      isolation: isolate;
-    }
-
-    .about-visual::before {
+    .hero::before,
+    .das-section::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(228, 30, 40, 0.18), rgba(12, 19, 28, 0.82));
-      mix-blend-mode: screen;
-      opacity: 0.7;
-      animation: shimmer 12s ease-in-out infinite alternate;
+      background: linear-gradient(180deg, rgba(8, 12, 18, 0.6), rgba(8, 12, 18, 0.35));
+      z-index: 0;
     }
 
-    @keyframes shimmer {
-      from {
-        transform: translate3d(-6px, -4px, 0) scale(1.02);
-        opacity: 0.65;
-      }
-
-      to {
-        transform: translate3d(6px, 6px, 0) scale(1.05);
-        opacity: 0.9;
-      }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      padding: clamp(1.5rem, 4vw, 3rem);
     }
 
     .hero h1 {
-      margin: 0.2rem 0 0;
-      font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+      margin: 0 0 1rem;
+      font-size: clamp(2.2rem, 4vw, 3.1rem);
       letter-spacing: 0.02em;
-      color: #ffffff;
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      font-weight: 600;
+      text-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
     }
 
     .hero p {
       margin: 0;
-      color: rgba(244, 245, 247, 0.9);
-      line-height: 1.6;
-      font-size: 1.03rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      line-height: 1.7;
+      color: rgba(249, 250, 251, 0.9);
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
-    .eyebrow {
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.92);
-      display: inline-flex;
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 0.5rem;
+      color: rgba(249, 250, 251, 0.8);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: float 2s ease-in-out infinite;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 36px;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(228, 30, 40, 0.9), rgba(255, 255, 255, 0));
-      border-radius: 999px;
-      display: inline-block;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    .values-deck {
-      display: grid;
-      gap: 0.9rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
-
-    .value-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.85rem;
-      padding: 1rem 1.1rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
-      align-items: center;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-      will-change: transform, box-shadow;
-      cursor: default;
-    }
-
-    .value-card:hover,
-    .value-card:focus-within {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
-      border-color: rgba(255, 255, 255, 0.24);
-    }
-
-    .value-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .value-icon img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
-    }
-
-    .value-label {
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-      color: #fff;
-    }
-
-    .value-text p {
-      margin: 0.15rem 0 0;
-      color: rgba(244, 245, 247, 0.8);
-      line-height: 1.4;
-    }
-
-    .hero:hover::after,
-    .hero:focus-within::after {
-      transform: scale(1.02);
-    }
-
-    .hero:hover .hero-frame,
-    .hero:focus-within .hero-frame {
-      transform: scale(1.02);
-    }
-
-    .hero.is-hidden {
-      opacity: 0;
-      transform: scale(0.985);
-      pointer-events: none;
-      height: 0;
-      padding: 0;
-      min-height: 0;
-    }
-
-    .hero.is-gone {
-      display: none;
-    }
-
-    .accordion {
-      position: fixed;
-      inset: auto 0 0 0;
-      height: var(--dock-height);
-      display: flex;
-      align-items: flex-end;
-      gap: clamp(0.75rem, 1.6vw, 1.2rem);
-      padding: 0.75rem clamp(1rem, 2.5vw, 2rem) 1.2rem;
-      visibility: visible;
-      opacity: 1;
-      background: linear-gradient(180deg, rgba(5, 8, 14, 0) 0%, rgba(5, 8, 14, 0.92) 40%);
-      backdrop-filter: blur(8px);
-      z-index: 12;
-      overflow: visible;
-      transition: opacity 0.6s ease 0.1s, transform 0.6s ease;
-    }
-
-    .accordion.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: translateY(30px);
-    }
-
-    .panel {
-      flex: 1;
-      position: relative;
-      height: var(--dock-height);
-      overflow: hidden;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
-      transition: height 0.65s ease, filter 0.45s ease, transform 0.45s ease, box-shadow 0.45s ease;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.75)), var(--bg) center/cover no-repeat;
-      filter: grayscale(0.2) brightness(0.95);
-      border-radius: 18px 18px 0 0;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(255, 255, 255, 0.02);
-      will-change: transform, filter;
-      animation: floaty 9s ease-in-out infinite alternate;
-    }
-
-    .panel:hover,
-    .panel:focus-within {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 12px 30px rgba(228, 30, 40, 0.18);
-      filter: grayscale(0) brightness(1.02);
-    }
-
-    @keyframes floaty {
-      from {
-        transform: translateY(0);
-      }
-
-      to {
-        transform: translateY(-6px);
-      }
-    }
-
-    .panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.65));
-      opacity: 0.9;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-
-    .panel:hover::after,
-    .panel:focus-within::after {
-      opacity: 0.8;
-    }
-
-    .panel .content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
+    .scroll-indicator span {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.55rem;
-      text-align: center;
-      padding: 1rem;
-      color: #f8fafc;
-    }
-
-    .panel .logo {
-      width: clamp(130px, 18vw, 210px);
-      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
-      transition: transform 0.4s ease;
-      margin-top: 0.35rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .panel:hover .logo,
-    .panel:focus-within .logo {
-      transform: translateY(-2px);
-    }
-
-    .tagline {
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.55rem 0.9rem;
+      width: 38px;
+      height: 58px;
+      border: 1px solid rgba(249, 250, 251, 0.7);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(6px);
+      position: relative;
     }
 
-    .focus-extra {
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
+    .scroll-indicator span::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(249, 250, 251, 0.9);
+      position: absolute;
+      top: 12px;
+      animation: scrollDot 1.6s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+      0% {
+        transform: translateY(0);
+        opacity: 0.2;
+      }
+
+      50% {
+        transform: translateY(12px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(24px);
+        opacity: 0.2;
+      }
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, -6px);
+      }
+    }
+
+    .das-section {
+      padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 4rem);
+      color: var(--text-dark);
+    }
+
+    .das-section::before {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.94));
+    }
+
+    .das-content {
+      position: relative;
+      z-index: 1;
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .das-title {
+      margin: 0 auto;
+      text-align: center;
+      max-width: 720px;
+    }
+
+    .das-title h2 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+    }
+
+    .das-title p {
+      margin: 0;
+      color: rgba(16, 18, 23, 0.7);
+      line-height: 1.6;
+    }
+
+    .das-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1rem, 2.5vw, 2rem);
+    }
+
+    .das-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(16, 18, 23, 0.08);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(16, 18, 23, 0.12);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
+      min-height: 380px;
     }
 
-    .hint {
-      margin: 0;
-      color: rgba(248, 250, 252, 0.8);
-      max-width: 360px;
-      line-height: 1.5;
-    }
-
-    .focus-extra h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      letter-spacing: 0.04em;
-    }
-
-    .accordion.has-focus .panel {
-      flex: 1;
-      filter: grayscale(0.55) brightness(0.86);
-      transform: translateY(-6px);
-    }
-
-    .accordion.has-focus .panel.active {
-      flex: 1.08;
-      height: calc(var(--dock-height) + var(--tab-rise));
-      filter: grayscale(0) brightness(1.05);
-      transform: translateY(calc(-1 * var(--tab-rise) * 0.25));
-      z-index: 2;
-      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .accordion.has-focus .panel.active::after {
-      opacity: 0.72;
-    }
-
-    .accordion.has-focus .panel.active .focus-extra {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .accordion.has-focus .panel:not(.active) .focus-extra {
-      pointer-events: none;
-    }
-
-    .accordion.has-focus .panel:not(.active) .logo {
-      opacity: 0.75;
-    }
-
-    .panel[data-id="home"]::after {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(234, 97, 26, 0.55));
-    }
-
-    .panel[data-id="pro"]::after {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(25, 63, 96, 0.52));
-    }
-
-    .panel[data-id="agri"]::after {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(124, 155, 72, 0.52));
-    }
-
-    .enter-btn {
-      background: #fff;
-      color: #0d121a;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-      padding-inline: 1.8rem;
-    }
-
-    .enter-btn:hover,
-    .enter-btn:focus-visible {
-      background: #e7ebf1;
-      color: #0d121a;
-    }
-
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 6, 12, 0.8);
-      display: grid;
-      place-items: center;
-      padding: clamp(1rem, 3vw, 2rem);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease;
-      z-index: 30;
-    }
-
-    .modal-backdrop.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal {
-      background: #0f141b;
-      color: #e8ecf2;
-      border-radius: 18px;
-      max-width: 960px;
+    .das-card img {
       width: 100%;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    }
-
-    .modal img {
-      width: 100%;
-      height: 100%;
+      height: 220px;
       object-fit: cover;
     }
 
-    .modal-content {
-      padding: clamp(1.2rem, 2vw, 1.8rem);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+    .das-card-content {
+      padding: 1.4rem 1.6rem 1.8rem;
+      display: grid;
+      gap: 0.6rem;
+      text-align: left;
     }
 
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .modal h2 {
+    .das-card h3 {
       margin: 0;
-      letter-spacing: 0.02em;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-dark);
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.8rem;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.85rem;
+    .das-card p {
+      margin: 0;
+      color: rgba(16, 18, 23, 0.7);
+      line-height: 1.6;
     }
 
-    .close-btn {
-      background: transparent;
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      padding: 0.45rem 0.9rem;
-      border-radius: 10px;
-      box-shadow: none;
-      text-transform: none;
-      letter-spacing: 0.01em;
+    .das-card a {
+      margin-top: 0.6rem;
+      color: var(--id-red);
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .close-btn:hover,
-    .close-btn:focus-visible {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
+    .das-card a:hover,
+    .das-card a:focus-visible {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 2.5rem 6%;
+      background: #ffffff;
+      color: rgba(16, 18, 23, 0.7);
+      border-top: 1px solid rgba(16, 18, 23, 0.08);
+      text-align: center;
+      scroll-snap-align: start;
+    }
+
+    footer strong {
+      color: var(--text-dark);
     }
 
     @media (max-width: 960px) {
-      .hero {
-        padding: 1.25rem;
-      }
-
-      .topbar {
-        grid-template-columns: 1fr;
-        text-align: left;
-      }
-
-      .top-actions,
-      .topnav {
-        justify-content: flex-start;
-      }
-
-      .hero-body {
+      .das-grid {
         grid-template-columns: 1fr;
       }
 
-      .values-deck {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      .hero,
+      .das-section {
+        background-attachment: scroll;
       }
-
-      .accordion {
-        position: static;
-        flex-direction: column;
-        height: auto;
-        min-height: auto;
-        padding: 1rem;
-        gap: 1rem;
-        background: none;
-        backdrop-filter: none;
-      }
-
-      .accordion.has-focus .panel,
-      .panel {
-        flex: 1;
-        min-height: 220px;
-        height: auto;
-        border-radius: 16px;
-      }
-
-      .accordion.has-focus .panel.active {
-        flex: 2.2;
-      }
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #05080e;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--id-red);
     }
   </style>
 </head>
 
-<body>
-  <header class="global-nav" role="banner" data-debug-label="Div menu haut">
-    <a class="nav-brand" href="index.html" data-debug-label="Div logo ID GROUP">
+<body class="home-landing">
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
       <img src="logos/ID GROUP.png" alt="ID GROUP">
       <span>ID GROUP</span>
-      <span class="brand-tooltip" aria-hidden="true">
-        <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
-        <span>
-          <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
-        </span>
-      </span>
     </a>
-    <nav class="nav-links" aria-label="Navigation principale" data-debug-label="Navigation principale">
-      <a href="index.html" data-debug-label="Lien Accueil">Accueil</a>
-      <a href="#universes" id="navUniversLink" data-debug-label="Lien Univers">Univers</a>
-      <a href="#groupe" data-debug-label="Lien Groupe">Groupe</a>
-      <a href="#engagements" data-debug-label="Lien Engagements">Engagements</a>
-      <a href="actualites.html" data-debug-label="Lien Actualités">Actualités</a>
-      <a href="contact.html" data-debug-label="Lien Contact">Contact</a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="groupe.html">Le Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <div class="nav-actions">
-      <button class="icon-btn icon-only" type="button" data-debug-toggle title="Mode debug" aria-pressed="false"
-        aria-label="Activer le mode debug">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="m8 2 1.88 1.88" />
-          <path d="M14.12 3.88 16 2" />
-          <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" />
-          <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6" />
-          <path d="M12 20v-9" />
-          <path d="M6.53 9C4.6 8.8 3 7.1 3 5" />
-          <path d="M6 13H2" />
-          <path d="m3 21 3-3" />
-          <path d="M20.97 5c0 2.1-1.6 3.8-3.53 4" />
-          <path d="M22 13h-4" />
-          <path d="m21 21-3-3" />
-        </svg>
-      </button>
-      <button class="icon-btn icon-only" type="button" title="Langue" aria-label="Changer de langue">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 2a14.5 14.5 0 0 0 0 20" />
-          <path d="M12 2a14.5 14.5 0 0 1 0 20" />
-          <path d="M2 12h20" />
-        </svg>
-      </button>
-      <a class="icon-btn" href="#" title="Espace Client / Outils">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="21" y1="9" x2="14" y2="9" />
-          <line x1="10" y1="9" x2="3" y2="9" />
-          <line x1="21" y1="15" x2="12" y2="15" />
-          <line x1="8" y1="15" x2="3" y2="15" />
-          <line x1="14" y1="7" x2="14" y2="11" />
-          <line x1="8" y1="13" x2="8" y2="17" />
-        </svg>
-        <span>Outils</span>
-      </a>
-      <a class="icon-btn primary" href="contact.html" title="Prendre contact">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <rect width="20" height="16" x="2" y="4" rx="2" />
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-        </svg>
-        <span>Contact</span>
-      </a>
-    </div>
   </header>
+
   <main class="app-shell">
-    <section class="hero" id="intro" data-debug-label="Bannière hero ID GROUP">
-      <div class="hero-frame">
-        <div class="hero-body">
-          <div class="hero-inner" data-aos="fade-up" data-aos-duration="1000" data-debug-label="Bloc texte hero">
-            <div class="eyebrow">Notre mission</div>
-            <h1>Innover pour protéger les lieux, les équipes et les élevages.</h1>
-            <p>Une expérience immersive inspirée par vos besoins en protection, hygiène et bien-être. Découvrez nos
-              trois univers complémentaires à travers un rideau interactif pensé pour être simple, moderne et exigeant.
-            </p>
-            <div class="hero-actions">
-              <button id="discoverBtn" class="primary-pulse">Découvrir nos univers</button>
-            </div>
-          </div>
-        </div>
+    <section class="hero" id="intro">
+      <div class="hero-content">
+        <h1>Notre mission : concevoir des solutions durables pour protéger les lieux, les équipes et le vivant.</h1>
+        <p>Une approche claire et engagée pour améliorer les espaces de vie, de travail et d’élevage, avec une expertise
+          industrielle française et un sens profond du service.</p>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <span></span>
+        Défiler
       </div>
     </section>
 
-    <section class="section-block" id="groupe" data-debug-label="Présentation ID GROUP">
-      <div class="section-frame about-layout">
-        <div data-aos="fade-right" data-aos-duration="1000">
-          <p class="eyebrow">Présentation</p>
-          <h2 class="section-heading">ID Group – Des solutions durables pour tous vos espaces</h2>
-          <p class="section-lead">ID Group est un groupe industriel français, expert des revêtements de sols et tapis
-            techniques, qui conçoit et fabrique des solutions adaptées aux usages de la maison, du bâtiment, de
-            l’industrie et de l’agriculture.</p>
-          <p class="section-lead">Depuis plus de 30 ans, nous accompagnons nos clients dans leurs problématiques de
-            sécurité, de confort, d’hygiène et de durabilité, en apportant des solutions concrètes pensées pour leurs
-            environnements réels et leurs contraintes métier.</p>
-          <div class="section-grid">
-            <div class="card" data-aos="zoom-in" data-aos-delay="200">
-              <h3>Une approche simple et exigeante</h3>
-              <p>Partir de l’usage, comprendre le besoin, et concevoir la solution la plus juste. Chez ID Group, nous ne
-                vendons pas seulement des produits, nous aidons nos clients à améliorer leurs espaces de vie et de
-                travail, jour après jour.</p>
+    <section class="das-section" id="das">
+      <div class="das-content">
+        <div class="das-title">
+          <h2>Les domaines d’activité stratégiques</h2>
+          <p>Trois univers complémentaires, pensés pour répondre avec précision aux usages du quotidien, du bâtiment et de
+            l’agriculture.</p>
+        </div>
+        <div class="das-grid">
+          <article class="das-card">
+            <img src="images/ImageIDAgri.jpg" alt="ID Agri - univers élevage et bien-être animal">
+            <div class="das-card-content">
+              <h3>ID Agri</h3>
+              <p>Des solutions robustes pour améliorer le confort animal, sécuriser les élevages et accompagner les
+                équipes terrain.</p>
+              <a href="agri.html">Découvrir ID Agri</a>
             </div>
-            <div class="card" data-aos="zoom-in" data-aos-delay="400">
-              <h3>Trois univers complémentaires</h3>
-              <p><strong>ID Home</strong> pour l’habitat et les espaces de vie<br><strong>ID Pro</strong> pour le
-                bâtiment, l’industrie et les collectivités<br><strong>ID Agri</strong> pour l’élevage et le confort
-                animal.</p>
+          </article>
+          <article class="das-card">
+            <img src="images/ImageIDPro.jpg" alt="ID Pro - univers protection et hygiène">
+            <div class="das-card-content">
+              <h3>ID Pro</h3>
+              <p>Protection, hygiène et sécurité pour les environnements industriels, tertiaires et collectifs les plus
+                exigeants.</p>
+              <a href="pro.html">Découvrir ID Pro</a>
             </div>
-          </div>
-          <p class="section-lead" data-aos="fade-up" data-aos-delay="600">Ancré localement, avec un site de production
-            basé à Wormhout, ID Group s’appuie sur un savoir-faire industriel reconnu, une culture technique forte et
-            des équipes engagées, proches du terrain et de leurs clients. Notre ambition est claire : concevoir des
-            espaces plus sûrs, plus propres et plus accueillants, en prenant soin du vivant.</p>
+          </article>
+          <article class="das-card">
+            <img src="images/ImageIDHome.jpg" alt="ID Home - univers habitat">
+            <div class="das-card-content">
+              <h3>ID Home</h3>
+              <p>Des revêtements et tapis techniques pour des intérieurs confortables, esthétiques et durables.</p>
+              <a href="home.html">Découvrir ID Home</a>
+            </div>
+          </article>
         </div>
-        <div class="about-visual" aria-hidden="true" data-aos="fade-left" data-aos-duration="1000"></div>
       </div>
-    </section>
-
-    <section class="section-block final" id="engagements" data-debug-label="Engagements ID GROUP">
-      <div class="section-frame">
-        <p class="eyebrow" data-aos="fade-up">Nos engagements</p>
-        <h2 class="section-heading" data-aos="fade-up" data-aos-delay="100">Positiv’ID : agir durablement, concrètement,
-          collectivement</h2>
-        <p class="section-lead" data-aos="fade-up" data-aos-delay="200">Chez ID Group, l’engagement n’est pas un
-          discours. C’est une démarche quotidienne, intégrée à nos choix industriels, humains et environnementaux. Nous
-          concevons des solutions utiles, durables et respectueuses des hommes, des animaux et de leur environnement.
-        </p>
-        <div class="section-grid">
-          <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <h3>🌱 Des solutions pensées pour durer</h3>
-            <p>Des revêtements robustes, fiables et adaptés aux usages intensifs pour prolonger leur durée de vie et
-              limiter l’impact environnemental dès la conception.</p>
-          </div>
-          <div class="card" data-aos="fade-up" data-aos-delay="400">
-            <h3>🏭 Un savoir-faire industriel maîtrisé</h3>
-            <p>Notre site de production de Wormhout incarne une industrie responsable, ancrée localement, maîtrisant ses
-              process et garantissant une qualité constante.</p>
-          </div>
-          <div class="card" data-aos="fade-up" data-aos-delay="500">
-            <h3>👥 L’humain au cœur</h3>
-            <p>Des équipes engagées, formées et reconnues. Nous cultivons la proximité, la transmission du savoir et le
-              respect des femmes et des hommes qui font vivre le groupe.</p>
-          </div>
-          <div class="card" data-aos="fade-up" data-aos-delay="600">
-            <h3>🐄 Prendre soin du vivant</h3>
-            <p>Des solutions pensées pour le confort animal, la sécurité des utilisateurs et l’amélioration des
-              conditions de travail, en réduisant la pénibilité au quotidien.</p>
-          </div>
-          <div class="card" data-aos="fade-up" data-aos-delay="700">
-            <h3>♻️ Une démarche responsable et mesurable</h3>
-            <p>Certifications, évaluation des impacts, éco-conception : nous avançons avec méthode et transparence, en
-              intégrant progressivement des indicateurs concrets dans notre développement.</p>
-          </div>
-        </div>
-        <p class="section-lead" data-aos="fade-up" data-aos-delay="800">S’engager, pour ID Group, c’est avancer avec
-          curiosité, respect et efficience, au service de solutions utiles aujourd’hui et responsables pour demain.</p>
-      </div>
-    </section>
-
-    <section class="accordion is-visible" id="universes" data-debug-label="Rideau des univers">
-      <article class="panel" data-id="home" data-title="Habitat" data-subtitle="Habitat"
-        style="--bg: url('images/ImageIDHome.jpg');" data-debug-label="Panneau univers Habitat">
-        <div class="content">
-          <div class="tagline">Habitat</div>
-          <img class="logo" src="logos/ID HOME.png" alt="ID HOME">
-          <div class="focus-extra">
-            <h3>Habitat</h3>
-            <p class="hint">Solutions pour des espaces de vie sains et inspirants.</p>
-            <button class="enter-btn" type="button">Entrer</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel" data-id="pro" data-title="Protection, Hygiène et Sécurité"
-        data-subtitle="Protection, Hygiène et Sécurité" style="--bg: url('images/ImageIDPro.jpg');"
-        data-debug-label="Panneau univers ID PRO">
-        <div class="content">
-          <div class="tagline">Protection, Hygiène et Sécurité</div>
-          <img class="logo" src="logos/ID PRO.png" alt="ID PRO">
-          <div class="focus-extra">
-            <h3>Protection, Hygiène et Sécurité</h3>
-            <p class="hint">Des équipements pour sécuriser les environnements exigeants.</p>
-            <button class="enter-btn" type="button">Entrer</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="panel" data-id="agri" data-title="Élevage et Bien-être animal"
-        data-subtitle="Élevage et Bien-être animal" style="--bg: url('images/ImageIDAgri.jpg');"
-        data-debug-label="Panneau univers ID AGRI">
-        <div class="content">
-          <div class="tagline">Élevage et Bien-être animal</div>
-          <img class="logo" src="logos/ID AGRI.png" alt="ID AGRI">
-          <div class="focus-extra">
-            <h3>Élevage et Bien-être animal</h3>
-            <p class="hint">Des solutions pour protéger les élevages et leurs équipes.</p>
-            <button class="enter-btn" type="button">Entrer</button>
-          </div>
-        </div>
-      </article>
     </section>
   </main>
 
-  <div class="modal-backdrop" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <picture>
-        <img id="modalImage" src="images/PlanCroquis.jpg" alt="Plan ID GROUP">
-      </picture>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div>
-            <div class="badge">Plan &amp; Croquis</div>
-            <h2 id="modalTitle">ID GROUP</h2>
-            <p id="modalSubtitle" style="margin: 0; color: rgba(232, 236, 242, 0.82);">Exploration des univers</p>
-          </div>
-          <button class="close-btn" type="button" id="modalClose">Fermer</button>
-        </div>
-        <p id="modalBody">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu nunc eget elit venenatis
-          tincidunt. Praesent pulvinar neque at congue gravida. Proin bibendum porttitor arcu, a finibus urna
-          semper quis. Nunc gravida fermentum eros, vitae finibus eros sodales sed.
-        </p>
-        <p>
-          Donec id justo risus. Praesent semper neque libero, id tempus odio tempor eget. Integer rutrum
-          condimentum orci, sit amet fermentum quam sodales sit amet. Suspendisse egestas posuere cursus.
-        </p>
-      </div>
-    </div>
-  </div>
+  <footer>
+    <p><strong>ID Group</strong> · Industrie française des revêtements techniques · Wormhout</p>
+    <p>© 2024 ID Group · Tous droits réservés</p>
+  </footer>
 
   <script src="scripts/global.js"></script>
   <script>
-    const intro = document.getElementById('intro');
-    const universes = document.getElementById('universes');
-    const aboutSection = document.getElementById('groupe');
-    const discoverBtn = document.getElementById('discoverBtn');
-    const navUniversLink = document.getElementById('navUniversLink');
-    const panels = Array.from(document.querySelectorAll('.panel'));
     const navBar = document.querySelector('.global-nav');
-    const pageTargets = {
-      home: 'home.html',
-      pro: 'pro.html',
-      agri: 'agri.html',
+    const heroSection = document.querySelector('.hero');
+    const dasSection = document.querySelector('#das');
+    let isSnapping = false;
+
+    const updateNavState = () => {
+      if (!navBar) return;
+      navBar.classList.toggle('is-scrolled', window.scrollY > 10);
     };
 
-    function showUniverses() {
-      const target = aboutSection || universes;
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    const snapToDas = () => {
+      if (!dasSection || isSnapping) return;
+      isSnapping = true;
+      dasSection.scrollIntoView({ behavior: 'smooth' });
+      window.setTimeout(() => {
+        isSnapping = false;
+      }, 900);
+    };
 
-    function setActivePanel(targetPanel) {
-      universes.classList.add('has-focus');
-      panels.forEach(panel => panel.classList.toggle('active', panel === targetPanel));
-    }
-
-    function resetPanels() {
-      universes.classList.remove('has-focus');
-      panels.forEach(panel => panel.classList.remove('active'));
-    }
-
-    function focusPanel(panel) {
-      if (!universes.classList.contains('is-visible')) return;
-      setActivePanel(panel);
-    }
-
-    intro.addEventListener('wheel', (event) => {
-      if (event.deltaY > 0) {
-        showUniverses();
+    const handleWheel = (event) => {
+      if (!heroSection || window.scrollY > heroSection.offsetHeight * 0.4) return;
+      if (event.deltaY > 12) {
+        snapToDas();
       }
-    }, { passive: true });
+    };
 
-    discoverBtn.addEventListener('click', showUniverses);
-    if (navUniversLink) {
-      navUniversLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        showUniverses();
-      });
-    }
+    let touchStartY = null;
+    const handleTouchStart = (event) => {
+      if (!event.touches || event.touches.length === 0) return;
+      touchStartY = event.touches[0].clientY;
+    };
 
-    panels.forEach(panel => {
-      panel.addEventListener('mouseenter', () => focusPanel(panel));
-      panel.addEventListener('focusin', () => focusPanel(panel));
-    });
+    const handleTouchMove = (event) => {
+      if (!heroSection || touchStartY === null) return;
+      const currentY = event.touches[0].clientY;
+      const delta = touchStartY - currentY;
+      if (window.scrollY <= heroSection.offsetHeight * 0.4 && delta > 30) {
+        snapToDas();
+        touchStartY = null;
+      }
+    };
 
-    document.querySelectorAll('.enter-btn').forEach((button) => {
-      button.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const panel = button.closest('.panel');
-        const targetPage = panel ? pageTargets[panel.dataset.id] : null;
-        if (targetPage) {
-          window.location.href = targetPage;
-        }
-      });
-    });
-
-    if (navBar) {
-      navBar.addEventListener('mouseenter', resetPanels);
-      navBar.addEventListener('focusin', resetPanels);
-    }
-
-    universes.addEventListener('mouseleave', () => {
-      if (!universes.classList.contains('has-focus')) return;
-      resetPanels();
-    });
-
-    if (window.location.hash === '#universes') {
-      requestAnimationFrame(showUniverses);
-    }
-
-    // Initialize AOS
-    AOS.init({
-      once: false,
-      mirror: true,
-      duration: 800,
-      easing: 'ease-out-cubic'
-    });
-
-    // GSAP Entrance Animations
-    window.addEventListener('load', () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const tl = gsap.timeline();
-      tl.from(".nav-brand", { y: -50, opacity: 0, duration: 1, ease: "power4.out" })
-        .from(".nav-links a", { y: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" }, "-=0.5")
-        .from(".nav-actions .icon-btn", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.3")
-        .from(".hero h1", { x: -100, opacity: 0, duration: 1.2, ease: "power4.out" }, "-=0.5")
-        .from(".hero p", { x: -50, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.8")
-        .from(".hero-actions", { y: 30, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.6");
-
-      // ScrollTrigger Animations
-      gsap.from("#groupe .about-visual", {
-        scrollTrigger: {
-          trigger: "#groupe",
-          start: "top 80%",
-          end: "top 20%",
-          scrub: 1
-        },
-        x: 100,
-        opacity: 0,
-        rotate: 5
-      });
-
-      gsap.from(".panel", {
-        scrollTrigger: {
-          trigger: "#universes",
-          start: "top 90%",
-          toggleActions: "play none none reverse"
-        },
-        y: 100,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power4.out"
-      });
-    });
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    updateNavState();
   </script>
   <script defer src="picocms.js"></script>
 </body>
