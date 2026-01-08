@@ -2,9 +2,9 @@
 
 :root {
   --nav-height: 74px;
-  --nav-surface: rgba(255, 255, 255, 0.92);
-  --nav-border: rgba(15, 23, 42, 0.08);
-  --nav-text: #1b2230;
+  --nav-surface: rgba(255, 255, 255, 0.97);
+  --nav-border: rgba(15, 23, 42, 0.12);
+  --nav-text: #0f172a;
 }
 
 html {
@@ -28,10 +28,20 @@ body {
   color: var(--nav-text);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--nav-border);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.14);
   z-index: 1000;
   font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+a,
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a:active,
+button:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .nav-brand {
@@ -219,6 +229,7 @@ body.debug-mode *:hover {
   border-bottom: 1px solid transparent;
   box-shadow: none;
   color: #fff;
+  text-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
 }
 
 .global-nav.nav-transparent .nav-links a {

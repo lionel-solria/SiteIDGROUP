@@ -15,7 +15,7 @@
       --id-red: #e41e28;
       --text-dark: #101828;
       --text-muted: #475467;
-      --glass: rgba(255, 255, 255, 0.82);
+      --glass: rgba(255, 255, 255, 0.55);
     }
 
     * {
@@ -62,7 +62,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.9));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.65));
       z-index: 0;
     }
 
@@ -71,12 +71,20 @@
       z-index: 1;
       max-width: 780px;
       text-align: center;
-      background: var(--glass);
+      background: rgba(255, 255, 255, 0.35);
       border-radius: 28px;
       padding: clamp(2rem, 4vw, 3rem);
       box-shadow: 0 28px 70px rgba(15, 23, 42, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       backdrop-filter: blur(12px);
+      opacity: 0.85;
+      transform: translateY(12px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .hero-content.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero-content .eyebrow {
@@ -167,7 +175,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.95));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.85));
       z-index: 0;
     }
 
@@ -200,13 +208,14 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: clamp(1.5rem, 3vw, 2.5rem);
+      align-items: stretch;
     }
 
     .das-card {
       position: relative;
       border-radius: 22px;
       overflow: hidden;
-      min-height: 360px;
+      min-height: 420px;
       background-size: cover;
       background-position: center;
       display: flex;
@@ -220,26 +229,36 @@
 
     .das-card:hover,
     .das-card:focus-visible {
-      transform: translateY(-6px);
+      transform: translateY(-8px) scale(1.01);
       box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
       outline: none;
     }
 
     .das-card-content {
       width: 100%;
-      padding: 1.6rem;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(6px);
+      padding: 1.8rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
     }
 
     .das-card-content span {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.55rem;
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: rgba(16, 24, 40, 0.6);
+    }
+
+    .entity-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      padding: 0.2rem;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
     }
 
     .das-card-content h3 {
@@ -379,27 +398,27 @@
     <section class="das-section" id="das" data-debug-label="Section DAS">
       <div class="das-content">
         <div class="das-header">
-          <h2>Trois DAS complémentaires</h2>
+          <h2>Notre univers</h2>
           <p>Des univers clairs, réalistes et ancrés dans les usages pour accompagner chaque métier.</p>
         </div>
         <div class="das-grid">
           <a class="das-card" href="home.html" style="background-image: url('images/ImageIDHome.jpg');">
             <div class="das-card-content">
-              <span>ID Home</span>
+              <span><img class="entity-logo" src="logos/ID HOME.png" alt="Logo ID HOME">ID HOME</span>
               <h3>Habitat &amp; Espaces de vie</h3>
               <p>Des solutions esthétiques et protectrices pour des intérieurs accueillants.</p>
             </div>
           </a>
           <a class="das-card" href="pro.html" style="background-image: url('images/ImageIDPro.jpg');">
             <div class="das-card-content">
-              <span>ID Pro</span>
+              <span><img class="entity-logo" src="logos/ID PRO.png" alt="Logo ID PRO">ID PRO</span>
               <h3>Protection, Hygiène &amp; Sécurité</h3>
               <p>Des équipements fiables pour les environnements professionnels exigeants.</p>
             </div>
           </a>
           <a class="das-card" href="agri.html" style="background-image: url('images/ImageIDAgri.jpg');">
             <div class="das-card-content">
-              <span>ID Agri</span>
+              <span><img class="entity-logo" src="logos/ID AGRI.png" alt="Logo ID AGRI">ID AGRI</span>
               <h3>Élevage &amp; Bien-être animal</h3>
               <p>Des produits pensés pour le confort des animaux et la sécurité des équipes.</p>
             </div>
@@ -420,6 +439,7 @@
     const heroSection = document.getElementById('intro');
     const dasSection = document.getElementById('das');
     const navBar = document.querySelector('.global-nav');
+    const heroContent = document.querySelector('.hero-content');
 
     if (heroSection && dasSection) {
       heroSection.addEventListener('wheel', (event) => {
@@ -436,6 +456,16 @@
 
     updateNav();
     window.addEventListener('scroll', updateNav, { passive: true });
+
+    if (heroContent) {
+      const revealHero = () => {
+        heroContent.classList.add('is-revealed');
+        window.removeEventListener('scroll', revealHero);
+      };
+
+      window.addEventListener('scroll', revealHero, { passive: true, once: true });
+      setTimeout(() => heroContent.classList.add('is-revealed'), 1200);
+    }
   </script>
   <script defer src="picocms.js"></script>
 </body>
