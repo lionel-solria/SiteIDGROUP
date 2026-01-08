@@ -15,7 +15,7 @@
       --id-red: #e41e28;
       --text-dark: #101828;
       --text-muted: #475467;
-      --glass: rgba(255, 255, 255, 0.82);
+      --glass: rgba(255, 255, 255, 0.25);
     }
 
     * {
@@ -62,7 +62,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.9));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.55));
       z-index: 0;
     }
 
@@ -75,8 +75,19 @@
       border-radius: 28px;
       padding: clamp(2rem, 4vw, 3rem);
       box-shadow: 0 28px 70px rgba(15, 23, 42, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(12px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .hero-content.reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .hero-content.reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .hero-content .eyebrow {
@@ -167,14 +178,14 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.95));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.82));
       z-index: 0;
     }
 
     .das-content {
       position: relative;
       z-index: 1;
-      width: min(1200px, 100%);
+      width: min(1320px, 100%);
       margin: 0 auto;
       display: grid;
       gap: clamp(2rem, 4vw, 3rem);
@@ -199,14 +210,14 @@
     .das-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(1.5rem, 3vw, 2.5rem);
+      gap: clamp(1.8rem, 3.5vw, 3rem);
     }
 
     .das-card {
       position: relative;
       border-radius: 22px;
       overflow: hidden;
-      min-height: 360px;
+      min-height: 420px;
       background-size: cover;
       background-position: center;
       display: flex;
@@ -220,16 +231,33 @@
 
     .das-card:hover,
     .das-card:focus-visible {
-      transform: translateY(-6px);
+      transform: translateY(-10px) scale(1.02);
       box-shadow: 0 28px 70px rgba(15, 23, 42, 0.18);
       outline: none;
+    }
+
+    .das-card:active {
+      transform: translateY(-4px) scale(0.99);
     }
 
     .das-card-content {
       width: 100%;
       padding: 1.6rem;
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(8px);
+    }
+
+    .das-card-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .das-card-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.18));
     }
 
     .das-card-content span {
@@ -287,6 +315,13 @@
 
       .scroll-hint {
         display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-content.reveal-on-scroll {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
@@ -364,7 +399,7 @@
   </header>
   <main>
     <section class="hero" id="intro" data-debug-label="Bannière hero ID GROUP">
-      <div class="hero-content" data-debug-label="Bloc texte hero">
+      <div class="hero-content reveal-on-scroll" data-debug-label="Bloc texte hero">
         <div class="eyebrow">Mission du groupe</div>
         <h1>Innover pour protéger les lieux, les équipes et les élevages.</h1>
         <p>Nous concevons des solutions qui améliorent durablement les espaces de vie, les environnements professionnels
@@ -379,27 +414,36 @@
     <section class="das-section" id="das" data-debug-label="Section DAS">
       <div class="das-content">
         <div class="das-header">
-          <h2>Trois DAS complémentaires</h2>
+          <h2>Notre univers</h2>
           <p>Des univers clairs, réalistes et ancrés dans les usages pour accompagner chaque métier.</p>
         </div>
         <div class="das-grid">
           <a class="das-card" href="home.html" style="background-image: url('images/ImageIDHome.jpg');">
             <div class="das-card-content">
-              <span>ID Home</span>
+              <span class="das-card-meta">
+                <img class="das-card-logo" src="logos/ID HOME.png" alt="Logo ID HOME">
+                ID HOME
+              </span>
               <h3>Habitat &amp; Espaces de vie</h3>
               <p>Des solutions esthétiques et protectrices pour des intérieurs accueillants.</p>
             </div>
           </a>
           <a class="das-card" href="pro.html" style="background-image: url('images/ImageIDPro.jpg');">
             <div class="das-card-content">
-              <span>ID Pro</span>
+              <span class="das-card-meta">
+                <img class="das-card-logo" src="logos/ID PRO.png" alt="Logo ID PRO">
+                ID PRO
+              </span>
               <h3>Protection, Hygiène &amp; Sécurité</h3>
               <p>Des équipements fiables pour les environnements professionnels exigeants.</p>
             </div>
           </a>
           <a class="das-card" href="agri.html" style="background-image: url('images/ImageIDAgri.jpg');">
             <div class="das-card-content">
-              <span>ID Agri</span>
+              <span class="das-card-meta">
+                <img class="das-card-logo" src="logos/ID AGRI.png" alt="Logo ID AGRI">
+                ID AGRI
+              </span>
               <h3>Élevage &amp; Bien-être animal</h3>
               <p>Des produits pensés pour le confort des animaux et la sécurité des équipes.</p>
             </div>
@@ -420,6 +464,7 @@
     const heroSection = document.getElementById('intro');
     const dasSection = document.getElementById('das');
     const navBar = document.querySelector('.global-nav');
+    const heroContent = document.querySelector('.hero-content.reveal-on-scroll');
 
     if (heroSection && dasSection) {
       heroSection.addEventListener('wheel', (event) => {
@@ -427,6 +472,21 @@
           dasSection.scrollIntoView({ behavior: 'smooth' });
         }
       }, { passive: true });
+    }
+
+    const revealHeroContent = () => {
+      if (!heroContent || heroContent.classList.contains('is-visible')) return;
+      heroContent.classList.add('is-visible');
+    };
+
+    if (heroContent) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          revealHeroContent();
+        }
+      }, { passive: true });
+
+      setTimeout(revealHeroContent, 1200);
     }
 
     const updateNav = () => {
