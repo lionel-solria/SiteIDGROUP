@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Engagements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="picocms.css">
+  <style>
+    :root {
+      --id-red: #e41e28;
+      --dark: #111723;
+      --muted: #5a6576;
+      --surface: #f6f7fb;
+      --card: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--surface);
+      color: var(--dark);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3.5rem) 4rem;
+      display: grid;
+      gap: 3rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 1rem;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(17, 23, 35, 0.08);
+    }
+
+    .hero span {
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .engagements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .engagement-card {
+      padding: 1.6rem;
+      border-radius: 22px;
+      background: var(--card);
+      border: 1px solid rgba(17, 23, 35, 0.08);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .engagement-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .engagement-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body class="nav-light">
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#das">Nos DAS</a>
+      <a href="groupe.html">Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span>Nos engagements</span>
+      <h1>Positiv'ID : agir durablement, concrètement, collectivement.</h1>
+      <p>Nos engagements structurent toutes nos décisions industrielles et humaines. Ils se traduisent par des actions
+        mesurables pour protéger les hommes, les animaux et leurs environnements, aujourd'hui comme demain.</p>
+    </section>
+
+    <section class="engagements-grid">
+      <article class="engagement-card">
+        <h3>Durabilité des solutions</h3>
+        <p>Des produits pensés pour durer, limiter l'impact environnemental et optimiser la sécurité des utilisateurs.</p>
+      </article>
+      <article class="engagement-card">
+        <h3>Industrie responsable</h3>
+        <p>Un site de production maîtrisé, une traçabilité renforcée et une amélioration continue des process.</p>
+      </article>
+      <article class="engagement-card">
+        <h3>Impact humain positif</h3>
+        <p>Des équipes formées, valorisées et engagées pour offrir un service fiable et chaleureux sur le terrain.</p>
+      </article>
+      <article class="engagement-card">
+        <h3>Respect du vivant</h3>
+        <p>Un soin particulier apporté au bien-être animal et à la qualité des environnements agricoles.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="scripts/global.js"></script>
+  <script defer src="picocms.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Groupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="picocms.css">
+  <style>
+    :root {
+      --id-red: #e41e28;
+      --dark: #111723;
+      --muted: #5a6576;
+      --surface: #f6f7fb;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--surface);
+      color: var(--dark);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3.5rem) 4rem;
+      display: grid;
+      gap: 3rem;
+    }
+
+    .hero {
+      display: grid;
+      gap: 1rem;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      border-radius: 28px;
+      background: #ffffff;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(17, 23, 35, 0.08);
+    }
+
+    .hero span {
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+    }
+
+    .hero p {
+      margin: 0;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pillar-card {
+      padding: 1.6rem;
+      border-radius: 22px;
+      background: #ffffff;
+      border: 1px solid rgba(17, 23, 35, 0.08);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .pillar-card h3 {
+      margin: 0;
+      color: var(--dark);
+      font-size: 1.1rem;
+    }
+
+    .pillar-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body class="nav-light">
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#das">Nos DAS</a>
+      <a href="groupe.html">Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span>Qui sommes-nous ?</span>
+      <h1>Un groupe industriel français engagé pour des espaces plus sûrs et plus accueillants.</h1>
+      <p>ID Group conçoit, fabrique et distribue des solutions de protection et de confort pour l'habitat, l'industrie et
+        l'agriculture. Notre promesse : transformer les environnements du quotidien grâce à un savoir-faire industriel
+        maîtrisé et une écoute attentive des usages.</p>
+    </section>
+
+    <section>
+      <div class="pillars">
+        <article class="pillar-card">
+          <h3>Savoir-faire industriel</h3>
+          <p>Un site de production reconnu, des équipes expertes et un contrôle qualité continu pour garantir des
+            solutions fiables et durables.</p>
+        </article>
+        <article class="pillar-card">
+          <h3>Proximité terrain</h3>
+          <p>Un accompagnement de bout en bout, en lien direct avec les besoins concrets des professionnels, des éleveurs
+            et des particuliers.</p>
+        </article>
+        <article class="pillar-card">
+          <h3>Innovation utile</h3>
+          <p>Des matières et des designs pensés pour améliorer la sécurité, l'hygiène et le confort, tout en respectant
+            l'environnement.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="scripts/global.js"></script>
+  <script defer src="picocms.js"></script>
+</body>
+
+</html>
