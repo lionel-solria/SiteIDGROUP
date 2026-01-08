@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID GROUP - Portail de Connexion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --id-red: #de0c1a;
+            --id-navy: #1b2230;
+            --id-gray: #616b86;
+            --id-light: #ededed;
+            --id-cream: #fdecb1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--id-light);
+            color: var(--id-navy);
+        }
+
+        .id-button-primary {
+            background-color: var(--id-red);
+            transition: all 0.3s ease;
+        }
+        .id-button-primary:hover:not(:disabled) {
+            background-color: #b90a16;
+            transform: translateY(-1px);
+        }
+        .id-button-primary:disabled {
+            background-color: var(--id-gray);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .id-button-secondary {
+            background-color: var(--id-navy);
+            transition: all 0.3s ease;
+        }
+        .id-button-secondary:hover {
+            background-color: #121822;
+        }
+
+        .id-card {
+            background: white;
+            border-top: 4px solid var(--id-red);
+        }
+
+        /* Toggle Switch Style */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px; width: 16px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--id-red); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        .loader {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            width: 16px; height: 16px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 relative">
+
+    <!-- Sélecteur Webhook (Haut gauche) -->
+    <div class="absolute top-6 left-6 flex items-center gap-3 bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+        <label class="switch">
+            <input type="checkbox" id="webhookToggle" checked>
+            <span class="slider"></span>
+        </label>
+        <div class="flex flex-col">
+            <span id="envLabel" class="text-[10px] font-black uppercase tracking-tighter text-[#de0c1a]">Production</span>
+            <span class="text-[8px] text-gray-400 leading-none">Environnement</span>
+        </div>
+    </div>
+
+    <div class="id-card w-full max-w-2xl p-10 rounded-lg shadow-xl my-8">
+        
+        <!-- Logo ID GROUP -->
+        <div class="flex justify-center mb-10">
+            <svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="30" font-family="Inter, sans-serif" font-weight="800" font-size="32" fill="#de0c1a">ID</text>
+                <text x="45" y="30" font-family="Inter, sans-serif" font-weight="700" font-size="24" fill="#1b2230" letter-spacing="1">GROUP</text>
+            </svg>
+        </div>
+
+        <!-- Section 1: Connexion -->
+        <div id="loginSection">
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-extrabold uppercase tracking-tight mb-2">Identification</h1>
+                <p class="text-sm text-gray-500">Accédez à votre plateforme ID GROUP</p>
+            </div>
+            <form id="loginForm" class="space-y-6 max-w-md mx-auto">
+                <div id="lockoutNotice" class="hidden bg-red-100 border-l-4 border-red-600 p-4 mb-4">
+                    <p class="text-xs font-bold text-red-800 uppercase">Compte temporairement bloqué</p>
+                    <p class="text-xs text-red-700">Trop de tentatives échouées. Veuillez patienter <span id="countdown">10:00</span>.</p>
+                </div>
+
+                <div>
+                    <label for="identifier" class="block text-xs font-bold uppercase tracking-widest text-gray-700 mb-2">Identifiant ou Email</label>
+                    <input type="text" id="identifier" name="identifier" required placeholder="nom@exemple.com" class="w-full px-4 py-3 rounded border-2 border-gray-100 focus:border-[#de0c1a] outline-none transition-all">
+                </div>
+                <div>
+                    <label for="password" class="block text-xs font-bold uppercase tracking-widest text-gray-700 mb-2">Mot de passe</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••" class="w-full px-4 py-3 rounded border-2 border-gray-100 focus:border-[#de0c1a] outline-none transition-all">
+                </div>
+                
+                <div id="attemptsLeft" class="hidden text-center">
+                    <p class="text-[10px] font-bold uppercase text-red-500 tracking-widest">
+                        Tentatives restantes : <span id="remainingCount">5</span>/5
+                    </p>
+                </div>
+
+                <button type="submit" id="submitBtn" class="id-button-primary w-full text-white font-bold py-4 rounded shadow-lg uppercase tracking-widest text-sm">
+                    <span id="btnText">Se connecter</span>
+                    <div id="btnLoader" class="loader hidden"></div>
+                </button>
+            </form>
+        </div>
+
+        <!-- Section 2: Affichage Infos (Retour = 1) -->
+        <div id="infoSection" class="hidden fade-in space-y-8">
+            <div class="text-center">
+                <h2 class="text-2xl font-extrabold text-[#1b2230]">Bienvenue, <span id="display_name" class="text-[#de0c1a]"></span></h2>
+                <p class="text-sm text-gray-500 mt-2">Nous avons retrouvé votre profil dans notre base.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-gray-200 border border-gray-200 rounded overflow-hidden">
+                <div class="bg-white p-5"><p class="text-[10px] uppercase text-gray-400 font-black tracking-widest mb-1">Civilité</p><p id="view_civility" class="font-bold text-[#1b2230]">-</p></div>
+                <div class="bg-white p-5"><p class="text-[10px] uppercase text-gray-400 font-black tracking-widest mb-1">Fonction</p><p id="view_function" class="font-bold text-[#1b2230]">-</p></div>
+                <div class="bg-white p-5"><p class="text-[10px] uppercase text-gray-400 font-black tracking-widest mb-1">Nom complet</p><p id="view_fullname" class="font-bold text-[#1b2230]">-</p></div>
+                <div class="bg-white p-5"><p class="text-[10px] uppercase text-gray-400 font-black tracking-widest mb-1">Email</p><p id="view_email" class="font-bold text-[#1b2230]">-</p></div>
+                <div class="bg-white p-5"><p class="text-[10px] uppercase text-gray-400 font-black tracking-widest mb-1">Téléphone fixe</p><p id="view_phone" class="font-bold text-[#1b2230]">-</p></div>
+                <div class="bg-white p-5"><p class="text-[10px] uppercase text-gray-400 font-black tracking-widest mb-1">Mobile</p><p id="view_mobile" class="font-bold text-[#1b2230]">-</p></div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button id="btnConfirmLogin" class="flex-1 id-button-primary text-white font-bold py-4 rounded uppercase tracking-widest text-xs shadow-md">
+                    Me connecter
+                </button>
+                <button id="btnTriggerUpdate" class="flex-1 border-2 border-[#1b2230] text-[#1b2230] hover:bg-gray-50 font-bold py-4 rounded uppercase tracking-widest text-xs transition-all">
+                    Mettre à jour mes données
+                </button>
+            </div>
+        </div>
+
+        <!-- Section 3: Formulaire Enregistrement / Mise à jour -->
+        <div id="registrationSection" class="hidden mt-10 pt-10 border-t border-gray-100 fade-in">
+            <div id="noticeInconnu" class="bg-[#fdecb1] border-l-4 border-[#de0c1a] p-4 mb-8 hidden">
+                <p class="text-xs font-bold text-[#1b2230] uppercase mb-1">Email absent de notre base</p>
+                <p class="text-xs text-[#1b2230]">Veuillez compléter vos informations professionnelles. Notre équipe traitera votre demande sous peu.</p>
+            </div>
+
+            <form id="registrationForm" class="space-y-8">
+                <h2 id="regFormTitle" class="text-xl font-black text-[#1b2230] uppercase tracking-tighter text-center">Enregistrement</h2>
+                <input type="hidden" id="actionType" name="retour" value="nouveau">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-5">
+                        <h3 class="text-[10px] font-black text-[#de0c1a] uppercase tracking-[0.2em] border-b border-gray-100 pb-2">L'entreprise</h3>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Société <span class="text-[#de0c1a]">*</span></label>
+                            <input type="text" id="companyName" name="companyName" required class="w-full px-4 py-2 bg-gray-50 rounded border border-transparent focus:border-[#de0c1a] outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">SIRET <span class="text-[#de0c1a]">*</span></label>
+                            <input type="text" id="siret" name="siret" required pattern="[0-9]{14}" class="w-full px-4 py-2 bg-gray-50 rounded border border-transparent focus:border-[#de0c1a] outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">E-mail pro <span class="text-[#de0c1a]">*</span></label>
+                            <input type="email" id="reg_email" name="email" required class="w-full px-4 py-2 bg-gray-100 text-gray-500 rounded border border-transparent outline-none">
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <h3 class="text-[10px] font-black text-[#de0c1a] uppercase tracking-[0.2em] border-b border-gray-100 pb-2">Le contact</h3>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="col-span-1">
+                                <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Civilité</label>
+                                <select id="civility" name="civility" required class="w-full px-2 py-2 bg-gray-50 rounded border border-transparent focus:border-[#de0c1a] outline-none">
+                                    <option value="mr">M.</option><option value="mrs">Mme</option>
+                                </select>
+                            </div>
+                            <div class="col-span-2">
+                                <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Nom <span class="text-[#de0c1a]">*</span></label>
+                                <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-2 bg-gray-50 rounded border border-transparent focus:border-[#de0c1a] outline-none">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Prénom <span class="text-[#de0c1a]">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-2 bg-gray-50 rounded border border-transparent focus:border-[#de0c1a] outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Fonction <span class="text-[#de0c1a]">*</span></label>
+                            <input type="text" id="function" name="function" required class="w-full px-4 py-2 bg-gray-50 rounded border border-transparent focus:border-[#de0c1a] outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-100">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase mb-4 tracking-widest">Coordonnées téléphoniques (un minimum requis)</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Fixe</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 bg-white rounded border border-gray-200 focus:border-[#de0c1a] outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Mobile</label>
+                            <input type="tel" id="mobile" name="mobile" class="w-full px-4 py-2 bg-white rounded border border-gray-200 focus:border-[#de0c1a] outline-none">
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" id="regSubmitBtn" class="id-button-secondary w-full text-white font-bold py-4 rounded shadow-lg uppercase tracking-widest text-sm">
+                    <span id="regBtnText">Envoyer ma demande</span>
+                    <div id="regBtnLoader" class="loader hidden"></div>
+                </button>
+            </form>
+        </div>
+
+        <!-- Réponse Serveur -->
+        <div id="responseContainer" class="mt-8 hidden p-6 rounded border-l-4 text-xs animate-fade-in">
+            <h3 class="font-black uppercase tracking-widest text-[10px] mb-2 opacity-50">Statut de l'opération</h3>
+            <pre id="responseText" class="whitespace-pre-wrap font-mono"></pre>
+        </div>
+    </div>
+
+    <script>
+        const loginSection = document.getElementById('loginSection');
+        const infoSection = document.getElementById('infoSection');
+        const registrationSection = document.getElementById('registrationSection');
+        const responseContainer = document.getElementById('responseContainer');
+        const responseText = document.getElementById('responseText');
+        const loginForm = document.getElementById('loginForm');
+        const registrationForm = document.getElementById('registrationForm');
+        const webhookToggle = document.getElementById('webhookToggle');
+        const envLabel = document.getElementById('envLabel');
+        
+        // Configuration des URLs
+        const URLS = {
+            prod: {
+                auth: 'https://aiid.app.n8n.cloud/webhook/identification',
+                reg: 'https://aiid.app.n8n.cloud/webhook/enregistrement'
+            },
+            test: {
+                auth: 'https://aiid.app.n8n.cloud/webhook-test/identification',
+                reg: 'https://aiid.app.n8n.cloud/webhook-test/enregistrement'
+            }
+        };
+
+        const getCurrentUrls = () => webhookToggle.checked ? URLS.prod : URLS.test;
+
+        webhookToggle.addEventListener('change', () => {
+            envLabel.textContent = webhookToggle.checked ? 'Production' : 'Test';
+            envLabel.style.color = webhookToggle.checked ? 'var(--id-red)' : 'var(--id-gray)';
+        });
+
+        // Système de sécurité (Attempts)
+        let failedAttempts = 0;
+        let lockUntil = null;
+        const MAX_ATTEMPTS = 5;
+        const LOCK_DURATION = 10 * 60 * 1000;
+
+        let currentUserData = null;
+
+        // Timer de déverrouillage
+        setInterval(() => {
+            if (lockUntil) {
+                const now = new Date().getTime();
+                const diff = lockUntil - now;
+                if (diff <= 0) { unlock(); } else {
+                    const minutes = Math.floor(diff / 60000);
+                    const seconds = Math.floor((diff % 60000) / 1000);
+                    document.getElementById('countdown').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }
+        }, 1000);
+
+        function unlock() {
+            lockUntil = null;
+            failedAttempts = 0;
+            document.getElementById('lockoutNotice').classList.add('hidden');
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('attemptsLeft').classList.add('hidden');
+        }
+
+        // 1. GESTION CONNEXION
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (lockUntil && new Date().getTime() < lockUntil) return;
+
+            toggleLoading('login', true);
+            [infoSection, registrationSection, responseContainer].forEach(s => s.classList.add('hidden'));
+
+            const identifier = document.getElementById('identifier').value;
+            const data = Object.fromEntries(new FormData(loginForm).entries());
+
+            try {
+                const response = await fetchWithRetry(getCurrentUrls().auth, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...data, timestamp: new Date().toISOString() })
+                });
+
+                const result = await response.json();
+                const retour = (Array.isArray(result) && result[0]) ? String(result[0].retour) : null;
+                
+                if (retour === "0") {
+                    setupForm('nouveau', identifier);
+                } else if (retour === "1") {
+                    failedAttempts = 0;
+                    document.getElementById('attemptsLeft').classList.add('hidden');
+                    currentUserData = result[0];
+                    showUserInfo(currentUserData);
+                } else if (retour === "2") {
+                    handleFailedAttempt();
+                    showResponse(`Mot de passe incorrect. Tentatives restantes : ${MAX_ATTEMPTS - failedAttempts}`, false);
+                } else {
+                    showResponse(result, response.ok);
+                }
+            } catch (error) {
+                showResponse({ error: 'Erreur réseau : ' + error.message }, false);
+            } finally {
+                toggleLoading('login', false);
+            }
+        });
+
+        function handleFailedAttempt() {
+            failedAttempts++;
+            const remaining = MAX_ATTEMPTS - failedAttempts;
+            document.getElementById('attemptsLeft').classList.remove('hidden');
+            document.getElementById('remainingCount').textContent = remaining;
+            if (failedAttempts >= MAX_ATTEMPTS) {
+                lockUntil = new Date().getTime() + LOCK_DURATION;
+                document.getElementById('lockoutNotice').classList.remove('hidden');
+                document.getElementById('submitBtn').disabled = true;
+            }
+        }
+
+        // 2. ACTIONS APRES CODE 1 (Redirection POST)
+        document.getElementById('btnConfirmLogin').addEventListener('click', () => {
+            // Création d'un formulaire dynamique pour envoyer le champ ID en POST
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = './BAO/index.php';
+
+            const hiddenId = document.createElement('input');
+            hiddenId.type = 'hidden';
+            hiddenId.name = 'ID';
+            // Utilise 'id' ou 'ID' selon la casse reçue du webhook (on gère les deux par sécurité)
+            hiddenId.value = currentUserData.id || currentUserData.ID || '';
+
+            form.appendChild(hiddenId);
+            document.body.appendChild(form);
+            form.submit();
+        });
+
+        document.getElementById('btnTriggerUpdate').addEventListener('click', () => {
+            infoSection.classList.add('hidden');
+            setupForm('maj', currentUserData.email, currentUserData);
+        });
+
+        // 3. GESTION FORMULAIRE (ENREGISTREMENT OU MAJ)
+        registrationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('phone').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            if (!phone && !mobile) {
+                showResponse("Veuillez renseigner au moins un numéro de téléphone.", false);
+                return;
+            }
+
+            toggleLoading('reg', true);
+            const regData = Object.fromEntries(new FormData(registrationForm).entries());
+
+            try {
+                const response = await fetchWithRetry(getCurrentUrls().reg, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(regData)
+                });
+
+                if (response.ok) {
+                    showResponse("Votre demande a bien été transmise à ID GROUP. Nous la traiterons rapidement.", true);
+                    registrationSection.classList.add('hidden');
+                    loginForm.reset();
+                } else {
+                    showResponse(await response.json(), false);
+                }
+            } catch (error) {
+                showResponse({ error: 'Erreur : ' + error.message }, false);
+            } finally {
+                toggleLoading('reg', false);
+            }
+        });
+
+        // FONCTIONS UTILITAIRES
+        function showUserInfo(data) {
+            loginSection.classList.add('hidden');
+            infoSection.classList.remove('hidden');
+            const civDisplay = data.civility === 'mrs' ? 'Mme' : (data.civility === 'mr' ? 'M.' : data.civility);
+            document.getElementById('display_name').textContent = `${data.first_name || ''} ${data.last_name || ''}`;
+            document.getElementById('view_civility').textContent = civDisplay || '-';
+            document.getElementById('view_fullname').textContent = `${data.last_name || ''} ${data.first_name || ''}`;
+            document.getElementById('view_function').textContent = data.position || '-';
+            document.getElementById('view_email').textContent = data.email || '-';
+            document.getElementById('view_phone').textContent = data.phone_number || '-';
+            document.getElementById('view_mobile').textContent = data.mobile_number || '-';
+        }
+
+        function setupForm(mode, email, data = null) {
+            registrationSection.classList.remove('hidden');
+            document.getElementById('noticeInconnu').classList.toggle('hidden', mode === 'maj');
+            document.getElementById('regFormTitle').textContent = mode === 'maj' ? 'Mise à jour du profil' : 'Demande d\'enregistrement';
+            document.getElementById('actionType').value = mode;
+            document.getElementById('regBtnText').textContent = mode === 'maj' ? 'Enregistrer les modifications' : 'Soumettre mon enregistrement';
+            document.getElementById('reg_email').value = email;
+            if (data) {
+                document.getElementById('civility').value = data.civility || 'mr';
+                document.getElementById('lastName').value = data.last_name || '';
+                document.getElementById('firstName').value = data.first_name || '';
+                document.getElementById('function').value = data.position || '';
+                document.getElementById('phone').value = data.phone_number || '';
+                document.getElementById('mobile').value = data.mobile_number || '';
+                document.getElementById('companyName').value = data.companyName || '';
+                document.getElementById('siret').value = data.siret || '';
+            } else {
+                registrationForm.reset();
+                document.getElementById('reg_email').value = email;
+                document.getElementById('actionType').value = 'nouveau';
+            }
+            registrationSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function fetchWithRetry(url, options, retries = 5, backoff = 1000) {
+            try {
+                const response = await fetch(url, options);
+                return response;
+            } catch (error) {
+                if (retries <= 0) throw error;
+                await new Promise(r => setTimeout(r, backoff));
+                return fetchWithRetry(url, options, retries - 1, backoff * 2);
+            }
+        }
+
+        function toggleLoading(type, isLoading) {
+            const btn = type === 'login' ? document.getElementById('submitBtn') : document.getElementById('regSubmitBtn');
+            const loader = type === 'login' ? document.getElementById('btnLoader') : document.getElementById('regBtnLoader');
+            btn.disabled = isLoading || (type === 'login' && !!lockUntil);
+            if (isLoading) { loader.classList.remove('hidden'); } else { loader.classList.add('hidden'); }
+        }
+
+        function showResponse(data, isSuccess) {
+            responseContainer.classList.remove('hidden');
+            const colorClass = isSuccess ? 'bg-green-50 border-green-500 text-green-900' : 'bg-red-50 border-red-500 text-red-900';
+            responseContainer.className = `mt-8 p-6 rounded border-l-4 text-xs animate-fade-in ${colorClass}`;
+            responseText.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+            responseContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
