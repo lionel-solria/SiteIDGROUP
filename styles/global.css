@@ -2,7 +2,7 @@
 
 :root {
   --nav-height: 74px;
-  --nav-surface: rgba(6, 10, 16, 0.3);
+  --nav-surface: rgba(6, 10, 16, 0.25);
   --nav-border: rgba(255, 255, 255, 0.08);
   --nav-text: #f7f8fb;
 }
@@ -24,9 +24,9 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0 4%;
-  background: rgba(8, 12, 18, 0.4);
+  background: var(--nav-surface);
   color: var(--nav-text);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   z-index: 1000;
@@ -112,6 +112,7 @@ body {
   gap: clamp(0.8rem, 2vw, 1.8rem);
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left: auto;
 }
 
 .nav-links a {

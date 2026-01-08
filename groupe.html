@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Groupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="picocms.css">
+  <style>
+    :root {
+      --id-red: #e41e28;
+      --neutral: #f5f6f8;
+      --ink: #0f141b;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--neutral);
+      color: var(--ink);
+    }
+
+    .page-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+      display: grid;
+      gap: 2rem;
+    }
+
+    .page-hero {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .page-kicker {
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(15, 20, 27, 0.6);
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+    }
+
+    .page-hero p {
+      margin: 0;
+      color: rgba(15, 20, 27, 0.75);
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 18px 40px rgba(15, 20, 27, 0.08);
+      border: 1px solid rgba(15, 20, 27, 0.08);
+    }
+
+    .info-card h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: rgba(15, 20, 27, 0.72);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+      <span class="brand-tooltip" aria-hidden="true">
+        <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
+        <span>
+          <p class="brand-tooltip__heading">ID GROUP</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
+        </span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#das">DAS</a>
+      <a href="groupe.html">Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero">
+      <span class="page-kicker">Qui sommes-nous ?</span>
+      <h1>Un groupe industriel français, engagé au service des usages.</h1>
+      <p>ID Group conçoit et fabrique des solutions de revêtements de sols et de tapis techniques pour la maison, le
+        bâtiment, l’industrie et l’agriculture. Notre expertise s’appuie sur plus de 30 ans de savoir-faire, une
+        fabrication locale et une attention permanente portée au confort et à la sécurité.</p>
+    </section>
+
+    <section class="info-grid">
+      <article class="info-card">
+        <h2>Un ancrage industriel fort</h2>
+        <p>Un site de production centralisé à Wormhout, des équipes expertes et une capacité d’innovation constante pour
+          servir les usages réels de nos clients.</p>
+      </article>
+      <article class="info-card">
+        <h2>Une vision orientée solution</h2>
+        <p>De la protection des bâtiments à l’amélioration du confort animal, nous imaginons des réponses concrètes et
+          durables pour chaque environnement.</p>
+      </article>
+      <article class="info-card">
+        <h2>Une culture de la proximité</h2>
+        <p>Des relations humaines solides avec nos partenaires, une écoute active et des équipes terrain pour rester au
+          plus proche des besoins.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="scripts/global.js"></script>
+  <script defer src="picocms.js"></script>
+</body>
+
+</html>
