@@ -2,9 +2,9 @@
 
 :root {
   --nav-height: 74px;
-  --nav-surface: rgba(6, 10, 16, 0.3);
-  --nav-border: rgba(255, 255, 255, 0.08);
-  --nav-text: #f7f8fb;
+  --nav-surface: transparent;
+  --nav-border: rgba(15, 23, 42, 0.08);
+  --nav-text: #ffffff;
 }
 
 html {
@@ -24,14 +24,30 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0 4%;
-  background: rgba(8, 12, 18, 0.4);
+  background: var(--nav-surface);
   color: var(--nav-text);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(0);
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
   z-index: 1000;
   font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   transition: background 0.3s ease;
+}
+
+.global-nav.is-scrolled {
+  background: rgba(255, 255, 255, 0.82);
+  color: #1b2230;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+
+.page-light .global-nav {
+  background: rgba(255, 255, 255, 0.82);
+  color: #1b2230;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
 .nav-brand {
@@ -112,6 +128,7 @@ body {
   gap: clamp(0.8rem, 2vw, 1.8rem);
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left: auto;
 }
 
 .nav-links a {
@@ -124,6 +141,11 @@ body {
   transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
+.global-nav.is-scrolled .nav-links a,
+.page-light .nav-links a {
+  color: rgba(27, 34, 48, 0.86);
+}
+
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: #ffffff;
@@ -132,10 +154,19 @@ body {
   outline: none;
 }
 
+.global-nav.is-scrolled .nav-links a:hover,
+.global-nav.is-scrolled .nav-links a:focus-visible,
+.page-light .nav-links a:hover,
+.page-light .nav-links a:focus-visible {
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.08);
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-left: 1rem;
 }
 
 .icon-btn {
@@ -154,6 +185,14 @@ body {
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
+.global-nav.is-scrolled .icon-btn,
+.page-light .icon-btn {
+  background: rgba(15, 23, 42, 0.06);
+  color: #1b2230;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+}
+
 .icon-btn:hover,
 .icon-btn:focus-visible {
   background: rgba(255, 255, 255, 0.18);
@@ -161,6 +200,15 @@ body {
   transform: translateY(-1px);
   color: #ffffff;
   outline: none;
+}
+
+.global-nav.is-scrolled .icon-btn:hover,
+.global-nav.is-scrolled .icon-btn:focus-visible,
+.page-light .icon-btn:hover,
+.page-light .icon-btn:focus-visible {
+  background: rgba(15, 23, 42, 0.12);
+  border-color: rgba(15, 23, 42, 0.18);
+  color: #0f172a;
 }
 
 .icon-btn.primary {

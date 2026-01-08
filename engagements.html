@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Engagements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="picocms.css">
+  <style>
+    body {
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: #1b2230;
+    }
+
+    .page-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4rem);
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .page-hero {
+      margin-top: calc(var(--nav-height) + 1rem);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .page-hero p {
+      color: rgba(27, 34, 48, 0.7);
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
+    .sketch-card {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 20px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .sketch-card img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+      padding: 0.75rem;
+    }
+
+    .sketch-card h2 {
+      margin: 0 0 0.75rem;
+    }
+
+    .sketch-card p {
+      margin: 0;
+      color: rgba(27, 34, 48, 0.7);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body class="page-light">
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+      <span class="brand-tooltip" aria-hidden="true">
+        <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
+        <span>
+          <p class="brand-tooltip__heading">ID GROUP</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
+        </span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="groupe.html">Le Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero">
+      <p class="eyebrow">Positiv'ID</p>
+      <h1>Nos engagements</h1>
+      <p>
+        Notre démarche est guidée par l’efficacité, la proximité et le respect. ID Group agit concrètement pour réduire
+        l’impact environnemental, améliorer la sécurité des utilisateurs et valoriser les savoir-faire locaux.
+      </p>
+    </section>
+
+    <section class="sketch-card">
+      <img src="images/PlanCroquis.jpg" alt="Croquis architectural illustrant les engagements d'ID Group">
+      <div>
+        <h2>Une responsabilité tangible</h2>
+        <p>
+          Les croquis architecturaux expriment l’idée d’un engagement construit avec méthode : analyser, concevoir,
+          mesurer et améliorer continuellement nos solutions pour répondre aux enjeux sociétaux et environnementaux.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="scripts/global.js"></script>
+  <script defer src="picocms.js"></script>
+</body>
+</html>
