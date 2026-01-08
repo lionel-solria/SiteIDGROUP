@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-label="Croquis architectural zone industrielle">
+  <rect width="600" height="360" fill="#ffffff"/>
+  <g fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 260h140l60-60 60 60h200v70H70z"/>
+    <path d="M90 260v-60l60-40 60 40v60"/>
+    <path d="M330 260v-70l60-40 60 40v70"/>
+    <path d="M150 190v-30h40v30"/>
+    <path d="M390 200v-30h40v30"/>
+    <path d="M470 260v-120h40v120"/>
+    <path d="M500 140c0-20-5-40-15-60"/>
+  </g>
+  <g fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round">
+    <path d="M110 300h90"/>
+    <path d="M360 300h120"/>
+    <path d="M270 320h60"/>
+  </g>
+</svg>

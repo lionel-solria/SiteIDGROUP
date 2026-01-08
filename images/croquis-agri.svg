@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-label="Croquis architectural zone campagne">
+  <rect width="600" height="360" fill="#ffffff"/>
+  <g fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M90 250l140-90 140 90"/>
+    <path d="M110 240v90h260v-90"/>
+    <path d="M250 330v-90h60v90"/>
+    <path d="M390 270h120v60H390z"/>
+    <path d="M420 270v-40l30-20 30 20v40"/>
+    <path d="M140 200l90-55 90 55"/>
+    <path d="M470 160v-50h30v50"/>
+    <path d="M485 110c0-20-6-36-18-48"/>
+  </g>
+  <g fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6">
+    <path d="M70 330h460"/>
+    <path d="M120 220h120"/>
+  </g>
+</svg>

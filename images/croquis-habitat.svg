@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-label="Croquis architectural zone maison">
+  <rect width="600" height="360" fill="#ffffff"/>
+  <g fill="none" stroke="#111827" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 210L300 80l220 130"/>
+    <path d="M120 200v120h360V200"/>
+    <path d="M210 320V240h80v80"/>
+    <path d="M360 240h70v80h-70z"/>
+    <path d="M150 260h40v40h-40z"/>
+    <path d="M440 200v-40l40 20v40"/>
+    <path d="M180 170l120-70 120 70"/>
+  </g>
+  <g fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 6">
+    <path d="M70 330h460"/>
+    <path d="M120 150h360"/>
+  </g>
+</svg>
