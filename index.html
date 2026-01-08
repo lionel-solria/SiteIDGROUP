@@ -168,8 +168,8 @@
     .das-section {
       position: relative;
       min-height: 100vh;
-      padding: clamp(3rem, 6vw, 5rem);
-      background: url('images/fondIDGROUP.jpg') center/cover no-repeat fixed;
+      padding: clamp(3.5rem, 7vw, 6rem);
+      background: #ffffff;
       display: flex;
       align-items: center;
     }
@@ -178,17 +178,17 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.68), rgba(255, 255, 255, 0.82));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 250, 252, 0.98));
       z-index: 0;
     }
 
     .das-content {
       position: relative;
       z-index: 1;
-      width: min(1320px, 100%);
+      width: min(1440px, 100%);
       margin: 0 auto;
       display: grid;
-      gap: clamp(2rem, 4vw, 3rem);
+      gap: clamp(2.4rem, 4.5vw, 3.4rem);
     }
 
     .das-header {
@@ -210,22 +210,22 @@
     .das-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(1.8rem, 3.5vw, 3rem);
+      gap: clamp(2.2rem, 4vw, 3.4rem);
     }
 
     .das-card {
       position: relative;
-      border-radius: 22px;
+      border-radius: 26px;
       overflow: hidden;
-      min-height: 420px;
+      min-height: 520px;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-end;
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
@@ -242,9 +242,9 @@
 
     .das-card-content {
       width: 100%;
-      padding: 1.6rem;
-      background: rgba(255, 255, 255, 0.84);
-      backdrop-filter: blur(8px);
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
     }
 
     .das-card-meta {
@@ -272,7 +272,7 @@
 
     .das-card-content h3 {
       margin: 0.6rem 0 0.4rem;
-      font-size: 1.4rem;
+      font-size: 1.55rem;
       color: var(--text-dark);
     }
 
