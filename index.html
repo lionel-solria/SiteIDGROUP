@@ -185,7 +185,7 @@
     .das-content {
       position: relative;
       z-index: 1;
-      width: min(1320px, 100%);
+      width: min(1480px, 96%);
       margin: 0 auto;
       display: grid;
       gap: clamp(2rem, 4vw, 3rem);
@@ -210,14 +210,14 @@
     .das-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(1.8rem, 3.5vw, 3rem);
+      gap: clamp(1.4rem, 3vw, 2.6rem);
     }
 
     .das-card {
       position: relative;
       border-radius: 22px;
       overflow: hidden;
-      min-height: 420px;
+      min-height: clamp(420px, 32vw, 520px);
       background-size: cover;
       background-position: center;
       display: flex;
