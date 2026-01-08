@@ -2,9 +2,9 @@
 
 :root {
   --nav-height: 74px;
-  --nav-surface: rgba(6, 10, 16, 0.3);
-  --nav-border: rgba(255, 255, 255, 0.08);
-  --nav-text: #f7f8fb;
+  --nav-surface: rgba(255, 255, 255, 0.92);
+  --nav-border: rgba(15, 23, 42, 0.08);
+  --nav-text: #1b2230;
 }
 
 html {
@@ -24,11 +24,11 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 0 4%;
-  background: rgba(8, 12, 18, 0.4);
+  background: var(--nav-surface);
   color: var(--nav-text);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
   z-index: 1000;
   font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   transition: background 0.3s ease;
@@ -112,10 +112,11 @@ body {
   gap: clamp(0.8rem, 2vw, 1.8rem);
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left: auto;
 }
 
 .nav-links a {
-  color: rgba(247, 248, 251, 0.88);
+  color: rgba(27, 34, 48, 0.88);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -126,8 +127,8 @@ body {
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.08);
   transform: translateY(-1px);
   outline: none;
 }
@@ -136,6 +137,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-left: 1rem;
 }
 
 .icon-btn {
@@ -144,22 +146,22 @@ body {
   gap: 0.35rem;
   padding: 0.45rem 0.75rem;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.06);
   color: var(--nav-text);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(15, 23, 42, 0.12);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.01em;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .icon-btn:hover,
 .icon-btn:focus-visible {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(15, 23, 42, 0.12);
+  border-color: rgba(15, 23, 42, 0.24);
   transform: translateY(-1px);
-  color: #ffffff;
+  color: #0f172a;
   outline: none;
 }
 
@@ -191,8 +193,8 @@ body {
 .debug-tooltip {
   position: fixed;
   padding: 0.35rem 0.55rem;
-  background: rgba(5, 8, 14, 0.85);
-  color: #fefefe;
+  background: rgba(15, 23, 42, 0.85);
+  color: #fff;
   border-radius: 8px;
   font-size: 0.82rem;
   letter-spacing: 0.01em;
@@ -209,7 +211,67 @@ body.debug-mode [data-debug-label] {
 }
 
 body.debug-mode *:hover {
-  outline: 1px dashed rgba(255, 255, 255, 0.55);
+  outline: 1px dashed rgba(15, 23, 42, 0.35);
+}
+
+.global-nav.nav-transparent {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  color: #fff;
+}
+
+.global-nav.nav-transparent .nav-links a {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.global-nav.nav-transparent .nav-links a:hover,
+.global-nav.nav-transparent .nav-links a:focus-visible {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.global-nav.nav-transparent .icon-btn {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}
+
+.global-nav.nav-transparent .icon-btn:hover,
+.global-nav.nav-transparent .icon-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.global-nav.nav-transparent.is-scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  color: #1b2230;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+.global-nav.nav-transparent.is-scrolled .nav-links a {
+  color: rgba(27, 34, 48, 0.9);
+}
+
+.global-nav.nav-transparent.is-scrolled .nav-links a:hover,
+.global-nav.nav-transparent.is-scrolled .nav-links a:focus-visible {
+  color: #0f172a;
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.global-nav.nav-transparent.is-scrolled .icon-btn {
+  background: rgba(15, 23, 42, 0.06);
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #1b2230;
+}
+
+.global-nav.nav-transparent.is-scrolled .icon-btn:hover,
+.global-nav.nav-transparent.is-scrolled .icon-btn:focus-visible {
+  background: rgba(15, 23, 42, 0.12);
+  border-color: rgba(15, 23, 42, 0.24);
+  color: #0f172a;
 }
 
 body.debug-mode [data-debug-active] {

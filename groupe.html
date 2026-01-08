@@ -4,95 +4,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ID GROUP - Page</title>
+  <title>ID GROUP | Le Groupe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="picocms.css">
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
       --id-red: #e41e28;
-      --id-red-cta: #de0c1a;
-      --id-gray-dark: #1b2230;
-      --id-gray-neutral: #ededed;
+      --text-dark: #101828;
+      --text-muted: #475467;
     }
 
     body {
-      font-family: 'Avenir', 'Nunito', sans-serif;
-      background-color: var(--id-gray-neutral);
-      color: var(--id-gray-dark);
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: var(--text-dark);
     }
 
-    a,
-    button {
-      transition: transform 0.25s ease, box-shadow 0.25s ease,
-        background-color 0.25s ease, color 0.25s ease, opacity 0.25s ease,
-        border-color 0.25s ease;
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+      display: grid;
+      gap: 3rem;
     }
 
-    a:hover,
-    button:hover {
-      transform: translateY(-2px);
+    .page-header {
+      display: grid;
+      gap: 1rem;
     }
 
-    a:active,
-    button:active {
-      transform: translateY(0);
+    .page-header p {
+      color: var(--text-muted);
+      line-height: 1.7;
     }
 
-    .nav-link {
-      position: relative;
-      padding: 0.85rem 0.85rem;
+    .croquis-block {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      padding: 2rem;
+    }
+
+    .croquis-block img {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: #ffffff;
+    }
+
+    .croquis-block h2 {
+      margin: 0 0 0.6rem;
+    }
+
+    .croquis-block p {
+      margin: 0 0 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 999px;
-      color: #1b2230;
-      font-weight: 700;
-      transition: color 0.3s ease, background 0.3s ease, transform 0.2s ease;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 6px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #e41e28, #de0c1a);
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    .nav-link:hover {
-      color: #e41e28;
+      border: 1px solid rgba(228, 30, 40, 0.22);
       background: rgba(228, 30, 40, 0.08);
-      transform: translateY(-1px);
-    }
-
-    .nav-link:hover::after {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .nav-link:focus-visible {
-      outline: 2px solid rgba(228, 30, 40, 0.45);
-      outline-offset: 6px;
-    }
-
-    .logo-link img {
-      transition: transform 0.25s ease;
-    }
-
-    .logo-link:hover img,
-    .logo-link:focus-visible img {
-      transform: scale(1.06);
+      color: var(--id-red);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
     }
   </style>
 </head>
 
-<body class="min-h-screen bg-[var(--id-gray-neutral)] text-[var(--id-gray-dark)] antialiased">
+<body>
   <header class="global-nav" role="banner">
     <a class="nav-brand" href="index.html">
       <img src="logos/ID GROUP.png" alt="ID GROUP">
@@ -101,7 +96,7 @@
         <img src="images/batiment73.png" alt="" class="brand-tooltip__image">
         <span>
           <p class="brand-tooltip__heading">ID GROUP</p>
-          <p class="brand-tooltip__address">73 rue du Bâtiment<br>Siège de la société</p>
+          <p class="brand-tooltip__address">Alpespace<br>47 Rue St Exupéry, 73800 Porte-de-Savoie</p>
         </span>
       </span>
     </a>
@@ -140,18 +135,6 @@
           <path d="M2 12h20" />
         </svg>
       </button>
-      <a class="icon-btn" href="#" title="Espace Client / Outils">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="21" y1="9" x2="14" y2="9" />
-          <line x1="10" y1="9" x2="3" y2="9" />
-          <line x1="21" y1="15" x2="12" y2="15" />
-          <line x1="8" y1="15" x2="3" y2="15" />
-          <line x1="14" y1="7" x2="14" y2="11" />
-          <line x1="8" y1="13" x2="8" y2="17" />
-        </svg>
-        <span>Outils</span>
-      </a>
       <a class="icon-btn primary" href="contact.html" title="Prendre contact">
         <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
@@ -162,14 +145,26 @@
       </a>
     </div>
   </header>
-  <main class="max-w-4xl mx-auto px-4 py-16 space-y-4">
-    <p class="text-xs uppercase tracking-[0.35em] text-red-600">ID Group</p>
-    <h1 class="text-4xl font-black">Section en construction</h1>
-    <p class="text-lg text-gray-700">Ce gabarit sert de base pour la navigation. Personnalisez ce contenu avec vos
-      informations spécifiques.</p>
-    <a href="index.html"
-      class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-md font-semibold shadow">↩ Retour à
-      l'accueil</a>
+  <main class="page-wrapper">
+    <div class="page-header">
+      <span class="pill">Le Groupe</span>
+      <h1>Une mission industrielle au service des usages.</h1>
+      <p>ID Group conçoit des solutions pour protéger les lieux de vie, les environnements professionnels et les
+        élevages. Notre modèle est fondé sur la proximité terrain, l'exigence industrielle et la capacité à imaginer des
+        réponses concrètes aux besoins de chacun.</p>
+    </div>
+
+    <section class="croquis-block">
+      <div>
+        <h2>Une vision claire, dessinée avec précision.</h2>
+        <p>Les croquis architecturaux incarnent notre capacité à structurer les espaces avec finesse : lignes nettes,
+          contrastes maîtrisés et lecture immédiate. Ils servent de base aux projets internes pour affirmer notre
+          signature visuelle.</p>
+        <p>Sur cette page dédiée, le blanc domine afin de valoriser la légèreté des traits et l'approche épurée qui
+          caractérise l'identité du groupe.</p>
+      </div>
+      <img src="images/PlanCroquis.jpg" alt="Croquis architectural ID Group">
+    </section>
   </main>
   <script src="scripts/global.js"></script>
   <script defer src="picocms.js"></script>
