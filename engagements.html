@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Engagements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #f7f7f5;
+      color: #11151c;
+    }
+
+    main {
+      padding: 6rem clamp(1.5rem, 5vw, 5rem) 4rem;
+    }
+
+    .page-hero {
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: rgba(17, 21, 28, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(17, 21, 28, 0.7);
+    }
+
+    .commitment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .commitment-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 50px rgba(16, 20, 26, 0.08);
+    }
+
+    .commitment-card h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body class="nav-solid">
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#das">DAS</a>
+      <a href="groupe.html">Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <p class="hero-eyebrow">Nos engagements</p>
+      <h1>Une performance responsable au service des territoires.</h1>
+      <p>ID Group s'engage pour la qualité, l'innovation et la réduction de son empreinte environnementale, afin de
+        construire des espaces plus sûrs et plus durables.</p>
+    </section>
+
+    <section class="commitment-list">
+      <article class="commitment-card">
+        <h3>Qualité &amp; sécurité</h3>
+        <p>Garantir des environnements fiables grâce à des process exigeants et à des matériaux sélectionnés avec soin.</p>
+      </article>
+      <article class="commitment-card">
+        <h3>Impact environnemental</h3>
+        <p>Réduire l'empreinte carbone de nos sites et favoriser des cycles de production plus responsables.</p>
+      </article>
+      <article class="commitment-card">
+        <h3>Innovation durable</h3>
+        <p>Investir en R&amp;D pour proposer des solutions performantes, durables et orientées vers les usages réels.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="scripts/global.js"></script>
+</body>
+</html>
