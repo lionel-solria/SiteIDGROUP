@@ -1,5 +1,6 @@
 (() => {
   const debugToggle = document.querySelector('[data-debug-toggle]');
+  const navBar = document.querySelector('.global-nav');
   const tooltip = document.createElement('div');
   tooltip.className = 'debug-tooltip';
   tooltip.setAttribute('aria-live', 'polite');
@@ -174,4 +175,12 @@
     },
     true
   );
+
+  if (navBar) {
+    const updateNav = () => {
+      navBar.classList.toggle('is-scrolled', window.scrollY > 12);
+    };
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+  }
 })();

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Groupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="picocms.css">
+  <style>
+    :root {
+      --id-red: #e41e28;
+      --neutral-dark: #0f141b;
+      --neutral-light: #f5f6f8;
+      --nav-text: #0f141b;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--neutral-light);
+      color: var(--neutral-dark);
+    }
+
+    .page-shell {
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem) 4rem;
+    }
+
+    .page-hero {
+      position: relative;
+      min-height: 52vh;
+      border-radius: 28px;
+      padding: clamp(2.5rem, 6vw, 4rem);
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+      background: linear-gradient(120deg, rgba(7, 10, 16, 0.55), rgba(7, 10, 16, 0.75)),
+        url('images/fondIDGROUP.jpg') center/cover no-repeat;
+      color: #f7f8fb;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .page-hero h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+    }
+
+    .page-hero p {
+      margin: 0;
+      max-width: 720px;
+      line-height: 1.7;
+      color: rgba(247, 248, 251, 0.88);
+    }
+
+    .section-block {
+      margin-top: clamp(2.5rem, 5vw, 3.5rem);
+      display: grid;
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .section-block h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .info-card {
+      padding: 1.6rem;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 20, 27, 0.08);
+      box-shadow: 0 16px 40px rgba(15, 20, 27, 0.08);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .info-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: rgba(15, 20, 27, 0.75);
+      line-height: 1.6;
+    }
+
+    .site-footer {
+      padding: 2.5rem 1.5rem 3rem;
+      background: #0b0f16;
+      color: rgba(247, 248, 251, 0.7);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .site-footer a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="index.html#das">Les DAS</a>
+      <a href="groupe.html">Groupe</a>
+      <a href="engagements.html">Engagements</a>
+      <a href="actualites.html">Actualités</a>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero">
+      <span style="text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.75rem;">Qui sommes-nous ?</span>
+      <h1>ID Group – Des solutions durables pour tous vos espaces</h1>
+      <p>ID Group est un groupe industriel français, expert des revêtements de sols et tapis techniques, qui conçoit et
+        fabrique des solutions adaptées aux usages de la maison, du bâtiment, de l’industrie et de l’agriculture.</p>
+    </section>
+
+    <section class="section-block">
+      <h2>Notre mission et notre culture</h2>
+      <p style="margin:0; color: rgba(15, 20, 27, 0.78); line-height: 1.7; max-width: 860px;">Depuis plus de 30 ans, nous
+        accompagnons nos clients dans leurs problématiques de sécurité, de confort, d’hygiène et de durabilité, en
+        apportant des solutions concrètes pensées pour leurs environnements réels et leurs contraintes métier.</p>
+      <div class="section-grid">
+        <div class="info-card">
+          <h3>Une approche simple et exigeante</h3>
+          <p>Partir de l’usage, comprendre le besoin, et concevoir la solution la plus juste pour chaque espace.</p>
+        </div>
+        <div class="info-card">
+          <h3>Trois univers complémentaires</h3>
+          <p>ID Home pour l’habitat, ID Pro pour l’industrie et les collectivités, ID Agri pour l’élevage.</p>
+        </div>
+        <div class="info-card">
+          <h3>Un ancrage local fort</h3>
+          <p>Notre site de production de Wormhout s’appuie sur un savoir-faire industriel reconnu et des équipes engagées.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2024 ID Group · Alpespace, 47 Rue Saint-Exupéry, 73800 Porte-de-Savoie · <a href="contact.html">Contact</a></p>
+  </footer>
+
+  <script src="scripts/global.js"></script>
+  <script defer src="picocms.js"></script>
+</body>
+
+</html>
