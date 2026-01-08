@@ -215,14 +215,15 @@ body.debug-mode *:hover {
 }
 
 .global-nav.nav-transparent {
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  box-shadow: none;
+  background: rgba(12, 16, 24, 0.45);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 30px rgba(10, 12, 20, 0.35);
   color: #fff;
 }
 
 .global-nav.nav-transparent .nav-links a {
   color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 8px 18px rgba(10, 12, 20, 0.45);
 }
 
 .global-nav.nav-transparent .nav-links a:hover,
@@ -235,6 +236,11 @@ body.debug-mode *:hover {
   background: rgba(255, 255, 255, 0.16);
   border-color: rgba(255, 255, 255, 0.28);
   color: #fff;
+}
+
+.nav-links a:active,
+.icon-btn:active {
+  transform: translateY(1px) scale(0.98);
 }
 
 .global-nav.nav-transparent .icon-btn:hover,
