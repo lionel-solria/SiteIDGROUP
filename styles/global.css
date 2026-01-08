@@ -2,9 +2,9 @@
 
 :root {
   --nav-height: 74px;
-  --nav-surface: rgba(255, 255, 255, 0.92);
-  --nav-border: rgba(15, 23, 42, 0.08);
-  --nav-text: #1b2230;
+  --nav-surface: rgba(255, 255, 255, 0.96);
+  --nav-border: rgba(15, 23, 42, 0.12);
+  --nav-text: #0f172a;
 }
 
 html {
@@ -28,10 +28,10 @@ body {
   color: var(--nav-text);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--nav-border);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.14);
   z-index: 1000;
   font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-brand {
@@ -116,13 +116,13 @@ body {
 }
 
 .nav-links a {
-  color: rgba(27, 34, 48, 0.88);
+  color: rgba(15, 23, 42, 0.92);
   text-decoration: none;
   font-weight: 700;
   letter-spacing: 0.01em;
   padding: 0.4rem 0.55rem;
   border-radius: 10px;
-  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-links a:hover,
@@ -163,6 +163,11 @@ body {
   transform: translateY(-1px);
   color: #0f172a;
   outline: none;
+}
+
+.nav-links a:active,
+.icon-btn:active {
+  transform: translateY(0) scale(0.97);
 }
 
 .icon-btn.primary {
@@ -215,9 +220,9 @@ body.debug-mode *:hover {
 }
 
 .global-nav.nav-transparent {
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  box-shadow: none;
+  background: linear-gradient(120deg, rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.2));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
   color: #fff;
 }
 
