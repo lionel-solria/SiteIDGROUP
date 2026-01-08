@@ -174,4 +174,13 @@
     },
     true
   );
+
+  const navBar = document.querySelector('.global-nav');
+  if (navBar) {
+    const updateNav = () => {
+      navBar.classList.toggle('is-scrolled', window.scrollY > 20);
+    };
+    updateNav();
+    window.addEventListener('scroll', updateNav, { passive: true });
+  }
 })();

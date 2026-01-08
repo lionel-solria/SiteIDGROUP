@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ID GROUP | Le Groupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/global.css">
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #17202a;
+      font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    main {
+      padding: 2rem clamp(1.5rem, 4vw, 3rem) 3rem;
+    }
+
+    .page-hero {
+      max-width: 980px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+    }
+
+    .page-hero p {
+      margin: 0;
+      line-height: 1.7;
+      color: rgba(23, 32, 42, 0.75);
+    }
+
+    .croquis {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      align-items: center;
+    }
+
+    .croquis img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(23, 32, 42, 0.1);
+      background: #fff;
+      padding: 1.5rem;
+    }
+
+    .croquis-text {
+      display: grid;
+      gap: 1rem;
+      line-height: 1.7;
+      color: rgba(23, 32, 42, 0.75);
+    }
+  </style>
+</head>
+
+<body>
+  <header class="global-nav" role="banner">
+    <a class="nav-brand" href="index.html">
+      <img src="logos/ID GROUP.png" alt="ID GROUP">
+      <span>ID GROUP</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="groupe.html">Le Groupe</a>
+      <a href="engagements.html">Les Engagements</a>
+      <a href="actualites.html">Les Actualités</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <h1>Le Groupe</h1>
+      <p>Découvrez l’architecture industrielle et humaine d’ID Group : une organisation pensée pour relier innovation,
+        proximité terrain et performance durable.</p>
+    </section>
+
+    <section class="croquis">
+      <img src="images/PlanCroquis.jpg" alt="Croquis architectural ID Group">
+      <div class="croquis-text">
+        <p>Nos sites et nos équipes travaillent en synergie pour créer des solutions de protection et de confort
+          adaptées à chaque univers. Les croquis mettent en lumière la précision de nos méthodes et notre exigence
+          technique.</p>
+        <p>Chaque étape, de la conception à la fabrication, est guidée par la recherche de qualité et par une
+          collaboration étroite entre métiers.</p>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
